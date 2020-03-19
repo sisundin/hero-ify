@@ -1,13 +1,8 @@
 import React from 'react';
 import './App.css';
-import HeroIfyModel from './modelconfig/model.js';
-import signInView from '.sigin/signin.js'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-
-} from "react-router-dom"
+import HeroIfyModel from './modelandconfig/model.js';
+import SignInView from './signin/signInView.js';
+import {BrowserRouter as Router, Switch , Route} from "react-router-dom";
 
 
 class App extends React.Component {
@@ -25,7 +20,7 @@ class App extends React.Component {
             <React.Fragment></React.Fragment>
               <div className = "main">
                 <div className = "Welcome debug">
-                  <Route path="/" render={() => <signInView model={HeroIfyModel}/>}/>
+                  <Route path="/" render={() => <SignInView/>}/>
               </div>
             </div>
           </Switch>
@@ -39,4 +34,4 @@ export default App;
 
 //<div className = "mainContent hide debug" id="details">
   //      <DishDetailsContainer model = {dinnerModel}/>
-    //    </div>
+    //    </div> model={HeroIfyModel}

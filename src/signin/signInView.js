@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
 import Spotify from 'spotify-web-api-js';
 const spotifyApi = new Spotify();
 
  
-export default class signInView extends Component {
+export default class SignInView extends Component {
     constructor(){
       super();
       const params = this.getHashParams();
