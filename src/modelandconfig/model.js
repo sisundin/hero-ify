@@ -47,17 +47,19 @@ class HeroIfyModel extends React.Component{
     getHeroStats(id){
         let herostats = this.getHeroData(id + "/powerstats");
         let image = this.getHeroData(id+"/image");
+        let stats = {"stats" : herostats, "image": image };
+        return stats
     }
 
     heroGenres(powerstats){
+        powerstats = {"intelligence":"81","strength":"40","speed":"29","durability":"55","power":"63","combat":"90"}
+        let Intelligence = "Classical";
+        let Strength = "Punk";
+        let Speed = "pop";
+        let Durability = "lowfy beats";
+        let Power = "electronic Dance";
+        let Combat = "hip hop";
         
-        Intelligence = "Classical"
-        Strength = "Punk"
-        Speed = "pop"
-        Durability = "lowfy beats"
-        Power = "electronic Dance"
-        Combat = "hip hop"
-        powerstats:{"intelligence":"81","strength":"40","speed":"29","durability":"55","power":"63","combat":"90"}
     
 
     }
