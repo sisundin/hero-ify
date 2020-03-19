@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import model from './modelconfig.js'
+import HeroIfyModel from './modelconfig/model.js';
 import {
   BrowserRouter as Router,
   Switch,

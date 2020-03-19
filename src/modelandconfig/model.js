@@ -52,7 +52,7 @@ class HeroIfyModel extends React.Component{
     }
 
     heroGenres(powerstats){
-        powerstats = {"intelligence":"81","strength":"40","speed":"29","durability":"55","power":"63","combat":"90"}
+        powerstats = {"intelligence":"81","strength":"40","speed":"29","durability":"55","power":"63","combat":"90"};
         let Intelligence = "Classical";
         let Strength = "Punk";
         let Speed = "pop";
