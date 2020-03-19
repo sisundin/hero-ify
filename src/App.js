@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import HeroIfyModel from './modelconfig/model.js';
+import signInView from '.sigin/signin.js'
 import {
   BrowserRouter as Router,
   Switch,
@@ -23,8 +24,8 @@ class App extends React.Component {
           <Switch>
             <React.Fragment></React.Fragment>
               <div className = "main">
-                <div className = "Welcome debug" id = "search">
-                  <Route path="/" render={() => <WelcomeScreen model={HeroIfyModel}/>}/>
+                <div className = "Welcome debug">
+                  <Route path="/" render={() => <signInView model={HeroIfyModel}/>}/>
               </div>
             </div>
           </Switch>
