@@ -47,21 +47,15 @@ class HeroIfyModel extends React.Component{
     getHeroStats(id){
         let herostats = this.getHeroData(id + "/powerstats");
         let image = this.getHeroData(id+"/image");
-        let stats = {"stats" : herostats, "image": image };
+        let stats = {"powerstats" : herostats, "image": image };
         return stats
     }
 
     heroGenres(powerstats){
         powerstats = {"intelligence":"81","strength":"40","speed":"29","durability":"55","power":"63","combat":"90"};
-        let Intelligence = "Classical";
-        let Strength = "Punk";
-        let Speed = "pop";
-        let Durability = "lowfy beats";
-        let Power = "electronic Dance";
-        let Combat = "hip hop";
-        
-    
-
+        let allstats = powerstats.intelligence + powerstats.strength + powerstats.speed + powerstats.durability + powerstats.combat;
+        let genres = { "classical": powerstats.intelligence/allstats, "punk":powerstats.strength/allstats, "pop": powerstats.speed/allstats , "lowfy beats": powerstats.durability/allstats, "electronic dance": powerstats.power/allstats, "hip hop": powerstats.combat/allstats};
+        return genres;
     }
 
     //All firebasefunctions
