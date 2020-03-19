@@ -88,3 +88,6 @@ class HeroIfyModel extends React.Component{
     }
     
 }
+
+const heroifyModel = new HeroIfyModel();
+export default heroifyModel;
