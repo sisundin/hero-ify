@@ -49,7 +49,7 @@ export default class SignInView extends Component {
             Now Playing: { this.state.nowPlaying.name }
           </div>
           <div>
-            <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/>
+            <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }} alt = ""/>
           </div>
           { this.state.loggedIn &&
             <button onClick={ () => this.getNowPlaying()}>
