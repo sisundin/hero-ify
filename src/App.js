@@ -24,7 +24,7 @@ class App extends React.Component {
             <React.Fragment></React.Fragment>
               <div className = "main">
                 <div className = "Welcome debug" id = "search">
-                  <Route path="/" render={() => <WelcomeScreen model={dinnerModel}/>}/>
+                  <Route path="/" render={() => <WelcomeScreen model={HeroIfyModel}/>}/>
               </div>
             </div>
           </Switch>
