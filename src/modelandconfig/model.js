@@ -1,5 +1,6 @@
 import React  from "react";
-import {heroApiENDPOINT, HeroApiAccessToken} from "./apiConfig"
+import {heroApiENDPOINT, HeroApiAccessToken, firebaseConfig} from "./apiConfig"
+import firebase from "firebase";
 
 class HeroIfyModel extends React.Component{
     constructor(){
@@ -7,7 +8,8 @@ class HeroIfyModel extends React.Component{
         
         this.subscribers=[];
         this.playlistAttributes = {userID:"", genres: [], pepLevel:"" }
-    
+        this.firebase = new firebase.initializeApp(firebaseConfig);
+        this.db = this.firebase.firestore();
         }
         
     addObserver(callback){
@@ -58,19 +60,25 @@ class HeroIfyModel extends React.Component{
         return genres;
     }
 
-    //All firebasefunctions
-    connectToFirebase(){
-
+    //getPlaylists NEEDS RENDER PROMIS
+    getOthersPlaylistsfromdatabase(){
+        let scoreboard = []
+        this.db.collection("created playlists").orderBy("score", "desc").limit(10).get().then((snapshot) => {
+            snapshot.forEach((doc) => {
+                scoreboard.push({"Hero": doc.Hero , "PlaylistLink": doc.PlaylistLink , "User": doc.User})
+            })
+        });
     }
-    //getPlaylists
-    getOthersPlaylists(){
 
-
-    }
     //add a playlist to firebase
-    addYourplaylistToDatabase(){
-
-    }
+    addYourplaylistToDatabase(heroname, playlistlink, user){
+        this.db.collection("created playlists").doc().set({
+            Hero: heroname,
+            PlaylistLink: playlistlink,
+            User: user
+            
+    });
+}
     
    //spotify playlist function
     spotifyApiConnect(){

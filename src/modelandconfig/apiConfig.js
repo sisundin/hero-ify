@@ -1,12 +1,13 @@
-const ClientIdSpotify = "6b81aee6295f4241b1442fd768e26a0e";
-const FireBaseCollectionID = "uq5qdkdYhTG3mbdaJtiD";
-const heroApiENDPOINT = "https://superheroapi.com/api/"
-const HeroApiAccessToken = "10216578763606325/";
-const admin = require("firebase-admin");
-
-const serviceAccount = require("src/modelandconfig/hero-ify-firebase-adminsdk-k8ano-b2c3cd553c.json");
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://hero-ify.firebaseio.com"
-});
+export const ClientIdSpotify = "6b81aee6295f4241b1442fd768e26a0e";
+export const FireBaseCollectionID = "uq5qdkdYhTG3mbdaJtiD";
+export const heroApiENDPOINT = "https://superheroapi.com/api/"
+export const HeroApiAccessToken = "10216578763606325/";
+export const firebaseConfig = {
+    apiKey: "AIzaSyCXadcIVFb5q20apO17a4UTL-BWqXgTlIc",
+    authDomain: "hero-ify.firebaseapp.com",
+    databaseURL: "https://hero-ify.firebaseio.com",
+    projectId: "hero-ify",
+    storageBucket: "hero-ify.appspot.com",
+    messagingSenderId: "38217451391",
+    appId: "1:38217451391:web:644c06a4b06def5cfbfc4a"
+  };
