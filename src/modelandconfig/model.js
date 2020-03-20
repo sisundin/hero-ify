@@ -43,7 +43,9 @@ class HeroIfyModel extends React.Component{
       }
 
     searchHero(name){
-        return this.getHeroData("search/"+name)
+        let data = this.getHeroData("search/"+name);
+        console.log(data);
+        return data;
     }
 
     getHeroStats(id){
