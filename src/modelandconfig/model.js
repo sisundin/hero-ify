@@ -80,8 +80,8 @@ class HeroIfyModel extends React.Component{
 
     //getPlaylists NEEDS RENDER PROMIS
     getOthersPlaylistsfromdatabase(){
-        let scoreboard = []
-        this.db.collection("generatedPlaylists").orderBy("Hero", "desc").limit(10).get().then((snapshot) => {
+        let scoreboard = [];
+        this.db.collection("generatedPlaylists").orderBy().limit(10).get().then((snapshot) => {
             snapshot.forEach((doc) => {
                 scoreboard.push({"Hero": doc.Hero , "PlaylistLink": doc.PlaylistLink , "User": doc.User})
             })
