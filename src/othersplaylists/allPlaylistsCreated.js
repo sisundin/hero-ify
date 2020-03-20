@@ -13,11 +13,20 @@ export default function LatestPlaylist(props){
         }, [props]);
         
       
-        return h("div", {className:"othersPlaylistsTable"}, h("table",{},
-        h("tr", {}, h("th", {}, "Hero"), h("th", {}, "Link"), h("th", {}, "User")),
+        return h("div", {className:"othersPlaylistsTable"}, 
+        
         <RenderPromise
         promise = {props.model.getOthersPlaylistsfromdatabase()}
-        renderData = { ({data}) =>  data.map(playlistobject => h("tr", {} , h("td", {}, playlistobject.Hero), h("td", {}, playlistobject.PlaylistLink), h("td", {}, playlistobject.User)))} 
+        renderData = { ({data}) => rendertable(data)} 
         />
-        ));
+        );
+
+        
+    }
+    function rendertable(data){
+        return  h("table",{},
+    h("tr", {}, h("th", {}, "Hero"), h("th", {}, "Link"), h("th", {}, "User")), 
+    data.map(playlistobject => 
+        h("tr", {} , h("td", {}, playlistobject.Hero), h("td", {}, playlistobject.PlaylistLink), h("td", {}, playlistobject.User)))
+        );
     }

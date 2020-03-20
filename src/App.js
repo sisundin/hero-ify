@@ -15,7 +15,7 @@ import {
 class App extends React.Component {
   constructor(props) {
     super(props)
-    HeroIfyModel.searchHero("ironman");
+    //HeroIfyModel.searchHero("ironman");
     this.state = {
     }
   }
@@ -23,11 +23,16 @@ class App extends React.Component {
   render(){
     return (
       <Router>
+        <div>
+
+          <LatestPlaylist model={HeroIfyModel}/>
+        </div>
           <Switch>
               <div>
-                <SignInView model={HeroIfyModel}/>
-                <LatestPlaylist model={HeroIfyModel}/>
+                
+              <SignInView model={HeroIfyModel}/>
               </div>
+              
           </Switch>
       </Router>
     );
