@@ -6,7 +6,7 @@ const h = React.createElement;
 
 export default function LatestPlaylist(props){
         
-    
+    console.log(props.model.getOthersPlaylistsfromdatabase());
     React.useEffect(() => {
          
         

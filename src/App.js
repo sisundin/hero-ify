@@ -28,10 +28,7 @@ class App extends React.Component {
           <LatestPlaylist model={HeroIfyModel}/>
         </div>
           <Switch>
-              <div>
-                
-              <SignInView model={HeroIfyModel}/>
-              </div>
+              
               
           </Switch>
       </Router>
