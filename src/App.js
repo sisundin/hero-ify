@@ -6,33 +6,28 @@ import LatestPlaylist from './othersplaylists/allPlaylistsCreated.js'
 
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-
-} from "react-router-dom";
-
+  Switch
+} from 'react-router-dom'
 
 class App extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
-    //HeroIfyModel.searchHero("ironman");
+    // HeroIfyModel.searchHero("ironman");
     this.state = {
     }
   }
 
-  render(){
+  render () {
     return (
       <Router>
-          <Switch>
-              <div>
-                
-              <SignInView model={HeroIfyModel}/>
-              </div>
-              
-          </Switch>
+        <Switch>
+          <div>
+            <SignInView model={HeroIfyModel} />
+          </div>
+        </Switch>
       </Router>
-    );
+    )
   }
 }
 
-export default App;
+export default App
