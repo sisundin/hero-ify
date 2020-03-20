@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import HeroIfyModel from './modelandconfig/model.js';
 import SignInView from './signin/signInView.js';
+import LatestPlaylist from './othersplaylists/allPlaylistsCreated.js'
 
 import {
   BrowserRouter as Router,
@@ -25,6 +26,7 @@ class App extends React.Component {
           <Switch>
               <div>
                 <SignInView model={HeroIfyModel}/>
+                <LatestPlaylist model={HeroIfyModel}/>
               </div>
           </Switch>
       </Router>
