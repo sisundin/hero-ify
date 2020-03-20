@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Spotify from 'spotify-web-api-js';
 const spotifyApi = new Spotify();
 
- 
+
 export default class SignInView extends Component {
     constructor(){
       super();
@@ -16,31 +16,23 @@ export default class SignInView extends Component {
         nowPlaying: { name: 'Not Checked', albumArt: '' }
       }
     }
-  
-    getHashParams() {
-      var hashParams = {};
-      var e, r = /([^&;=]+)=?([^&;]*)/g,
-          q = window.location.hash.substring(1);
-      e = r.exec(q)
-      while (e) {
-         hashParams[e[1]] = decodeURIComponent(e[2]);
-         e = r.exec(q);
-      }
-      return hashParams;
+    this.state = {
+      loggedIn: token ? true : false,
+      nowPlaying: { name: "Not Checked", albumArt: "" }
+    };
+  }
+
+  getHashParams() {
+    var hashParams = {};
+    var e,
+      r = /([^&;=]+)=?([^&;]*)/g,
+      q = window.location.hash.substring(1);
+    e = r.exec(q);
+    while (e) {
+      hashParams[e[1]] = decodeURIComponent(e[2]);
+      e = r.exec(q);
     }
-  
-    getNowPlaying(){
-      spotifyApi.getMyCurrentPlaybackState()
-        .then((response) => {
-          this.setState({
-            nowPlaying: { 
-                name: response.item.name, 
-                albumArt: response.item.album.images[0].url
-              }
-          });
-        })
-    }
-  
+
     render() {
       return (
         <div className="App">
@@ -57,7 +49,12 @@ export default class SignInView extends Component {
             </button>
           }
         </div>
-      );
-    }
+        {this.state.loggedIn && (
+          <button onClick={() => this.getNowPlaying()}>
+            Check Now Playing
+          </button>
+        )}
+      </div>
+    );
   }
-  
+}

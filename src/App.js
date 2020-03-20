@@ -11,10 +11,10 @@ class App extends React.Component {
     HeroIfyModel.searchHero("Superman");
     this.state = {
     }
-  } 
+  }
 
 
-  render(){
+  render() {
     return (
       <Router>
           <Switch>
@@ -24,10 +24,10 @@ class App extends React.Component {
                   <Route path="/" render={() => <SignInView/>}/>
               </div>
             </div>
-          </Switch>
+          </div>
+        </Switch>
       </Router>
     );
- 
   }
 }
 
