@@ -23,10 +23,6 @@ class App extends React.Component {
   render(){
     return (
       <Router>
-        <div>
-
-          <LatestPlaylist model={HeroIfyModel}/>
-        </div>
           <Switch>
               <div>
                 
