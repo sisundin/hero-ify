@@ -16,11 +16,8 @@ export default class SignInView extends Component {
         nowPlaying: { name: 'Not Checked', albumArt: '' }
       }
     }
-    this.state = {
-      loggedIn: token ? true : false,
-      nowPlaying: { name: "Not Checked", albumArt: "" }
-    };
-  }
+    
+  
 
   getHashParams() {
     var hashParams = {};
@@ -31,7 +28,7 @@ export default class SignInView extends Component {
     while (e) {
       hashParams[e[1]] = decodeURIComponent(e[2]);
       e = r.exec(q);
-    }
+    }}
 
     render() {
       return (
@@ -49,12 +46,7 @@ export default class SignInView extends Component {
             </button>
           }
         </div>
-        {this.state.loggedIn && (
-          <button onClick={() => this.getNowPlaying()}>
-            Check Now Playing
-          </button>
-        )}
-      </div>
+        
     );
   }
 }

@@ -24,7 +24,6 @@ class App extends React.Component {
                   <Route path="/" render={() => <SignInView/>}/>
               </div>
             </div>
-          </div>
         </Switch>
       </Router>
     );
