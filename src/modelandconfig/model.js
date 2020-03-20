@@ -25,34 +25,50 @@ class HeroIfyModel extends React.Component{
             callback(whatHappened);
        });
     }
+
        
     getHeroData(string) {
-        return fetch ( heroApiENDPOINT+HeroApiAccessToken+string, {
-            "method": "GET"              
-
-    }).then(response => this.handleHTTPError(response))
+        return fetch("https://superhero-search.p.rapidapi.com/?"+string, {
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": "superhero-search.p.rapidapi.com",
+                "x-rapidapi-key": "085044a66bmsh071d3aa4fc91f17p1c3914jsn9acbb7d87309"
+            }
+        }).then(response => this.handleHTTPError(response))
         .then(response => response.json())
         .catch(error => console.log(error));
+        
+
+
+        ///const http = new XMLHttpRequest();
+        ///http.open("GET", heroApiENDPOINT+HeroApiAccessToken+string);
+        ///http.send();
+
+        ///http.onload = () => console.log(http.responseText)
+       /// return fetch(heroApiENDPOINT+HeroApiAccessToken+string, {
+        ///    "method": "GET",
+        ///    }).then(response => this.handleHTTPError(response))
+        ///.then(response => response.json()).then(response => console.log(response))
+        ///.catch(error => console.log(error));
          
     }
 
     handleHTTPError(response) {
-        if(response.ok)
-           return response;
+        if(response.ok){
+           return response;}
         throw Error(response.statusText);
       }
 
     searchHero(name){
-        let data = this.getHeroData("search/"+name);
+        debugger;
+        let data = this.getHeroData("hero="+name);
         console.log(data);
         return data;
     }
 
-    getHeroStats(id){
-        let herostats = this.getHeroData(id + "/powerstats");
-        let image = this.getHeroData(id+"/image");
-        let stats = {"powerstats" : herostats, "image": image };
-        return stats
+    getHeroonID(id){
+        let data = this.getHeroData("id=" + id);
+        return data;
     }
 
     heroGenres(powerstats){
