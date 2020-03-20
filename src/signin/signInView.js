@@ -57,4 +57,3 @@ export default class SignInView extends Component {
     }
   }
   
-  export default App;
