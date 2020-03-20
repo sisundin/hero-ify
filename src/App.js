@@ -8,7 +8,7 @@ import {BrowserRouter as Router, Switch , Route} from "react-router-dom";
 class App extends React.Component {
   constructor(props) {
     super(props)
-    HeroIfyModel.searchHero("Superman");
+    HeroIfyModel.searchHero("ironman");
     this.state = {
     }
   }

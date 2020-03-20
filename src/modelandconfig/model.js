@@ -60,7 +60,7 @@ class HeroIfyModel extends React.Component{
       }
 
     searchHero(name){
-        debugger;
+
         let data = this.getHeroData("hero="+name);
         console.log(data);
         return data;
