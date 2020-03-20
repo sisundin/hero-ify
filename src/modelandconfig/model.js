@@ -1,5 +1,5 @@
 import React  from "react";
-import {heroApiENDPOINT, HeroApiAccessToken, firebaseConfig} from "./apiConfig"
+import {heroApihost, HeroApiAccessKey, firebaseConfig} from "./apiConfig"
 import firebase from "firebase";
 
 class HeroIfyModel extends React.Component{
@@ -31,8 +31,8 @@ class HeroIfyModel extends React.Component{
         return fetch("https://superhero-search.p.rapidapi.com/?"+string, {
             "method": "GET",
             "headers": {
-                "x-rapidapi-host": "superhero-search.p.rapidapi.com",
-                "x-rapidapi-key": "085044a66bmsh071d3aa4fc91f17p1c3914jsn9acbb7d87309"
+                "x-rapidapi-host": heroApihost,
+                "x-rapidapi-key": HeroApiAccessKey
             }
         }).then(response => this.handleHTTPError(response))
         .then(response => response.json())
