@@ -1,5 +1,5 @@
 import React  from "react";
-import {heroApiENDPOINT, HeroApiAccessToken, firebaseConfig} from "./apiConfig"
+import {heroApihost, HeroApiAccessKey, firebaseConfig} from "./apiConfig"
 import firebase from "firebase";
 
 class HeroIfyModel extends React.Component{
@@ -25,36 +25,54 @@ class HeroIfyModel extends React.Component{
             callback(whatHappened);
        });
     }
+
        
     getHeroData(string) {
-        return fetch ( heroApiENDPOINT+HeroApiAccessToken+string, {
-            "method": "GET"              
-
-    }).then(response => this.handleHTTPError(response))
+        return fetch("https://superhero-search.p.rapidapi.com/?"+string, {
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": heroApihost,
+                "x-rapidapi-key": HeroApiAccessKey
+            }
+        }).then(response => this.handleHTTPError(response))
         .then(response => response.json())
         .catch(error => console.log(error));
+        
+
+
+        ///const http = new XMLHttpRequest();
+        ///http.open("GET", heroApiENDPOINT+HeroApiAccessToken+string);
+        ///http.send();
+
+        ///http.onload = () => console.log(http.responseText)
+       /// return fetch(heroApiENDPOINT+HeroApiAccessToken+string, {
+        ///    "method": "GET",
+        ///    }).then(response => this.handleHTTPError(response))
+        ///.then(response => response.json()).then(response => console.log(response))
+        ///.catch(error => console.log(error));
          
     }
 
     handleHTTPError(response) {
-        if(response.ok)
-           return response;
+        if(response.ok){
+           return response;}
         throw Error(response.statusText);
       }
 
     searchHero(name){
-        return this.getHeroData("search/"+name)
+
+        let data = this.getHeroData("hero="+name);
+        console.log(data);
+        return data;
     }
 
-    getHeroStats(id){
-        let herostats = this.getHeroData(id + "/powerstats");
-        let image = this.getHeroData(id+"/image");
-        let stats = {"powerstats" : herostats, "image": image };
-        return stats
+    getHeroonID(id){
+        let data = this.getHeroData("id=" + id);
+        return data;
     }
 
     heroGenres(powerstats){
-        powerstats = {"intelligence":"81","strength":"40","speed":"29","durability":"55","power":"63","combat":"90"};
+        /// powerstats = {"intelligence":"81","strength":"40","speed":"29","durability":"55","power":"63","combat":"90"};
         let allstats = powerstats.intelligence + powerstats.strength + powerstats.speed + powerstats.durability + powerstats.combat;
         let genres = { "classical": powerstats.intelligence/allstats, "punk":powerstats.strength/allstats, "pop": powerstats.speed/allstats , "lowfy beats": powerstats.durability/allstats, "electronic dance": powerstats.power/allstats, "hip hop": powerstats.combat/allstats};
         return genres;

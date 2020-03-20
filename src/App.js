@@ -14,9 +14,10 @@ import {
 class App extends React.Component {
   constructor(props) {
     super(props)
+    HeroIfyModel.searchHero("ironman");
     this.state = {
     }
-  } 
+  }
 
   render(){
     return (
@@ -28,7 +29,6 @@ class App extends React.Component {
           </Switch>
       </Router>
     );
- 
   }
 }
 
