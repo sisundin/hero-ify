@@ -74,6 +74,10 @@ div.hide{
   .flexParent{ 
       flex-direction: column;} 
 }
+
+.list {
+  width: 25px;
+}
   
 
 

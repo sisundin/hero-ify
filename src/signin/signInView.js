@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Spotify from 'spotify-web-api-js'
 import { Button } from 'react-bootstrap'
 const spotifyApi = new Spotify()
+const h = React.createElement
 
 export default class SignInView extends Component {
   constructor (params) {
@@ -13,7 +14,7 @@ export default class SignInView extends Component {
     this.state = {
       loggedIn: token ? true : false,
       nowPlaying: { name: 'Not Checked', albumArt: '' },
-      recenttracks: { artist: '', track: '' }
+      topTracks: []
     }
   }
 
@@ -40,12 +41,14 @@ export default class SignInView extends Component {
     })
   }
 
-  getRecentlyPlayed () {
-    spotifyApi.getMyTopTracks().then((response) => {
+  getMyTopTracks () {
+    var alltrackstoptracks = []
+    spotifyApi.getMyTopTracks({ limit: 100 }).then(response => {
+      for (var i = 0, l = response.items.length; i < l; i++) {
+        alltrackstoptracks.push(response.items[i])
+      }
       this.setState({
-        recenttracks: {
-          track: response.type.tracks.name
-        }
+        topTracks: alltrackstoptracks
       })
     })
   }
@@ -62,21 +65,24 @@ export default class SignInView extends Component {
         <div>
           <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }} />
         </div>
-        {this.state.loggedIn &&
-          <Button variant='success' onClick={() => this.getNowPlaying()}>
-            Check Now Playing
-          </Button>}
-        <p>
-            What are your listetning to right now? =O
-        </p>
         <div>
-          Recent tracks: {this.state.recenttracks.tracks}
+          {this.state.loggedIn &&
+            <Button variant='primary mr-1' onClick={() => this.getNowPlaying()}>
+              Check Now Playing
+            </Button>}
+          <p> (Play a song on Spotify and press the button) </p>
         </div>
-        <Button variant='outline-dark' onClick={() => this.getRecentlyPlayed()}>
-          Click here see your recenetly played tracks
-        </Button>
-        
+        <div>
+          {this.state.loggedIn &&
+            <Button variant='outline-dark mr-1' onClick={() => this.getMyTopTracks()}>
+              Click here see your recent top tracks
+            </Button>}
+        </div>
+        <div>
+          Recent top tracks: {this.state.topTracks.map(track => h('ul', {}, h('li', {id: 'list'}, track.name)))}
+        </div>
+
       </div>
     )
-  }s
+  }
 }
