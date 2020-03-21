@@ -2,19 +2,18 @@ import React  from "react";
 import {heroApihost, HeroApiAccessKey, firebaseConfig} from "./apiConfig"
 import firebase from "firebase";
 
-class HeroIfyModel extends React.Component{
-    constructor(){
-        super();
-        
-        this.subscribers=[];
-        this.playlistAttributes = {userID:"", genres: [], pepLevel:"" }
-        this.firebase = new firebase.initializeApp(firebaseConfig);
-        this.db = this.firebase.firestore();
-        }
-        
-    addObserver(callback){
-        this.subscribers.push(callback);
- }
+class HeroIfyModel extends React.Component {
+  constructor () {
+    super()
+    this.subscribers = []
+    this.playlistAttributes = {userID:"", genres: [], pepLevel:"" }
+    this.firebase = new firebase.initializeApp(firebaseConfig)
+    this.db = this.firebase.firestore();
+}
+
+  addObserver (callback) {
+    this.subscribers.push(callback)
+  }
 
     removeObserver (callback) {
     callback = this.subscribers.filter(o => o !== callback);

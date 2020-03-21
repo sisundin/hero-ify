@@ -1,7 +1,7 @@
-import React from 'react';
-import './App.css';
-import HeroIfyModel from './modelandconfig/model.js';
-import SignInView from './signin/signInView.js';
+import React from 'react'
+import './App.css'
+import HeroIfyModel from './modelandconfig/model.js'
+import SignInView from './signin/signInView.js'
 import LatestPlaylist from './othersplaylists/allPlaylistsCreated.js'
 
 import {
