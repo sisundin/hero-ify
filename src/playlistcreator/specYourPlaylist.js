@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 
-class Length extends React.Component {
-  constructor() {
+class Length extends Component {
+  constructor () {
     super();
     this.state = {};
   }
+
   render() {
     return (
       <div>
@@ -28,7 +29,8 @@ class Mood extends React.Component {
     super();
     this.state = {};
   }
-  render() {
+
+  render () {
     return (
       <form>
         <div className="form-check">
@@ -91,6 +93,7 @@ class Name extends React.Component {
     super();
     this.state = {};
   }
+
   render() {
     return (
       <form>
@@ -105,11 +108,12 @@ class Name extends React.Component {
 }
 
 class PublicPrivate extends React.Component {
-  constructor() {
+  constructor () {
     super();
     this.state = {};
   }
-  render() {
+
+  render () {
     return (
       <form>
         <div className="form-check">
@@ -146,7 +150,7 @@ class PublicPrivate extends React.Component {
 }
 
 export default class playlistSettings extends React.Component {
-  render() {
+  render () {
     return (
       <div>
         <Length />

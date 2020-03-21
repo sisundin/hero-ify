@@ -12,7 +12,8 @@ export default class SignInView extends Component {
     }
     this.state = {
       loggedIn: token ? true : false,
-      nowPlaying: { name: 'Not Checked', albumArt: '' }
+      nowPlaying: { name: 'Not Checked', albumArt: '' },
+      recenttracks: { artist: '', track: '' }
     }
   }
 
@@ -39,6 +40,16 @@ export default class SignInView extends Component {
     })
   }
 
+  getRecentlyPlayed () {
+    spotifyApi.getMyTopTracks().then((response) => {
+      this.setState({
+        recenttracks: {
+          track: response.type.tracks.name
+        }
+      })
+    })
+  }
+
   render () {
     return (
       <div className='App'>
@@ -52,19 +63,20 @@ export default class SignInView extends Component {
           <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }} />
         </div>
         {this.state.loggedIn &&
-          <Button variant='outline-primary' onClick={() => this.getNowPlaying()}>
+          <Button variant='success' onClick={() => this.getNowPlaying()}>
             Check Now Playing
           </Button>}
-        <div> Exempel på några Bootstrap-knappar</div>
-        <Button variant="outline-primary">Primary</Button>{' '}
-        <Button variant="outline-secondary">Secondary</Button>{' '}
-        <Button variant="outline-success">Success</Button>{' '}
-        <Button variant="outline-warning">Warning</Button>{' '}
-        <Button variant="outline-danger">Danger</Button>{' '}
-        <Button variant="outline-info">Info</Button>{' '}
-        <Button variant="outline-light">Light</Button>{' '}
-        <Button variant="outline-dark">Dark</Button>
+        <p>
+            What are your listetning to right now? =O
+        </p>
+        <div>
+          Recent tracks: {this.state.recenttracks.tracks}
+        </div>
+        <Button variant='outline-dark' onClick={() => this.getRecentlyPlayed()}>
+          Click here see your recenetly played tracks
+        </Button>
+        
       </div>
     )
-  }
+  }s
 }

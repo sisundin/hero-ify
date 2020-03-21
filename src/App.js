@@ -2,6 +2,7 @@ import React from 'react'
 import './App.css'
 import HeroIfyModel from './modelandconfig/model.js'
 import SignInView from './signin/signInView.js'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import LatestPlaylist from './othersplaylists/allPlaylistsCreated.js'
 
 import {
