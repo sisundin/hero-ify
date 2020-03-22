@@ -50,6 +50,11 @@
 .debug{ 
   border-style: solid; }
 
+.hide{
+  display: none;
+
+}
+
 image{
   height: 100px;
   display: block; 

@@ -53,12 +53,27 @@ export default class SignInView extends Component {
     })
   }
 
+  hideAllResponses () {
+    if (this.state.loggedIn === true) {
+      document.getElementById("loggedout").classList.add('hide')
+      document.getElementById("loggedin").classList.remove('hide')
+    }
+  }
+
   render () {
     return (
       <div className='App'>
-        <Button variant="outline-primary">
-          <a href='http://localhost:8888'> Login to Spotify </a>
-        </Button>
+        <div className='App' id='loggedout'>
+          <Button variant="outline-primary">
+            <a href='http://localhost:8888/login'> Login to Spotify </a>
+          </Button>
+        </div>
+        <div className='App hide' id='loggedin'>
+        You are now logged in click next to choose your super hero
+          <Button variant="outline-primary">
+            <a href=''> Next </a>
+          </Button>
+        </div>
         <div>
           Now Playing: {this.state.nowPlaying.name}
         </div>
@@ -67,10 +82,10 @@ export default class SignInView extends Component {
         </div>
         <div>
           {this.state.loggedIn &&
-            <Button variant='primary mr-1' onClick={() => this.getNowPlaying()}>
+            <Button variant='primary' onClick={() => this.getNowPlaying()}>
               Check Now Playing
             </Button>}
-          <p> (Play a song on Spotify and press the button) </p>
+          {this.state.loggedIn && <p> (Play a song on Spotify and press the button) </p>}
         </div>
         <div>
           {this.state.loggedIn &&
@@ -79,9 +94,8 @@ export default class SignInView extends Component {
             </Button>}
         </div>
         <div>
-          Recent top tracks: {this.state.topTracks.map(track => h('ul', {}, h('li', {id: 'list'}, track.name)))}
+          {this.state.loggedIn && <p> Recent top tracks: {this.state.topTracks.map(track => h('ul', {}, h('li', {id: 'list'}, track.name)))} </p>}
         </div>
-
       </div>
     )
   }
