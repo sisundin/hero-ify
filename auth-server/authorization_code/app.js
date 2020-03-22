@@ -73,7 +73,7 @@ app.get('/callback', function(req, res) {
   } else {
     res.clearCookie(stateKey);
     var authOptions = {
-      url: 'https://accounts.spotify.com/api/token',
+      url: "https://accounts.spotify.com/api/token",
       form: {
         code: code,
         redirect_uri: redirect_uri,
