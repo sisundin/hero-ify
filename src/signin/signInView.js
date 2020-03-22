@@ -71,7 +71,7 @@ export default class SignInView extends Component {
         <div className='App hide' id='loggedin'>
         You are now logged in click next to choose your super hero
           <Button variant="outline-primary">
-            <a href=''> Next </a>
+            Next
           </Button>
         </div>
         <div>
