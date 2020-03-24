@@ -4,11 +4,13 @@ import HeroIfyModel from './modelandconfig/model.js'
 import SignInView from './signin/signInView.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import LatestPlaylist from './othersplaylists/allPlaylistsCreated.js'
+import ChooseHero from './choosehero/chooseHero.js'
 
 import {
   BrowserRouter as Router,
   Switch
 } from 'react-router-dom'
+import heroifyModel from './modelandconfig/model.js'
 
 class App extends React.Component {
   constructor (props) {
@@ -24,7 +26,8 @@ class App extends React.Component {
       <Router>
         <Switch>
           <div>
-            <SignInView model={HeroIfyModel} />
+            <SignInView model={HeroIfyModel}/>
+            <ChooseHero model={heroifyModel}/>
           </div>
         </Switch>
       </Router>

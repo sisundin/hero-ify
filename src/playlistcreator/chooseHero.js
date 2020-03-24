@@ -4,7 +4,7 @@ import RenderPromise from '..util/RenderPromise.js'
 
 const h = React.createElement;
 
-export default class chooseHero extends React.Component{
+export default class ChooseHero extends React.Component{
     constructor(props){
         super(props);
         this.props = props;
