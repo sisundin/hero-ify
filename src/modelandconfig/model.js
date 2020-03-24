@@ -1,5 +1,5 @@
 import React  from "react";
-import {heroApihost, HeroApiAccessKey, firebaseConfig, token} from "./apiConfig"
+import {heroApihost, HeroApiAccessKey, firebaseConfig} from "./apiConfig"
 import firebase from "firebase";
 import Spotify from 'spotify-web-api-js'
 const spotifyApi = new Spotify()
@@ -12,13 +12,7 @@ class HeroIfyModel extends React.Component {
     
     this.playlistAttributes = {userID:"", genres: [], pepLevel:"" }
     firebase.initializeApp(firebaseConfig)
-    firebase.auth().signInWithCustomToken(token).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
-      });
-    this.db = firebase.firestore();
+    this.db = firebase.database();
 
     
 }
@@ -104,7 +98,7 @@ class HeroIfyModel extends React.Component {
     //getPlaylists NEEDS RENDER PROMIS
     getOthersPlaylistsfromdatabase(){
         let scoreboard = [];
-        this.db.collection("hero-ify").orderBy().limit(10).get().then((snapshot) => {
+        this.db.collection("Usergeneratedplaylists").doc().orderBy().limit(10).get().then((snapshot) => {
             snapshot.forEach((doc) => {
                 scoreboard.push({"Hero": doc.Hero , "PlaylistLink": doc.PlaylistLink , "User": doc.User})
             })
@@ -115,7 +109,7 @@ class HeroIfyModel extends React.Component {
 
     //add a playlist to firebase
     addYourplaylistToDatabase(heroname, playlistlink, user){
-        this.db.collection("hero-ify").doc().set({
+        this.db.ref("usergeneratedplaylists/playlists"+user).set({
             Hero: heroname,
             PlaylistLink: playlistlink,
             User: user
