@@ -5,7 +5,6 @@ import SignInView from './signin/signInView.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ChooseHero from './choosehero/chooseHero'
 import LatestPlaylist from './othersplaylists/allPlaylistsCreated.js'
-import ChooseHero from './choosehero/chooseHero.js'
 
 import {
   BrowserRouter as Router,
@@ -13,7 +12,6 @@ import {
   Route,
   Fragment
 } from 'react-router-dom'
-import heroifyModel from './modelandconfig/model.js'
 
 class App extends React.Component {
   constructor (props) {
