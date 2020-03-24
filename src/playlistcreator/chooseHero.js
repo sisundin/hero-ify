@@ -56,9 +56,5 @@ export default class ChooseHero extends React.Component{
         <span>{hero.name}</span>
         <img src = {image} alt = ""></img>
         </span>           
-        
-        
     }
-
-
 }
