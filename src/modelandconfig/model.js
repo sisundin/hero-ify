@@ -1,5 +1,5 @@
 import React  from "react";
-import {heroApihost, HeroApiAccessKey, firebaseConfig} from "./apiConfig"
+import {heroApihost, HeroApiAccessKey, firebaseConfig, token} from "./apiConfig"
 import firebase from "firebase";
 
 class HeroIfyModel extends React.Component {
@@ -7,8 +7,16 @@ class HeroIfyModel extends React.Component {
     super()
     this.subscribers = []
     this.playlistAttributes = {userID:"", genres: [], pepLevel:"" }
-    this.firebase = new firebase.initializeApp(firebaseConfig)
-    this.db = this.firebase.firestore();
+    firebase.initializeApp(firebaseConfig)
+    firebase.auth().signInWithCustomToken(token).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+      });
+    this.db = firebase.firestore();
+
+    
 }
 
   addObserver (callback) {
@@ -57,15 +65,14 @@ class HeroIfyModel extends React.Component {
            return response;}
         throw Error(response.statusText);
       }
-
+    /// Sök bara på namn i en sträng
     searchHero(name){
-
         let data = this.getHeroData("hero="+name);
         console.log(data);
         return data;
     }
-
-    getHeroonID(id){
+    /// Sök bara på id i en sträng
+    getHeronID(id){
         let data = this.getHeroData("id=" + id);
         return data;
     }
@@ -80,7 +87,7 @@ class HeroIfyModel extends React.Component {
     //getPlaylists NEEDS RENDER PROMIS
     getOthersPlaylistsfromdatabase(){
         let scoreboard = [];
-        this.db.collection("generatedPlaylists").orderBy().limit(10).get().then((snapshot) => {
+        this.db.collection("hero-ify").orderBy().limit(10).get().then((snapshot) => {
             snapshot.forEach((doc) => {
                 scoreboard.push({"Hero": doc.Hero , "PlaylistLink": doc.PlaylistLink , "User": doc.User})
             })
@@ -91,12 +98,11 @@ class HeroIfyModel extends React.Component {
 
     //add a playlist to firebase
     addYourplaylistToDatabase(heroname, playlistlink, user){
-        this.db.collection("created playlists").doc().set({
+        this.db.collection("hero-ify").doc().set({
             Hero: heroname,
             PlaylistLink: playlistlink,
             User: user
-            
-    });
+            });
 }
     
    //spotify playlist function

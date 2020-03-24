@@ -13,3 +13,4 @@ export const firebaseConfig = {
     messagingSenderId: "38217451391",
     appId: "1:38217451391:web:644c06a4b06def5cfbfc4a"
   };
+  export const token = "NHga0vDIftvLexEPUOL3fOug7lnuiZ1INjvlUbTe";
