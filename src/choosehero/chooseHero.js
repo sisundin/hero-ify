@@ -1,6 +1,6 @@
 import React from 'react';
-import heroifyModel from './model.js';
-import SearchRenderPromise from './util/searchRenderPromise.js'
+import heroifyModel from '../modelandconfig/model.js';
+import SearchRenderPromise from '../util/searchRenderPromise.js'
 
 const h = React.createElement;
 
