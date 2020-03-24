@@ -3,14 +3,15 @@ import './App.css'
 import HeroIfyModel from './modelandconfig/model.js'
 import SignInView from './signin/signInView.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import ChooseHero from './choosehero/chooseHero'
 import LatestPlaylist from './othersplaylists/allPlaylistsCreated.js'
-import ChooseHero from './choosehero/chooseHero.js'
 
 import {
   BrowserRouter as Router,
-  Switch
+  Switch,
+  Route,
+  Fragment
 } from 'react-router-dom'
-import heroifyModel from './modelandconfig/model.js'
 
 class App extends React.Component {
   constructor (props) {
@@ -25,10 +26,14 @@ class App extends React.Component {
     return (
       <Router>
         <Switch>
-          <div>
-            <SignInView model={HeroIfyModel}/>
-            <ChooseHero model={heroifyModel}/>
+        <React.Fragment>
+          <div id="home">
+          <SignInView model={HeroIfyModel}/>
           </div>
+          <div id="choosehero">
+          <Route path="/choosehero" render={() => <ChooseHero model={HeroIfyModel}/>}/>
+          </div>
+        </React.Fragment>
         </Switch>
       </Router>
     )

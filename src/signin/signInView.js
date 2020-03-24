@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import Spotify from 'spotify-web-api-js'
 import { Button } from 'react-bootstrap'
+import {Link} from 'react-router-dom';
+
+import ChooseHero from '../choosehero/chooseHero'
 const spotifyApi = new Spotify()
 const h = React.createElement
 
@@ -63,16 +66,28 @@ export default class SignInView extends Component {
   render () {
     return (
       <div className='App'>
-        <div className='App' id='loggedout'>
-          <Button variant="outline-primary">
+        <div id='loggedout'>
+        {!this.state.loggedIn && <Button variant="outline-primary" class="btn btn-secondary">
             <a href='http://localhost:8888'> Login to Spotify </a>
-          </Button>
+          </Button>}
+          
+          {this.state.loggedIn &&
+            <Link to="/choosehero"> 
+              <Button variant='secondary' class="next" onClick={() =>{ 
+                document.getElementById("home").classList.add('hide');
+                }}>
+                  NEXT 
+              </Button>
+            </Link>       
+          }
+
+          <p> You are logged in!</p>
+          <p>Click NEXT to choose your hero</p>
         </div>
+        <div>
+      </div>
         <div className='App hide' id='loggedin'>
         You are now logged in click next to choose your super hero
-          <Button variant="outline-primary">
-            Next
-          </Button>
         </div>
         <div>
           Now Playing: {this.state.nowPlaying.name}
@@ -84,9 +99,11 @@ export default class SignInView extends Component {
           {this.state.loggedIn &&
             <Button variant='primary' onClick={() => this.getNowPlaying()}>
               Check Now Playing
-            </Button>}
+            </Button>
+          }
           {this.state.loggedIn && <p> (Play a song on Spotify and press the button) </p>}
         </div>
+
         <div>
           {this.state.loggedIn &&
             <Button variant='outline-dark mr-1' onClick={() => this.getMyTopTracks()}>
