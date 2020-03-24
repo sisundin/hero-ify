@@ -1,6 +1,8 @@
 import React  from "react";
 import {heroApihost, HeroApiAccessKey, firebaseConfig, token} from "./apiConfig"
 import firebase from "firebase";
+import Spotify from 'spotify-web-api-js'
+const spotifyApi = new Spotify()
 
 class HeroIfyModel extends React.Component {
   constructor () {
@@ -113,8 +115,24 @@ class HeroIfyModel extends React.Component {
     generateSpotifyPlaylist(){
 
     }
+
+getMyTopTracks () {
+    var alltrackstoptracks = []
+    spotifyApi.getMyTopTracks({ limit: 100 }).then(response => {
+        for (var i = 0, l = response.items.length; i < l; i++) {
+        alltrackstoptracks.push(response.items[i])
+        }
+        this.setState({
+        topTracks: alltrackstoptracks
+        })
+    })
+    }
+    
     
 }
+
+
+
 
 const heroifyModel = new HeroIfyModel();
 export default heroifyModel;
