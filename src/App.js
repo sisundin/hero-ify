@@ -28,7 +28,7 @@ class App extends React.Component {
         <Switch>
         <React.Fragment>
           <div id="home">
-          <SignInView model={HeroIfyModel}/>
+          <Route exact path="/" render={() => <SignInView model={HeroIfyModel}/>}/>
           </div>
           <div id="choosehero">
           <Route path="/choosehero" render={() => <ChooseHero model={HeroIfyModel}/>}/>

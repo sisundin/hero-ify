@@ -3,13 +3,12 @@ import Spotify from 'spotify-web-api-js'
 import { Button } from 'react-bootstrap'
 import {Link} from 'react-router-dom';
 
-import ChooseHero from '../choosehero/chooseHero'
 const spotifyApi = new Spotify()
 const h = React.createElement
 
 export default class SignInView extends Component {
-  constructor (params) {
-    super(params)
+  constructor (props) {
+    super(props)
     const token = this.getHashParams().access_token
     if (token) {
       spotifyApi.setAccessToken(token)
@@ -73,9 +72,7 @@ export default class SignInView extends Component {
           
           {this.state.loggedIn &&
             <Link to="/choosehero"> 
-              <Button variant='secondary' class="next" onClick={() =>{ 
-                document.getElementById("home").classList.add('hide');
-                }}>
+              <Button variant='secondary' className="">
                   NEXT 
               </Button>
             </Link>       
@@ -106,7 +103,7 @@ export default class SignInView extends Component {
 
         <div>
           {this.state.loggedIn &&
-            <Button variant='outline-dark mr-1' onClick={() => this.getMyTopTracks()}>
+            <Button variant='outline-dark mr-1' onClick={() => this.props.model.getMyTopTracks()}>
               Click here see your recent top tracks
             </Button>}
         </div>
