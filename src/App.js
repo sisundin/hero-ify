@@ -13,7 +13,7 @@ import {
 class App extends React.Component {
   constructor (props) {
     super(props)
-    // HeroIfyModel.searchHero("ironman");
+    HeroIfyModel.searchHero("ironman");
     this.state = {
     }
     HeroIfyModel.addYourplaylistToDatabase("test2", "test2", "test2");

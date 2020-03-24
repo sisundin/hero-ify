@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import RenderPromise from '..util/RenderPromise.js'
 
 const h = React.createElement;
 
@@ -37,48 +38,24 @@ export default class chooseHero extends React.Component{
             h("button",{onClick: () => this.update()}, "Search!"), // search button
             
             h("div",{id:"searchresult" }, // empty div for search results
-            <RenderPromise 
-
+            <RenderPromise
             promise =  {this.props.HeroIfyModel.searchHero(this.state.freetext) } 
-            renderData = { ({data}) =>  data.map(hero => h("span", {} , this.createDishDisplay(hero)))}
+            renderData = { ({data}) =>  data.map(hero => h("span", {} , this.createHeroDisplay(hero)))}
                         />
-        ))
+        )))
     }
     
-    createDishDisplay(hero){
-    let image = "https://spoonacular.com/recipeImages/"+ dish.image;
+    createHeroDisplay(hero){
+    let image = hero.images.xs;
     
-      return <Link to= {'/details/' + dish.id}>
-        <span className= "hero" id= {dish.id} onClick = {() => {
-            document.getElementById("search").classList.add('hide');
-            document.getElementById("details").classList.remove('hide');
+      return <Link to= {'/details/' + hero.id}>
+        <span className= "hero" id= {hero.id} onClick = {() => {
             }}>
-        <span>{dish.title}</span>
-        <img src = {dishimage} alt = ""></img>
+        <span>{hero.name}</span>
+        <img src = {image} alt = ""></img>
         </span>           
         </Link>
         
-    }
-    
-    
-    isDishRepresentation(clickedNode){
-        
-        
-        if(clickedNode.className.includes("food") === true) {
-            return clickedNode.getAttribute("id")
-            
-        }
-
-        if( clickedNode.parentElement.className.includes("food") === true){  
-                return clickedNode.parentElement.getAttribute("id")
-        }
-
-        else{
-            
-             return null
-        }
-    
-
     }
 
 
