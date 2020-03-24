@@ -8,7 +8,8 @@ class HeroIfyModel extends React.Component {
   constructor () {
     super()
     this.subscribers = []
-    this.hero = ""
+    this.hero = {name:"No hero chosen"}
+    
     this.playlistAttributes = {userID:"", genres: [], pepLevel:"" }
     firebase.initializeApp(firebaseConfig)
     firebase.auth().signInWithCustomToken(token).catch(function(error) {
@@ -80,9 +81,17 @@ class HeroIfyModel extends React.Component {
         return data;
     }
 
-    addHero(id){
-        this.hero = id;
+    setHero(hero){
+    
+        this.hero = hero;
         this.notifyObservers("hero was added");
+    }
+    getHeroName(){
+        return this.hero.name;
+    }
+
+    getHeroId(){
+        return this.hero.id;
     }
 
     heroGenres(powerstats){

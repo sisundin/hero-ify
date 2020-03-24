@@ -1,5 +1,5 @@
 import React from 'react';
-import heroifyModel from '../modelandconfig/model.js';
+
 import SearchRenderPromise from '../util/searchRenderPromise.js'
 
 const h = React.createElement;
@@ -31,12 +31,12 @@ export default class ChooseHero extends React.Component{
     }
     
     componentDidMount() {
-        heroifyModel.addObserver(() => this.update());
+        this.props.model.addObserver(() => this.update());
         
       }
      
     componentWillUnmount() {
-        heroifyModel.removeObserver(this)
+        this.props.model.removeObserver(this)
       }
 
     render(){
@@ -51,18 +51,18 @@ export default class ChooseHero extends React.Component{
             h("span", {},
             <SearchRenderPromise 
 
-            promise =  {heroifyModel.searchHero(this.state.freetext)}
+            promise =  {this.props.model.searchHero(this.state.freetext)}
             renderData = { ({data}) => h("span", {}, this.createHeroDisplay(data))}
             />
         ))))
     }
     
     createHeroDisplay(hero){
-      return <div>
+      return <div id={hero.id}>
       <img src={hero.images.md}></img>
       <div>{hero.name}</div>
-      <button onClick={() => this.setHero(hero)}>Choose</button>
-      <div>Chosen hero: {this.state.selectedHero.name}</div>
+      <button onClick={() => this.props.model.setHero(hero)}>Choose</button>
+      <div>Chosen hero: {this.props.model.getHeroName()}</div>
       </div>    
     }
 
