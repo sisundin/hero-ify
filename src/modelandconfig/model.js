@@ -8,6 +8,7 @@ class HeroIfyModel extends React.Component {
   constructor () {
     super()
     this.subscribers = []
+    this.hero = ""
     this.playlistAttributes = {userID:"", genres: [], pepLevel:"" }
     firebase.initializeApp(firebaseConfig)
     firebase.auth().signInWithCustomToken(token).catch(function(error) {
@@ -77,6 +78,11 @@ class HeroIfyModel extends React.Component {
     getHeronID(id){
         let data = this.getHeroData("id=" + id);
         return data;
+    }
+
+    addHero(id){
+        this.hero = id;
+        this.notifyObservers("hero was added");
     }
 
     heroGenres(powerstats){

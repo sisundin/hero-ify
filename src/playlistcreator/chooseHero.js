@@ -39,7 +39,7 @@ export default class ChooseHero extends React.Component{
             
             h("div",{id:"searchresult" }, // empty div for search results
             <RenderPromise
-            promise =  {this.props.HeroIfyModel.searchHero(this.state.freetext) } 
+            promise =  {this.props.HeroIfyModel.searchHero(this.state.freetext)} 
             renderData = { ({data}) =>  data.map(hero => h("span", {} , this.createHeroDisplay(hero)))}
                         />
         )))
@@ -48,13 +48,15 @@ export default class ChooseHero extends React.Component{
     createHeroDisplay(hero){
     let image = hero.images.xs;
     
-      return <Link to= {'/details/' + hero.id}>
-        <span className= "hero" id= {hero.id} onClick = {() => {
+      return <span className= "hero" id= {hero.id} onClick = {() => {
+            this.props.model.addHero(hero.id);
+            //Hero is choosen and the ID is stored in model
+            console.log(hero.id);
             }}>
         <span>{hero.name}</span>
         <img src = {image} alt = ""></img>
         </span>           
-        </Link>
+        
         
     }
 
