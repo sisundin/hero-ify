@@ -12,6 +12,7 @@ import {
   Route,
   Fragment
 } from 'react-router-dom'
+import heroifyModel from './modelandconfig/model.js'
 
 class App extends React.Component {
   constructor (props) {
@@ -19,8 +20,8 @@ class App extends React.Component {
     //HeroIfyModel.searchHero("ironman");
     this.state = {
     }
-    HeroIfyModel.addYourplaylistToDatabase("test2", "test2","test2")
-    HeroIfyModel.getOthersPlaylistsfromdatabase();
+    //HeroIfyModel.addYourplaylistToDatabase("test10", "tes10","test10")
+    //HeroIfyModel.getOthersPlaylistsfromdatabase(7);
   }
 
   render () {
@@ -29,7 +30,7 @@ class App extends React.Component {
         <Switch>
         <React.Fragment>
           <div id="home">
-          <Route exact path="/" render={() => <SignInView model={HeroIfyModel}/>}/>
+          <Route exact path="/" render={() => <div><SignInView model={HeroIfyModel}/> <LatestPlaylist model={heroifyModel}/></div>}/>
           </div>
           <div id="choosehero">
           <Route path="/choosehero" render={() => <ChooseHero model={HeroIfyModel}/>}/>
