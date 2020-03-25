@@ -11,7 +11,8 @@ export const firebaseConfig = {
   projectId: "hero-ify",
   storageBucket: "hero-ify.appspot.com",
   messagingSenderId: "38217451391",
-  appId: "1:38217451391:web:644c06a4b06def5cfbfc4a"}
+  appId: "1:38217451391:web:644c06a4b06def5cfbfc4a"
+};
 
 
 

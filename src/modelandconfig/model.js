@@ -65,7 +65,7 @@ class HeroIfyModel extends React.Component {
       }
     /// Sök bara på namn i en sträng
     searchHero(name){
-        let data = this.getHeroData("hero="+name);
+        let data = this.getHeroData("hero=" + name);
         console.log(data);
         return data;
     }
@@ -80,6 +80,7 @@ class HeroIfyModel extends React.Component {
         this.hero = hero;
         this.notifyObservers("hero was added");
     }
+
     getHeroName(){
         return this.hero.name;
     }
@@ -109,7 +110,7 @@ class HeroIfyModel extends React.Component {
 
     //add a playlist to firebase
     addYourplaylistToDatabase(heroname, playlistlink, user){
-        this.db.ref("usergeneratedplaylists/playlists"+user).set({
+        this.db.ref("UserGenereatedPlaylists/"+user).set({
             Hero: heroname,
             PlaylistLink: playlistlink,
             User: user
