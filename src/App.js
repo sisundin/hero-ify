@@ -30,10 +30,13 @@ class App extends React.Component {
         <Switch>
         <React.Fragment>
           <div id="home">
-          <Route exact path="/" render={() => <div><SignInView model={HeroIfyModel}/> <LatestPlaylist model={heroifyModel}/></div>}/>
+          <Route exact path="/" render={() => <SignInView model={HeroIfyModel}/>}/>
           </div>
           <div id="choosehero">
           <Route path="/choosehero" render={() => <ChooseHero model={HeroIfyModel}/>}/>
+          </div>
+          <div id="othersplaylists">
+          <Route path="/othersplaylists" render={() => <LatestPlaylist model={heroifyModel}/>}/>
           </div>
         </React.Fragment>
         </Switch>

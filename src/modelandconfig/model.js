@@ -104,7 +104,6 @@ class HeroIfyModel extends React.Component {
             Object.values(snapshot).reverse().forEach((doc) => {
                 playlists.push({Hero: doc.Hero, PlaylistLink:doc.PlaylistLink, User:doc.User})
             })
-            console.log(playlists);
             return playlists;
         })
         
