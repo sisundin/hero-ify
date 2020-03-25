@@ -19,7 +19,7 @@ class App extends React.Component {
     //HeroIfyModel.searchHero("ironman");
     this.state = {
     }
-    HeroIfyModel.addYourplaylistToDatabase("test3", "test4", "test4");
+    
   }
 
   render () {
