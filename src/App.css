@@ -90,3 +90,52 @@ div.hide{
   float: left;
 
 }
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
+
+
+
+.white {
+  color: #ffffff;
+}
+
+
+
+intro::
+
+#intro input, #intro select, #intro textarea {
+  color: #ffffff;
+}
+
+#intro a {
+  color: #1b0101;
+}
+
+  #intro a:hover {
+    border-bottom-color: transparent;
+    color: #18bfef !important;
+  }
+
+#intro strong, #intro b {
+  color: #ffffff;
+}
+
+
+#intro h1 {
+  font-size: 8rem;
+  line-height: 1;
+}
+
+#intro p {
+  font-size: 1.25rem;
+  font-style: italic;
+  margin-top: -0.25rem;
+  text-align: center;
+}
