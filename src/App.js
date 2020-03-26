@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css'
 import HeroIfyModel from './modelandconfig/model.js'
+import Footer from './HeaderAndFooter/footer.js'
 import SignInView from './signin/signInView.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ChooseHero from './choosehero/chooseHero'
@@ -25,7 +26,9 @@ class App extends React.Component {
   }
 
   render () {
-    return (
+    return (<div className="flexparent">
+      <div className="background">
+      
       <Router>
         <Switch>
         <React.Fragment>
@@ -39,11 +42,18 @@ class App extends React.Component {
           <Route path="/othersplaylists" render={() => <LatestPlaylist model={heroifyModel}/>}/>
           </div>
           <div id="specPlaylist">
-          
           </div>
         </React.Fragment>
         </Switch>
+        <div id="wavecontainor"></div>
       </Router>
+      
+      <Footer/>
+      
+      </div>
+      
+      </div>
+      
     )
   }
   //<Route path="/specPlaylist" render={() => <playlistSettings model={heroifyModel}/>}/>

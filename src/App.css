@@ -5,7 +5,49 @@
   font-family: 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 
+}
+footer{
+  flex: 1;
+  
+  
+}
+table.footer{
+  padding-left: 20%;
+  text-align: center;
+  width: 80%;
+  height: 200px;
+  border-collapse:separate;
+  position:fixed;
+  z-index:1000;
+  bottom : 0px;
+  z-index:1001;
+}
+.flexParent{
+  display:flex; 
+  left: -10%;
+  
+}
+
+.background{
+  background-color: rgb(160, 195, 210);
+  width: 100%;
+  position: fixed;
+  height: 100%;
+ 
+    
+  flex-direction: column;
+}
+
+div#wavecontainor{
+  background-image: url("./Assets/wave.svg");
+  width: 200%;
+  height: 50%;
+  bottom: 0px;
+  left: -10%;
+  position:fixed;
+  
 }
 
 .debug{ 
@@ -22,14 +64,10 @@ table.ProgressBar{
   width: 80%;
   height: 10px;
   border-collapse:separate;
-  
-  
-  
-  
 }
 td.currentstep{
   width: auto;
-  background-color: green;
+  background-color: rgb(41, 168, 41);
   border-radius:9px;
   -moz-border-radius:6px;
   
@@ -83,13 +121,16 @@ div.hide{
   text-align: center;
   font-size: 50px;
 }
-.outsideDiv{
+div.outsideDiv{
   padding-left: 20%;
   font-family: 'Helvetica Neue', sans-serif;
-  height: 80%;
+  height: 100%;
   width: 80%;
+  position:relative;
+  z-index:1000;
   
 }
+
 
 .divider{
   margin-bottom: 20px;
