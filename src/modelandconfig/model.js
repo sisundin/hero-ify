@@ -7,11 +7,20 @@ const spotifyApi = new Spotify()
 class HeroIfyModel extends React.Component {
   constructor () {
     super()
+    const params = this.getHashParams();
     this.subscribers = [];
     this.hero = {name:"No hero chosen"};
     this.playlistAttributes = {userID:"", genres: [], pepLevel:""};
     firebase.initializeApp(firebaseConfig);
     this.db = firebase.database();
+
+    if (params.access_token) {
+      spotifyApi.setAccessToken(params.access_token)
+    }
+    this.state = {
+        loggedIn: params.access_token? true : false,
+    }
+
 
     
 }
@@ -127,17 +136,28 @@ class HeroIfyModel extends React.Component {
 
     }
 
-getMyTopTracks () {
-    var alltrackstoptracks = []
-    spotifyApi.getMyTopTracks({ limit: 100 }).then(response => {
-        for (var i = 0, l = response.items.length; i < l; i++) {
-        alltrackstoptracks.push(response.items[i])
+    getHashParams () {
+        var hashParams = {}
+        var e, r = /([^&;=]+)=?([^&;]*)/g,
+        q = window.location.hash.substring(1)
+        e = r.exec(q)
+        while (e) {
+          hashParams[e[1]] = decodeURIComponent(e[2])
+          e = r.exec(q)
         }
-        this.setState({
-        topTracks: alltrackstoptracks
+        return hashParams
+      }
+
+    getMyTopTracks () {
+        var alltrackstoptracks = []
+        spotifyApi.getMyTopTracks({ limit: 100 }).then(response => {
+            for (var i = 0, l = response.items.length; i < l; i++) {
+            alltrackstoptracks.push(response.items[i])
+            }
         })
-    })
-    }
+        return alltrackstoptracks
+
+        }
     
     
 }

@@ -50,7 +50,7 @@ export default class ChooseHero extends React.Component{
             h("div",{className:"divider"},null ),
             h("div", {className:"searchbox"},
             <input id="searchInput" />,   // free text search box
-            <Button onClick ={ () => this.update()}>Search!</Button>
+            <Button variant="btn btn-success" onClick ={ () => this.update()}>Search!</Button>
             ),
             h("div",{className:"divider"},null ),
             h("div", {id:"searchresult" , className:"searchresult" }, // empty div for search results
@@ -67,7 +67,7 @@ export default class ChooseHero extends React.Component{
         h("div",{className:"divider"},null ),
         <div class="text-center">
             <Link to="/specPlaylist">
-            <Button>NEXT </Button>
+            <Button variant="btn btn-success btn-lg" >NEXT</Button>
             </Link>
         </div>
         )))
@@ -80,7 +80,7 @@ export default class ChooseHero extends React.Component{
       <p>{hero.name}</p>
       <div className="divider"></div>
       <div class="text-center">
-      <Button  onClick={() => this.props.model.setHero(hero)}>Choose</Button>
+      <Button variant="btn btn-success btn-lg" onClick={() => this.props.model.setHero(hero)}>Choose</Button>
         </div>
       
       
