@@ -5,7 +5,7 @@ const h = React.createElement;
     export default class ProgressBar extends React.Component {
         constructor (props) {
           super();
-          this.steps = ["0","1","2","3","4"];
+          this.steps = ["1","2","3","4"];
           this.step=props.step;
           this.state = {};
         }
@@ -19,7 +19,7 @@ const h = React.createElement;
         RenderProgress(){
             let progress = [];
             this.steps.forEach(val => {
-                if (val === this.step){progress.push("currentstep")}
+                if (val <= this.step){progress.push("currentstep")}
                 else {progress.push("notcurrentstep")}
             })
             return progress.map((intication) => <td className={intication}></td>)

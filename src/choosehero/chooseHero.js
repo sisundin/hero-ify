@@ -44,7 +44,7 @@ export default class ChooseHero extends React.Component{
     render(){
         
         return h("div", {className:"outsideDiv"},
-        <ProgressBar step={"0"}/>, 
+        <ProgressBar step={"1"}/>, 
         h("p", {className:"vjueHeader"} , "Choose Your Hero"), 
          h("div", {}, 
             h("div",{className:"divider"},null ),
@@ -55,8 +55,7 @@ export default class ChooseHero extends React.Component{
             h("div",{className:"divider"},null ),
             h("div", {id:"searchresult" , className:"searchresult" }, // empty div for search results
             h("span", {},
-            <SearchRenderPromise 
-
+            <SearchRenderPromise
             promise =  {this.props.model.searchHero(this.state.freetext)}
             renderData = { ({data}) => h("span", {}, this.createHeroDisplay(data))}
             />
@@ -66,9 +65,7 @@ export default class ChooseHero extends React.Component{
         <p>Chosen hero: {this.props.model.getHeroName()}</p>,
         h("div",{className:"divider"},null ),
         <div class="text-center">
-            <Link to="/specPlaylist">
-            <Button variant="btn btn-success btn-lg" >NEXT</Button>
-            </Link>
+            <this.RenderNextButton argument = {this.props.model.getHeroName()}/>
         </div>
         )))
     }
@@ -80,11 +77,22 @@ export default class ChooseHero extends React.Component{
       <p>{hero.name}</p>
       <div className="divider"></div>
       <div class="text-center">
-      <Button variant="btn btn-success btn-lg" onClick={() => this.props.model.setHero(hero)}>Choose</Button>
+      <Button variant="btn btn-success btn-lg" onClick={() => {
+          this.props.model.setHero(hero)
+        }}>Choose</Button>
         </div>
-      
-      
-      </div>    
+        </div>    
+    }
+
+    RenderNextButton(argument){
+        let button = null;
+        if( argument.argument === "You need to pick a hero!"){
+            button= null;
+            }
+        else{
+            button = <Link to="/specPlaylist"><Button variant="btn btn-success btn-lg" >NEXT</Button></Link>
+        };
+        return button;
     }
 
 }

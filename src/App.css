@@ -84,7 +84,7 @@ div.hide{
   font-size: 50px;
 }
 .outsideDiv{
-  padding-left: 10%;
+  padding-left: 20%;
   font-family: 'Helvetica Neue', sans-serif;
   height: 80%;
   width: 80%;
@@ -102,13 +102,16 @@ div.hide{
 .heroPic{ display: block;
   margin-left: auto;
   margin-right: auto;
-  width: auto;}
+  width: 20%;
+  height: auto;
+  }
 
 .searchresult{
   text-align: center;
 }
 p{
   text-align: center;
+  font-weight: bold;
   font-size: 25px;
 }
 .next{

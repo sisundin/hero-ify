@@ -9,7 +9,7 @@ class HeroIfyModel extends React.Component {
     super()
     const params = this.getHashParams();
     this.subscribers = [];
-    this.hero = {name:"No hero chosen"};
+    this.hero = {name:"You need to pick a hero!"};
     this.playlistAttributes = {userID:"", genres: [], pepLevel:""};
     firebase.initializeApp(firebaseConfig);
     this.db = firebase.database();
@@ -19,10 +19,7 @@ class HeroIfyModel extends React.Component {
     }
     this.state = {
         loggedIn: params.access_token? true : false,
-    }
-
-
-    
+    } 
 }
 
   addObserver (callback) {
