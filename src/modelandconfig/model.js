@@ -7,11 +7,10 @@ const spotifyApi = new Spotify()
 class HeroIfyModel extends React.Component {
   constructor () {
     super()
-    this.subscribers = []
-    this.hero = {name:"No hero chosen"}
-    
-    this.playlistAttributes = {userID:"", genres: [], pepLevel:"" }
-    firebase.initializeApp(firebaseConfig)
+    this.subscribers = [];
+    this.hero = {name:"No hero chosen"};
+    this.playlistAttributes = {userID:"", genres: [], pepLevel:""};
+    firebase.initializeApp(firebaseConfig);
     this.db = firebase.database();
 
     

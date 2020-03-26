@@ -27,6 +27,7 @@ class App extends React.Component {
   render () {
     return (
       <Router>
+        <div className="App">
         <Switch>
         <React.Fragment>
           <div id="home">
@@ -40,6 +41,7 @@ class App extends React.Component {
           </div>
         </React.Fragment>
         </Switch>
+        </div>
       </Router>
     )
   }

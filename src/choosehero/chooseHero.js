@@ -1,5 +1,6 @@
 import React from 'react';
-
+import '../App.css'
+import { Button } from 'react-bootstrap'
 import SearchRenderPromise from '../util/searchRenderPromise.js'
 
 const h = React.createElement;
@@ -41,28 +42,44 @@ export default class ChooseHero extends React.Component{
 
     render(){
         
-        return h("div", {},  
-         h("div", {},
-            <input id="searchInput" />  , // free text search box
-
-            h("button", {onClick: () => this.update()}, "Search!"), // search button
-            
-            h("div", {id:"searchresult" }, // empty div for search results
+        return h("div", {className:"outsideDiv"}, 
+        h("p", {className:"vjueHeader"} , "Choose Your Hero"), 
+         h("div", {}, 
+            h("div",{className:"divider"},null ),
+            h("div", {className:"searchbox"},
+            <input id="searchInput" />,   // free text search box
+            <Button onClick ={ () => this.update()}>Search!</Button>
+            ),
+            h("div",{className:"divider"},null ),
+            h("div", {id:"searchresult" , className:"searchresult" }, // empty div for search results
             h("span", {},
             <SearchRenderPromise 
 
             promise =  {this.props.model.searchHero(this.state.freetext)}
             renderData = { ({data}) => h("span", {}, this.createHeroDisplay(data))}
             />
-        ))))
+            
+        ),
+        <div className="divider"></div>,
+        <p>Chosen hero: {this.props.model.getHeroName()}</p>,
+        h("div",{className:"divider"},null ),
+        <div class="text-center">
+            <Button>NEXT </Button>
+        </div>
+        )))
     }
     
     createHeroDisplay(hero){
       return <div id={hero.id}>
-      <img src={hero.images.md}></img>
-      <div>{hero.name}</div>
-      <button onClick={() => this.props.model.setHero(hero)}>Choose</button>
-      <div>Chosen hero: {this.props.model.getHeroName()}</div>
+      <img className = "heroPic" src={hero.images.md}></img>
+      <div className="divider"></div>
+      <p>{hero.name}</p>
+      <div className="divider"></div>
+      <div class="text-center">
+      <Button  onClick={() => this.props.model.setHero(hero)}>Choose</Button>
+        </div>
+      
+      
       </div>    
     }
 

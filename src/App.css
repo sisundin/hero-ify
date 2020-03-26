@@ -1,47 +1,8 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 .App{
   margin: 0;
-  font-family: 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
-    
+  font-family: 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -83,10 +44,42 @@ div.hide{
 .list {
   width: 25px;
 }
+.vjueHeader{
+  margin-left: 0px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 50px;
+}
+.outsideDiv{
+  padding-left: 10%;
+  font-family: 'Helvetica Neue', sans-serif;
+  height: 80%;
+  width: 80%;
+  
+}
+
+.divider{
+  margin-bottom: 20px;
+}
+.searchbox{
+  text-align: center;
   
 
+}
+.heroPic{ display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;}
+
+.searchresult{
+  text-align: center;
+}
+p{
+  text-align: center;
+  font-size: 25px;
+}
 .next{
   margin-left: 20px;
   float: left;
-
+  font-weight: bold;
 }
