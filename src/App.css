@@ -16,6 +16,39 @@
 
 }
 
+table.ProgressBar{
+  padding-left: 20%;
+  text-align: center;
+  width: 80%;
+  height: 10px;
+  border-collapse:separate;
+  
+  
+  
+  
+}
+td.currentstep{
+  width: auto;
+  background-color: green;
+  border-radius:9px;
+  -moz-border-radius:6px;
+  
+  height: 100%;
+  
+}
+
+td.notcurrentstep{
+  width: auto;
+  border-radius:9px;
+  -moz-border-radius:6px;
+  
+  height: 100%;
+  background-color: grey;
+  border: none;
+
+}
+
+
 image{
   height: 100px;
   display: block; 
@@ -92,14 +125,9 @@ p{
   transform: translate(-50%, -50%);
 }
 
-
-
-
 .white {
   color: #ffffff;
 }
-
-
 
 intro::
 
