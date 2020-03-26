@@ -64,51 +64,12 @@ export default class SignInView extends Component {
 
   render () {
     return (
-      <div className='App'>
-        <div id='loggedout'>
-        {!this.state.loggedIn && <Button variant="outline-primary" class="btn btn-secondary">
-            <a href='http://localhost:8888'> Login to Spotify </a>
+      <div className='intro'>
+        <div class='centered' id="intro">
+        <h1>Heroify</h1>
+          {<Button variant="btn btn-success btn-lg" class="btn btn-success btn-lrg">
+            <a class = "white" href='http://localhost:8888/login'> LET'S START </a>
           </Button>}
-          
-          {this.state.loggedIn &&
-            <Link to="/choosehero"> 
-              <Button variant='secondary' className="">
-                  NEXT 
-              </Button>
-            </Link>       
-          }
-
-          <p> You are logged in!</p>
-          <p>Click NEXT to choose your hero</p>
-        </div>
-        <div>
-      </div>
-        <div className='App hide' id='loggedin'>
-        You are now logged in click next to choose your super hero
-        </div>
-        <div>
-          Now Playing: {this.state.nowPlaying.name}
-        </div>
-        <div>
-          <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }} />
-        </div>
-        <div>
-          {this.state.loggedIn &&
-            <Button variant='primary' onClick={() => this.getNowPlaying()}>
-              Check Now Playing
-            </Button>
-          }
-          {this.state.loggedIn && <p> (Play a song on Spotify and press the button) </p>}
-        </div>
-
-        <div>
-          {this.state.loggedIn &&
-            <Button variant='outline-dark mr-1' onClick={() => this.props.model.getMyTopTracks()}>
-              Click here see your recent top tracks
-            </Button>}
-        </div>
-        <div>
-          {this.state.loggedIn && <p> Recent top tracks: {this.state.topTracks.map(track => h('ul', {}, h('li', {id: 'list'}, track.name)))} </p>}
         </div>
       </div>
     )
