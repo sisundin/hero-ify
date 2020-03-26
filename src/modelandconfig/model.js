@@ -7,14 +7,19 @@ const spotifyApi = new Spotify()
 class HeroIfyModel extends React.Component {
   constructor () {
     super()
-    this.subscribers = []
-    this.hero = {name:"No hero chosen"}
-    
-    this.playlistAttributes = {userID:"", genres: [], pepLevel:"" }
-    firebase.initializeApp(firebaseConfig)
+    const params = this.getHashParams();
+    this.subscribers = [];
+    this.hero = {name:"You need to pick a hero!"};
+    this.playlistAttributes = {userID:"", genres: [], pepLevel:""};
+    firebase.initializeApp(firebaseConfig);
     this.db = firebase.database();
 
-    
+    if (params.access_token) {
+      spotifyApi.setAccessToken(params.access_token)
+    }
+    this.state = {
+        loggedIn: params.access_token? true : false,
+    } 
 }
 
   addObserver (callback) {
@@ -65,7 +70,7 @@ class HeroIfyModel extends React.Component {
       }
     /// Sök bara på namn i en sträng
     searchHero(name){
-        let data = this.getHeroData("hero="+name);
+        let data = this.getHeroData("hero=" + name);
         console.log(data);
         return data;
     }
@@ -80,6 +85,7 @@ class HeroIfyModel extends React.Component {
         this.hero = hero;
         this.notifyObservers("hero was added");
     }
+
     getHeroName(){
         return this.hero.name;
     }
@@ -96,20 +102,22 @@ class HeroIfyModel extends React.Component {
     }
 
     //getPlaylists NEEDS RENDER PROMIS
-    getOthersPlaylistsfromdatabase(){
-        let scoreboard = [];
-        this.db.collection("Usergeneratedplaylists").doc().orderBy().limit(10).get().then((snapshot) => {
-            snapshot.forEach((doc) => {
-                scoreboard.push({"Hero": doc.Hero , "PlaylistLink": doc.PlaylistLink , "User": doc.User})
+    getOthersPlaylistsfromdatabase(limit=5){
+        let playlists = [];
+        return this.db.ref("UserGenereatedPlaylists").limitToLast(limit).once('value').then((snapshot) => {
+            snapshot = snapshot.toJSON();
+            Object.values(snapshot).reverse().forEach((doc) => {
+                playlists.push({Hero: doc.Hero, PlaylistLink:doc.PlaylistLink, User:doc.User})
             })
-            
-        });
-        return scoreboard;
+            return playlists;
+        })
+        
+        
     }
 
     //add a playlist to firebase
     addYourplaylistToDatabase(heroname, playlistlink, user){
-        this.db.ref("usergeneratedplaylists/playlists"+user).set({
+        this.db.ref("UserGenereatedPlaylists/"+user).set({
             Hero: heroname,
             PlaylistLink: playlistlink,
             User: user
@@ -125,17 +133,28 @@ class HeroIfyModel extends React.Component {
 
     }
 
-getMyTopTracks () {
-    var alltrackstoptracks = []
-    spotifyApi.getMyTopTracks({ limit: 100 }).then(response => {
-        for (var i = 0, l = response.items.length; i < l; i++) {
-        alltrackstoptracks.push(response.items[i])
+    getHashParams () {
+        var hashParams = {}
+        var e, r = /([^&;=]+)=?([^&;]*)/g,
+        q = window.location.hash.substring(1)
+        e = r.exec(q)
+        while (e) {
+          hashParams[e[1]] = decodeURIComponent(e[2])
+          e = r.exec(q)
         }
-        this.setState({
-        topTracks: alltrackstoptracks
+        return hashParams
+      }
+
+    getMyTopTracks () {
+        var alltrackstoptracks = []
+        spotifyApi.getMyTopTracks({ limit: 100 }).then(response => {
+            for (var i = 0, l = response.items.length; i < l; i++) {
+            alltrackstoptracks.push(response.items[i])
+            }
         })
-    })
-    }
+        return alltrackstoptracks
+
+        }
     
     
 }

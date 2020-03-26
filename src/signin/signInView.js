@@ -9,15 +9,11 @@ const h = React.createElement
 export default class SignInView extends Component {
   constructor (props) {
     super(props)
-    const token = this.getHashParams().access_token
-    if (token) {
-      spotifyApi.setAccessToken(token)
-    }
     this.state = {
-      loggedIn: token ? true : false,
-      nowPlaying: { name: 'Not Checked', albumArt: '' },
-      topTracks: []
+      topTracks: this.props.model.getMyTopTracks()
     }
+
+    this.update = this.update.bind(this);
   }
 
   getHashParams () {
@@ -31,6 +27,22 @@ export default class SignInView extends Component {
     }
     return hashParams
   }
+
+  update() {
+    this.setState({
+    })
+}
+
+
+componentDidMount() {
+    this.props.model.addObserver(() => this.update());
+    
+  }
+ 
+componentWillUnmount() {
+    this.props.model.removeObserver(this)
+  }
+
 
   getNowPlaying () {
     spotifyApi.getMyCurrentPlaybackState().then((response) => {
@@ -64,51 +76,20 @@ export default class SignInView extends Component {
 
   render () {
     return (
-      <div className='App'>
-        <div id='loggedout'>
-        {!this.state.loggedIn && <Button variant="outline-primary" class="btn btn-secondary">
-            <a href='http://localhost:8888'> Login to Spotify </a>
-          </Button>}
-          
-          {this.state.loggedIn &&
-            <Link to="/choosehero"> 
-              <Button variant='secondary' className="">
-                  NEXT 
-              </Button>
-            </Link>       
-          }
-
-          <p> You are logged in!</p>
-          <p>Click NEXT to choose your hero</p>
-        </div>
-        <div>
-      </div>
-        <div className='App hide' id='loggedin'>
-        You are now logged in click next to choose your super hero
-        </div>
-        <div>
-          Now Playing: {this.state.nowPlaying.name}
-        </div>
-        <div>
-          <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }} />
-        </div>
-        <div>
-          {this.state.loggedIn &&
-            <Button variant='primary' onClick={() => this.getNowPlaying()}>
-              Check Now Playing
-            </Button>
-          }
-          {this.state.loggedIn && <p> (Play a song on Spotify and press the button) </p>}
-        </div>
-
-        <div>
-          {this.state.loggedIn &&
-            <Button variant='outline-dark mr-1' onClick={() => this.props.model.getMyTopTracks()}>
-              Click here see your recent top tracks
+      <div className='intro'>
+        <div class='centered' id="intro">
+          <div class="divimg"> 
+            <img class="img" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f359881d-6bb2-4391-aba6-779f7084edd4/db9vwnm-3059d04e-eeea-464e-8bcd-101fa4274069.png/v1/fill/w_1024,h_1518,strp/spider_man___transparent_by_asthonx1_db9vwnm-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTUxOCIsInBhdGgiOiJcL2ZcL2YzNTk4ODFkLTZiYjItNDM5MS1hYmE2LTc3OWY3MDg0ZWRkNFwvZGI5dndubS0zMDU5ZDA0ZS1lZWVhLTQ2NGUtOGJjZC0xMDFmYTQyNzQwNjkucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.YO_aZfKxp_Fj5j5eZCXpE67pP2BGDMfPMw96DT9D2aA"></img>
+          </div>
+          <h1 class="text-center"> Hero-ify</h1>
+          <div class="text-center p"> 
+            <p>Get a playlist based on the super hero you want to be and the music you love</p>
+          </div>
+          <div class="text-center">
+            {<Button variant="btn btn-success btn-lg" class="btn btn-success btn-lrg">
+              <a class = "white" href='http://localhost:8888/login'> LET'S START </a>
             </Button>}
-        </div>
-        <div>
-          {this.state.loggedIn && <p> Recent top tracks: {this.state.topTracks.map(track => h('ul', {}, h('li', {id: 'list'}, track.name)))} </p>}
+          </div>
         </div>
       </div>
     )
