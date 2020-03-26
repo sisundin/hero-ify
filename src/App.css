@@ -122,8 +122,8 @@ intro::
 
 
 #intro h1 {
-  font-size: 8rem;
-  line-height: 1;
+  font-size: 6rem;
+  line-height: 1,4;
 }
 
 #intro p {
@@ -131,4 +131,5 @@ intro::
   font-style: italic;
   margin-top: -0.25rem;
   text-align: center;
+  width: 400px;
 }

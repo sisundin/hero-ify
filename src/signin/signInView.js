@@ -9,15 +9,11 @@ const h = React.createElement
 export default class SignInView extends Component {
   constructor (props) {
     super(props)
-    const token = this.getHashParams().access_token
-    if (token) {
-      spotifyApi.setAccessToken(token)
-    }
     this.state = {
-      loggedIn: token ? true : false,
-      nowPlaying: { name: 'Not Checked', albumArt: '' },
-      topTracks: []
+      topTracks: this.props.model.getMyTopTracks()
     }
+
+    this.update = this.update.bind(this);
   }
 
   getHashParams () {
@@ -31,6 +27,22 @@ export default class SignInView extends Component {
     }
     return hashParams
   }
+
+  update() {
+    this.setState({
+    })
+}
+
+
+componentDidMount() {
+    this.props.model.addObserver(() => this.update());
+    
+  }
+ 
+componentWillUnmount() {
+    this.props.model.removeObserver(this)
+  }
+
 
   getNowPlaying () {
     spotifyApi.getMyCurrentPlaybackState().then((response) => {
@@ -66,10 +78,13 @@ export default class SignInView extends Component {
     return (
       <div className='intro'>
         <div class='centered' id="intro">
-        <h1>Heroify</h1>
-          {<Button variant="btn btn-success btn-lg" class="btn btn-success btn-lrg">
-            <a class = "white" href='http://localhost:8888/login'> LET'S START </a>
-          </Button>}
+          <h1 class="text-center"> Heroify</h1>
+          <p> Get a playlist based on the super hero you want to be and the music you love</p>
+          <div class="text-center">
+            {<Button variant="btn btn-success btn-lg" class="btn btn-success btn-lrg">
+              <a class = "white" href='http://localhost:8888/login'> LET'S START </a>
+            </Button>}
+          </div>
         </div>
       </div>
     )
