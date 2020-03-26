@@ -150,6 +150,11 @@ class PublicPrivate extends React.Component {
 }
 
 export default class playlistSettings extends React.Component {
+  constructor (props) {
+    super();
+    this.props=props;
+    this.state = {};
+  }
   render () {
     return (
       <div>

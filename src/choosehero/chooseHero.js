@@ -1,8 +1,9 @@
 import React from 'react';
 import '../App.css'
 import { Button } from 'react-bootstrap'
+import {Link} from 'react-router-dom';
 import SearchRenderPromise from '../util/searchRenderPromise.js'
-
+import ProgressBar from '../HeaderAndFooter/header.js';
 const h = React.createElement;
 
 export default class ChooseHero extends React.Component{
@@ -42,7 +43,8 @@ export default class ChooseHero extends React.Component{
 
     render(){
         
-        return h("div", {className:"outsideDiv"}, 
+        return h("div", {className:"outsideDiv"},
+        <ProgressBar step={"0"}/>, 
         h("p", {className:"vjueHeader"} , "Choose Your Hero"), 
          h("div", {}, 
             h("div",{className:"divider"},null ),
@@ -64,7 +66,9 @@ export default class ChooseHero extends React.Component{
         <p>Chosen hero: {this.props.model.getHeroName()}</p>,
         h("div",{className:"divider"},null ),
         <div class="text-center">
-            <Button variant="btn btn-success btn-lg"> NEXT </Button>
+            <Link to="/specPlaylist">
+            <Button variant="btn btn-success btn-lg" >NEXT</Button>
+            </Link>
         </div>
         )))
     }
