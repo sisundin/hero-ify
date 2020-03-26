@@ -18,7 +18,9 @@ export default function LatestPlaylist(props){
         <RenderPromise
         promise = {props.model.getOthersPlaylistsfromdatabase(9)}
         renderData = { ({data}) => rendertable(data)} 
-        />
+        />,
+        h("div", {className:"divider"}),
+        <Button onClick= {() => {}}>Refresh</Button>
         );
 
         
