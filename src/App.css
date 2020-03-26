@@ -132,4 +132,14 @@ intro::
   margin-top: -0.25rem;
   text-align: center;
   width: 400px;
+  margin-left: 55px;
+}
+
+#intro img {
+  
+  max-width: 120px;
+  max-height: 120px;
+  margin-bottom: -68px;
+  margin-left: 210px;
+
 }
