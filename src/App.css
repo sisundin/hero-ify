@@ -9,20 +9,22 @@
 
 }
 footer{
-  flex: 1;
   
-  
+  position: fixed; 
+  bottom: 0; 
 }
 table.footer{
-  padding-left: 20%;
+  padding-left: auto;
   text-align: center;
-  width: 80%;
-  height: 200px;
+  width: 100%;
+  font-size: 10px;
+  height: auto;
   border-collapse:separate;
-  position:fixed;
+  position: fixed;
   z-index:1000;
-  bottom : 0px;
-  z-index:1001;
+  right : 0px;
+  z-index:999;
+  
 }
 .flexParent{
   display:flex; 
@@ -31,7 +33,7 @@ table.footer{
 }
 
 .background{
-  background-color: rgb(160, 195, 210);
+  background-color: rgb(216, 48, 48);
   width: 100%;
   position: fixed;
   height: 100%;
@@ -42,10 +44,12 @@ table.footer{
 
 div#wavecontainor{
   background-image: url("./Assets/wave.svg");
-  width: 200%;
-  height: 50%;
+  width: 600vw; 
+  height: 50vh;
+  max-width: 200vh;
   bottom: 0px;
   left: -10%;
+  right: auto;
   position:fixed;
   
 }
@@ -127,7 +131,8 @@ div.outsideDiv{
   height: 100%;
   width: 80%;
   position:relative;
-  z-index:1000;
+  z-index:1001;
+  top:0;
   
 }
 

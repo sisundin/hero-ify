@@ -9,8 +9,8 @@ class HeroIfyModel extends React.Component {
     super();
     const params = this.getHashParams();
     this.subscribers = [];
-    this.hero = { name: "You need to pick a hero!" };
-    this.playlistAttributes = { userID: "", genres: [], pepLevel: "" };
+    this.hero = {name:"You need to pick a hero!", images:{lg:"no image"}};
+    this.playlistAttributes = {userID:"", genres: [], mood:"", energy:""};
     firebase.initializeApp(firebaseConfig);
     this.db = firebase.database();
 
@@ -60,9 +60,21 @@ class HeroIfyModel extends React.Component {
     ///.catch(error => console.log(error));
   }
 
-  handleHTTPError(response) {
-    if (response.ok) {
-      return response;
+    setHero(hero){
+        this.hero = hero;
+        console.log(this.hero);
+    }
+
+    setMood(mood){
+        this.playlistAttributes.mood = mood;
+        console.log(this.playlistAttributes);
+
+    }
+
+    setEnergy(energy){
+        this.playlistAttributes.energy = energy;
+        console.log(this.playlistAttributes);
+
     }
     throw Error(response.statusText);
   }
@@ -87,9 +99,17 @@ class HeroIfyModel extends React.Component {
     return this.hero.name;
   }
 
-  getHeroId() {
-    return this.hero.id;
-  }
+    getHeroImage(){
+        return this.hero.images.lg;
+    }
+
+
+    heroGenres(powerstats){
+        /// powerstats = {"intelligence":"81","strength":"40","speed":"29","durability":"55","power":"63","combat":"90"};
+        let allstats = powerstats.intelligence + powerstats.strength + powerstats.speed + powerstats.durability + powerstats.combat;
+        let genres = { "classical": powerstats.intelligence/allstats, "punk":powerstats.strength/allstats, "pop": powerstats.speed/allstats , "lowfy beats": powerstats.durability/allstats, "electronic dance": powerstats.power/allstats, "hip hop": powerstats.combat/allstats};
+        return genres;
+    }
 
   heroGenres(powerstats) {
     /// powerstats = {"intelligence":"81","strength":"40","speed":"29","durability":"55","power":"63","combat":"90"};
