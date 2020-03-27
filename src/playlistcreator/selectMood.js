@@ -36,6 +36,7 @@
         
         const {mood} = this.state;
         const createSliderWithTooltip = Slider.createSliderWithTooltip;
+        // eslint-disable-next-line no-unused-vars
         const Range = createSliderWithTooltip(Slider.Range);
         const Handle = Slider.Handle;
         const positionmarks = {0:'SAD' ,10:"HAPPY"};

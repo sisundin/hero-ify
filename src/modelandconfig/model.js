@@ -10,7 +10,7 @@ class HeroIfyModel extends React.Component {
     const params = this.getHashParams();
     this.subscribers = [];
     this.hero = {name:"You need to pick a hero!", images:{lg:"no image"}};
-    this.playlistAttributes = {userID:"", genres: [], mood:"", energy:""};
+    this.playlistAttributes = {userID:"", genres: [], mood:"", energy:"", length:""};
     firebase.initializeApp(firebaseConfig);
     this.db = firebase.database();
 
@@ -62,11 +62,13 @@ class HeroIfyModel extends React.Component {
         ///.catch(error => console.log(error));
          
     }
+
     handleHTTPError(response) {
         if(response.ok){
            return response;}
         throw Error(response.statusText);
       }
+
     /// Sök bara på namn i en sträng
     searchHero(name){
         let data = this.getHeroData("hero=" + name);
@@ -88,6 +90,11 @@ class HeroIfyModel extends React.Component {
         this.playlistAttributes.mood = mood;
         console.log(this.playlistAttributes);
         
+    }
+
+    setLength(length){
+        this.playlistAttributes.length = length
+        console.log(this.playlistAttributes);
     }
 
     setEnergy(energy){

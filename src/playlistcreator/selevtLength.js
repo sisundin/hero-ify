@@ -8,18 +8,18 @@
     import 'rc-slider/assets/index.css';
     import 'rc-tooltip/assets/bootstrap.css';
 
-    
-    export default class ChooseEnergy extends React.Component {
-        handleChange = energy => {
-            this.setState({ energy });
-          };
 
+    export default class ChooseLength extends React.Component {
+        handleChange = length => {
+            this.setState({ length });
+          };
       constructor(props) {
         super(props);
         this.props=props
         this.state = {
-            energy: 5
+            length: 20 
         };
+        
       }
 
     componentDidMount() {
@@ -33,12 +33,13 @@
 
 
     render() {
-        const {energy} = this.state;
+        
+        const {length} = this.state;
         const createSliderWithTooltip = Slider.createSliderWithTooltip;
         // eslint-disable-next-line no-unused-vars
         const Range = createSliderWithTooltip(Slider.Range);
         const Handle = Slider.Handle;
-        const positionmarks = {0:'Mellow' ,10:"Energetic"};
+        const positionmarks = {10:'DONE IN A FLASH' ,100:"LIFE LONG"};
         const wrapperStyle = { width: 400, margin: 50 };
         const handle = (props) => {
             const { value, dragging, index, ...restProps } = props;
@@ -53,29 +54,30 @@
                 <Handle value={value} {...restProps} />
               </Tooltip>
             );};
+        
 
-    return (<div className="outsideDiv">
-        <ProgressBar step={"3"}/>
-        <p className="vjueHeader"> CHOOSE PLAYLIST ENERGY</p>
+    return <div className="outsideDiv">
+        <ProgressBar step={"2"}/>
+        <p className="vjueHeader"> HOW LONG IS YOUR SUPERHERO MISSION</p>
         <img className = "heroPic" src={this.props.model.getHeroImage()} alt="img"></img>
         <div style={wrapperStyle} className="divider"></div>
         <p>
-          ENERGY
-          <Slider id="energy"
-            min={0} 
-            max={10} 
+          MOOD
+          <Slider id = "mood"
+            min={10} 
+            max={100} 
             onChange={this.handleChange}
-            defaultValue={energy} 
+            defaultValue={length} 
             marks= {positionmarks} 
-            step={0.1} 
+            step={1} 
             handle={handle}
           />
         </p>
         <div className="divider"></div>
         <div class="text-center">
-        <Link to="/chooseLength"><Button variant="btn btn-success btn-lg" onClick={()=>{
-            this.props.model.setEnergy(energy)}} >NEXT</Button></Link>
+        <Link to="/">
+          <Button variant="btn btn-success btn-lg" onClick={()=>{this.props.model.setLength(length)}}>NEXT</Button></Link>
         </div>
         </div>
-    )}
+    }
 }
