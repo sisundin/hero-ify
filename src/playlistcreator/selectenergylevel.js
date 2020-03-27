@@ -11,10 +11,23 @@
         super();
         this.props=props
         this.state = {
-          selectedMood: "happy",
-          selectedSetting: "public",
-          playlistName: ""
+            energy:""
         };
+      }
+
+    update() {
+        this.setState({
+            energy:document.getElementById("energy").value
+        })
+    }
+
+    componentDidMount() {
+        this.props.model.addObserver(() => this.update());
+        
+      }
+     
+    componentWillUnmount() {
+        this.props.model.removeObserver(this)
       }
 
 
@@ -36,7 +49,7 @@
         <div className="divider"></div>
         <p>
           ENERGY
-          <Slider
+          <Slider id="energy"
             defaultValue={5.5}
             aria-labelledby="length-slider"
             step={0.1}
@@ -47,7 +60,7 @@
         </p>
         <div className="divider"></div>
         <div class="text-center">
-        <Link to="/specPlaylist"><Button variant="btn btn-success btn-lg" >NEXT</Button></Link>
+        <Link to="/specPlaylist"><Button variant="btn btn-success btn-lg" onClick={()=>{this.props.model.setEnergy(document.getElementById("energy").value)}} >NEXT</Button></Link>
         </div>
         </div>
     )}

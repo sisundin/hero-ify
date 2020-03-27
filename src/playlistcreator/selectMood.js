@@ -11,10 +11,23 @@
         super();
         this.props=props
         this.state = {
-          selectedMood: "happy",
-          selectedSetting: "public",
-          playlistName: ""
+            mood: ""
         };
+      }
+
+    update() {
+        this.setState({
+            mood:document.getElementById("mood").value
+        })
+    }
+
+    componentDidMount() {
+        this.props.model.addObserver(() => this.update());
+        
+      }
+     
+    componentWillUnmount() {
+        this.props.model.removeObserver(this)
       }
 
 
@@ -36,7 +49,7 @@
         <div className="divider"></div>
         <p>
           MOOD
-          <Slider
+          <Slider id = "mood"
             defaultValue={5.5}
             aria-labelledby="length-slider"
             step={0.1}
@@ -47,7 +60,7 @@
         </p>
         <div className="divider"></div>
         <div class="text-center">
-        <Link to="/chooseEnergy"><Button variant="btn btn-success btn-lg" >NEXT</Button></Link>
+        <Link to="/chooseEnergy"><Button variant="btn btn-success btn-lg" onClick={()=>{this.props.model.setMood(document.getElementById("mood").value)}}>NEXT</Button></Link>
         </div>
         </div>
     }

@@ -47,7 +47,7 @@ class App extends React.Component {
           <div id="chooseMood">
           <Route path="/chooseMood" render={() => <ChooseMood model={heroifyModel}/>}/>
           </div>
-          <div id="chooseMood">
+          <div id="chooseEnergy">
           <Route path="/chooseEnergy" render={() => <ChooseEnergy model={heroifyModel}/>}/>
           </div>
         </React.Fragment>
