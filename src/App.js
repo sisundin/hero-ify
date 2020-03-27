@@ -16,12 +16,12 @@ import {
   Route,
   Fragment
 } from 'react-router-dom'
-import heroifyModel from './modelandconfig/model.js'
+
 
 class App extends React.Component {
   constructor (props) {
     super(props)
-    this.heromodel = heroifyModel;
+    this.heromodel = HeroIfyModel;
     //HeroIfyModel.searchHero("ironman");
     this.state = {
     }

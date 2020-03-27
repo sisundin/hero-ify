@@ -67,7 +67,7 @@ export default class ChooseHero extends React.Component{
     
     createHeroDisplay(hero){
       return <div id={hero.id}>
-      <img className = "heroPic" src={hero.images.lg} alt="img"></img>
+      <img className = "heroPic" src={hero.images.lg} alt="image not found"></img>
       <div className="divider"></div>
       <div className="divider"></div>
       <div class="text-center">

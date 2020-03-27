@@ -83,7 +83,6 @@ class HeroIfyModel extends React.Component {
     setHero(hero){
         this.hero = hero;
         console.log(this.hero);
-        this.notifyObservers()
     }
 
     setMood(mood){
