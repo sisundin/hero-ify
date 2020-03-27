@@ -38,7 +38,7 @@ div.outsideDiv{
   height: 100%;
   width: 80%;
   position:relative;
-  z-index:1000;
+  z-index:1001;
   
   flex: 1;
   

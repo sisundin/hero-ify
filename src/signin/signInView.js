@@ -87,6 +87,7 @@ componentWillUnmount() {
               <a class = "white" href='http://localhost:8888/login'> LET'S START </a>
             </Button>}
           </div>
+          <div className="divider"></div>
         </div>
       </div>
       )
