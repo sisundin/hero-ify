@@ -32,7 +32,7 @@
 
 
     render() {
-        console.log(this.model.)
+        
         const marks = [
             {
               value: 0,
