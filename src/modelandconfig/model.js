@@ -37,13 +37,27 @@ class HeroIfyModel extends React.Component {
 
   removeObserver(callback) {
     callback = this.subscribers.filter(o => o !== callback);
-  }
+    };
 
-  notifyObservers(whatHappened) {
-    this.subscribers.forEach(function(callback) {
-      callback(whatHappened);
-    });
-  }
+    notifyObservers(whatHappened){
+        this.subscribers.forEach(function(callback){
+            callback(whatHappened);
+       });
+    }
+
+
+    getHeroData(string) {
+        return fetch("https://superhero-search.p.rapidapi.com/?"+string, {
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": heroApihost,
+                "x-rapidapi-key": HeroApiAccessKey
+            }
+        }).then(response => this.handleHTTPError(response))
+        .then(response => response.json())
+        .catch(error => console.log(error));
+
+    }
 
   getHeroData(string) {
     return fetch("https://superhero-search.p.rapidapi.com/?" + string, {
@@ -129,9 +143,9 @@ class HeroIfyModel extends React.Component {
       powerstats.durability +
       powerstats.combat;
     let genres = {
-      classical: powerstats.intelligence / allstats,
-      punk: powerstats.strength / allstats,
-      pop: powerstats.speed / allstats,
+      "classical": powerstats.intelligence / allstats,
+      "punk": powerstats.strength / allstats,
+      "pop": powerstats.speed / allstats,
       "lowfy beats": powerstats.durability / allstats,
       "electronic dance": powerstats.power / allstats,
       "hip hop": powerstats.combat / allstats

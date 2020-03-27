@@ -40,9 +40,9 @@
         const Range = createSliderWithTooltip(Slider.Range);
         const Handle = Slider.Handle;
         const positionmarks = {10:'DONE IN A FLASH' ,100:"LIFE LONG"};
-        const wrapperStyle = { width: 400, margin: 50 };
+        const wrapperStyle = { width: 400, margin: 30 };
         const handle = (props) => {
-            const { value, dragging, index, ...restProps } = props;
+        const { value, dragging, index, ...restProps } = props;
             return (
               <Tooltip
                 prefixCls="rc-slider-tooltip"
@@ -57,12 +57,12 @@
         
 
     return <div className="outsideDiv">
-        <ProgressBar step={"2"}/>
-        <p className="vjueHeader"> HOW LONG IS YOUR SUPERHERO MISSION</p>
+        <ProgressBar step={"4"}/>
+        <p className="vjueHeader"> HOW LONG IS YOUR MISSION</p>
         <img className = "heroPic" src={this.props.model.getHeroImage()} alt="img"></img>
-        <div style={wrapperStyle} className="divider"></div>
+        <div style={wrapperStyle} ></div>
         <p>
-          MOOD
+          LENGTH
           <Slider id = "mood"
             min={10} 
             max={100} 
@@ -75,7 +75,7 @@
         </p>
         <div className="divider"></div>
         <div class="text-center">
-        <Link to="/">
+        <Link to="/showPlaylist">
           <Button variant="btn btn-success btn-lg" onClick={()=>{this.props.model.setLength(length)}}>NEXT</Button></Link>
         </div>
         </div>

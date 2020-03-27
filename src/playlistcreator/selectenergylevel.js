@@ -39,7 +39,7 @@
         const Range = createSliderWithTooltip(Slider.Range);
         const Handle = Slider.Handle;
         const positionmarks = {0:'Mellow' ,10:"Energetic"};
-        const wrapperStyle = { width: 400, margin: 50 };
+        const wrapperStyle = { width: 400, margin: 30 };
         const handle = (props) => {
             const { value, dragging, index, ...restProps } = props;
             return (
@@ -58,7 +58,7 @@
         <ProgressBar step={"3"}/>
         <p className="vjueHeader"> CHOOSE PLAYLIST ENERGY</p>
         <img className = "heroPic" src={this.props.model.getHeroImage()} alt="img"></img>
-        <div style={wrapperStyle} className="divider"></div>
+        <div style={wrapperStyle} ></div>
         <p>
           ENERGY
           <Slider id="energy"
