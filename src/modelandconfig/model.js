@@ -19,7 +19,7 @@ class HeroIfyModel extends React.Component {
     }
     this.state = {
         loggedIn: params.access_token? true : false,
-    } 
+    }
 }
 
   addObserver (callback) {
@@ -29,14 +29,14 @@ class HeroIfyModel extends React.Component {
     removeObserver (callback) {
     callback = this.subscribers.filter(o => o !== callback);
     };
-   
+
     notifyObservers(whatHappened){
-        this.subscribers.forEach(function(callback){ 
+        this.subscribers.forEach(function(callback){
             callback(whatHappened);
        });
     }
 
-       
+
     getHeroData(string) {
         return fetch("https://superhero-search.p.rapidapi.com/?"+string, {
             "method": "GET",
@@ -47,7 +47,7 @@ class HeroIfyModel extends React.Component {
         }).then(response => this.handleHTTPError(response))
         .then(response => response.json())
         .catch(error => console.log(error));
-        
+
 
 
         ///const http = new XMLHttpRequest();
@@ -60,7 +60,7 @@ class HeroIfyModel extends React.Component {
         ///    }).then(response => this.handleHTTPError(response))
         ///.then(response => response.json()).then(response => console.log(response))
         ///.catch(error => console.log(error));
-         
+
     }
 
     handleHTTPError(response) {
@@ -89,7 +89,7 @@ class HeroIfyModel extends React.Component {
     setMood(mood){
         this.playlistAttributes.mood = mood;
         console.log(this.playlistAttributes);
-        
+
     }
 
     setLength(length){
@@ -100,7 +100,7 @@ class HeroIfyModel extends React.Component {
     setEnergy(energy){
         this.playlistAttributes.energy = energy;
         console.log(this.playlistAttributes);
-        
+
     }
 
     getHeroName(){
@@ -111,17 +111,28 @@ class HeroIfyModel extends React.Component {
         return this.hero.id;
     }
 
-    getHeroImage(){
-        return this.hero.images.lg;
-    }
+  getHeroImage() {
+    return this.hero.images.lg;
+  }
 
-
-    heroGenres(powerstats){
-        /// powerstats = {"intelligence":"81","strength":"40","speed":"29","durability":"55","power":"63","combat":"90"};
-        let allstats = powerstats.intelligence + powerstats.strength + powerstats.speed + powerstats.durability + powerstats.combat;
-        let genres = { "classical": powerstats.intelligence/allstats, "punk":powerstats.strength/allstats, "pop": powerstats.speed/allstats , "lowfy beats": powerstats.durability/allstats, "electronic dance": powerstats.power/allstats, "hip hop": powerstats.combat/allstats};
-        return genres;
-    }
+  heroGenres(powerstats) {
+    /// powerstats = {"intelligence":"81","strength":"40","speed":"29","durability":"55","power":"63","combat":"90"};
+    let allstats =
+      powerstats.intelligence +
+      powerstats.strength +
+      powerstats.speed +
+      powerstats.durability +
+      powerstats.combat;
+    let genres = {
+      classical: powerstats.intelligence / allstats,
+      punk: powerstats.strength / allstats,
+      pop: powerstats.speed / allstats,
+      "lowfy beats": powerstats.durability / allstats,
+      "electronic dance": powerstats.power / allstats,
+      "hip hop": powerstats.combat / allstats
+    };
+    return genres;
+  }
 
     //getPlaylists NEEDS RENDER PROMIS
     getOthersPlaylistsfromdatabase(limit=5){
@@ -133,8 +144,8 @@ class HeroIfyModel extends React.Component {
             })
             return playlists;
         })
-        
-        
+
+
     }
 
     //add a playlist to firebase
@@ -145,7 +156,7 @@ class HeroIfyModel extends React.Component {
             User: user
             });
 }
-    
+
    //spotify playlist function
     spotifyApiConnect(){
 
@@ -177,8 +188,8 @@ class HeroIfyModel extends React.Component {
         return alltrackstoptracks
 
         }
-    
-    
+
+
 }
 
 
