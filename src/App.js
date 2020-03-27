@@ -9,6 +9,7 @@ import LatestPlaylist from './othersplaylists/allPlaylistsCreated.js'
 //import PlaylistSettings from './playlistcreator/specYourPlaylist';
 import ChooseMood from './playlistcreator/selectMood.js'
 import ChooseEnergy from './playlistcreator/selectenergylevel.js'
+import ShowPlaylist from './playlistcreator/showPlaylist.js'
 import ChooseLength from './playlistcreator/selevtLength'
 
 import {
@@ -49,6 +50,9 @@ class App extends React.Component {
           </div>
           <div id="chooseEnergy">
           <Route path="/chooseEnergy" render={() => <ChooseEnergy model={this.heromodel}/>}/>
+          </div>
+          <div id="showPlaylist">
+          <Route path="/showPlaylist" render={() => <ShowPlaylist model={this.heromodel}/>}/>
           </div>
           <div id="chooseLength">
           <Route path="/chooseLength" render={() => <ChooseLength model={this.heromodel}/>}/>

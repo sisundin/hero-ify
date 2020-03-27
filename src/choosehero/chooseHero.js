@@ -1,6 +1,7 @@
 import React from 'react';
-import '../App.css'
-import { Button } from 'react-bootstrap'
+import '../App.css';
+import { Button } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import SearchRenderPromise from '../util/searchRenderPromise.js'
 import ProgressBar from '../HeaderAndFooter/header.js';
@@ -67,7 +68,7 @@ export default class ChooseHero extends React.Component{
     
     createHeroDisplay(hero){
       return <div id={hero.id}>
-      <img className = "heroPic" src={hero.images.lg} alt="image not found"></img>
+      <Image className = "heroPic" src={hero.images.lg} alt="image not found" roundedCircle></Image>
       <div className="divider"></div>
       <div className="divider"></div>
       <div class="text-center">
