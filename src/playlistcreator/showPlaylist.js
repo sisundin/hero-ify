@@ -25,12 +25,12 @@ import React from "react";
             <img className = "heroPic" src={this.props.model.getHeroImage()} alt="img"></img>
             <div style={wrapperStyle} className="divider"></div>
             <p>
-              This is your playlist - enjoy and share it with your friends!
+                Congratulations - enjoy and share it with your friends!
             </p>
             <div className="divider"></div>
             <div class="text-center">
             <Link to="/chooseHero"><Button variant="btn btn-success btn-lg" onClick={()=>{
-                }} >CREATE NEW PLAYLIST</Button></Link>
+                }} > GET YOUR PLAYLIST</Button></Link>
             </div>
             </div>
         )
