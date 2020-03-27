@@ -62,7 +62,6 @@ class HeroIfyModel extends React.Component {
         ///.catch(error => console.log(error));
          
     }
-
     handleHTTPError(response) {
         if(response.ok){
            return response;}
