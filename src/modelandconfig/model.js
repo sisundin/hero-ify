@@ -103,6 +103,7 @@ class HeroIfyModel extends React.Component {
     getHeroId(){
         return this.hero.id;
     }
+    
     getHeroImage(){
         return this.hero.images.lg;
     }

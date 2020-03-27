@@ -71,8 +71,9 @@ export default class ChooseHero extends React.Component{
       <div className="divider"></div>
       <div className="divider"></div>
       <div class="text-center">
-      <a href="/specPlaylist"> <Button variant="btn btn-success btn-lg" onClick={() => {
-          this.props.model.setHero(hero) 
+      <a href="/chooseMood"> <Button variant="btn btn-success btn-lg" onClick={() => {
+          this.setHero(hero);
+          this.props.model.setHero(hero); 
         }}>Select {hero.name}</Button></a>
         </div>
         </div>    
