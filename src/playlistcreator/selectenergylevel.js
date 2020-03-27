@@ -5,8 +5,8 @@
     import { Button } from 'react-bootstrap'
     import {Link} from 'react-router-dom';
 
-
-    export default class ChooseMood extends React.Component {
+    
+    export default class ChooseEnergy extends React.Component {
       constructor(props) {
         super();
         this.props=props
@@ -22,20 +22,20 @@
         const marks = [
             {
               value: 0,
-              label: 'SAD',
+              label: 'Mellow',
             },
             {
               value: 10,
-              label: 'Happy',
+              label: 'Energetic',
             }];
 
-    return <div className="outsideDiv">
-        <ProgressBar step={"2"}/>
-        <p className="vjueHeader"> CHOOSE PLAYLIST MOOD</p>
+    return (<div className="outsideDiv">
+        <ProgressBar step={"3"}/>
+        <p className="vjueHeader"> CHOOSE PLAYLIST ENERGY</p>
         <img className = "heroPic" src={this.props.model.getHeroImage()} alt="img"></img>
         <div className="divider"></div>
         <p>
-          MOOD
+          ENERGY
           <Slider
             defaultValue={5.5}
             aria-labelledby="length-slider"
@@ -47,8 +47,8 @@
         </p>
         <div className="divider"></div>
         <div class="text-center">
-        <Link to="/chooseEnergy"><Button variant="btn btn-success btn-lg" >NEXT</Button></Link>
+        <Link to="/specPlaylist"><Button variant="btn btn-success btn-lg" >NEXT</Button></Link>
         </div>
         </div>
-    }
+    )}
 }
