@@ -5,7 +5,7 @@ const h = React.createElement;
     export default class ProgressBar extends React.Component {
         constructor (props) {
           super();
-          this.steps = ["1","2","3","4"];
+          this.steps = ["1","2","3","4","5"];
           this.step=props.step;
           this.state = {};
         }

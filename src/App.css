@@ -44,12 +44,12 @@ table.footer{
 
 div#wavecontainor{
   background-image: url("./Assets/wave.svg");
-  width: 600vw; 
-  height: 50vh;
-  max-width: 200vh;
+  width: 300vw;
+  left: -10vW;
+height: 50vh;
+  display: block;
   bottom: 0px;
-  left: -10%;
-  right: auto;
+  bottom: -1vh;
   position:fixed;
   
 }
@@ -92,7 +92,7 @@ td.notcurrentstep{
 
 
 image{
-  height: 100px;
+  height: 20%;
   display: block; 
 }
 
@@ -123,7 +123,7 @@ div.hide{
   margin-left: 0px;
   font-weight: bold;
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
 }
 div.outsideDiv{
   padding-left: 20%;
@@ -138,7 +138,7 @@ div.outsideDiv{
 
 
 .divider{
-  margin-bottom: 20px;
+  margin-bottom: 5%;
 }
 .searchbox{
   text-align: center;
