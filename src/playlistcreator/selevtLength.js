@@ -58,7 +58,7 @@
 
     return <div className="outsideDiv">
         <ProgressBar step={"4"}/>
-        <p className="vjueHeader"> HOW LONG IS YOUR SUPERHERO MISSION</p>
+        <p className="vjueHeader"> HOW LONG IS YOUR MISSION</p>
         <img className = "heroPic" src={this.props.model.getHeroImage()} alt="img"></img>
         <div style={wrapperStyle} className="divider"></div>
         <p>

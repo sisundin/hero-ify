@@ -53,7 +53,6 @@ class App extends React.Component {
           <div id="chooseLength">
           <Route path="/chooseLength" render={() => <ChooseLength model={this.heromodel}/>}/>
           </div>
-          
         </React.Fragment>
         </Switch>
         <div id="wavecontainor"></div>
