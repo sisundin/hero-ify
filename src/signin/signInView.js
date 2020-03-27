@@ -3,7 +3,6 @@ import Spotify from 'spotify-web-api-js'
 import { Button } from 'react-bootstrap'
 const spotifyApi = new Spotify()
 
-
 export default class SignInView extends Component {
   constructor (props) {
     super(props)
@@ -90,7 +89,6 @@ componentWillUnmount() {
           </div>
         </div>
       </div>
-      
-    )
+      )
   }
 }

@@ -9,11 +9,8 @@ class HeroIfyModel extends React.Component {
     super()
     const params = this.getHashParams();
     this.subscribers = [];
-    this.hero = {
-      name: "You need to pick a hero!",
-      images: { lg: "no image" }
-    };
-    this.playlistAttributes = { userID: "", genres: [], mood: "", energy: "" };
+    this.hero = {name:"You need to pick a hero!", images:{lg:"no image"}};
+    this.playlistAttributes = {userID:"", genres: [], mood:"", energy:"", length:""};
     firebase.initializeApp(firebaseConfig);
     this.db = firebase.database();
 
@@ -51,25 +48,14 @@ class HeroIfyModel extends React.Component {
         .then(response => response.json())
         .catch(error => console.log(error));
 
-
-
-        ///const http = new XMLHttpRequest();
-        ///http.open("GET", heroApiENDPOINT+HeroApiAccessToken+string);
-        ///http.send();
-
-        ///http.onload = () => console.log(http.responseText)
-       /// return fetch(heroApiENDPOINT+HeroApiAccessToken+string, {
-        ///    "method": "GET",
-        ///    }).then(response => this.handleHTTPError(response))
-        ///.then(response => response.json()).then(response => console.log(response))
-        ///.catch(error => console.log(error));
-
     }
+
     handleHTTPError(response) {
         if(response.ok){
            return response;}
         throw Error(response.statusText);
       }
+
     /// Sök bara på namn i en sträng
     searchHero(name){
         let data = this.getHeroData("hero=" + name);
@@ -91,6 +77,11 @@ class HeroIfyModel extends React.Component {
         this.playlistAttributes.mood = mood;
         console.log(this.playlistAttributes);
 
+    }
+
+    setLength(length){
+        this.playlistAttributes.length = length
+        console.log(this.playlistAttributes);
     }
 
     setEnergy(energy){
@@ -120,9 +111,9 @@ class HeroIfyModel extends React.Component {
       powerstats.durability +
       powerstats.combat;
     let genres = {
-      classical: powerstats.intelligence / allstats,
-      punk: powerstats.strength / allstats,
-      pop: powerstats.speed / allstats,
+      "classical": powerstats.intelligence / allstats,
+      "punk": powerstats.strength / allstats,
+      "pop": powerstats.speed / allstats,
       "lowfy beats": powerstats.durability / allstats,
       "electronic dance": powerstats.power / allstats,
       "hip hop": powerstats.combat / allstats
