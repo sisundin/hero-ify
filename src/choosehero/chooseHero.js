@@ -49,24 +49,19 @@ export default class ChooseHero extends React.Component{
          h("div", {}, 
             h("div",{className:"divider"},null ),
             h("div", {className:"searchbox"},
-            <input id="searchInput" />,   // free text search box
+            <input id="searchInput" placeholder="eg Batman" />,   // free text search box
             <Button variant="btn btn-success" onClick ={ () => this.update()}>Search!</Button>
             ),
             h("div",{className:"divider"},null ),
             h("div", {id:"searchresult" , className:"searchresult" }, // empty div for search results
             h("span", {},
+            
             <SearchRenderPromise
             promise =  {this.props.model.searchHero(this.state.freetext)}
             renderData = { ({data}) => h("span", {}, this.createHeroDisplay(data))}
             />
             
         ),
-        <div className="divider"></div>,
-        <p>Chosen hero: {this.props.model.getHeroName()}</p>,
-        h("div",{className:"divider"},null ),
-        <div class="text-center">
-            <this.RenderNextButton argument = {this.props.model.getHeroName()}/>
-        </div>
         )))
     }
     
@@ -74,12 +69,11 @@ export default class ChooseHero extends React.Component{
       return <div id={hero.id}>
       <img className = "heroPic" src={hero.images.lg} alt="img"></img>
       <div className="divider"></div>
-      <p>{hero.name}</p>
       <div className="divider"></div>
       <div class="text-center">
-      <Button variant="btn btn-success btn-lg" onClick={() => {
-          this.props.model.setHero(hero);
-        }}>Choose</Button>
+      <a href="/specPlaylist"> <Button variant="btn btn-success btn-lg" onClick={() => {
+          this.props.model.setHero(hero) 
+        }}>Select {hero.name}</Button></a>
         </div>
         </div>    
     }
