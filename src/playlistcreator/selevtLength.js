@@ -75,7 +75,7 @@
         </p>
         <div className="divider"></div>
         <div class="text-center">
-        <Link to="/">
+        <Link to="/showPlaylist">
           <Button variant="btn btn-success btn-lg" onClick={()=>{this.props.model.setLength(length)}}>NEXT</Button></Link>
         </div>
         </div>
