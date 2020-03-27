@@ -11,7 +11,8 @@
 footer{
   flex: 1;
   
-  
+  position: fixed; 
+  bottom: 0 
 }
 table.footer{
   padding-left: 20%;
@@ -19,10 +20,11 @@ table.footer{
   width: 80%;
   height: 200px;
   border-collapse:separate;
-  position:fixed;
+  position:relative;
   z-index:1000;
   bottom : 0px;
-  z-index:1001;
+  z-index:999;
+  
 }
 .flexParent{
   display:flex; 
@@ -31,7 +33,7 @@ table.footer{
 }
 
 .background{
-  background-color: rgb(160, 195, 210);
+  background-color: rgb(216, 48, 48);
   width: 100%;
   position: fixed;
   height: 100%;
@@ -42,11 +44,11 @@ table.footer{
 
 div#wavecontainor{
   background-image: url("./Assets/wave.svg");
-  width: 200%;
+  width: 150%;
   height: 50%;
-  bottom: 0px;
+  bottom: 0;
   left: -10%;
-  position:fixed;
+  position:absolute;
   
 }
 
@@ -128,6 +130,7 @@ div.outsideDiv{
   width: 80%;
   position:relative;
   z-index:1000;
+  top:0;
   
 }
 
