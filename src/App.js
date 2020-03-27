@@ -15,7 +15,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Fragment
 } from 'react-router-dom'
 
 
@@ -33,7 +32,6 @@ class App extends React.Component {
   render () {
     return (<div className="flexparent">
       <div className="background">
-      
       <Router>
         <Switch>
         <React.Fragment>
@@ -60,11 +58,8 @@ class App extends React.Component {
         </Switch>
         <div id="wavecontainor"></div>
       </Router>
-      
       <Footer/>
-      
       </div>
-      
       </div>
       
     )

@@ -44,12 +44,12 @@ table.footer{
 
 div#wavecontainor{
   background-image: url("./Assets/wave.svg");
-  width: 600vw; 
-  height: 50vh;
-  max-width: 200vh;
+  width: 300vw;
+  left: -10vW;
+height: 50vh;
+  display: block;
   bottom: 0px;
-  left: -10%;
-  right: auto;
+  bottom: -1vh;
   position:fixed;
   
 }

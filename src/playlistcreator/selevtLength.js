@@ -57,12 +57,12 @@
         
 
     return <div className="outsideDiv">
-        <ProgressBar step={"2"}/>
+        <ProgressBar step={"4"}/>
         <p className="vjueHeader"> HOW LONG IS YOUR SUPERHERO MISSION</p>
         <img className = "heroPic" src={this.props.model.getHeroImage()} alt="img"></img>
         <div style={wrapperStyle} className="divider"></div>
         <p>
-          MOOD
+          LENGTH
           <Slider id = "mood"
             min={10} 
             max={100} 
