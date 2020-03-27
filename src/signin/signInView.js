@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import Spotify from 'spotify-web-api-js'
 import { Button } from 'react-bootstrap'
-import {Link} from 'react-router-dom';
-
 const spotifyApi = new Spotify()
-const h = React.createElement
+
 
 export default class SignInView extends Component {
   constructor (props) {
