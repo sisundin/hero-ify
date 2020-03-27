@@ -8,7 +8,7 @@
     
     export default class ChooseEnergy extends React.Component {
       constructor(props) {
-        super();
+        super(props);
         this.props=props
         this.state = {
             energy:""
@@ -50,7 +50,7 @@
         <p>
           ENERGY
           <Slider id="energy"
-            defaultValue={5.5}
+            defaultValue={5}
             aria-labelledby="length-slider"
             step={0.1}
             min={0}
@@ -60,7 +60,9 @@
         </p>
         <div className="divider"></div>
         <div class="text-center">
-        <Link to="/specPlaylist"><Button variant="btn btn-success btn-lg" onClick={()=>{this.props.model.setEnergy(document.getElementById("energy").value)}} >NEXT</Button></Link>
+        <Link to="/specPlaylist"><Button variant="btn btn-success btn-lg" onClick={()=>{
+            console.log(document.getElementById("energy").value);
+            this.props.model.setEnergy(document.getElementById("energy").value)}} >NEXT</Button></Link>
         </div>
         </div>
     )}

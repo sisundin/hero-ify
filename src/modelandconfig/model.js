@@ -88,12 +88,12 @@ class HeroIfyModel extends React.Component {
 
     setMood(mood){
         this.playlistAttributes.mood = mood;
-        
+        console.log(this.playlistAttributes);
     }
 
     setEnergy(energy){
         this.playlistAttributes.energy = energy;
-       
+        console.log(this.playlistAttributes);
     }
 
     getHeroName(){

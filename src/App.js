@@ -21,6 +21,7 @@ import heroifyModel from './modelandconfig/model.js'
 class App extends React.Component {
   constructor (props) {
     super(props)
+    this.heromodel = heroifyModel;
     //HeroIfyModel.searchHero("ironman");
     this.state = {
     }
@@ -36,19 +37,19 @@ class App extends React.Component {
         <Switch>
         <React.Fragment>
           <div id="home">
-          <Route exact path="/" render={() => <SignInView model={HeroIfyModel}/>}/>
+          <Route exact path="/" render={() => <SignInView model={this.heromodel}/>}/>
           </div>
           <div id="choosehero">
-          <Route path="/choosehero" render={() => <ChooseHero model={HeroIfyModel}/>}/>
+          <Route path="/choosehero" render={() => <ChooseHero model={this.heromodel}/>}/>
           </div>
           <div id="othersplaylists">
-          <Route path="/othersplaylists" render={() => <LatestPlaylist model={heroifyModel}/>}/>
+          <Route path="/othersplaylists" render={() => <LatestPlaylist model={this.heromodel}/>}/>
           </div>
           <div id="chooseMood">
-          <Route path="/chooseMood" render={() => <ChooseMood model={heroifyModel}/>}/>
+          <Route path="/chooseMood" render={() => <ChooseMood model={this.heromodel}/>}/>
           </div>
           <div id="chooseEnergy">
-          <Route path="/chooseEnergy" render={() => <ChooseEnergy model={heroifyModel}/>}/>
+          <Route path="/chooseEnergy" render={() => <ChooseEnergy model={this.heromodel}/>}/>
           </div>
         </React.Fragment>
         </Switch>

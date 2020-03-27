@@ -8,7 +8,7 @@
 
     export default class ChooseMood extends React.Component {
       constructor(props) {
-        super();
+        super(props);
         this.props=props
         this.state = {
             mood: ""
@@ -50,7 +50,7 @@
         <p>
           MOOD
           <Slider id = "mood"
-            defaultValue={5.5}
+            defaultValue={5}
             aria-labelledby="length-slider"
             step={0.1}
             min={0}
