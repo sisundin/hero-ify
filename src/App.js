@@ -6,7 +6,7 @@ import SignInView from './signin/signInView.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ChooseHero from './choosehero/chooseHero'
 import LatestPlaylist from './othersplaylists/allPlaylistsCreated.js'
-//import playlistSettings from './playlistcreator/specYourPlaylist';
+import PlaylistSettings from './playlistcreator/specYourPlaylist';
 import {
   BrowserRouter as Router,
   Switch,
@@ -42,6 +42,7 @@ class App extends React.Component {
           <Route path="/othersplaylists" render={() => <LatestPlaylist model={heroifyModel}/>}/>
           </div>
           <div id="specPlaylist">
+          <Route path="/specPlaylist" render={() => <PlaylistSettings model={heroifyModel}/>}/>
           </div>
         </React.Fragment>
         </Switch>

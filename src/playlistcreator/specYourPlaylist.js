@@ -1,7 +1,7 @@
 import React from "react";
 import { Slider } from "@material-ui/core";
-
-export class PlaylistSettings extends React.Component {
+import ProgressBar from '../HeaderAndFooter/header.js';
+export default class PlaylistSettings extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -40,13 +40,14 @@ export class PlaylistSettings extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="outsideDiv">
+        <ProgressBar step={"2"}/>
         <div>
           Choose Playlist Length
           <Slider
             defaultValue={0}
             aria-labelledby="length-slider"
-            step={10}
+            step={20}
             valueLabelDisplay="on"
           />
         </div>
