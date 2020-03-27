@@ -12,9 +12,9 @@ export default function RenderPromise({promise, renderData}){
                  .catch(err=>setData({error:err}));
     }, [promise]);  // TODO: return cancel promise on unmount
  
-    return  (data===null && h("img", {src:spin}))
-         || (data !==null && !data.error && h(renderData, {data}))
-         || (data !==null && data.error && h("div", {}, data.error.toString()));
+    return  (data === null && h("img", {src:spin}))
+         || (data !== null && !data.error && h(renderData, {data}))
+         || (data !== null && data.error && h("div", {}, data.error.toString()));
  };
  
 
