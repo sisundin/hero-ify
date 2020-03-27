@@ -2,29 +2,66 @@
     import React from "react";
     import { Slider } from "@material-ui/core";
     import ProgressBar from '../HeaderAndFooter/header.js';
-    export default class PlaylistSettings extends React.Component {
-      constructor() {
+    import { Button } from 'react-bootstrap'
+    import {Link} from 'react-router-dom';
+
+
+    export default class ChooseMood extends React.Component {
+      constructor(props) {
         super();
+        this.props=props
         this.state = {
-          selectedMood: "happy",
-          selectedSetting: "public",
-          playlistName: ""
+            mood: ""
         };
+      }
+
+    update() {
+        this.setState({
+            mood:document.getElementById("mood").value
+        })
+    }
+
+    componentDidMount() {
+        this.props.model.addObserver(() => this.update());
+        
+      }
+     
+    componentWillUnmount() {
+        this.props.model.removeObserver(this)
       }
 
 
     render() {
-    return (<div className="outsideDiv">
+        const marks = [
+            {
+              value: 0,
+              label: 'SAD',
+            },
+            {
+              value: 10,
+              label: 'Happy',
+            }];
+
+    return <div className="outsideDiv">
         <ProgressBar step={"2"}/>
-        <div>
-          Choose Playlist mood
-          <Slider
-            defaultValue={0}
+        <p className="vjueHeader"> CHOOSE PLAYLIST MOOD</p>
+        <img className = "heroPic" src={this.props.model.getHeroImage()} alt="img"></img>
+        <div className="divider"></div>
+        <p>
+          MOOD
+          <Slider id = "mood"
+            defaultValue={5.5}
             aria-labelledby="length-slider"
-            step={10}
-            valueLabelDisplay="on"
+            step={0.1}
+            min={0}
+            max={10}
+            marks={marks}
           />
+        </p>
+        <div className="divider"></div>
+        <div class="text-center">
+        <Link to="/chooseEnergy"><Button variant="btn btn-success btn-lg" onClick={()=>{this.props.model.setMood(document.getElementById("mood").value)}}>NEXT</Button></Link>
         </div>
         </div>
-    )}
+    }
 }

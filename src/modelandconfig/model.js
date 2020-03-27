@@ -9,8 +9,8 @@ class HeroIfyModel extends React.Component {
     super()
     const params = this.getHashParams();
     this.subscribers = [];
-    this.hero = {name:"You need to pick a hero!"};
-    this.playlistAttributes = {userID:"", genres: [], pepLevel:""};
+    this.hero = {name:"You need to pick a hero!", images:{lg:"no image"}};
+    this.playlistAttributes = {userID:"", genres: [], mood:"", energy:""};
     firebase.initializeApp(firebaseConfig);
     this.db = firebase.database();
 
@@ -83,7 +83,17 @@ class HeroIfyModel extends React.Component {
     setHero(hero){
     
         this.hero = hero;
-        this.notifyObservers("hero was added");
+        this.notifyObservers();
+    }
+
+    setMood(mood){
+        this.playlistAttributes.mood = mood;
+        
+    }
+
+    setEnergy(energy){
+        this.playlistAttributes.energy = energy;
+       
     }
 
     getHeroName(){
@@ -93,6 +103,10 @@ class HeroIfyModel extends React.Component {
     getHeroId(){
         return this.hero.id;
     }
+    getHeroImage(){
+        return this.hero.images.lg;
+    }
+
 
     heroGenres(powerstats){
         /// powerstats = {"intelligence":"81","strength":"40","speed":"29","durability":"55","power":"63","combat":"90"};

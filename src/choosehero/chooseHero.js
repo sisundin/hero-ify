@@ -45,7 +45,7 @@ export default class ChooseHero extends React.Component{
         
         return h("div", {className:"outsideDiv"},
         <ProgressBar step={"1"}/>, 
-        h("p", {className:"vjueHeader"} , "Choose Your Hero"), 
+        h("p", {className:"vjueHeader"} , "CHOOSE YOUR HERO"), 
          h("div", {}, 
             h("div",{className:"divider"},null ),
             h("div", {className:"searchbox"},
@@ -84,7 +84,7 @@ export default class ChooseHero extends React.Component{
             button= null;
             }
         else{
-            button = <Link to="/specPlaylist"><Button variant="btn btn-success btn-lg" >NEXT</Button></Link>
+            button = <Link to="/chooseMood"><Button variant="btn btn-success btn-lg" >NEXT</Button></Link>
         };
         return button;
     }
