@@ -1,25 +1,26 @@
 
     import React from "react";
-    import { Slider } from "@material-ui/core";
     import ProgressBar from '../HeaderAndFooter/header.js';
     import { Button } from 'react-bootstrap'
     import {Link} from 'react-router-dom';
+    import Tooltip from 'rc-tooltip';
+    import Slider from 'rc-slider';
+    import 'rc-slider/assets/index.css';
+    import 'rc-tooltip/assets/bootstrap.css';
 
     
     export default class ChooseEnergy extends React.Component {
+        handleChange = energy => {
+            this.setState({ energy });
+          };
+
       constructor(props) {
         super(props);
         this.props=props
         this.state = {
-            energy:""
+            energy: 5
         };
       }
-
-    update() {
-        this.setState({
-            energy:document.getElementById("energy").value
-        })
-    }
 
     componentDidMount() {
         this.props.model.addObserver(() => this.update());
@@ -32,37 +33,47 @@
 
 
     render() {
-        const marks = [
-            {
-              value: 0,
-              label: 'Mellow',
-            },
-            {
-              value: 10,
-              label: 'Energetic',
-            }];
+        const {energy} = this.state;
+        const createSliderWithTooltip = Slider.createSliderWithTooltip;
+        const Range = createSliderWithTooltip(Slider.Range);
+        const Handle = Slider.Handle;
+        const positionmarks = {0:'Mellow' ,10:"Energetic"};
+        const wrapperStyle = { width: 400, margin: 50 };
+        const handle = (props) => {
+            const { value, dragging, index, ...restProps } = props;
+            return (
+              <Tooltip
+                prefixCls="rc-slider-tooltip"
+                overlay={value}
+                visible={dragging}
+                placement="top"
+                key={index}
+              >
+                <Handle value={value} {...restProps} />
+              </Tooltip>
+            );};
 
     return (<div className="outsideDiv">
         <ProgressBar step={"3"}/>
         <p className="vjueHeader"> CHOOSE PLAYLIST ENERGY</p>
         <img className = "heroPic" src={this.props.model.getHeroImage()} alt="img"></img>
-        <div className="divider"></div>
+        <div style={wrapperStyle} className="divider"></div>
         <p>
           ENERGY
           <Slider id="energy"
-            defaultValue={5}
-            aria-labelledby="length-slider"
-            step={0.1}
-            min={0}
-            max={10}
-            marks={marks}
+            min={0} 
+            max={10} 
+            onChange={this.handleChange}
+            defaultValue={energy} 
+            marks= {positionmarks} 
+            step={0.1} 
+            handle={handle}
           />
         </p>
         <div className="divider"></div>
         <div class="text-center">
         <Link to="/specPlaylist"><Button variant="btn btn-success btn-lg" onClick={()=>{
-            console.log(document.getElementById("energy").value);
-            this.props.model.setEnergy(document.getElementById("energy").value)}} >NEXT</Button></Link>
+            this.props.model.setEnergy(energy)}} >NEXT</Button></Link>
         </div>
         </div>
     )}

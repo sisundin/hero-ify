@@ -81,19 +81,21 @@ class HeroIfyModel extends React.Component {
     }
 
     setHero(hero){
-    
         this.hero = hero;
-        this.notifyObservers();
+        console.log(this.hero);
+        this.notifyObservers()
     }
 
     setMood(mood){
         this.playlistAttributes.mood = mood;
         console.log(this.playlistAttributes);
+        
     }
 
     setEnergy(energy){
         this.playlistAttributes.energy = energy;
         console.log(this.playlistAttributes);
+        
     }
 
     getHeroName(){
@@ -103,7 +105,7 @@ class HeroIfyModel extends React.Component {
     getHeroId(){
         return this.hero.id;
     }
-    
+
     getHeroImage(){
         return this.hero.images.lg;
     }
