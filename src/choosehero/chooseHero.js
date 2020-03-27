@@ -55,6 +55,7 @@ export default class ChooseHero extends React.Component{
             h("div",{className:"divider"},null ),
             h("div", {id:"searchresult" , className:"searchresult" }, // empty div for search results
             h("span", {},
+            
             <SearchRenderPromise
             promise =  {this.props.model.searchHero(this.state.freetext)}
             renderData = { ({data}) => h("span", {}, this.createHeroDisplay(data))}
