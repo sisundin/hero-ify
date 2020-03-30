@@ -12,6 +12,7 @@ footer{
   flex:1;
   position: fixed; 
   bottom: 0px; 
+  z-index:1001;
 }
 table.footer{
   padding-left: 50%;
@@ -21,9 +22,8 @@ table.footer{
   height: 100%;
   border-collapse:separate;
   position: fixed;
-  z-index:1000;
   right : 0px;
-  z-index:1000;
+  
   
 }
 .flexParent{
@@ -39,7 +39,7 @@ div.outsideDiv{
   width: 80%;
   position:relative;
   z-index:1001;
-  
+  overflow: scroll;
   flex: 1;
   
 }
@@ -47,7 +47,7 @@ div.outsideDiv{
 .background{
   background-color: rgb(197, 45, 45);
   width: 100%;
-  position: fixed;
+  
   height: 100%;
   flex-direction: column;
 }
@@ -57,11 +57,11 @@ div#wavecontainor{
   width: 600vw;
   left: -10vW;
   height: 50vh;
-  display: block;
+  
   bottom: 0px;
   bottom: -1vh;
   position: absolute;
-  
+  z-index:999;
 }
 
 .hide{

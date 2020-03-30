@@ -6,7 +6,7 @@ import React from "react";
     import Slider from 'rc-slider';
     import 'rc-slider/assets/index.css';
     import 'rc-tooltip/assets/bootstrap.css';
-
+    import LatestPlaylist from '../othersplaylists/allPlaylistsCreated.js'
     
     export default class ShowPlaylist extends React.Component {
 
@@ -28,6 +28,7 @@ import React from "react";
                 Congratulations - enjoy and share it with your friends!
             </p>
             <div className="divider"></div>
+            <LatestPlaylist model = {this.props.model}/>
             <div class="text-center">
             <Link to="/chooseHero"><Button variant="btn btn-success btn-lg" onClick={()=>{
                 }} > GET YOUR PLAYLIST</Button></Link>
