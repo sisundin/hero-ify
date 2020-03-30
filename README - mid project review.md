@@ -5,7 +5,7 @@ Hero-ify is an app where the user can create their own Spotify playlist based on
 
 What we have done
 
-We have set up connections to two API:s: Superhero API and Spotify, and created a few views for the user. In the first view, the user is prompted to start creating their playlist and is then redirected to log on to their Spotify account. In the second view, the customer can search for a Superhero of their choice, which are fetched from the Superhero API. After this, three views where the user can adjust their playlist follows, where the user chooses mood, energy and length with a slider. After this, the user is presented with a mock-up final view where it says that the playlist has been created and some playlists by other users are showcased, but this functionality is not built yet.
+We have set up connections to two API:s: Superhero API and Spotify, and created a few views for the user. The first view, where the user connects to Spotify, is not available to review right now. In the second view, the customer can search for a Superhero of their choice, which are fetched from the Superhero API. After this, three views where the user can adjust their playlist follows, where the user chooses mood, energy and length with a slider. After this, the user is presented with a mock-up final view where it says that the playlist has been created and some playlists by other users are showcased, but this functionality is not built yet.
 
 
 What we still plan to do
