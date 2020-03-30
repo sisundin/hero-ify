@@ -55,7 +55,7 @@
       );};
 
     return (<div className="outsideDiv">
-    <ProgressBar step={"3"}/>
+    <ProgressBar step={"2"}/>
     <p className="vjueHeader"> CHOOSE PLAYLIST MOOD</p>
     <img className = "heroPic" src={this.props.model.getHeroImage()} alt="img"></img>
     <div style={wrapperStyle}></div>
