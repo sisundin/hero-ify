@@ -29,6 +29,7 @@ import React from "react";
             </p>
             <div className="divider"></div>
             <LatestPlaylist model = {this.props.model}/>
+            <div className="divider"></div>
             <div class="text-center">
             <Link to="/chooseHero"><Button variant="btn btn-success btn-lg" onClick={()=>{
                 }} > GET YOUR PLAYLIST</Button></Link>
