@@ -41,7 +41,6 @@ div.outsideDiv{
   width: 80%;
   position:relative;
   z-index:1001;
-  overflow: scroll;
   flex: 1;
   
 }
