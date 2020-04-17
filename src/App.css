@@ -35,10 +35,10 @@ table.footer{
 }
 
 div.outsideDiv{
-  padding-left: 20%;
+  
   font-family: 'Helvetica Neue', sans-serif;
   height: 100%;
-  width: 80%;
+  width: 100%;
   position:relative;
   z-index:1001;
   overflow: scroll;
