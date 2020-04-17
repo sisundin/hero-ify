@@ -59,7 +59,7 @@
     <p className="vjueHeader"> CHOOSE PLAYLIST MOOD</p>
     <img className = "heroPic" src={this.props.model.getHeroImage()} alt="img"></img>
     <div style={wrapperStyle}></div>
-    <p>
+    <p className="slider">
       MOOD
       <Slider id="mood"
         min={0} 
@@ -69,6 +69,7 @@
         marks= {positionmarks} 
         step={0.1} 
         handle={handle}
+        
       />
     </p>
     <div className="divider"></div>

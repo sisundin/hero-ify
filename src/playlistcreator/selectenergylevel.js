@@ -59,7 +59,7 @@
         <p className="vjueHeader"> CHOOSE PLAYLIST ENERGY</p>
         <img className = "heroPic" src={this.props.model.getHeroImage()} alt="img"></img>
         <div style={wrapperStyle} ></div>
-        <p>
+        <p className="slider">
           ENERGY
           <Slider id="energy"
             min={0} 
