@@ -11,14 +11,14 @@ class HeroIfyModel extends React.Component {
     this.subscribers = [];
     this.hero = {
       name: "You need to pick a hero!",
-      images: { lg: "no image" }
+      images: { lg: "no image" },
     };
     this.playlistAttributes = {
       userID: "",
       genres: [],
       mood: "",
       energy: "",
-      length: ""
+      length: "",
     };
     firebase.initializeApp(firebaseConfig);
     this.db = firebase.database();
@@ -27,7 +27,7 @@ class HeroIfyModel extends React.Component {
       spotifyApi.setAccessToken(params.access_token);
     }
     this.state = {
-      loggedIn: params.access_token ? true : false
+      loggedIn: params.access_token ? true : false,
     };
   }
 
@@ -36,29 +36,38 @@ class HeroIfyModel extends React.Component {
   }
 
   removeObserver(callback) {
-    callback = this.subscribers.filter(o => o !== callback);
-    };
+    callback = this.subscribers.filter((o) => o !== callback);
+  }
 
-    notifyObservers(whatHappened){
-        this.subscribers.forEach(function(callback){
-            callback(whatHappened);
-       });
-    }
+  notifyObservers(whatHappened) {
+    this.subscribers.forEach(function (callback) {
+      callback(whatHappened);
+    });
+  }
 
+  getHeroData(string) {
+    return fetch("https://superhero-search.p.rapidapi.com/?" + string, {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": heroApihost,
+        "x-rapidapi-key": HeroApiAccessKey,
+      },
+    })
+      .then((response) => this.handleHTTPError(response))
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
 
-    getHeroData(string) {
-        return fetch("https://superhero-search.p.rapidapi.com/?"+string, {
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-host": heroApihost,
-                "x-rapidapi-key": HeroApiAccessKey
-            }
-        }).then(response => this.handleHTTPError(response))
-        .then(response => response.json())
-        .catch(error => console.log(error));
+    ///const http = new XMLHttpRequest();
+    ///http.open("GET", heroApiENDPOINT+HeroApiAccessToken+string);
+    ///http.send();
 
-    }
-
+    ///http.onload = () => console.log(http.responseText)
+    /// return fetch(heroApiENDPOINT+HeroApiAccessToken+string, {
+    ///    "method": "GET",
+    ///    }).then(response => this.handleHTTPError(response))
+    ///.then(response => response.json()).then(response => console.log(response))
+    ///.catch(error => console.log(error));
+  }
 
   handleHTTPError(response) {
     if (response.ok) {
@@ -120,14 +129,14 @@ class HeroIfyModel extends React.Component {
       powerstats.durability +
       powerstats.combat;
     let genres = {
-      "classical": powerstats.intelligence / allstats,
-      "punk": powerstats.strength / allstats,
-      "pop": powerstats.speed / allstats,
-      "lowfy beats": powerstats.durability / allstats,
+      classical: powerstats.intelligence / allstats,
+      punk: powerstats.strength / allstats,
+      pop: powerstats.speed / allstats,
+      "lo fi beats": powerstats.durability / allstats,
       "electronic dance": powerstats.power / allstats,
-      "hip hop": powerstats.combat / allstats
+      "hip hop": powerstats.combat / allstats,
     };
-    return genres;
+    genres.forEach((genre) => this.playlistAttributes.genres.push(genre));
   }
 
   //getPlaylists NEEDS RENDER PROMIS
@@ -137,15 +146,15 @@ class HeroIfyModel extends React.Component {
       .ref("UserGenereatedPlaylists")
       .limitToLast(limit)
       .once("value")
-      .then(snapshot => {
+      .then((snapshot) => {
         snapshot = snapshot.toJSON();
         Object.values(snapshot)
           .reverse()
-          .forEach(doc => {
+          .forEach((doc) => {
             playlists.push({
               Hero: doc.Hero,
               PlaylistLink: doc.PlaylistLink,
-              User: doc.User
+              User: doc.User,
             });
           });
         return playlists;
@@ -157,25 +166,37 @@ class HeroIfyModel extends React.Component {
     this.db.ref("UserGenereatedPlaylists/" + user).set({
       Hero: heroname,
       PlaylistLink: playlistlink,
-      User: user
+      User: user,
     });
   }
 
-  //spotify playlist function
-  spotifyApiConnect() {}
-
   generatePlaylistId() {
-    //var playlistID = spotifyApi.createPlaylist(this.playlistAttributes.userID)
-    //return playlistID
+    var playlistID = spotifyApi.createPlaylist(this.playlistAttributes.userID);
+    return playlistID;
   }
 
   generateSpotifyPlaylist() {
-    //put together the playlist based on user input
+    var userId = this.playlistAttributes.userId;
+    spotifyApi.createPlaylist(userId, options);
   }
 
-  addTrackToPlaylist() {
-    //add tracks to playlist
-    //var Spotify.add
+  getGenreShare(genre_ratio, genre) {
+    var genreShare = [];
+    const mood = this.playlistAttributes.mood;
+    const energy = this.playlistAttributes.energy;
+    const length = this.playlistAttributes.length;
+    const attributes = {
+      target_valence: mood,
+      target_energy: energy,
+      limit: genre_ratio * length,
+      seed_genres: { genre },
+    };
+
+    spotifyApi.getRecommendations(attributes).then((response) => {
+      for (var i = 0, l = response.items.length; i < l; i++) {
+        genreShare.push(response.items[i]);
+      }
+    });
   }
 
   getHashParams() {
@@ -193,7 +214,7 @@ class HeroIfyModel extends React.Component {
 
   getMyTopTracks() {
     var alltrackstoptracks = [];
-    spotifyApi.getMyTopTracks({ limit: 100 }).then(response => {
+    spotifyApi.getMyTopTracks({ limit: 100 }).then((response) => {
       for (var i = 0, l = response.items.length; i < l; i++) {
         alltrackstoptracks.push(response.items[i]);
       }
