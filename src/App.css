@@ -56,14 +56,14 @@ div.outsideDiv{
 
 div#wavecontainor{
   background-image: url("./Assets/wave.svg");
-  width: 600vw;
-  left: -10vW;
+  width: 500vw;
+  left: -50vW;
   height: 50vh;
-  
+  background-size: 150%;
   bottom: 0px;
   bottom: -1vh;
   position: fixed;
-  z-index:999;
+  z-index:1000;
 }
 
 .hide{
