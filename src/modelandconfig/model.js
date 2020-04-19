@@ -59,29 +59,6 @@ class HeroIfyModel extends React.Component {
 
     }
 
-  getHeroData(string) {
-    return fetch("https://superhero-search.p.rapidapi.com/?" + string, {
-      method: "GET",
-      headers: {
-        "x-rapidapi-host": heroApihost,
-        "x-rapidapi-key": HeroApiAccessKey
-      }
-    })
-      .then(response => this.handleHTTPError(response))
-      .then(response => response.json())
-      .catch(error => console.log(error));
-
-    ///const http = new XMLHttpRequest();
-    ///http.open("GET", heroApiENDPOINT+HeroApiAccessToken+string);
-    ///http.send();
-
-    ///http.onload = () => console.log(http.responseText)
-    /// return fetch(heroApiENDPOINT+HeroApiAccessToken+string, {
-    ///    "method": "GET",
-    ///    }).then(response => this.handleHTTPError(response))
-    ///.then(response => response.json()).then(response => console.log(response))
-    ///.catch(error => console.log(error));
-  }
 
   handleHTTPError(response) {
     if (response.ok) {
