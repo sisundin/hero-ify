@@ -14,5 +14,5 @@ export default function SearchRenderPromise({promise, renderData}){
  
     return  (data===null && h("img", {src:spin}))
          || (data !==null && data!==undefined && !data.error && h(renderData, {data}))
-         || (data !==null && data==undefined && h("div", {}, "Oops, not found..."));
+         || (data !==null && data===undefined && h("div", {}, "Oops, not found..."));
  };

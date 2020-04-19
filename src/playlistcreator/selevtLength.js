@@ -61,9 +61,9 @@
         <p className="vjueHeader"> HOW LONG IS YOUR MISSION</p>
         <img className = "heroPic" src={this.props.model.getHeroImage()} alt="img"></img>
         <div style={wrapperStyle} ></div>
-        <p>
+        <p className="slider">
           LENGTH
-          <Slider id = "mood"
+          <Slider id = "length"
             min={10} 
             max={100} 
             onChange={this.handleChange}
