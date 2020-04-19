@@ -61,7 +61,7 @@ export default class ChooseEnergy extends React.Component {
           alt="img"
         ></img>
         <div style={wrapperStyle}></div>
-        <p>
+        <p className="slider">
           ENERGY
           <Slider
             id="energy"

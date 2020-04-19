@@ -175,7 +175,7 @@ class HeroIfyModel extends React.Component {
     return playlistID;
   }
 
-  generateSpotifyPlaylist() {
+  generateSpotifyPlaylist(options) {
     var userId = this.playlistAttributes.userId;
     spotifyApi.createPlaylist(userId, options);
   }
