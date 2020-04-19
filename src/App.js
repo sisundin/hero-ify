@@ -31,7 +31,7 @@ class App extends React.Component {
   }
 
   render () {
-    return (<div className="flexparent">
+    return (
       <div className="background">
       <Router>
         <Switch>
@@ -65,7 +65,7 @@ class App extends React.Component {
       </Router>
       
       </div>
-      </div>
+      
       
     )
   }

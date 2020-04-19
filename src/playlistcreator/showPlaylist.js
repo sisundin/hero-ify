@@ -2,10 +2,7 @@ import React from "react";
     import ProgressBar from '../HeaderAndFooter/header.js';
     import { Button } from 'react-bootstrap'
     import {Link} from 'react-router-dom';
-    import Tooltip from 'rc-tooltip';
-    import Slider from 'rc-slider';
-    import 'rc-slider/assets/index.css';
-    import 'rc-tooltip/assets/bootstrap.css';
+
     import LatestPlaylist from '../othersplaylists/allPlaylistsCreated.js'
     
     export default class ShowPlaylist extends React.Component {

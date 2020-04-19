@@ -34,7 +34,7 @@ export default class ChooseEnergy extends React.Component {
     // eslint-disable-next-line no-unused-vars
     const Range = createSliderWithTooltip(Slider.Range);
     const Handle = Slider.Handle;
-    const positionmarks = { 0: "Mellow", 10: "Energetic" };
+    const positionmarks = { 0: "Mellow", 1: "Energetic" };
     const wrapperStyle = { width: 400, margin: 30 };
     const handle = (props) => {
       const { value, dragging, index, ...restProps } = props;

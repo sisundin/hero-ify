@@ -34,7 +34,7 @@ export default class ChooseMood extends React.Component {
     // eslint-disable-next-line no-unused-vars
     const Range = createSliderWithTooltip(Slider.Range);
     const Handle = Slider.Handle;
-    const positionmarks = { 0: "SAD", 10: "HAPPY" };
+    const positionmarks = { 0: "SAD", 1: "HAPPY" };
     const wrapperStyle = { width: 400, margin: 30 };
     const handle = (props) => {
       const { value, dragging, index, ...restProps } = props;
