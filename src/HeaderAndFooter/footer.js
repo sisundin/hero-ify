@@ -9,9 +9,8 @@ const h = React.createElement;
           this.state = {};
         }
         render() {
-          return h("div", {className:"footer"}, h("div",{className:"divider"},null ),
-          h("table", {className:"footer"},
-          h("tr", {}, h("th", {}, "LEGAL"), h("th", {}, "PRIVACY"),  h("th", {}, "COOKIES"), h("th", {}, "© 2020 Hero-Ify AB"), h("th", {}, "SWEDEN")),
-          h("div",{className:"divider"},null )));
+          return h("table", {className:"footer"},
+          h("tr", {}, h("th", {className:"footer"}, "LEGAL"), h("th", {className:"footer"}, "PRIVACY"),  h("th", {className:"footer"}, "COOKIES"), h("th", {className:"footer"}, "© 2020 Hero-Ify AB"), h("th", {className:"footer"}, "SWEDEN")),
+          );
         }
     }

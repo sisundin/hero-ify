@@ -9,25 +9,21 @@
   
 
 }
-footer{
-  flex:1;
-  height: 100%;
-  width: 100%;
-  bottom: 0px; 
-  left : 0px;
-  
-}
+
 table.footer{
   padding-left: 50%;
   text-align: center;
-  
-  font-size: 10px;
-  
-  
-  
-  
-  
+  bottom: 10px; 
+  right : 0px;
+  width: 100%;
+  position: fixed;
+  z-index:1001; 
 }
+th.footer{
+  text-underline-position: below;
+}
+
+
 .flexParent{
   display:flex;   
   flex-direction: column;
@@ -42,7 +38,7 @@ div.outsideDiv{
   position:relative;
   z-index:1001;
   flex: 1;
-  
+  margin-bottom: 5%;
 }
 
 .slider{
@@ -54,7 +50,7 @@ div.outsideDiv{
   background-color: rgb(197, 45, 45);
   width: 100%;
   position: absolute;
-  height: 100%;
+  height: 150%;
   flex-direction: column;
 }
 
@@ -142,16 +138,17 @@ div.hide{
 .divider{
   padding-bottom: 20px;
 }
+
 .searchbox{
   text-align: center;
-  
-
 }
-.heroPic{ display: block;
+
+img.heroPic{ display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 200px;
+  width: 20%;
   height: auto;
+  min-width: 200px;
   }
 
 .searchresult{
