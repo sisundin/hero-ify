@@ -25,7 +25,9 @@ import React from "react";
                 Congratulations - enjoy and share it with your friends!
             </p>
             <div className="divider"></div>
+            <div className="tablecentering">
             <LatestPlaylist model = {this.props.model}/>
+            </div>
             <div className="divider"></div>
             <div class="text-center">
             <Link to="/chooseHero"><Button variant="btn btn-success btn-lg" onClick={()=>{

@@ -59,6 +59,10 @@ div.outsideDiv{
   
 }
 
+.tablecentering{
+  padding-left: 20%;
+  width: 80%;
+}
 div#wavecontainor{
   background-image: url("./Assets/wave.svg");
   width: 200vw;
