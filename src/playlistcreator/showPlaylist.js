@@ -22,7 +22,10 @@ import React from "react";
             <img className = "heroPic" src={this.props.model.getHeroImage()} alt="img"></img>
             <div style={wrapperStyle} className="divider"></div>
             <p>
-                Congratulations - enjoy and share it with your friends!
+            Congratulations! This is {this.props.model.getHeroName()}'s perfect Spotify playlist. Listen to it and dream of saving the world!</p>
+            <br></br>
+            <p>Share it with your friends, or create a new one. A hero never runs out
+            of missions!
             </p>
             <div className="divider"></div>
             <div className="tablecentering">
@@ -31,7 +34,7 @@ import React from "react";
             <div className="divider"></div>
             <div class="text-center">
             <Link to="/chooseHero"><Button variant="btn btn-success btn-lg" onClick={()=>{
-                }} > GET YOUR PLAYLIST</Button></Link>
+                }} > CREATE NEW PLAYLIST</Button></Link>
             </div>
             </div>
         )

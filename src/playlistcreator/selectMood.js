@@ -55,6 +55,11 @@ export default class ChooseMood extends React.Component {
       <div className="outsideDiv">
         <ProgressBar step={"2"} />
         <p className="vjueHeader"> CHOOSE PLAYLIST MOOD</p>
+        <p>{this.props.model.getHeroName()}, great choice!</p>
+        <p>Choosing tunes with just the right mood is of essence when creating the perfect save-the-world-playlist.</p>
+        <br></br>
+        <p>Is {this.props.model.getHeroName()} in the mood for something sad to get them thinking about all that's unfair in the world
+        and all the people that need saving, or is something happy and uplifting more suitable?</p>
         <img
           className="heroPic"
           src={this.props.model.getHeroImage()}

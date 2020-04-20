@@ -80,7 +80,10 @@ componentWillUnmount() {
           </div>
           <h1 class="text-center"> Hero-ify</h1>
           <div class="text-center p"> 
-            <p>Get a playlist based on the super hero you want to be and the music you love</p>
+            <p>A hero needs a soundtrack when they are heading out on a mission to save the world.</p>
+            <br></br>
+            <p>Pick your hero, set the mood and find out what Spiderman, Wonderwoman or Harry Potter would have in their
+            headphones when rescuing humankind from a terrible fate. Enjoy the results in a customized Spotiy playlist!</p>
           </div>
           <div class="text-center">
             {<Button variant="btn btn-success btn-lg" class="btn btn-success btn-lrg">
