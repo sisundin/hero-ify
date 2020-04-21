@@ -15,6 +15,10 @@ table.footer{
   z-index:1001; 
 }
 
+img.heroify-logo{
+  height: 100px;
+}
+
 th.footer{
   text-underline-position: below;
 }
@@ -128,7 +132,7 @@ image{
   margin-left: 0px;
   font-weight: bold;
   text-align: center;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 
@@ -165,6 +169,7 @@ p{
   font-weight: bold;
 }
 
+.copy{font-size: 16px;}
 .centered {
   position: fixed;
   top: 50%;

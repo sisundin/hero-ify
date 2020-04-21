@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from "./Logo-hero-ify.png";
 
 const h = React.createElement;
 
@@ -11,8 +12,7 @@ const h = React.createElement;
         }
         render() {
           return h("div", {}, h("div",{className:"divider"},null ),
-          h("p", {className:"logo-top"}, "Hero-ify"),
-          h("div",{className:"divider"},null ),
+          h("p", {className:"logo-top"}, h("img", {className:"heroify-logo", src:Logo, alt: "Hero-ify"} )),
           h("table", {className:"ProgressBar"},
           h("tr", {}, this.RenderProgress())),
           h("div",{className:"divider"},null ));

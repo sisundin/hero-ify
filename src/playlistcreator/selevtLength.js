@@ -59,10 +59,9 @@
     return <div className="outsideDiv">
         <ProgressBar step={"4"}/>
         <p className="vjueHeader"> HOW LONG IS YOUR MISSION</p>
-        <p>Okey, so we're almost there. Just hold your horses, {this.props.model.getHeroName()}, you'll get to stop a train crash in just
+        <p className="copy"> Okey, so we're almost there. Just hold your horses, {this.props.model.getHeroName()}, you'll get to stop a train crash in just
         a minute, we just need to know how long you'll be gone.</p>
-        <br></br>
-        <p>Are we talking a mission that's done within 
+        <p className="copy">Are we talking a mission that's done within 
         a few moments, or some kind of eternal struggle?</p>
         <img className = "heroPic" src={this.props.model.getHeroImage()} alt="img"></img>
         <div style={wrapperStyle} ></div>
