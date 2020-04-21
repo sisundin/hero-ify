@@ -1,20 +1,18 @@
 import React from "react";
-    import ProgressBar from '../HeaderAndFooter/header.js';
-    import { Button } from 'react-bootstrap'
-    import {Link} from 'react-router-dom';
+import ProgressBar from "../HeaderAndFooter/header.js";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-    import LatestPlaylist from '../othersplaylists/allPlaylistsCreated.js'
-    
-    export default class ShowPlaylist extends React.Component {
+import LatestPlaylist from "../othersplaylists/allPlaylistsCreated.js";
 
-        constructor(props) {
-            super(props);
-            this.props=props;
-        }    
+export default class ShowPlaylist extends React.Component {
+  constructor(props) {
+    super(props);
+    this.props = props;
+  }
 
-        
-        render(){
-            const wrapperStyle = { width: 400, margin: 50 };
+  render() {
+    const wrapperStyle = { width: 400, margin: 50 };
 
             return (<div className="outsideDiv">
             <ProgressBar step={"5"}/>
