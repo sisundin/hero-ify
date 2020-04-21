@@ -59,11 +59,13 @@ export default class ChooseMood extends React.Component {
         <p className="copy">Choosing tunes with just the right mood is of essence when creating the perfect save-the-world-playlist.</p>
         <p className="copy">Is {this.props.model.getHeroName()} in the mood for something sad to get them thinking about all that's unfair in the world
         and all the people that need saving, or is something happy and uplifting more suitable?</p>
+        <div className="Herocard">
+          <div className="divider"></div>
         <img
           className="heroPic"
           src={this.props.model.getHeroImage()}
           alt="img"
-        ></img>
+        ></img><div className="divider"></div></div>
         <div style={wrapperStyle}></div>
         <p className="slider">
           MOOD

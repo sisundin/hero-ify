@@ -58,11 +58,15 @@ export default class ChooseEnergy extends React.Component {
         <p className="copy">What kind of energy level is needed for the mission that {this.props.model.getHeroName()} is set out on today?</p>
         <p className="copy">Is it more of
         a chill help an old lady carry groceries kind of vibe, or more like battling an army of aliens?</p>
+        <div className="Herocard">
+        <div className="divider"></div>
         <img
           className="heroPic"
           src={this.props.model.getHeroImage()}
           alt="img"
         ></img>
+        <div className="divider"></div>
+        </div>
         <div style={wrapperStyle}></div>
         <p className="slider">
           ENERGY
