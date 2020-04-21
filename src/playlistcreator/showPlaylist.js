@@ -22,7 +22,7 @@ export default class ShowPlaylist extends React.Component {
             <img className = "heroPic" src={this.props.model.getHeroImage()} alt="img"></img>
             <div className="divider"></div></div>
             <div style={wrapperStyle} className="divider"></div>
-            <p className="copy">
+            <p className="copy"> {this.props.model.createHeroPlaylist()}
             Congratulations! This is {this.props.model.getHeroName()}'s perfect Spotify playlist. Listen to it and dream of saving the world!</p>
             <p className="copy">Share it with your friends, or create a new one. A hero never runs out
             of missions!
