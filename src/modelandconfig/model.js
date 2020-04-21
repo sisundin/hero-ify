@@ -15,7 +15,7 @@ class HeroIfyModel extends React.Component {
     };
     this.playlistAttributes = {
       userID: "",
-      genres: [],
+      genres: [{pop: 0.5, rock: 0.5}],
       mood: "",
       energy: "",
       length: "",
@@ -171,17 +171,24 @@ class HeroIfyModel extends React.Component {
   }
 
   generatePlaylist() {
-    var playlistObj = spotifyApi.createPlaylist({ name: this.hero.name });
+    const accessToken = spotifyApi.getAccessToken()
+    console.log(accessToken)
+    const me = spotifyApi.getMe()
+    console.log(me.id)
+    var playlistObj = spotifyApi.createPlaylist({playlistId: me.id,  name: this.hero.name });
+    console.log(playlistObj)
     return playlistObj;
   }
 
   createHeroPlaylist() {
     var genres = this.playlistAttributes.genres;
-    var playlistId = this.generatePlaylist.id;
+    console.log(genres)
+    var playlistId = this.generatePlaylist().id;
+    console.log(playlistId)
     var uriArray = [];
 
     for (let [key, value] of Object.entries(genres)) {
-      uriArray.push(spotifyApi.getGenreShare(key, value));
+      uriArray.push(this.getGenreShare(key, value));
     }
 
     spotifyApi.addTracksToPlaylist({ playlistId: playlistId, uris: uriArray });
