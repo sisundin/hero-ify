@@ -170,11 +170,14 @@ class HeroIfyModel extends React.Component {
     });
   }
 
+  getUserId(){
+    return spotifyApi.getMe()
+    .then((response) => response.id)
+  }
+
   generatePlaylist() {
     const accessToken = spotifyApi.getAccessToken()
     console.log(accessToken)
-    const me = spotifyApi.getMe()
-    console.log(me.id)
     var playlistObj = spotifyApi.createPlaylist({playlistId: me.id,  name: this.hero.name });
     console.log(playlistObj)
     return playlistObj;
