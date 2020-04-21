@@ -171,7 +171,7 @@ class HeroIfyModel extends React.Component {
   }
 
   generatePlaylist() {
-    var playlistObj = spotifyApi.createPlaylist({ name: this.hero });
+    var playlistObj = spotifyApi.createPlaylist({ name: this.hero.name });
     return playlistObj;
   }
 
@@ -181,10 +181,12 @@ class HeroIfyModel extends React.Component {
     var uriArray = [];
 
     for (let [key, value] of Object.entries(genres)) {
-      uriArray.push(spotifyApi.getRecommendations(key, value));
+      uriArray.push(spotifyApi.getGenreShare(key, value));
     }
 
     spotifyApi.addTracksToPlaylist({ playlistId: playlistId, uris: uriArray });
+
+    return spotifyApi.getPlaylist(playlistId);
   }
 
   getGenreShare(genre, genre_ratio) {
