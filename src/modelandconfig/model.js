@@ -170,22 +170,29 @@ class HeroIfyModel extends React.Component {
     });
   }
 
-  generatePlaylistId() {
-    var playlistID = spotifyApi.createPlaylist(this.playlistAttributes.userID);
-    return playlistID;
+  generatePlaylist() {
+    var playlistObj = spotifyApi.createPlaylist({ name: this.hero });
+    return playlistObj;
   }
 
-  generateSpotifyPlaylist(options) {
-    var userId = this.playlistAttributes.userId;
-    spotifyApi.createPlaylist(userId, options);
+  createHeroPlaylist() {
+    var genres = this.playlistAttributes.genres;
+    var playlistId = this.generatePlaylist.id;
+    var uriArray = [];
+
+    for (let [key, value] of Object.entries(genres)) {
+      uriArray.push(spotifyApi.getRecommendations(key, value));
+    }
+
+    spotifyApi.addTracksToPlaylist({ playlistId: playlistId, uris: uriArray });
   }
 
-  getGenreShare(genre_ratio, genre) {
+  getGenreShare(genre, genre_ratio) {
     var genreShare = [];
-    const mood = this.playlistAttributes.mood;
-    const energy = this.playlistAttributes.energy;
-    const length = this.playlistAttributes.length;
-    const attributes = {
+    var mood = this.playlistAttributes.mood;
+    var energy = this.playlistAttributes.energy;
+    var length = this.playlistAttributes.length;
+    var attributes = {
       target_valence: mood,
       target_energy: energy,
       limit: genre_ratio * length,
@@ -194,9 +201,11 @@ class HeroIfyModel extends React.Component {
 
     spotifyApi.getRecommendations(attributes).then((response) => {
       for (var i = 0, l = response.items.length; i < l; i++) {
-        genreShare.push(response.items[i]);
+        genreShare.push(response.items[i].uri);
       }
     });
+
+    return genreShare;
   }
 
   getHashParams() {
