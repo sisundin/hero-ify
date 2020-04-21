@@ -27,11 +27,14 @@ import React from "react";
             <div className="divider"></div>
             <div className="tablecentering">
             <LatestPlaylist model = {this.props.model}/>
+            <div className="divider"></div>
             </div>
             <div className="divider"></div>
             <div class="text-center">
-            <Link to="/chooseHero"><Button variant="btn btn-success btn-lg" onClick={()=>{
-                }} > GET YOUR PLAYLIST</Button></Link>
+            <Link to="/chooseHero">
+                <Button variant="btn btn-success btn-lg" onClick={()=>{
+                }} > GET YOUR PLAYLIST</Button>
+            </Link>
             </div>
             </div>
         )
