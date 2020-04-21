@@ -1,0 +1,38 @@
+startsida
+
+A hero needs a soundtrack when they are heading out on a mission to save the world. 
+
+Pick your hero, set the mood and find out what Spiderman, Wonderwoman or Harry Potter would have in their
+headphones when rescuing humankind from a terrible fate. Enjoy the results in a customized Spotiy playlist!
+
+choose hero
+
+To begin with, choose a hero of your liking. Who would you like to be rescued from a burning building
+by today?
+
+select energy level
+
+
+*hero name*, great choice!
+
+What kind of energy level is needed for the mission that *hero name* is set out on today? Is it more of
+a chill help an old lady carry groceries kind of vibe, or more like battling an army of aliens?
+
+select mood
+
+Choosing tunes with just the right mood is also of essence when creating the perfect save-the-world-playlist.
+Is *hero name* in the mood for something sad to get them thinking about all that's unfair in the world
+and all the people that need saving, or is something happy and uplifting more suitable?
+
+select length
+
+Okey, so we're almost there. Just hold your horses, *hero name*, you'll get to stop a train crash in just
+a minute, we just need to know how long you'll be gone. Are we talking a mission that's done within 
+a few moments, or some kind of eternal struggle?
+
+show playlist
+
+Congratulations! This is *hero name*'s perfect Spotify playlist. Listen to it and dream of saving the world!
+
+Share it with your friends, or create a new one. There's endless of people to save - a hero never runs out
+of missions!

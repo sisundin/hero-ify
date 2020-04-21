@@ -34,7 +34,7 @@ export default class ChooseEnergy extends React.Component {
     // eslint-disable-next-line no-unused-vars
     const Range = createSliderWithTooltip(Slider.Range);
     const Handle = Slider.Handle;
-    const positionmarks = { 0: "Mellow", 1: "Energetic" };
+    const positionmarks = { 0: "OLD LADY", 1: "ALIENS" };
     const wrapperStyle = { width: 400, margin: 30 };
     const handle = (props) => {
       const { value, dragging, index, ...restProps } = props;
@@ -55,6 +55,10 @@ export default class ChooseEnergy extends React.Component {
       <div className="outsideDiv">
         <ProgressBar step={"3"} />
         <p className="vjueHeader"> CHOOSE PLAYLIST ENERGY</p>
+        <br></br>
+        <p>What kind of energy level is needed for the mission that {this.props.model.getHeroName()} is set out on today?</p>
+        <p>Is it more of
+        a chill help an old lady carry groceries kind of vibe, or more like battling an army of aliens?</p>
         <img
           className="heroPic"
           src={this.props.model.getHeroImage()}

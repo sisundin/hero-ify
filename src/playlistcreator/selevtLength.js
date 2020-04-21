@@ -39,7 +39,7 @@
         // eslint-disable-next-line no-unused-vars
         const Range = createSliderWithTooltip(Slider.Range);
         const Handle = Slider.Handle;
-        const positionmarks = {10:'DONE IN A FLASH' ,100:"LIFE LONG"};
+        const positionmarks = {10:'A FEW MOMENTS' ,100:"ETERNAL STRUGGLE"};
         const wrapperStyle = { width: 400, margin: 30 };
         const handle = (props) => {
         const { value, dragging, index, ...restProps } = props;
@@ -59,6 +59,11 @@
     return <div className="outsideDiv">
         <ProgressBar step={"4"}/>
         <p className="vjueHeader"> HOW LONG IS YOUR MISSION</p>
+        <p>Okey, so we're almost there. Just hold your horses, {this.props.model.getHeroName()}, you'll get to stop a train crash in just
+        a minute, we just need to know how long you'll be gone.</p>
+        <br></br>
+        <p>Are we talking a mission that's done within 
+        a few moments, or some kind of eternal struggle?</p>
         <img className = "heroPic" src={this.props.model.getHeroImage()} alt="img"></img>
         <div style={wrapperStyle} ></div>
         <p className="slider">

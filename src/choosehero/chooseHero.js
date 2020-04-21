@@ -47,7 +47,10 @@ export default class ChooseHero extends React.Component{
         return h("div", {className:"outsideDiv"},
         <ProgressBar step={"1"}/>, 
         h("p", {className:"vjueHeader"} , "CHOOSE YOUR HERO"), 
-         h("div", {}, 
+        h("p", {}, "To begin with, choose a hero of your liking."),
+        h("br", {}),
+        h("p", {}, "Who would you like be rescued from a burning building by today?"),
+        h("div", {}, 
             h("div",{className:"divider"},null ),
             h("div", {className:"searchbox"},
             <input id="searchInput" placeholder="eg Batman" />,   // free text search box
