@@ -122,13 +122,13 @@ class HeroIfyModel extends React.Component {
 
   heroGenres(powerstats) {
     /// powerstats = {"intelligence":"81","strength":"40","speed":"29","durability":"55","power":"63","combat":"90"};
-    let allstats =
+    var allstats =
       powerstats.intelligence +
       powerstats.strength +
       powerstats.speed +
       powerstats.durability +
       powerstats.combat;
-    let genres = {
+    var genres = {
       classical: powerstats.intelligence / allstats,
       punk: powerstats.strength / allstats,
       pop: powerstats.speed / allstats,
@@ -171,17 +171,26 @@ class HeroIfyModel extends React.Component {
   }
 
   generatePlaylist() {
-    var playlistObj = spotifyApi.createPlaylist({ name: this.hero.name });
+    const me = spotifyApi.getMe();
+    console.log(me);
+    var userId = this.playlistAttributes.userID;
+    var playlistObj = spotifyApi.createPlaylist({
+      name: this.hero.name,
+      userId: userId,
+    });
+    console.log(playlistObj);
     return playlistObj;
   }
 
   createHeroPlaylist() {
+    //this.heroGenres(this.hero.powerstats);
     var genres = this.playlistAttributes.genres;
+    console.log(genres);
     var playlistId = this.generatePlaylist.id;
     var uriArray = [];
 
     for (let [key, value] of Object.entries(genres)) {
-      uriArray.push(spotifyApi.getGenreShare(key, value));
+      uriArray.push(this.getGenreShare(key, value));
     }
 
     spotifyApi.addTracksToPlaylist({ playlistId: playlistId, uris: uriArray });

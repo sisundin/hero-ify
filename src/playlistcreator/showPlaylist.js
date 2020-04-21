@@ -14,27 +14,41 @@ export default class ShowPlaylist extends React.Component {
   render() {
     const wrapperStyle = { width: 400, margin: 50 };
 
-            return (<div className="outsideDiv">
-            <ProgressBar step={"5"}/>
-            <p className="vjueHeader"> YOUR PLAYLIST</p>
-            <img className = "heroPic" src={this.props.model.getHeroImage()} alt="img"></img>
-            <div style={wrapperStyle} className="divider"></div>
-            <p className="copy">
-            Congratulations! This is {this.props.model.getHeroName()}'s perfect Spotify playlist. Listen to it and dream of saving the world!</p>
-            <p className="copy">Share it with your friends, or create a new one. A hero never runs out
-            of missions!
-            </p>
-            <div className="divider"></div>
-            <div className="tablecentering">
-            <LatestPlaylist model = {this.props.model}/>
-            <div className="divider"></div>
-            </div>
-            <div className="divider"></div>
-            <div class="text-center">
-            <Link to="/chooseHero"><Button variant="btn btn-success btn-lg" onClick={()=>{
-                }} > CREATE NEW PLAYLIST</Button></Link>
-            </div>
-            </div>
-        )
-    }
+    return (
+      <div className="outsideDiv">
+        <ProgressBar step={"5"} />
+        <p className="vjueHeader"> YOUR PLAYLIST</p>
+        <img
+          className="heroPic"
+          src={this.props.model.getHeroImage()}
+          alt="img"
+        ></img>
+        <div style={wrapperStyle} className="divider"></div>
+        <p className="copy">
+          {" "}
+          {this.props.model.createHeroPlaylist()}
+          Congratulations! This is {this.props.model.getHeroName()}'s perfect
+          Spotify playlist. Listen to it and dream of saving the world!
+        </p>
+        <p className="copy">
+          Share it with your friends, or create a new one. A hero never runs out
+          of missions!
+        </p>
+        <div className="divider"></div>
+        <div className="tablecentering">
+          <LatestPlaylist model={this.props.model} />
+          <div className="divider"></div>
+        </div>
+        <div className="divider"></div>
+        <div class="text-center">
+          <Link to="/chooseHero">
+            <Button variant="btn btn-success btn-lg" onClick={() => {}}>
+              {" "}
+              CREATE NEW PLAYLIST
+            </Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
 }
