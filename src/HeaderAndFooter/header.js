@@ -11,6 +11,8 @@ const h = React.createElement;
         }
         render() {
           return h("div", {}, h("div",{className:"divider"},null ),
+          h("p", {className:"logo-top"}, "Hero-ify"),
+          h("div",{className:"divider"},null ),
           h("table", {className:"ProgressBar"},
           h("tr", {}, this.RenderProgress())),
           h("div",{className:"divider"},null ));

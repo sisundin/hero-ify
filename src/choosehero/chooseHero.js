@@ -59,7 +59,6 @@ export default class ChooseHero extends React.Component{
             h("div",{className:"divider"},null ),
             h("div", {id:"searchresult" , className:"searchresult" }, // empty div for search results
             h("span", {},
-            
             <SearchRenderPromise
             promise =  {this.props.model.searchHero(this.state.freetext)}
             renderData = { ({data}) => h("span", {}, this.createHeroDisplay(data))}
@@ -71,7 +70,7 @@ export default class ChooseHero extends React.Component{
     
     createHeroDisplay(hero){
       return <div id={hero.id}>
-      <Image className = "heroPic" src={hero.images.lg} alt="image not found" roundedCircle></Image>
+      <Image className = "heroPic" src={hero.images.lg} alt="image not found" ></Image>
       <div className="divider"></div>
       <div className="divider"></div>
       <div class="text-center">
