@@ -79,7 +79,10 @@ export default class ChooseHero extends React.Component{
         <Link to="/chooseMood"> <Button variant="btn btn-success btn-lg" onClick={() => {
             this.setHero(hero);
             this.props.model.setHero(hero); 
-          }}>Select {hero.name}</Button></Link></div>
+          }}>Select {hero.name}</Button></Link>
+          <div className="divider"></div>
+          <div className="divider"></div>
+          </div>
     }
 
     dcreateHeroDisplay(hero){
@@ -92,6 +95,7 @@ export default class ChooseHero extends React.Component{
                 <a onClick={() => { this.props.model.setHero(hero); }} class="btn btn-primary">Select {hero.name}</a>
         </Link>
         </div>
+        
         </div>
     }
 

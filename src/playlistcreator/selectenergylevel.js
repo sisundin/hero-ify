@@ -95,6 +95,7 @@ export default class ChooseEnergy extends React.Component {
           </Link>
         </div>
         <div className="divider"></div>
+        <div className="divider"></div>
       </div>
     );
   }

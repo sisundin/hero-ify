@@ -40,6 +40,7 @@ export default class ShowPlaylist extends React.Component {
                 }} > CREATE NEW PLAYLIST</Button></Link>
             </div>
             <div className="divider"></div>
+            <div className="divider"></div>
             </div>
         )
     }
