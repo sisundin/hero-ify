@@ -8,7 +8,7 @@ export default function SearchRenderPromise({promise, renderData}){
 
     const [data, setData]=React.useState(null);
     React.useEffect(()=>{setData(null);
-          promise.then(x=>setData(x))
+          promise.then(sleeper(3000)).then(x=>setData(x))
                  .catch(err=>setData({error:err}));
     }, [promise]);  // TODO: return cancel promise on unmount
  
@@ -16,3 +16,9 @@ export default function SearchRenderPromise({promise, renderData}){
          || (data !==null && data!==undefined && !data.error && h(renderData, {data}))
          || (data !==null && data===undefined && h("div", {}, "Oops, not found..."));
  };
+
+ function sleeper(ms) {
+    return function(x) {
+      return new Promise(resolve => setTimeout(() => resolve(x), ms));
+    };
+  }
