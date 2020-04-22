@@ -5,6 +5,7 @@ import { Image } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import SearchRenderPromise from '../util/searchRenderPromise.js'
 import ProgressBar from '../HeaderAndFooter/header.js';
+
 const h = React.createElement;
 
 export default class ChooseHero extends React.Component{
@@ -60,7 +61,7 @@ export default class ChooseHero extends React.Component{
             h("span", {},
             <SearchRenderPromise
             promise =  {this.props.model.searchHero(this.state.freetext)}
-            renderData = { ({data}) => h("span", {}, this.createHeroDisplay(data))}
+            renderData = { ({data}) => this.createHeroDisplay(data)}
             />
             
         ),
@@ -68,17 +69,30 @@ export default class ChooseHero extends React.Component{
     }
     
     createHeroDisplay(hero){
-      return <div id={hero.id}>
+      return <div><div id={hero.id} class="Herocard ">
+        <div className="divider"></div>
       <Image className = "heroPic" src={hero.images.lg} alt="image not found" ></Image>
-      <div className="divider"></div>
-      <div className="divider"></div>
-      <div class="text-center">
-      <Link to="/chooseMood"> <Button variant="btn btn-success btn-lg" onClick={() => {
-          this.setHero(hero);
-          this.props.model.setHero(hero); 
-        }}>Select {hero.name}</Button></Link>
+        <div className="divider"></div>
+        </div>   
+        <div className="divider"></div>
+        <div className="divider"></div> 
+        <Link to="/chooseMood"> <Button variant="btn btn-success btn-lg" onClick={() => {
+            this.setHero(hero);
+            this.props.model.setHero(hero); 
+          }}>Select {hero.name}</Button></Link></div>
+    }
+
+    dcreateHeroDisplay(hero){
+        return <div class="card" style="width: 18rem;">
+        <Image class="card-img-top" src="hero.images.lg" alt="No Image found"></Image>
+        <div class="card-body">
+            <h5 class="card-title">{hero.name}</h5>
+            <p class="card-text"> {hero.biography.firstAppearance}</p>
+            <Link to="/chooseMood"> 
+                <a onClick={() => { this.props.model.setHero(hero); }} class="btn btn-primary">Select {hero.name}</a>
+        </Link>
         </div>
-        </div>    
+        </div>
     }
 
     RenderNextButton(argument){

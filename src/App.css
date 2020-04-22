@@ -16,7 +16,7 @@ table.footer{
 }
 
 img.heroify-logo{
-  height: 100px;
+  width: 40%;
 }
 
 th.footer{
@@ -48,14 +48,15 @@ div.outsideDiv{
 }
 
 .background{
-  background-color: #bb1f14;
+  background-color: #cf3f3f;
   position: fixed;
  height: 100%;
  width: 100%;
  z-index:998;
   
-  
 }
+
+
 
 .tablecentering{
   padding-left: 20%;
@@ -106,6 +107,36 @@ td.notcurrentstep{
   background-color: grey;
 }
 
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0,0,0, 0.5);
+}
+.popup_inner {
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: 25%;
+  bottom: 25%;
+  text-align: center;
+  margin: auto;
+  background: white;
+}
+
+p.FAQbutton{
+  position: absolute;
+  top: 30px;
+  right: 30px;
+
+}
+
+
 image{
   height: 20%;
   display: block; 
@@ -145,13 +176,30 @@ image{
   text-align: center;
 }
 
+.Herocard {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  margin: auto;
+  max-width: 400px;
+  background-color: #ffffff;
+  border-color: black;
+  border-width: 5px;
+  border-radius: 5px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.Herocard:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+
 img.heroPic{ display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 30%;
+  width: 80%;
   height: auto;
-  min-width: 220px;
-  max-width: 300px;
+  
   }
 
 .searchresult{
