@@ -19,6 +19,13 @@ table.footer{
 
 }
 
+.centerlogo {
+  left: 25%;
+  position: fixed;
+  bottom: 100%;
+  width: 50%;
+}
+
 th.footer{
   text-underline-position: below;
   padding-right: 10px;
@@ -232,11 +239,12 @@ img.heroPic{ display: block;
   text-align: center;
 }
 
-p{
+p {
   text-align: center;
   font-weight: bold;
   font-size: 25px;
 }
+
 .next{
   margin-left: 20px;
   float: left;
