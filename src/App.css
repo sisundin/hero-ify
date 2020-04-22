@@ -19,6 +19,13 @@ img.heroify-logo{
   width: 40%;
 }
 
+.centerlogo {
+  left: 25%;
+  position: fixed;
+  bottom: 100%;
+  width: 50%;
+}
+
 th.footer{
   text-underline-position: below;
 }
@@ -55,8 +62,6 @@ div.outsideDiv{
  z-index:998;
   
 }
-
-
 
 .tablecentering{
   padding-left: 20%;
@@ -107,6 +112,30 @@ td.notcurrentstep{
   background-color: grey;
 }
 
+h1{
+  text-align: center;
+  font-size: 30px;
+}
+
+.wellcomecenter{
+  text-align: center;
+}
+p.center{
+  padding:10px;
+  text-align: center;
+  
+  font-size: 20px;
+  margin-left:  auto;
+  margin-right: auto;
+}
+
+
+p.closeEx{
+  position: absolute;
+  top: 10px;
+  right:30px;
+}
+
 .popup {
   position: fixed;
   width: 100%;
@@ -126,16 +155,14 @@ td.notcurrentstep{
   bottom: 25%;
   text-align: center;
   margin: auto;
-  background: white;
+  background: #435ceb;
 }
 
 p.FAQbutton{
   position: absolute;
   top: 30px;
   right: 30px;
-
 }
-
 
 image{
   height: 20%;
@@ -148,7 +175,6 @@ image{
   border-color: black;
   text-align: center;
 }
-
 
 @media ( max-width: 400px ){  
   .flexParent{ 
@@ -206,11 +232,12 @@ img.heroPic{ display: block;
   text-align: center;
 }
 
-p{
+p {
   text-align: center;
   font-weight: bold;
   font-size: 25px;
 }
+
 .next{
   margin-left: 20px;
   float: left;
@@ -218,6 +245,7 @@ p{
 }
 
 .copy{font-size: 16px;}
+
 .centered {
   position: fixed;
   top: 50%;
@@ -231,43 +259,3 @@ p{
 }
 
 
-#intro input, #intro select, #intro textarea {
-  color: #ffffff;
-}
-
-#intro a {
-  color: #1b0101;
-}
-
-  #intro a:hover {
-    border-bottom-color: transparent;
-    color: #18bfef !important;
-  }
-
-#intro strong, #intro b {
-  color: #ffffff;
-}
-
-
-#intro h1 {
-  font-size: 6rem;
-  line-height: 1,4;
-}
-
-#intro p {
-  font-size: 1.25rem;
-  font-style: italic;
-  margin-top: -0.25rem;
-  text-align: center;
-  width: 400px;
-  margin-left: 55px;
-}
-
-#intro img {
-  
-  max-width: 120px;
-  max-height: 120px;
-  margin-bottom: -68px;
-  margin-left: 210px;
-
-}
