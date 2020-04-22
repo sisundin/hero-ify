@@ -49,16 +49,7 @@ class HeroIfyModel extends React.Component {
       .then((response) => response.json())
       .catch((error) => console.log(error));
 
-    ///const http = new XMLHttpRequest();
-    ///http.open("GET", heroApiENDPOINT+HeroApiAccessToken+string);
-    ///http.send();
 
-    ///http.onload = () => console.log(http.responseText)
-    /// return fetch(heroApiENDPOINT+HeroApiAccessToken+string, {
-    ///    "method": "GET",
-    ///    }).then(response => this.handleHTTPError(response))
-    ///.then(response => response.json()).then(response => console.log(response))
-    ///.catch(error => console.log(error));
   }
 
   handleHTTPError(response) {
@@ -88,25 +79,25 @@ class HeroIfyModel extends React.Component {
   setHero(hero) {
     this.hero = hero;
     this.refreshLocalStore();
-    console.log(this.hero);
+    
   }
 
   setMood(mood) {
     this.playlistAttributes.mood = mood;
     this.refreshLocalStore();
-    console.log(this.playlistAttributes);
+    
   }
 
   setLength(length) {
     this.playlistAttributes.length = length;
     this.refreshLocalStore();
-    console.log(this.playlistAttributes);
+    
   }
 
   setEnergy(energy) {
     this.playlistAttributes.energy = energy;
     this.refreshLocalStore();
-    console.log(this.playlistAttributes);
+    
   }
 
   getHeroName() {
@@ -177,7 +168,7 @@ class HeroIfyModel extends React.Component {
     spotifyApi
       .getMe()
       .then((response) => (this.playlistAttributes.userID = response.id)); //make own function
-    var playlistObj = spotifyApi
+    playlistObj = spotifyApi
       .createPlaylist({
         userId: this.playlistAttributes.userID,
         name: this.hero.name,
