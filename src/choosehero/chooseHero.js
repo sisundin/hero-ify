@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.css';
-import { Button } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { Image } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import SearchRenderPromise from '../util/searchRenderPromise.js'
@@ -52,10 +52,14 @@ export default class ChooseHero extends React.Component{
         h("p", {class:"copy"}, "Who would you like be rescued from a burning building by today?"),
         h("div", {}, 
             h("div",{className:"divider"},null ),
-            h("div", {className:"searchbox"},
-            <input id="searchInput" placeholder="eg Batman" />,   // free text search box
-            <Button variant="btn btn-success" onClick ={ () => this.update()}>Search!</Button>
-            ),
+            
+            <Form.Group className="searchbox" >
+                <Form.Control id="searchInput" size="lg" type="text" placeholder="eg Batman" />
+                <Button id="searchbutton" variant="btn btn-success" onClick ={ () => this.update()}>Search!</Button>
+            </Form.Group>
+               // free text search box
+            
+            ,
             h("div",{className:"divider"},null ),
             h("div", {id:"searchresult" , className:"searchresult" }, // empty div for search results
             h("span", {},

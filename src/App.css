@@ -99,7 +99,7 @@ table.ProgressBar{
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  width: 30%;
+  width: 300px;
   height: 10px;
   border-collapse:separate;
 }
@@ -117,7 +117,7 @@ td.notcurrentstep{
   border-radius:9px;
   -moz-border-radius:6px;
   height: 100%;
-  background-color: grey;
+  background-color: rgba(212, 205, 205, 0.548);
 }
 
 h1{
@@ -207,7 +207,28 @@ image{
 }
 
 .searchbox{
+  
+  width: 360px;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+ height: 60px;
+  
+}
+
+#searchInput{
+  width: 250px;
+height: 40px;
+float: left;
+position: absolute;
+}
+
+#searchbutton{
+  margin-top: auto;
+  margin-bottom: auto;
+  float: right;
+  width: 60;
+  height: 40px;
 }
 
 .Herocard {
