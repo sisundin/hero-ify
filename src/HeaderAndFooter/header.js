@@ -36,12 +36,17 @@ const h = React.createElement;
 
         }
 
-        RenderProgress(){
+        RenderProgress(){ 
             let progress = [];
+            if (this.step === "0"){
+              return <div className= "divider"></div>
+            }
+            else{
             this.steps.forEach(val => {
                 if (val <= this.step){progress.push("currentstep")}
                 else {progress.push("notcurrentstep")}
             })
             return progress.map((intication) => <td className={intication}></td>)
+          }
       }
     }

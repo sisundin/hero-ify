@@ -56,8 +56,6 @@ div.outsideDiv{
   
 }
 
-
-
 .tablecentering{
   padding-left: 20%;
   width: 80%;
@@ -107,11 +105,24 @@ td.notcurrentstep{
   background-color: grey;
 }
 
+.wellcomecenter{
+  top:50%;
+  left:50%;
+  text-align: center;
+}
+p.center{
+  text-align: center;
+  width: 400px;
+  font-size: 20px;
+  margin-left:  auto;
+    margin-right: auto;
+}
+
+
 p.closeEx{
   position: absolute;
   top: 10px;
   right:30px;
-
 }
 
 .popup {
@@ -140,9 +151,7 @@ p.FAQbutton{
   position: absolute;
   top: 30px;
   right: 30px;
-
 }
-
 
 image{
   height: 20%;
@@ -155,7 +164,6 @@ image{
   border-color: black;
   text-align: center;
 }
-
 
 @media ( max-width: 400px ){  
   .flexParent{ 
@@ -225,6 +233,7 @@ p{
 }
 
 .copy{font-size: 16px;}
+
 .centered {
   position: fixed;
   top: 50%;
@@ -261,20 +270,13 @@ p{
   line-height: 1,4;
 }
 
-#intro p {
-  font-size: 1.25rem;
-  font-style: italic;
-  margin-top: -0.25rem;
-  text-align: center;
-  width: 400px;
-  margin-left: 55px;
-}
+
 
 #intro img {
   
   max-width: 120px;
   max-height: 120px;
   margin-bottom: -68px;
-  margin-left: 210px;
+  margin-left: 35px;
 
 }
