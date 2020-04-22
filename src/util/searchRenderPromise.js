@@ -27,8 +27,9 @@ export default function SearchRenderPromise({promise, renderData}){
       return h("div", {class:"Herocard"},
       h("div", {class:"divider"},), 
     h("img", {src:nothingfound}, null),
-    h("p",{}, "Nothing found on this search but me...."),
-    h("p",{}, "Try again"),
+    h("div", {class:"divider"},),
+    h("p",{class:"copy"}, "Nothing found on this search but me...."),
+    h("p",{class:"copy"}, "TRY AGAIN!"),
     h("div", {class:"divider"},), 
     )
   }
