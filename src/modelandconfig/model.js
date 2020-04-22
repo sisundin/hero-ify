@@ -5,7 +5,16 @@ import Spotify from "spotify-web-api-js";
 const spotifyApi = new Spotify();
 
 class HeroIfyModel extends React.Component {
-  constructor(hero= {name: "You need to pick a hero!", images: { lg: "no image" }}, playlistAttributes = {userID: "",genres: [],mood: "",energy: "",length: ""}) {
+  constructor(
+    hero = { name: "You need to pick a hero!", images: { lg: "no image" } },
+    playlistAttributes = {
+      userID: "",
+      genres: [],
+      mood: "",
+      energy: "",
+      length: "",
+    }
+  ) {
     super();
     const params = this.getHashParams();
     this.subscribers = [];
@@ -34,7 +43,6 @@ class HeroIfyModel extends React.Component {
     this.subscribers.forEach(function (callback) {
       callback(whatHappened);
     });
-    ;
   }
 
   getHeroData(string) {
@@ -59,9 +67,14 @@ class HeroIfyModel extends React.Component {
     throw Error(response.statusText);
   }
 
-  refreshLocalStore(){
-    localStorage.setItem("playlistModel", 
-        JSON.stringify({hero: this.hero , playlistAttributes: this.playlistAttributes}))
+  refreshLocalStore() {
+    localStorage.setItem(
+      "playlistModel",
+      JSON.stringify({
+        hero: this.hero,
+        playlistAttributes: this.playlistAttributes,
+      })
+    );
   }
 
   /// Sök bara på namn i en sträng
@@ -125,9 +138,9 @@ class HeroIfyModel extends React.Component {
       classical: (powerstats.intelligence / allstats).toFixed(2),
       punk: (powerstats.strength / allstats).toFixed(2),
       pop: (powerstats.speed / allstats).toFixed(2),
-      "lo fi beats": (powerstats.durability / allstats).toFixed(2),
-      "electronic dance": (powerstats.power / allstats).toFixed(2),
-      hip_hop: (powerstats.combat / allstats).toFixed(2),
+      electronic: (powerstats.durability / allstats).toFixed(2),
+      dance: (powerstats.power / allstats).toFixed(2),
+      metal: (powerstats.combat / allstats).toFixed(2),
     };
     this.playlistAttributes.genres = genres;
   }
@@ -192,9 +205,17 @@ class HeroIfyModel extends React.Component {
       uriArray.push(this.getGenreShare(key, value));
     }
 
-    spotifyApi.addTracksToPlaylist({ playlistId: playlistId, uris: uriArray });
+    var heroPlaylist = [];
 
-    return spotifyApi.getPlaylist(playlistId);
+    spotifyApi
+      .addTracksToPlaylist({ playlistId: playlistId, uris: uriArray })
+      .then((response) =>
+        response.forEach((track) => heroPlaylist.push(track))
+      );
+
+    console.log(heroPlaylist);
+
+    return heroPlaylist;
   }
 
   getGenreShare(genre, genre_ratio) {
@@ -205,7 +226,7 @@ class HeroIfyModel extends React.Component {
     var attributes = {
       target_valence: mood,
       target_energy: energy,
-      limit: genre_ratio * length,
+      limit: (genre_ratio * length).toFixed(),
       seed_genres: [genre],
     };
 
@@ -242,9 +263,26 @@ class HeroIfyModel extends React.Component {
   }
 }
 
-const standardsetting = {hero: {name: "You need to pick a hero!", images: { lg: "no image" }}, playlistAttributes : {userID: "",genres: [],mood: "",energy: "",length: ""}}
-const modelString= localStorage.getItem("playlistModel");
-let modelObject= JSON.parse(modelString);
-modelObject?console.log("User data detected"): modelObject= {"hero" :standardsetting.name, "playlistAttributes":standardsetting.playlistAttributes}
-const heroifyModel = new HeroIfyModel(modelObject.hero, modelObject.playlistAttributes);
+const standardsetting = {
+  hero: { name: "You need to pick a hero!", images: { lg: "no image" } },
+  playlistAttributes: {
+    userID: "",
+    genres: [],
+    mood: "",
+    energy: "",
+    length: "",
+  },
+};
+const modelString = localStorage.getItem("playlistModel");
+let modelObject = JSON.parse(modelString);
+modelObject
+  ? console.log("User data detected")
+  : (modelObject = {
+      hero: standardsetting.name,
+      playlistAttributes: standardsetting.playlistAttributes,
+    });
+const heroifyModel = new HeroIfyModel(
+  modelObject.hero,
+  modelObject.playlistAttributes
+);
 export default heroifyModel;
