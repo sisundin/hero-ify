@@ -281,6 +281,7 @@ modelObject
       hero: standardsetting.name,
       playlistAttributes: standardsetting.playlistAttributes,
     });
+    
 const heroifyModel = new HeroIfyModel(
   modelObject.hero,
   modelObject.playlistAttributes
