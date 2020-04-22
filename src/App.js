@@ -26,9 +26,11 @@ class App extends React.Component {
     //HeroIfyModel.searchHero("ironman");
     this.state = {
     }
+    
+  };
     //HeroIfyModel.addYourplaylistToDatabase("test10", "tes10","test10")
     //HeroIfyModel.getOthersPlaylistsfromdatabase(7);
-  }
+  
 
   render () {
     return (
