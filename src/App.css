@@ -112,17 +112,21 @@ td.notcurrentstep{
   background-color: grey;
 }
 
+h1{
+  text-align: center;
+  font-size: 30px;
+}
+
 .wellcomecenter{
-  top:50%;
-  left:50%;
   text-align: center;
 }
 p.center{
+  padding:10px;
   text-align: center;
-  width: 400px;
+  
   font-size: 20px;
   margin-left:  auto;
-    margin-right: auto;
+  margin-right: auto;
 }
 
 
@@ -255,36 +259,3 @@ p {
 }
 
 
-#intro input, #intro select, #intro textarea {
-  color: #ffffff;
-}
-
-#intro a {
-  color: #1b0101;
-}
-
-  #intro a:hover {
-    border-bottom-color: transparent;
-    color: #18bfef !important;
-  }
-
-#intro strong, #intro b {
-  color: #ffffff;
-}
-
-
-#intro h1 {
-  font-size: 6rem;
-  line-height: 1,4;
-}
-
-
-
-#intro img {
-  
-  max-width: 120px;
-  max-height: 120px;
-  margin-bottom: -68px;
-  margin-left: 35px;
-
-}

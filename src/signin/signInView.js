@@ -79,17 +79,18 @@ componentWillUnmount() {
         <div class='wellcomecenter' id="intro">
          
             <p className="center">A hero needs a soundtrack when they are heading out on a mission to save the world.</p>
-            <br></br>
             <p className="center">Pick your hero, set the mood and find out what Spiderman, Wonderwoman or Harry Potter would have in their
             headphones when rescuing humankind from a terrible fate. Enjoy the results in a customized Spotiy playlist!</p>
-          
-          <div class="">
-            {<Button variant="btn btn-success btn-lg" class="btn btn-success btn-lrg">
+            <div className="divider"></div>
+            </div>
+            <div className="divider"></div>
+          <div class="text-center">
+            <Button variant="btn btn-success btn-lg" class="btn btn-success btn-lrg">
               <a class = "white" href='http://localhost:8888/login'> LET'S START </a>
-            </Button>}
+            </Button>
           </div>
           <div className="divider"></div>
-        </div>
+        
       </div>
       )
   }
