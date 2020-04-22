@@ -56,8 +56,6 @@ class HeroIfyModel extends React.Component {
       .then((response) => this.handleHTTPError(response))
       .then((response) => response.json())
       .catch((error) => console.log(error));
-
-
   }
 
   handleHTTPError(response) {
@@ -92,25 +90,21 @@ class HeroIfyModel extends React.Component {
   setHero(hero) {
     this.hero = hero;
     this.refreshLocalStore();
-    
   }
 
   setMood(mood) {
     this.playlistAttributes.mood = mood;
     this.refreshLocalStore();
-    
   }
 
   setLength(length) {
     this.playlistAttributes.length = length;
     this.refreshLocalStore();
-    
   }
 
   setEnergy(energy) {
     this.playlistAttributes.energy = energy;
     this.refreshLocalStore();
-    
   }
 
   getHeroName() {
@@ -199,11 +193,15 @@ class HeroIfyModel extends React.Component {
     console.log(genres);
     var playlistId = this.generatePlaylist().id;
     console.log(playlistId);
-    var uriArray = [];
+    var listOfGenres = [];
 
     for (let [key, value] of Object.entries(genres)) {
-      uriArray.push(this.getGenreShare(key, value));
+      listOfGenres.push(this.getGenreShare(key, value));
     }
+
+    //var uriArray = Array.prototype.concat.apply([], listOfGenres);
+
+    console.log(uriArray);
 
     var heroPlaylist = [];
 
