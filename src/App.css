@@ -114,6 +114,13 @@ td.notcurrentstep{
   background-color: grey;
 }
 
+p.closeEx{
+  position: absolute;
+  top: 10px;
+  right:30px;
+
+}
+
 .popup {
   position: fixed;
   width: 100%;
@@ -133,7 +140,7 @@ td.notcurrentstep{
   bottom: 25%;
   text-align: center;
   margin: auto;
-  background: white;
+  background: #435ceb;
 }
 
 p.FAQbutton{
