@@ -88,7 +88,7 @@ componentWillUnmount() {
             <div className="divider"></div>
           <div class="text-center">
             <Button variant="btn btn-success btn-lg" class="btn btn-success btn-lrg">
-              <a class = "white" href='http://localhost:8888/login'> LET'S START </a>
+              <a class = "white" href='http://localhost:8888/login'> LET'S SAVE THE PLANET </a>
             </Button>
           </div>
           <div className="divider"></div>
