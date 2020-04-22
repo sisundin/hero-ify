@@ -5,21 +5,12 @@ import Spotify from "spotify-web-api-js";
 const spotifyApi = new Spotify();
 
 class HeroIfyModel extends React.Component {
-  constructor() {
+  constructor(hero= {name: "You need to pick a hero!", images: { lg: "no image" }}, playlistAttributes = {userID: "",genres: [],mood: "",energy: "",length: ""}) {
     super();
     const params = this.getHashParams();
     this.subscribers = [];
-    this.hero = {
-      name: "You need to pick a hero!",
-      images: { lg: "no image" },
-    };
-    this.playlistAttributes = {
-      userID: "",
-      genres: [],
-      mood: "",
-      energy: "",
-      length: "",
-    };
+    this.hero = hero;
+    this.playlistAttributes = playlistAttributes;
     firebase.initializeApp(firebaseConfig);
     this.db = firebase.database();
 
@@ -43,6 +34,7 @@ class HeroIfyModel extends React.Component {
     this.subscribers.forEach(function (callback) {
       callback(whatHappened);
     });
+    ;
   }
 
   getHeroData(string) {
@@ -57,16 +49,7 @@ class HeroIfyModel extends React.Component {
       .then((response) => response.json())
       .catch((error) => console.log(error));
 
-    ///const http = new XMLHttpRequest();
-    ///http.open("GET", heroApiENDPOINT+HeroApiAccessToken+string);
-    ///http.send();
 
-    ///http.onload = () => console.log(http.responseText)
-    /// return fetch(heroApiENDPOINT+HeroApiAccessToken+string, {
-    ///    "method": "GET",
-    ///    }).then(response => this.handleHTTPError(response))
-    ///.then(response => response.json()).then(response => console.log(response))
-    ///.catch(error => console.log(error));
   }
 
   handleHTTPError(response) {
@@ -74,6 +57,11 @@ class HeroIfyModel extends React.Component {
       return response;
     }
     throw Error(response.statusText);
+  }
+
+  refreshLocalStore(){
+    localStorage.setItem("playlistModel", 
+        JSON.stringify({hero: this.hero , playlistAttributes: this.playlistAttributes}))
   }
 
   /// Sök bara på namn i en sträng
@@ -90,22 +78,26 @@ class HeroIfyModel extends React.Component {
 
   setHero(hero) {
     this.hero = hero;
-    console.log(this.hero);
+    this.refreshLocalStore();
+    
   }
 
   setMood(mood) {
     this.playlistAttributes.mood = mood;
-    console.log(this.playlistAttributes);
+    this.refreshLocalStore();
+    
   }
 
   setLength(length) {
     this.playlistAttributes.length = length;
-    console.log(this.playlistAttributes);
+    this.refreshLocalStore();
+    
   }
 
   setEnergy(energy) {
     this.playlistAttributes.energy = energy;
-    console.log(this.playlistAttributes);
+    this.refreshLocalStore();
+    
   }
 
   getHeroName() {
@@ -135,7 +127,7 @@ class HeroIfyModel extends React.Component {
       pop: (powerstats.speed / allstats).toFixed(2),
       "lo fi beats": (powerstats.durability / allstats).toFixed(2),
       "electronic dance": (powerstats.power / allstats).toFixed(2),
-      "hip hop": (powerstats.combat / allstats).toFixed(2),
+      hip_hop: (powerstats.combat / allstats).toFixed(2),
     };
     this.playlistAttributes.genres = genres;
   }
@@ -175,8 +167,8 @@ class HeroIfyModel extends React.Component {
     var playlistObj = [];
     spotifyApi
       .getMe()
-      .then((response) => (this.playlistAttributes.userID = response.id));
-    var playlistObj = spotifyApi
+      .then((response) => (this.playlistAttributes.userID = response.id)); //make own function
+    playlistObj = spotifyApi
       .createPlaylist({
         userId: this.playlistAttributes.userID,
         name: this.hero.name,
@@ -189,7 +181,7 @@ class HeroIfyModel extends React.Component {
   }
 
   createHeroPlaylist() {
-    this.heroGenres(this.hero.powerstats);
+    this.heroGenres(this.hero.powerstats); //make own function
     var genres = this.playlistAttributes.genres;
     console.log(genres);
     var playlistId = this.generatePlaylist().id;
@@ -214,14 +206,14 @@ class HeroIfyModel extends React.Component {
       target_valence: mood,
       target_energy: energy,
       limit: genre_ratio * length,
-      seed_genres: { genre },
+      seed_genres: [genre],
     };
 
     spotifyApi.getRecommendations(attributes).then((response) => {
-      for (var i = 0, l = response.items.length; i < l; i++) {
-        genreShare.push(response.items[i].uri);
-      }
+      response.tracks.forEach((track) => genreShare.push(track.uri));
     });
+
+    console.log(genreShare);
 
     return genreShare;
   }
@@ -250,5 +242,9 @@ class HeroIfyModel extends React.Component {
   }
 }
 
-const heroifyModel = new HeroIfyModel();
+const standardsetting = {hero: {name: "You need to pick a hero!", images: { lg: "no image" }}, playlistAttributes : {userID: "",genres: [],mood: "",energy: "",length: ""}}
+const modelString= localStorage.getItem("playlistModel");
+let modelObject= JSON.parse(modelString);
+modelObject?console.log("User data detected"): modelObject= {"hero" :standardsetting.name, "playlistAttributes":standardsetting.playlistAttributes}
+const heroifyModel = new HeroIfyModel(modelObject.hero, modelObject.playlistAttributes);
 export default heroifyModel;

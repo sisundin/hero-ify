@@ -26,9 +26,11 @@ class App extends React.Component {
     //HeroIfyModel.searchHero("ironman");
     this.state = {
     }
+    
+  };
     //HeroIfyModel.addYourplaylistToDatabase("test10", "tes10","test10")
     //HeroIfyModel.getOthersPlaylistsfromdatabase(7);
-  }
+  
 
   render () {
     return (
@@ -59,7 +61,7 @@ class App extends React.Component {
           <div id="chooseLength">
           <Route path="/chooseLength" render={() => <ChooseLength model={this.heromodel}/>}/>
           </div>
-          
+          <div className="divider"></div>
         </React.Fragment>
         </Switch>
         
