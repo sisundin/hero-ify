@@ -201,7 +201,13 @@ class HeroIfyModel extends React.Component {
 
     console.log(listOfGenres);
 
-    var uriArray = listOfGenres.flat();
+    let uriArray = [];
+
+    listOfGenres.forEach((list) => {
+      list.forEach((track) => {
+        uriArray.push(track);
+      });
+    });
 
     console.log(uriArray);
 
