@@ -96,9 +96,10 @@ div#wavecontainor{
 }
 
 table.ProgressBar{
-  padding-left: 20%;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
-  width: 80%;
+  width: 30%;
   height: 10px;
   border-collapse:separate;
 }
