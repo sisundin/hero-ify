@@ -8,7 +8,7 @@ export default function RenderPromise({promise, renderData}){
 
     const [data, setData]=React.useState(null);
     React.useEffect(()=>{setData(null);
-          promise.then(x=>setData(x))
+          promise.then(x=>setData(x)).then(sleeper(1000))
                  .catch(err=>setData({error:err}));
     }, [promise]);  // TODO: return cancel promise on unmount
  
@@ -18,7 +18,11 @@ export default function RenderPromise({promise, renderData}){
  };
  
 
-
+ function sleeper(ms) {
+    return function(x) {
+      return new Promise(resolve => setTimeout(() => resolve(x), ms));
+    };
+  }
 
  
  
