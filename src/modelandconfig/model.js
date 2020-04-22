@@ -5,7 +5,7 @@ import Spotify from "spotify-web-api-js";
 const spotifyApi = new Spotify();
 
 class HeroIfyModel extends React.Component {
-  constructor(hero= {name: "You need to pick a hero!", images: { lg: "no image" }}, playlistAttributes = {userID: "",genres: [{ pop: 0.5, rock: 0.5 }],mood: "",energy: "",length: ""}) {
+  constructor(hero= {name: "You need to pick a hero!", images: { lg: "no image" }}, playlistAttributes = {userID: "",genres: [],mood: "",energy: "",length: ""}) {
     super();
     const params = this.getHashParams();
     this.subscribers = [];
@@ -128,16 +128,17 @@ class HeroIfyModel extends React.Component {
       powerstats.strength +
       powerstats.speed +
       powerstats.durability +
+      powerstats.power +
       powerstats.combat;
     var genres = {
-      classical: powerstats.intelligence / allstats,
-      punk: powerstats.strength / allstats,
-      pop: powerstats.speed / allstats,
-      "lo fi beats": powerstats.durability / allstats,
-      "electronic dance": powerstats.power / allstats,
-      "hip hop": powerstats.combat / allstats,
+      classical: (powerstats.intelligence / allstats).toFixed(2),
+      punk: (powerstats.strength / allstats).toFixed(2),
+      pop: (powerstats.speed / allstats).toFixed(2),
+      "lo fi beats": (powerstats.durability / allstats).toFixed(2),
+      "electronic dance": (powerstats.power / allstats).toFixed(2),
+      "hip hop": (powerstats.combat / allstats).toFixed(2),
     };
-    genres.forEach((genre) => this.playlistAttributes.genres.push(genre));
+    this.playlistAttributes.genres = genres;
   }
 
   //getPlaylists NEEDS RENDER PROMIS
@@ -172,19 +173,24 @@ class HeroIfyModel extends React.Component {
   }
 
   generatePlaylist() {
-    var userID = [];
-    spotifyApi.getMe().then((response) => userID.push(response.id));
-    console.log(userID);
-    var playlistObj = spotifyApi.createPlaylist({
-      playlistId: this.playlistAttributes.userID,
-      name: this.hero.name,
-    });
+    var playlistObj = [];
+    spotifyApi
+      .getMe()
+      .then((response) => (this.playlistAttributes.userID = response.id));
+    var playlistObj = spotifyApi
+      .createPlaylist({
+        userId: this.playlistAttributes.userID,
+        name: this.hero.name,
+      })
+      .then((response) =>
+        response.items.forEach((item) => playlistObj.push(item))
+      );
     console.log(playlistObj);
     return playlistObj;
   }
 
   createHeroPlaylist() {
-    //this.heroGenres(this.hero.powerstats);
+    this.heroGenres(this.hero.powerstats);
     var genres = this.playlistAttributes.genres;
     console.log(genres);
     var playlistId = this.generatePlaylist().id;
@@ -245,7 +251,7 @@ class HeroIfyModel extends React.Component {
   }
 }
 
-const standardsetting = {hero: {name: "You need to pick a hero!", images: { lg: "no image" }}, playlistAttributes : {userID: "",genres: [{ pop: 0.5, rock: 0.5 }],mood: "",energy: "",length: ""}}
+const standardsetting = {hero: {name: "You need to pick a hero!", images: { lg: "no image" }}, playlistAttributes : {userID: "",genres: [],mood: "",energy: "",length: ""}}
 const modelString= localStorage.getItem("playlistModel");
 let modelObject= JSON.parse(modelString);
 modelObject?console.log("User data detected"): modelObject= {"hero" :standardsetting.name, "playlistAttributes":standardsetting.playlistAttributes}
