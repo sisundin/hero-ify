@@ -199,7 +199,9 @@ class HeroIfyModel extends React.Component {
       listOfGenres.push(this.getGenreShare(key, value));
     }
 
-    //var uriArray = Array.prototype.concat.apply([], listOfGenres);
+    console.log(listOfGenres);
+
+    var uriArray = listOfGenres.flat();
 
     console.log(uriArray);
 
