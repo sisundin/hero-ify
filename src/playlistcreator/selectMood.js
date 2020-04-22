@@ -93,6 +93,7 @@ export default class ChooseMood extends React.Component {
             </Button>
           </Link>
         </div>
+        <div className="divider"></div>
       </div>
     );
   }

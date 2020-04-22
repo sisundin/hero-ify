@@ -39,6 +39,7 @@ export default class ShowPlaylist extends React.Component {
             <Link to="/chooseHero"><Button variant="btn btn-success btn-lg" onClick={()=>{
                 }} > CREATE NEW PLAYLIST</Button></Link>
             </div>
+            <div className="divider"></div>
             </div>
         )
     }

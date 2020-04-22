@@ -92,7 +92,6 @@ componentWillUnmount() {
             </Button>
           </div>
           <div className="divider"></div>
-        
       </div>
       )
   }
