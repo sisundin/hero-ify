@@ -172,12 +172,16 @@ class HeroIfyModel extends React.Component {
 
   generatePlaylist() {
     var userID = [];
+    var playlistObj = [];
     spotifyApi.getMe().then((response) => userID.push(response.id));
-    console.log(userID);
-    var playlistObj = spotifyApi.createPlaylist({
-      playlistId: this.playlistAttributes.userID,
-      name: this.hero.name,
-    });
+    var playlistObj = spotifyApi
+      .createPlaylist({
+        userId: userID[0],
+        name: this.hero.name,
+      })
+      .then((response) =>
+        response.items.forEach((item) => playlistObj.push(item))
+      );
     console.log(playlistObj);
     return playlistObj;
   }
