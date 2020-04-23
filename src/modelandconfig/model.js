@@ -6,7 +6,9 @@ const spotifyApi = new Spotify();
 
 class HeroIfyModel extends React.Component {
   constructor(
+    
     hero = { name: "You need to pick a hero!", images: { lg: "no image" } },
+    
     playlistAttributes = {
       userID: "",
       genres: [],
@@ -18,6 +20,7 @@ class HeroIfyModel extends React.Component {
     super();
     const params = this.getHashParams();
     this.subscribers = [];
+    this.trackurilist=[];
     this.hero = hero;
     this.playlistAttributes = playlistAttributes;
     firebase.initializeApp(firebaseConfig);
@@ -171,61 +174,53 @@ class HeroIfyModel extends React.Component {
   }
 
   generatePlaylist() {
-    var playlistObj = [];
-    spotifyApi
-      .getMe()
-      .then((response) => (this.playlistAttributes.userID = response.id)); //make own function
-    playlistObj = spotifyApi
-      .createPlaylist({
-        userId: this.playlistAttributes.userID,
-        name: this.hero.name,
-      })
-      .then((response) =>
-        response.items.forEach((item) => playlistObj.push(item))
-      );
-    console.log(playlistObj);
-    return playlistObj;
+  
+     //make own function
+    return 
+      
+    
   }
 
   createHeroPlaylist() {
     this.heroGenres(this.hero.powerstats); //make own function
     var genres = this.playlistAttributes.genres;
+    console.log("1");
     console.log(genres);
-    var playlistId = this.generatePlaylist().id;
-    console.log(playlistId);
-    var listOfGenres = [];
-
-    for (let [key, value] of Object.entries(genres)) {
-      listOfGenres.push(this.getGenreShare(key, value));
-    }
-
-    console.log(listOfGenres);
-
-    let uriArray = [];
-
-    listOfGenres.forEach((list) => {
-      list.forEach((track) => {
-        uriArray.push(track);
-      });
-    });
-
-    console.log(uriArray);
-
+    Object.entries(genres).forEach( ([key, value]) =>{
+      this.getGenreShare(key, value); 
+    })
+    console.log("3");
+    console.log(this.trackurilist);
     var heroPlaylist = [];
 
     spotifyApi
-      .addTracksToPlaylist({ playlistId: playlistId, uris: uriArray })
-      .then((response) =>
-        response.forEach((track) => heroPlaylist.push(track))
-      );
+      .getMe()
+      .then((response) => {
+        this.playlistAttributes.userID = response.id;
+        console.log("playlist user");
+        console.log(response);
+        console.log(this.playlistAttributes.userID);  
+        let playlist = spotifyApi.createPlaylist({
+          userId: response.id,
+          options:{
+          name: this.hero.name,
+          }
+        })
+        console.log("playlist")
+        console.log(playlist);
+            
+  })
 
-    console.log(heroPlaylist);
+  //
 
+  console.log("5");
+  console.log(heroPlaylist);
+      
     return heroPlaylist;
-  }
+}
 
   getGenreShare(genre, genre_ratio) {
-    var genreShare = [];
+    
     var mood = this.playlistAttributes.mood;
     var energy = this.playlistAttributes.energy;
     var length = this.playlistAttributes.length;
@@ -237,12 +232,11 @@ class HeroIfyModel extends React.Component {
     };
 
     spotifyApi.getRecommendations(attributes).then((response) => {
-      response.tracks.forEach((track) => genreShare.push(track.uri));
+      response.tracks.forEach((track) => this.trackurilist.push(track.uri));
     });
+    
 
-    console.log(genreShare);
-
-    return genreShare;
+    
   }
 
   getHashParams() {
@@ -279,6 +273,7 @@ const standardsetting = {
     length: "",
   },
 };
+
 const modelString = localStorage.getItem("playlistModel");
 let modelObject = JSON.parse(modelString);
 modelObject
