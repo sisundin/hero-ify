@@ -182,6 +182,10 @@ class HeroIfyModel extends React.Component {
     
   }
 
+  getHeroPlaylist(){
+    
+  }
+
   createHeroPlaylist() {
     this.heroGenres(this.hero.powerstats); //make own function
     var genres = this.playlistAttributes.genres;
@@ -206,19 +210,22 @@ class HeroIfyModel extends React.Component {
           response.id,
           {name: this.hero.name,
           public: true}
-        ).then((playlistrespons) => 
-        {
+        ).then((playlistrespons) => {
           playlist = playlistrespons;
-          console.log("här är jag")
-          console.log(playlistrespons);
-          spotifyApi.addTracksToPlaylist(
+          console.log("här är jag");
+          console.log(playlistrespons.id);
+          console.log(typeof playlistrespons.id);
+
+          console.log(this.trackurilist);
+          console.log(typeof this.trackurilist);
+          spotifyApi.addTracksToPlaylist(this.playlistAttributes.userID,
             playlistrespons.id, 
             this.trackurilist 
             ).then((addedtrack) => {
             console.log("tracks was added");
             console.log(addedtrack);
           })
-          
+          this.createdPlaylist = playlist;
         })
         
         })
