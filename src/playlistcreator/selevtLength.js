@@ -39,7 +39,7 @@
         // eslint-disable-next-line no-unused-vars
         const Range = createSliderWithTooltip(Slider.Range);
         const Handle = Slider.Handle;
-        const positionmarks = {10:'A FEW MOMENTS' ,100:"ETERNAL STRUGGLE"};
+        const positionmarks = {10:'A FEW MOMENTS' ,99:"ETERNAL STRUGGLE"};
         const wrapperStyle = { width: 400, margin: 30 };
         const handle = (props) => {
         const { value, dragging, index, ...restProps } = props;
@@ -73,7 +73,7 @@
           LENGTH
           <Slider id = "length"
             min={10} 
-            max={100} 
+            max={99} 
             onChange={this.handleChange}
             defaultValue={length} 
             marks= {positionmarks} 

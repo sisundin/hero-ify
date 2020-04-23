@@ -187,6 +187,7 @@ class HeroIfyModel extends React.Component {
   }
 
   createHeroPlaylist() {
+    this.trackurilist=[];
     this.heroGenres(this.hero.powerstats); //make own function
     var genres = this.playlistAttributes.genres;
     console.log("1");
