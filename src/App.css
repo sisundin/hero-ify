@@ -24,6 +24,7 @@ table.footer{
   position: fixed;
   bottom: 100%;
   width: 50%;
+  
 }
 
 th.footer{
@@ -33,6 +34,8 @@ th.footer{
 
 img.heroify-logo{
   width: 40%;
+  max-width: 500px;
+  min-width: 200px;
 }
 
 
