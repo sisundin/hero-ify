@@ -133,12 +133,12 @@ class HeroIfyModel extends React.Component {
       powerstats.power +
       powerstats.combat;
     var genres = {
-      classical: (powerstats.intelligence / allstats).toFixed(2),
-      punk: (powerstats.strength / allstats).toFixed(2),
-      pop: (powerstats.speed / allstats).toFixed(2),
-      electronic: (powerstats.durability / allstats).toFixed(2),
-      dance: (powerstats.power / allstats).toFixed(2),
-      metal: (powerstats.combat / allstats).toFixed(2),
+      "jazz": (powerstats.intelligence / allstats).toFixed(2),
+      "grunge": (powerstats.strength / allstats).toFixed(2),
+      "minimal-techno": (powerstats.speed / allstats).toFixed(2),
+      "r-n-b": (powerstats.durability / allstats).toFixed(2),
+      "deep-house": (powerstats.power / allstats).toFixed(2),
+      "synth-pop": (powerstats.combat / allstats).toFixed(2),
     };
     this.playlistAttributes.genres = genres;
   }
@@ -182,8 +182,10 @@ class HeroIfyModel extends React.Component {
     
   }
 
-  getHeroPlaylist(){
-    
+  getHeroPlaylist(genres){
+    Object.entries(genres).forEach( ([key, value]) =>{
+      this.getGenreShare(key, value); 
+    })
   }
 
   createHeroPlaylist() {
@@ -192,31 +194,31 @@ class HeroIfyModel extends React.Component {
     var genres = this.playlistAttributes.genres;
     console.log("1");
     console.log(genres);
-    Object.entries(genres).forEach( ([key, value]) =>{
-      this.getGenreShare(key, value); 
-    })
     console.log("3");
     console.log(this.trackurilist);
+    
     var heroPlaylist = [];
     var playlist= "";
-
-    spotifyApi
-      .getMe()
+    
+    spotifyApi.getMe()
       .then((response) => {
         this.playlistAttributes.userID = response.id;
+        this.getHeroPlaylist(genres);
+        sleep(6000);
         console.log("playlist user");
         console.log(response);
         console.log(this.playlistAttributes.userID);  
         spotifyApi.createPlaylist(
           response.id,
-          {name: this.hero.name,
+          {name: this.hero.name + " By Hero-ify",
           public: true}
         ).then((playlistrespons) => {
           playlist = playlistrespons;
           console.log("här är jag");
           console.log(playlistrespons.id);
           console.log(typeof playlistrespons.id);
-
+          this.trackurilist = shuffle(this.trackurilist);
+          sleep(2000);
           console.log(this.trackurilist);
           console.log(typeof this.trackurilist);
           spotifyApi.addTracksToPlaylist(this.playlistAttributes.userID,
@@ -227,9 +229,8 @@ class HeroIfyModel extends React.Component {
             console.log(addedtrack);
           })
           this.createdPlaylist = playlist;
-        })
+        })})
         
-        })
         
             
   
@@ -255,7 +256,10 @@ class HeroIfyModel extends React.Component {
     };
 
     spotifyApi.getRecommendations(attributes).then((response) => {
-      response.tracks.forEach((track) => this.trackurilist.push(track.uri));
+      console.log(response.tracks);
+      response.tracks.forEach((track) => {
+        
+        this.trackurilist.push(track.uri)});
     });
     
 
@@ -311,3 +315,20 @@ const heroifyModel = new HeroIfyModel(
   modelObject.playlistAttributes
 );
 export default heroifyModel;
+
+
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
