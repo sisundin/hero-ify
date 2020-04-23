@@ -25,6 +25,7 @@ class HeroIfyModel extends React.Component {
     this.playlistAttributes = playlistAttributes;
     firebase.initializeApp(firebaseConfig);
     this.db = firebase.database();
+    this.createdplaylist = "";
 
     if (params.access_token) {
       spotifyApi.setAccessToken(params.access_token);
@@ -192,6 +193,7 @@ class HeroIfyModel extends React.Component {
     console.log("3");
     console.log(this.trackurilist);
     var heroPlaylist = [];
+    var playlist= "";
 
     spotifyApi
       .getMe()
@@ -200,16 +202,29 @@ class HeroIfyModel extends React.Component {
         console.log("playlist user");
         console.log(response);
         console.log(this.playlistAttributes.userID);  
-        let playlist = spotifyApi.createPlaylist({
-          userId: response.id,
-          options:{
-          name: this.hero.name,
-          }
+        spotifyApi.createPlaylist(
+          response.id,
+          {name: this.hero.name,
+          public: true}
+        ).then((playlistrespons) => 
+        {
+          playlist = playlistrespons;
+          console.log("här är jag")
+          console.log(playlistrespons);
+          spotifyApi.addTracksToPlaylist(
+            playlistrespons.id, 
+            this.trackurilist 
+            ).then((addedtrack) => {
+            console.log("tracks was added");
+            console.log(addedtrack);
+          })
+          
         })
-        console.log("playlist")
-        console.log(playlist);
+        
+        })
+        
             
-  })
+  
 
   //
 
