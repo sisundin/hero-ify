@@ -11,7 +11,8 @@ import ChooseMood from './playlistcreator/selectMood.js'
 import ChooseEnergy from './playlistcreator/selectenergylevel.js'
 import ShowPlaylist from './playlistcreator/showPlaylist.js'
 import ChooseLength from './playlistcreator/selevtLength'
-
+import ProgressBar from './HeaderAndFooter/header.js';
+import {Link} from 'react-router-dom';
 import {
   BrowserRouter as Router,
   Switch,
@@ -59,6 +60,7 @@ class App extends React.Component {
               <div id="chooseLength">
                 <Route path="/chooseLength" render={() => <ChooseLength model={this.heromodel}/>}/>
               </div>
+            
               <div className="divider"></div>
           </React.Fragment>
         </Switch>
@@ -74,4 +76,22 @@ class App extends React.Component {
   //<Route path="/specPlaylist" render={() => <playlistSettings model={heroifyModel}/>}/>
 }
 
+const NoMatch = () => (
+  <div className="outsideDiv">
+    <ProgressBar step={"0"}/>
+  <div className="centered">
+    <h1>404 No match</h1> 
+    <Link to='/'>
+      <h1>Click here to go to homepage</h1>
+    </Link>
+    </div>
+    </div>
+  
+)
+
+
+
 export default App
+
+
+
