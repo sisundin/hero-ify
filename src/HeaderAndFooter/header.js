@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from "./Logo-hero-ify.png";
 import Faq from "./FAQ.js";
-import {Link} from 'react-router-dom';
+import Back from "./Back";
 
 
 const h = React.createElement;
@@ -13,6 +13,7 @@ const h = React.createElement;
           this.step=props.step;
           this.state = {showFAQ: false};
           this.links = ["/choosehero","/chooseMood", "/chooseEnergy" ,"/chooseLength", "/showPlaylist"]
+          
         }
         
         toggleFAQ() {
@@ -22,16 +23,29 @@ const h = React.createElement;
         }
 
         render() {
+          
           return h("div", {}, h("div",{className:"divider"},null ),
           h("p", {className:"logo-top"}, h("img", {className:"heroify-logo", src:Logo, alt: "Hero-ify"} )),
           <p className = "FAQbutton" onClick={this.toggleFAQ.bind(this)}>FAQ</p>,
+          
+          this.RenderBack(),
+          
           this.RenderProgress(),
-          h("div",{className:"divider"},null ),h("div", {className:"FAQ"}, this.state.showFAQ ? 
+          h("div",{className:"divider"},null ),
+          h("div", {className:"FAQ"}, this.state.showFAQ ? 
             <Faq
               closeFAQ={this.toggleFAQ.bind(this)}
             />
             : null
           ));
+
+        }
+
+        RenderBack(){
+          if(this.step === "1" || this.step === "0"){ 
+            return null
+          }
+          else {return <Back/>}
 
         }
 

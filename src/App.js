@@ -19,6 +19,7 @@ import {
 } from 'react-router-dom'
 
 
+
 class App extends React.Component {
   constructor (props) {
     super(props)
@@ -37,7 +38,7 @@ class App extends React.Component {
       <div className="body">
         <div className="background">
       </div>
-      <Router>
+      <Router >
           <Switch>
             <React.Fragment>
               <div id="home">
