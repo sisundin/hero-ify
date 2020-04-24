@@ -35,7 +35,7 @@ th.footer{
 img.heroify-logo{
   width: 40%;
   max-width: 500px;
-  min-width: 200px;
+  min-width: 100px;
 }
 
 
@@ -173,8 +173,9 @@ p.FAQbutton{
   position: absolute;
   top: 30px;
   right: 30px;
+  
 }
-.backbutton{
+p.backbutton{
   position: absolute;
   top: 30px;
   left: 30px;

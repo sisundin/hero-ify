@@ -59,7 +59,6 @@ const h = React.createElement;
                 if (val <= this.step){progress.push(<td className="currentstep"></td>)}
                 else {progress.push(<td className="notcurrentstep"></td>)}
             })
-          console.log(progress);
           return (
             <table className= "ProgressBar">
               <tr>{progress}</tr>
