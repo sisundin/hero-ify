@@ -9,8 +9,8 @@ export default class ShowPlaylist extends React.Component {
   constructor(props) {
     super(props);
     this.props = props;
-    this.playlist = this.props.model.createHeroPlaylist();
-    console.log(this.playlist)
+    this.props.model.createHeroPlaylist();
+    
   }
 
   render() {

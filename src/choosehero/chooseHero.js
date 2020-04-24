@@ -55,7 +55,7 @@ export default class ChooseHero extends React.Component{
             
             <Form.Group className="searchbox" >
                 <Form.Control id="searchInput" size="lg" type="text" placeholder="eg Batman" />
-                <Button id="searchbutton" variant="btn btn-success" onClick ={ () => this.update()}>Search!</Button>
+                <Button id="seachbutton" variant="btn btn-success" onClick ={ () => this.update()}>Search!</Button>
             </Form.Group>
                // free text search box
             

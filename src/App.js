@@ -19,6 +19,7 @@ import {
 } from 'react-router-dom'
 
 
+
 class App extends React.Component {
   constructor (props) {
     super(props)
@@ -35,34 +36,31 @@ class App extends React.Component {
   render () {
     return (
       <div className="body">
-      <div className="background">
+        <div className="background">
       </div>
-      <Router>
-        <Switch>
-        <React.Fragment>
-          <div id="home">
-          <Route exact path="/" render={() => <SignInView model={this.heromodel}/>}/>
-          </div>
-          <div id="choosehero">
-          <Route path="/choosehero" render={() => <ChooseHero model={this.heromodel}/>}/>
-          </div>
-          <div id="othersplaylists">
-          <Route path="/othersplaylists" render={() => <LatestPlaylist model={this.heromodel}/>}/>
-          </div>
-          <div id="chooseMood">
-          <Route path="/chooseMood" render={() => <ChooseMood model={this.heromodel}/>}/>
-          </div>
-          <div id="chooseEnergy">
-          <Route path="/chooseEnergy" render={() => <ChooseEnergy model={this.heromodel}/>}/>
-          </div>
-          <div id="showPlaylist">
-          <Route path="/showPlaylist" render={() => <ShowPlaylist model={this.heromodel}/>}/>
-          </div>
-          <div id="chooseLength">
-          <Route path="/chooseLength" render={() => <ChooseLength model={this.heromodel}/>}/>
-          </div>
-          <div className="divider"></div>
-        </React.Fragment>
+      <Router >
+          <Switch>
+            <React.Fragment>
+              <div id="home">
+                <Route exact path="/" render={() => <SignInView model={this.heromodel}/>}/>
+              </div>
+              <div id="choosehero">
+                <Route path="/choosehero" render={() => <ChooseHero model={this.heromodel}/>}/>
+              </div>
+              <div id="chooseMood">
+                <Route path="/chooseMood" render={() => <ChooseMood model={this.heromodel}/>}/>
+              </div>
+              <div id="chooseEnergy">
+                <Route path="/chooseEnergy" render={() => <ChooseEnergy model={this.heromodel}/>}/>
+              </div>
+              <div id="showPlaylist">
+                <Route path="/showPlaylist" render={() => <ShowPlaylist model={this.heromodel}/>}/>
+              </div>
+              <div id="chooseLength">
+                <Route path="/chooseLength" render={() => <ChooseLength model={this.heromodel}/>}/>
+              </div>
+              <div className="divider"></div>
+          </React.Fragment>
         </Switch>
         
         <div id="wavecontainor"><Footer/></div>

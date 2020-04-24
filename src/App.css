@@ -24,6 +24,7 @@ table.footer{
   position: fixed;
   bottom: 100%;
   width: 50%;
+  
 }
 
 th.footer{
@@ -33,6 +34,8 @@ th.footer{
 
 img.heroify-logo{
   width: 40%;
+  max-width: 500px;
+  min-width: 100px;
 }
 
 
@@ -170,6 +173,12 @@ p.FAQbutton{
   position: absolute;
   top: 30px;
   right: 30px;
+  
+}
+p.backbutton{
+  position: absolute;
+  top: 30px;
+  left: 30px;
 }
 
 image{
@@ -237,10 +246,11 @@ float: left;
   transition: 0.3s;
   margin: auto;
   max-width: 400px;
-  background-color: #ffffff;
+  background-color: black;
   border-color: black;
   border-width: 5px;
   border-radius: 5px;
+  color: #ffffff;
 }
 
 /* On mouse-over, add a deeper shadow */
