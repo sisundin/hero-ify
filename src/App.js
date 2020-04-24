@@ -46,9 +46,6 @@ class App extends React.Component {
               <div id="choosehero">
                 <Route path="/choosehero" render={() => <ChooseHero model={this.heromodel}/>}/>
               </div>
-              <div id="othersplaylists">
-                <Route path="/othersplaylists" render={() => <LatestPlaylist model={this.heromodel}/>}/>
-              </div>
               <div id="chooseMood">
                 <Route path="/chooseMood" render={() => <ChooseMood model={this.heromodel}/>}/>
               </div>
