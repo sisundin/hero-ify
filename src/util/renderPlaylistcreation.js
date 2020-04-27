@@ -4,13 +4,18 @@ import spin from './thinkingbatman.gif'
 
 const h = React.createElement;
 
-export default function RenderPlaylistCreation({promise, renderData}){
-
+export default function RenderPlaylistCreation({exicutor, renderData}){
+     
+  
     const [data, setData]=React.useState(null);
     React.useEffect(()=>{setData(null);
-          promise.then(sleeper(3000)).then(x=>setData(x))
+        
+          new Promise((resolve, reject) => {
+              resolve(exicutor);
+              reject("something went wrong")
+          }).then(x=>setData(x))
                  .catch(err=>setData({error:err}));
-    }, [promise]);  // TODO: return cancel promise on unmount
+    }, [exicutor]);  // TODO: return cancel promise on unmount
  
     return  (data===null && Whilerendering)
          || (data !==null && data!==undefined && !data.error && h(renderData, {data}))
@@ -36,7 +41,7 @@ export default function RenderPlaylistCreation({promise, renderData}){
 
   function Whilerendering(){
       h("div", {className:"creatingPlaylist"}, 
-      h("img", {src:spin})
+      h("img", {src:spin}),
       h("h1", {}, "This is not as easy as you think...")
       )
   }

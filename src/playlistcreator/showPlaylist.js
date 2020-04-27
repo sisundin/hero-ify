@@ -11,7 +11,6 @@ export default class ShowPlaylist extends React.Component {
   constructor(props) {
     super(props);
     this.props = props;
-    
     this.state = {showPlaylists: false};
   }
 
@@ -32,10 +31,9 @@ export default class ShowPlaylist extends React.Component {
             <LatestPlaylist closePlaylists={this.togglePlaylists.bind(this)} model = {this.props.model}/>
             : null}
             </div>
-            <renderPlaylistcreation 
-            promise = {this.props.model.createHeroPlaylist()}
-            renderData={({data})=> //STOPPA IN FUNKTIONEN HÄR //}
-            
+            <RenderPlaylistCreation 
+            exicutor = {this.props.model.createHeroPlaylist()}
+            renderData={({data})=> this.createdPlaylistcontainor(data)}
             />
             <p className="vjueHeader"> YOUR PLAYLIST</p>
             <div className="Herocard">
@@ -62,6 +60,12 @@ export default class ShowPlaylist extends React.Component {
             
             </div>
         )
+    }
+
+    createdPlaylistcontainor(playlist){
+      return <Button href={playlist.href}>Click here to get to your playlist</Button>
+      
+
     }
 
 }
