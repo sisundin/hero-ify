@@ -26,7 +26,7 @@ class HeroIfyModel extends React.Component {
     firebase.initializeApp(firebaseConfig);
     this.db = firebase.database();
     this.createdplaylist = "";
-
+    this.toptrackID = [];
     if (params.access_token) {
       spotifyApi.setAccessToken(params.access_token);
     }
@@ -94,6 +94,8 @@ class HeroIfyModel extends React.Component {
   setHero(hero) {
     this.hero = hero;
     this.refreshLocalStore();
+    this.toptrackID = this.getMyTopTracksURI(4);
+    console.log(this.toptrackID);
   }
 
   setMood(mood) {
@@ -104,6 +106,7 @@ class HeroIfyModel extends React.Component {
   setLength(length) {
     this.playlistAttributes.length = length;
     this.refreshLocalStore();
+    
   }
 
   setEnergy(energy) {
@@ -182,42 +185,36 @@ class HeroIfyModel extends React.Component {
     
   }
 
-  getHeroTopSong() {
-    const hero = this.getHeroName();
-    spotifyApi.searchTracks(hero, {limit:1}).then((response) => {
-      console.log(response.tracks);
-      console.log(response.tracks.items[0].uri);
-      const toptrackuri = response.tracks.items[0].uri
-      return toptrackuri
-    });
-  }
-
-
-  getHeroPlaylist(genres){
-    Object.entries(genres).forEach( ([key, value]) =>{
-      this.getGenreShare(key, value); 
+  getHeroPlaylist(genres, topTracks){
+    let topTrackslist = []
+    
+      Object.entries(genres).forEach( ([key, value]) =>{
+      this.getGenreShare(key, value, topTracks); 
     })
+
+   
+    
+    console.log("GetHeroPlaylist is done!")
   }
 
   createHeroPlaylist() {
     this.trackurilist=[];
-    
+    const topTracks = this.toptrackID;
     this.heroGenres(this.hero.powerstats); //make own function
     var genres = this.playlistAttributes.genres;
     console.log("1");
     console.log(genres);
     console.log("3");
     console.log(this.trackurilist);
-   
+    
     var heroPlaylist = [];
     var playlist= "";
-    const topsong = this.getHeroTopSong()
     
     spotifyApi.getMe()
       .then((response) => {
         this.playlistAttributes.userID = response.id;
-        this.getHeroPlaylist(genres);
-        sleep(6000);
+        this.getHeroPlaylist(genres, topTracks);
+        sleep(10000);
         console.log("playlist user");
         console.log(response);
         console.log(this.playlistAttributes.userID);  
@@ -229,19 +226,13 @@ class HeroIfyModel extends React.Component {
           playlist = playlistrespons;
           console.log("här är jag");
           this.addYourplaylistToDatabase(this.hero.name,playlistrespons.external_urls.spotify, playlistrespons.owner.display_name);
-          console.log(playlistrespons.external_urls.spotify);
-          console.log(playlistrespons);
-          console.log(playlistrespons.id);
-          console.log(typeof playlistrespons.id);
-          //this.trackurilist = shuffle(this.trackurilist);
+          let uniqtrackurilist = uniq(this.trackurilist);
+          uniqtrackurilist = shuffle(uniqtrackurilist);
           sleep(2000);
-          console.log(this.trackurilist);
-          console.log(typeof this.trackurilist);
-
-         
+          
           spotifyApi.addTracksToPlaylist(this.playlistAttributes.userID,
             playlistrespons.id, 
-            this.trackurilist 
+            uniqtrackurilist
             ).then((addedtrack) => {
             console.log("tracks was added");
             console.log(addedtrack);
@@ -261,8 +252,7 @@ class HeroIfyModel extends React.Component {
     return heroPlaylist;
 }
 
-  getGenreShare(genre, genre_ratio) {
-    
+  getGenreShare(genre, genre_ratio, topTracks) {
     var mood = this.playlistAttributes.mood;
     var energy = this.playlistAttributes.energy;
     var length = this.playlistAttributes.length;
@@ -271,6 +261,7 @@ class HeroIfyModel extends React.Component {
       target_energy: energy,
       limit: (genre_ratio * length).toFixed(),
       seed_genres: [genre],
+      seed_tracks: topTracks,
     };
 
           const hero = this.getHeroName();
@@ -282,6 +273,7 @@ class HeroIfyModel extends React.Component {
           });
 
     spotifyApi.getRecommendations(attributes).then((response) => {
+      console.log("recomendations: " + genre)
       console.log(response.tracks);
       response.tracks.forEach((track) => {
         
@@ -305,13 +297,32 @@ class HeroIfyModel extends React.Component {
     return hashParams;
   }
 
-  getMyTopTracks() {
+  getMyTopTracksURI(limitoftracks = 5) {
     var alltrackstoptracks = [];
-    spotifyApi.getMyTopTracks({ limit: 100 }).then((response) => {
+    var topTrackslist = [];
+    spotifyApi.getMyTopTracks({ limit: limitoftracks }).then((response) => {
+      console.log(response);
+      for (var i = 0, l = response.items.length; i < l; i++) {
+        alltrackstoptracks.push(response.items[i]);
+      }
+    }).then(()=> {
+      alltrackstoptracks.forEach((track) => topTrackslist.push(track.id))
+
+    })
+    console.log("topTracksURI Done");
+    
+    return topTrackslist;
+  }
+
+
+  getMyTopTracks(limitoftracks = 5) {
+    var alltrackstoptracks = [];
+    spotifyApi.getMyTopTracks({ limit: limitoftracks }).then((response) => {
       for (var i = 0, l = response.items.length; i < l; i++) {
         alltrackstoptracks.push(response.items[i]);
       }
     });
+    console.log("topTracksDone");
     return alltrackstoptracks;
   }
 }
@@ -357,4 +368,16 @@ function shuffle(a) {
       [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
+}
+
+function uniq(a) {
+    var prims = {"boolean":{}, "number":{}, "string":{}}, objs = [];
+
+    return a.filter(function(item) {
+        var type = typeof item;
+        if(type in prims)
+            return prims[type].hasOwnProperty(item) ? false : (prims[type][item] = true);
+        else
+            return objs.indexOf(item) >= 0 ? false : objs.push(item);
+    });
 }
