@@ -17,12 +17,14 @@ export default function LatestPlaylist(props){
         return <div className='popup' >
             
         <div className='popup_inner'>
+        <div className='popup-container'>
         <h1>Other Generated playlists</h1>
         <RenderPromise
         promise = {props.model.getOthersPlaylistsfromdatabase(9)}
         renderData = { ({data}) => rendertable(data)} 
         />
         <p className = "closeEx" onClick={props.closePlaylists}>X</p>
+        </div>
         </div>
     </div>
         

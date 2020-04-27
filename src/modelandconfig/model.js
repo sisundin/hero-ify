@@ -210,7 +210,7 @@ class HeroIfyModel extends React.Component {
         console.log(this.playlistAttributes.userID);  
         spotifyApi.createPlaylist(
           response.id,
-          {name: this.hero.name + " By Hero-ify",
+          {name: this.hero.name + "´s Hero-ify Playlist",
           public: true}
         ).then((playlistrespons) => {
           playlist = playlistrespons;
@@ -220,7 +220,7 @@ class HeroIfyModel extends React.Component {
           console.log(playlistrespons);
           console.log(playlistrespons.id);
           console.log(typeof playlistrespons.id);
-          this.trackurilist = shuffle(this.trackurilist);
+          //this.trackurilist = shuffle(this.trackurilist);
           sleep(2000);
           console.log(this.trackurilist);
           console.log(typeof this.trackurilist);
