@@ -227,7 +227,7 @@ class HeroIfyModel extends React.Component {
           console.log("här är jag");
           this.addYourplaylistToDatabase(this.hero.name,playlistrespons.external_urls.spotify, playlistrespons.owner.display_name);
           let uniqtrackurilist = uniq(this.trackurilist);
-          uniqtrackurilist = shuffle(uniqtrackurilist);
+          //uniqtrackurilist = shuffle(uniqtrackurilist);
           sleep(2000);
           
           spotifyApi.addTracksToPlaylist(this.playlistAttributes.userID,
@@ -238,6 +238,9 @@ class HeroIfyModel extends React.Component {
             console.log(addedtrack);
           })
           this.createdPlaylist = playlist;
+          console.log("cerated playlsit: ");
+          console.log(playlist);
+          return playlist
         })})
         
         
@@ -264,7 +267,7 @@ class HeroIfyModel extends React.Component {
       seed_tracks: topTracks,
     };
 
-          const hero = this.getHeroName();
+    const hero = this.getHeroName();
           spotifyApi.searchTracks(hero, {limit:1}).then((response) => {
             console.log(response.tracks);
             console.log(response.tracks.items[0].uri);
