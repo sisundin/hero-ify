@@ -14,16 +14,17 @@ export default function LatestPlaylist(props){
         }, [props]);
         
       
-        return h("div", {className:"othersPlaylistsTable"}, 
-        
+        return <div className='popup' >
+            
+        <div className='popup_inner'>
+        <h1>Other Generated playlists</h1>
         <RenderPromise
         promise = {props.model.getOthersPlaylistsfromdatabase(9)}
         renderData = { ({data}) => rendertable(data)} 
-        />,
-        h("div", {className:"divider"}),
-        <Button onClick= {() => {}}>Refresh</Button>
-        );
-
+        />
+        <p className = "closeEx" onClick={props.closePlaylists}>X</p>
+        </div>
+    </div>
         
     }
     

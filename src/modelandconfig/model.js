@@ -215,6 +215,9 @@ class HeroIfyModel extends React.Component {
         ).then((playlistrespons) => {
           playlist = playlistrespons;
           console.log("här är jag");
+          this.addYourplaylistToDatabase(this.hero.name,playlistrespons.external_urls.spotify, playlistrespons.owner.display_name);
+          console.log(playlistrespons.external_urls.spotify);
+          console.log(playlistrespons);
           console.log(playlistrespons.id);
           console.log(typeof playlistrespons.id);
           this.trackurilist = shuffle(this.trackurilist);
