@@ -9,7 +9,7 @@ export default class Faq extends React.Component {
           <div className='popup_inner'>
             <h1>FAQ</h1>
             <p></p>
-          <p className = "closeEx"onClick={this.props.closeFAQ}>X</p>
+          <p className = "closeEx" onClick={this.props.closeFAQ}>X</p>
           
           </div>
         </div>

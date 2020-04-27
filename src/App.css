@@ -167,6 +167,10 @@ p.closeEx{
   text-align: center;
   margin: auto;
   background: #435ceb;
+  
+}
+.popup-container {
+  margin: 10px;
 }
 
 p.FAQbutton{
