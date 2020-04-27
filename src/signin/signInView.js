@@ -75,8 +75,8 @@ componentWillUnmount() {
   render () {
     return (
       <div className="outsideDiv">
-        <ProgressBar step={"0"}/>
-        
+        <ProgressBar class="centered" step={"0"}/>
+          <div class= "centered"> </div>
           <div className="Herocard">
           <div className="divider"></div>
             <h1>Hero-ify</h1>
