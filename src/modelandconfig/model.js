@@ -273,7 +273,7 @@ class HeroIfyModel extends React.Component {
       seed_genres: [genre],
     };
 
-              const hero = this.getHeroName();
+          const hero = this.getHeroName();
           spotifyApi.searchTracks(hero, {limit:1}).then((response) => {
             console.log(response.tracks);
             console.log(response.tracks.items[0].uri);

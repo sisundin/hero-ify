@@ -49,7 +49,7 @@ export default class ChooseHero extends React.Component{
         <ProgressBar step={"1"}/>, 
         h("p", {className:"vjueHeader"} , "CHOOSE YOUR HERO"), 
         h("p", {class:"copy"}, "To begin with, choose a hero of your liking."),
-        h("div", {}, 
+        h("div", {},
             h("div",{className:"divider"},null ),
             
             <Form.Group className="searchbox" >
