@@ -40,32 +40,19 @@ class App extends React.Component {
         <div className="background">
       </div>
       <Router >
+      <React.Fragment>
           <Switch>
-            <React.Fragment>
-              <div id="home">
-                <Route exact path="/" render={() => <SignInView model={this.heromodel}/>}/>
-              </div>
-              <div id="choosehero">
-                <Route path="/choosehero" render={() => <ChooseHero model={this.heromodel}/>}/>
-              </div>
-              <div id="chooseMood">
-                <Route path="/chooseMood" render={() => <ChooseMood model={this.heromodel}/>}/>
-              </div>
-              <div id="chooseEnergy">
-                <Route path="/chooseEnergy" render={() => <ChooseEnergy model={this.heromodel}/>}/>
-              </div>
-              <div id="showPlaylist">
-                <Route path="/showPlaylist" render={() => <ShowPlaylist model={this.heromodel}/>}/>
-              </div>
-              <div id="chooseLength">
-                <Route path="/chooseLength" render={() => <ChooseLength model={this.heromodel}/>}/>
-              </div>
-            
+                <Route exact path="/" exact component={() => <SignInView model={this.heromodel}/>}/>
+                <Route path="/choosehero" component={() => <ChooseHero model={this.heromodel}/>}/>
+                <Route path="/chooseMood" component={() => <ChooseMood model={this.heromodel}/>}/>
+                <Route path="/chooseEnergy" component={() => <ChooseEnergy model={this.heromodel}/>}/>
+                <Route path="/showPlaylist" component={() => <ShowPlaylist model={this.heromodel}/>}/>
+                <Route path="/chooseLength" component={() => <ChooseLength model={this.heromodel}/>}/>
+                <Route component={NoMatch}/>
               <div className="divider"></div>
-          </React.Fragment>
         </Switch>
-        
         <div id="wavecontainor"><Footer/></div>
+        </React.Fragment>
       </Router>
       
       </div>
