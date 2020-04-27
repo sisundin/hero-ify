@@ -49,7 +49,6 @@ export default class ChooseHero extends React.Component{
         <ProgressBar step={"1"}/>, 
         h("p", {className:"vjueHeader"} , "CHOOSE YOUR HERO"), 
         h("p", {class:"copy"}, "To begin with, choose a hero of your liking."),
-        h("p", {class:"copy"}, "Who would you like be rescued from a burning building by today?"),
         h("div", {}, 
             h("div",{className:"divider"},null ),
             
