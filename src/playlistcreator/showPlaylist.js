@@ -2,6 +2,7 @@ import React from "react";
 import ProgressBar from "../HeaderAndFooter/header.js";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import RenderPlaylistCreation from '../util/renderPlaylistcreation.js'
 
 import LatestPlaylist from "../othersplaylists/allPlaylistsCreated.js";
 const h = React.createElement;
@@ -10,7 +11,7 @@ export default class ShowPlaylist extends React.Component {
   constructor(props) {
     super(props);
     this.props = props;
-    this.props.model.createHeroPlaylist();
+    
     this.state = {showPlaylists: false};
   }
 
@@ -31,6 +32,11 @@ export default class ShowPlaylist extends React.Component {
             <LatestPlaylist closePlaylists={this.togglePlaylists.bind(this)} model = {this.props.model}/>
             : null}
             </div>
+            <renderPlaylistcreation 
+            promise = {this.props.model.createHeroPlaylist()}
+            renderData={({data})=> //STOPPA IN FUNKTIONEN HÄR //}
+            
+            />
             <p className="vjueHeader"> YOUR PLAYLIST</p>
             <div className="Herocard">
           <div className="divider"></div>
@@ -57,4 +63,5 @@ export default class ShowPlaylist extends React.Component {
             </div>
         )
     }
+
 }

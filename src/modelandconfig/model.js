@@ -82,7 +82,7 @@ class HeroIfyModel extends React.Component {
   /// Sök bara på namn i en sträng
   searchHero(name) {
     let data = this.getHeroData("hero=" + name);
-    console.log(data);
+   
     return data;
   }
   /// Sök bara på id i en sträng
@@ -95,7 +95,7 @@ class HeroIfyModel extends React.Component {
     this.hero = hero;
     this.refreshLocalStore();
     this.toptrackID = this.getMyTopTracksURI(4);
-    console.log(this.toptrackID);
+    
   }
 
   setMood(mood) {
@@ -177,13 +177,6 @@ class HeroIfyModel extends React.Component {
     });
   }
 
-  generatePlaylist() {
-  
-     //make own function
-    return 
-      
-    
-  }
 
   getHeroPlaylist(genres, topTracks){
     let topTrackslist = []
@@ -192,9 +185,7 @@ class HeroIfyModel extends React.Component {
       this.getGenreShare(key, value, topTracks); 
     })
 
-   
-    
-    console.log("GetHeroPlaylist is done!")
+    console.log("GetHeroPlaylist is done!");
   }
 
   createHeroPlaylist() {
