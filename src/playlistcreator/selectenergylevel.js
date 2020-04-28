@@ -1,11 +1,12 @@
 import React from "react";
-import ProgressBar from "../HeaderAndFooter/header.js";
+import ProgressBar from "../components/HeaderAndFooter/header.js";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Tooltip from "rc-tooltip";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import "rc-tooltip/assets/bootstrap.css";
+import HeroDisplay from "../components/createHeroDisplay.js"
 
 export default class ChooseEnergy extends React.Component {
   handleChange = (energy) => {
@@ -58,15 +59,7 @@ export default class ChooseEnergy extends React.Component {
         <p className="copy">What kind of energy level is needed for the mission that {this.props.model.getHeroName()} is set out on today?</p>
         <p className="copy">Is it more of
         a chill help an old lady carry groceries kind of vibe, or more like battling an army of aliens?</p>
-        <div className="Herocard">
-        <div className="divider"></div>
-        <img
-          className="heroPic"
-          src={this.props.model.getHeroImage()}
-          alt="img"
-        ></img>
-        <div className="divider"></div>
-        </div>
+        <HeroDisplay hero={this.props.model.hero}/>
         <div style={wrapperStyle}></div>
         <p className="slider">
           ENERGY
