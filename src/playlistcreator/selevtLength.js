@@ -1,6 +1,6 @@
 
     import React from "react";
-    import ProgressBar from '../HeaderAndFooter/header.js';
+    import ProgressBar from "../components/HeaderAndFooter/header.js";
     import { Button } from 'react-bootstrap'
     import {Link} from 'react-router-dom';
     import Tooltip from 'rc-tooltip';
