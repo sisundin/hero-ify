@@ -176,14 +176,10 @@ class HeroIfyModel extends React.Component {
   getHeroPlaylist(genres, topTracks) {
     let topTrackslist = [];
 
-  getFullPlaylist() {
-    let playlist = this.playlist;
-    console.log(playlist);
-    return playlist
   }
 
   getHeroPlaylist(genres, topTracks){
-    let topTrackslist = []
+    
 
       Object.entries(genres).forEach( ([key, value]) =>{
       this.getGenreShare(key, value, topTracks);
