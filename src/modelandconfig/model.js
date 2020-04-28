@@ -6,9 +6,8 @@ const spotifyApi = new Spotify();
 
 class HeroIfyModel extends React.Component {
   constructor(
-    
     hero = { name: "You need to pick a hero!", images: { lg: "no image" } },
-    
+
     playlistAttributes = {
       userID: "",
       genres: [],
@@ -20,7 +19,7 @@ class HeroIfyModel extends React.Component {
     super();
     const params = this.getHashParams();
     this.subscribers = [];
-    this.trackurilist=[];
+    this.trackurilist = [];
     this.hero = hero;
     this.playlistAttributes = playlistAttributes;
     firebase.initializeApp(firebaseConfig);
@@ -124,7 +123,6 @@ class HeroIfyModel extends React.Component {
   }
 
   heroGenres(powerstats) {
-    /// powerstats = {"intelligence":"81","strength":"40","speed":"29","durability":"55","power":"63","combat":"90"};
     var allstats =
       powerstats.intelligence +
       powerstats.strength +
@@ -133,8 +131,8 @@ class HeroIfyModel extends React.Component {
       powerstats.power +
       powerstats.combat;
     var genres = {
-      "jazz": (powerstats.intelligence / allstats).toFixed(2),
-      "grunge": (powerstats.strength / allstats).toFixed(2),
+      jazz: (powerstats.intelligence / allstats).toFixed(2),
+      grunge: (powerstats.strength / allstats).toFixed(2),
       "minimal-techno": (powerstats.speed / allstats).toFixed(2),
       "r-n-b": (powerstats.durability / allstats).toFixed(2),
       "deep-house": (powerstats.power / allstats).toFixed(2),
@@ -175,76 +173,70 @@ class HeroIfyModel extends React.Component {
   }
 
   generatePlaylist() {
-  
-     //make own function
-    return 
-      
-    
+    //make own function
+    return;
   }
 
-  getHeroPlaylist(genres){
-    Object.entries(genres).forEach( ([key, value]) =>{
-      this.getGenreShare(key, value); 
-    })
+  getHeroPlaylist(genres) {
+    Object.entries(genres).forEach(([key, value]) => {
+      this.getGenreShare(key, value);
+    });
   }
 
   createHeroPlaylist() {
-    this.trackurilist=[];
+    //this.trackurilist = [];
     this.heroGenres(this.hero.powerstats); //make own function
     var genres = this.playlistAttributes.genres;
-    console.log("1");
-    console.log(genres);
-    console.log("3");
-    console.log(this.trackurilist);
-    
+    //console.log("1");
+    //console.log(genres);
+    //console.log("3");
+    //console.log(this.trackurilist);
+
     var heroPlaylist = [];
-    var playlist= "";
-    
-    spotifyApi.getMe()
-      .then((response) => {
-        this.playlistAttributes.userID = response.id;
-        this.getHeroPlaylist(genres);
-        sleep(6000);
-        console.log("playlist user");
-        console.log(response);
-        console.log(this.playlistAttributes.userID);  
-        spotifyApi.createPlaylist(
-          response.id,
-          {name: this.hero.name + " By Hero-ify",
-          public: true}
-        ).then((playlistrespons) => {
-          playlist = playlistrespons;
-          console.log("här är jag");
-          console.log(playlistrespons.id);
-          console.log(typeof playlistrespons.id);
+    var playlistObj = "";
+
+    spotifyApi.getMe().then((response) => {
+      this.playlistAttributes.userID = response.id;
+      this.getHeroPlaylist(genres);
+      //sleep(6000);
+      //console.log("playlist user");
+      //console.log(response);
+      //console.log(this.playlistAttributes.userID);
+      spotifyApi
+        .createPlaylist(response.id, {
+          name: this.hero.name + " by Hero-ify",
+          public: true,
+        })
+        .then((playlistrespons) => {
+          playlistObj = playlistrespons;
+          //console.log("här är jag");
+          //console.log(playlistrespons.id);
+          //console.log(typeof playlistrespons.id);
           this.trackurilist = shuffle(this.trackurilist);
-          sleep(2000);
-          console.log(this.trackurilist);
-          console.log(typeof this.trackurilist);
-          spotifyApi.addTracksToPlaylist(this.playlistAttributes.userID,
-            playlistrespons.id, 
-            this.trackurilist 
-            ).then((addedtrack) => {
-            console.log("tracks was added");
-            console.log(addedtrack);
-          })
-          this.createdPlaylist = playlist;
-        })})
-        
-        
-            
-  
+          //sleep(2000);
+          //console.log(this.trackurilist);
+          //console.log(typeof this.trackurilist);
+          spotifyApi
+            .addTracksToPlaylist(
+              this.playlistAttributes.userID,
+              playlistrespons.id,
+              this.trackurilist
+            )
+            .then((addedtrack) => {
+              console.log("tracks were added");
+              console.log(addedtrack);
+            });
+          this.createdPlaylist = playlistObj;
+        });
+    });
 
-  //
+    //console.log("5");
+    //console.log(heroPlaylist);
 
-  console.log("5");
-  console.log(heroPlaylist);
-      
     return heroPlaylist;
-}
+  }
 
   getGenreShare(genre, genre_ratio) {
-    
     var mood = this.playlistAttributes.mood;
     var energy = this.playlistAttributes.energy;
     var length = this.playlistAttributes.length;
@@ -258,12 +250,9 @@ class HeroIfyModel extends React.Component {
     spotifyApi.getRecommendations(attributes).then((response) => {
       console.log(response.tracks);
       response.tracks.forEach((track) => {
-        
-        this.trackurilist.push(track.uri)});
+        this.trackurilist.push(track.uri);
+      });
     });
-    
-
-    
   }
 
   getHashParams() {
@@ -309,13 +298,12 @@ modelObject
       hero: standardsetting.name,
       playlistAttributes: standardsetting.playlistAttributes,
     });
-    
+
 const heroifyModel = new HeroIfyModel(
   modelObject.hero,
   modelObject.playlistAttributes
 );
 export default heroifyModel;
-
 
 function sleep(milliseconds) {
   const date = Date.now();
@@ -327,8 +315,8 @@ function sleep(milliseconds) {
 
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
 }

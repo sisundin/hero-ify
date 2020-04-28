@@ -7,18 +7,17 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import "rc-tooltip/assets/bootstrap.css";
 
-export default class ChooseMood extends React.Component {
+export default class ChooseLength extends React.Component {
+  handleChange = (length) => {
+    this.setState({ length });
+  };
   constructor(props) {
     super(props);
     this.props = props;
     this.state = {
-      mood: 0.5,
+      length: 50,
     };
   }
-
-  handleChange = (mood) => {
-    this.setState({ mood });
-  };
 
   componentDidMount() {
     this.props.model.addObserver(() => this.update());
@@ -29,12 +28,12 @@ export default class ChooseMood extends React.Component {
   }
 
   render() {
-    const { mood } = this.state;
+    const { length } = this.state;
     const createSliderWithTooltip = Slider.createSliderWithTooltip;
     // eslint-disable-next-line no-unused-vars
     const Range = createSliderWithTooltip(Slider.Range);
     const Handle = Slider.Handle;
-    const positionmarks = { 0: "SAD", 1: "HAPPY" };
+    const positionmarks = { 10: "A FEW MOMENTS", 95: "ETERNAL STRUGGLE" };
     const wrapperStyle = { width: 400, margin: 30 };
     const handle = (props) => {
       const { value, dragging, index, ...restProps } = props;
@@ -53,18 +52,17 @@ export default class ChooseMood extends React.Component {
 
     return (
       <div className="outsideDiv">
-        <ProgressBar step={"2"} />
-        <p className="vieweHeader"> CHOOSE PLAYLIST MOOD</p>
-        <p>{this.props.model.getHeroName()}, great choice!</p>
+        <ProgressBar step={"4"} />
+        <p className="viewHeader"> HOW LONG IS YOUR MISSION</p>
         <p className="copy">
-          Choosing tunes with just the right mood is of essence when creating
-          the perfect save-the-world-playlist.
+          {" "}
+          Okey, so we're almost there. Just hold your horses,{" "}
+          {this.props.model.getHeroName()}, you'll get to stop a train crash in
+          just a minute, we just need to know how long you'll be gone.
         </p>
         <p className="copy">
-          Is {this.props.model.getHeroName()} in the mood for something sad to
-          get them thinking about all that's unfair in the world and all the
-          people that need saving, or is something happy and uplifting more
-          suitable?
+          Are we talking a mission that's done within a few moments, or some
+          kind of eternal struggle?
         </p>
         <div className="Herocard">
           <div className="divider"></div>
@@ -77,32 +75,31 @@ export default class ChooseMood extends React.Component {
         </div>
         <div style={wrapperStyle}></div>
         <p className="slider">
-          MOOD
+          LENGTH
           <Slider
-            id="mood"
-            min={0}
-            max={1}
+            id="length"
+            min={10}
+            max={95}
             onChange={this.handleChange}
-            defaultValue={mood}
+            defaultValue={length}
             marks={positionmarks}
-            step={0.01}
+            step={1}
             handle={handle}
           />
         </p>
         <div className="divider"></div>
         <div class="text-center">
-          <Link to="/chooseEnergy">
+          <Link to="/showPlaylist">
             <Button
               variant="btn btn-success btn-lg"
               onClick={() => {
-                this.props.model.setMood(mood);
+                this.props.model.setLength(length);
               }}
             >
               NEXT
             </Button>
           </Link>
         </div>
-        <div className="divider"></div>
         <div className="divider"></div>
       </div>
     );
