@@ -81,7 +81,7 @@ componentWillUnmount() {
           <div className="divider"></div>
             <h1>Hero-ify</h1>
             <p className="center">A hero needs a soundtrack when they are heading out on a mission to save the world.</p>
-            <p className="center">Pick your hero, set the mood and find out what Spiderman, Wonderwoman or Harry Potter would have in their
+            <p className="center">Find out what Spiderman, Wonderwoman or Harry Potter would have in their
             headphones when rescuing humankind from a terrible fate. Enjoy the results in a customized Spotiy playlist!</p>
             <div className="divider"></div>
             </div>
