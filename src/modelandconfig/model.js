@@ -94,7 +94,6 @@ class HeroIfyModel extends React.Component {
     this.hero = hero;
     this.refreshLocalStore();
     this.toptrackID = this.getMyTopTracksURI(4);
-
   }
 
   setMood(mood) {
@@ -105,7 +104,6 @@ class HeroIfyModel extends React.Component {
   setLength(length) {
     this.playlistAttributes.length = length;
     this.refreshLocalStore();
-
   }
 
   setEnergy(energy) {
@@ -175,19 +173,18 @@ class HeroIfyModel extends React.Component {
     });
   }
 
+  getHeroPlaylist(genres, topTracks) {
+    let topTrackslist = [];
 
-  getHeroPlaylist(genres, topTracks){
-    let topTrackslist = []
-
-      Object.entries(genres).forEach( ([key, value]) =>{
+    Object.entries(genres).forEach(([key, value]) => {
       this.getGenreShare(key, value, topTracks);
-    })
+    });
 
     console.log("GetHeroPlaylist is done!");
   }
 
   createHeroPlaylist() {
-    this.trackurilist=[];
+    this.trackurilist = [];
     const topTracks = this.toptrackID;
     this.heroGenres(this.hero.powerstats); //make own function
     var genres = this.playlistAttributes.genres;
@@ -197,49 +194,53 @@ class HeroIfyModel extends React.Component {
     //console.log(this.trackurilist);
 
     var heroPlaylist = [];
-    var playlist= "";
+    var playlist = "";
 
-    spotifyApi.getMe()
-      .then((response) => {
-        this.playlistAttributes.userID = response.id;
-        this.getHeroPlaylist(genres, topTracks);
-        sleep(10000);
-        console.log("playlist user");
-        console.log(response);
-        console.log(this.playlistAttributes.userID);
-        spotifyApi.createPlaylist(
-          response.id,
-          {name: this.hero.name + "´s Hero-ify Playlist",
-          public: true}
-        ).then((playlistrespons) => {
+    spotifyApi.getMe().then((response) => {
+      this.playlistAttributes.userID = response.id;
+      this.getHeroPlaylist(genres, topTracks);
+      sleep(10000);
+      console.log("playlist user");
+      console.log(response);
+      console.log(this.playlistAttributes.userID);
+      spotifyApi
+        .createPlaylist(response.id, {
+          name: this.hero.name + "´s Hero-ify Playlist",
+          public: true,
+        })
+        .then((playlistrespons) => {
           playlist = playlistrespons;
           console.log("här är jag");
-          this.addYourplaylistToDatabase(this.hero.name,playlistrespons.external_urls.spotify, playlistrespons.owner.display_name);
+          this.addYourplaylistToDatabase(
+            this.hero.name,
+            playlistrespons.external_urls.spotify,
+            playlistrespons.owner.display_name
+          );
           let uniqtrackurilist = uniq(this.trackurilist);
           //uniqtrackurilist = shuffle(uniqtrackurilist);
           sleep(2000);
 
-          spotifyApi.addTracksToPlaylist(this.playlistAttributes.userID,
-            playlistrespons.id,
-            uniqtrackurilist
-            ).then((addedtrack) => {
-            console.log("tracks was added");
-            console.log(addedtrack);
-          })
+          spotifyApi
+            .addTracksToPlaylist(
+              this.playlistAttributes.userID,
+              playlistrespons.id,
+              uniqtrackurilist
+            )
+            .then((addedtrack) => {
+              console.log("tracks was added");
+              console.log(addedtrack);
+            });
           this.createdPlaylist = playlist;
           console.log("cerated playlsit: ");
           console.log(playlist);
-          return playlist
-        })})
+          return playlist;
+        });
+    });
 
+    //
 
-
-
-
-  //
-
-  console.log("5");
-  console.log(heroPlaylist);
+    console.log("5");
+    console.log(heroPlaylist);
 
     return heroPlaylist;
   }
@@ -257,15 +258,15 @@ class HeroIfyModel extends React.Component {
     };
 
     const hero = this.getHeroName();
-          spotifyApi.searchTracks(hero, {limit:1}).then((response) => {
-            console.log(response.tracks);
-            console.log(response.tracks.items[0].uri);
-            const toptrackuri = response.tracks.items[0].uri
-            this.trackurilist.push(toptrackuri)
-          });
+    spotifyApi.searchTracks(hero, { limit: 1 }).then((response) => {
+      console.log(response.tracks);
+      console.log(response.tracks.items[0].uri);
+      const toptrackuri = response.tracks.items[0].uri;
+      this.trackurilist.push(toptrackuri);
+    });
 
     spotifyApi.getRecommendations(attributes).then((response) => {
-      console.log("recomendations: " + genre)
+      console.log("recomendations: " + genre);
       console.log(response.tracks);
       response.tracks.forEach((track) => {
         this.trackurilist.push(track.uri);
@@ -289,20 +290,21 @@ class HeroIfyModel extends React.Component {
   getMyTopTracksURI(limitoftracks = 5) {
     var alltrackstoptracks = [];
     var topTrackslist = [];
-    spotifyApi.getMyTopTracks({ limit: limitoftracks }).then((response) => {
-      console.log(response);
-      for (var i = 0, l = response.items.length; i < l; i++) {
-        alltrackstoptracks.push(response.items[i]);
-      }
-    }).then(()=> {
-      alltrackstoptracks.forEach((track) => topTrackslist.push(track.id))
-
-    })
+    spotifyApi
+      .getMyTopTracks({ limit: limitoftracks })
+      .then((response) => {
+        console.log(response);
+        for (var i = 0, l = response.items.length; i < l; i++) {
+          alltrackstoptracks.push(response.items[i]);
+        }
+      })
+      .then(() => {
+        alltrackstoptracks.forEach((track) => topTrackslist.push(track.id));
+      });
     console.log("topTracksURI Done");
 
     return topTrackslist;
   }
-
 
   getMyTopTracks(limitoftracks = 5) {
     var alltrackstoptracks = [];
@@ -359,13 +361,15 @@ function shuffle(a) {
 }
 
 function uniq(a) {
-    var prims = {"boolean":{}, "number":{}, "string":{}}, objs = [];
+  var prims = { boolean: {}, number: {}, string: {} },
+    objs = [];
 
-    return a.filter(function(item) {
-        var type = typeof item;
-        if(type in prims)
-            return prims[type].hasOwnProperty(item) ? false : (prims[type][item] = true);
-        else
-            return objs.indexOf(item) >= 0 ? false : objs.push(item);
-    });
+  return a.filter(function (item) {
+    var type = typeof item;
+    if (type in prims)
+      return prims[type].hasOwnProperty(item)
+        ? false
+        : (prims[type][item] = true);
+    else return objs.indexOf(item) >= 0 ? false : objs.push(item);
+  });
 }
