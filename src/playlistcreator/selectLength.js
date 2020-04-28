@@ -1,23 +1,21 @@
 import React from "react";
-import ProgressBar from "../components/HeaderAndFooter/header.js";
+import ProgressBar from "../HeaderAndFooter/header.js";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Tooltip from "rc-tooltip";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import "rc-tooltip/assets/bootstrap.css";
-import HeroDisplay from "../components/createHeroDisplay.js"
 
-export default class ChooseEnergy extends React.Component {
-  handleChange = (energy) => {
-    this.setState({ energy });
+export default class ChooseLength extends React.Component {
+  handleChange = (length) => {
+    this.setState({ length });
   };
-
   constructor(props) {
     super(props);
     this.props = props;
     this.state = {
-      energy: 0.5,
+      length: 50,
     };
   }
 
@@ -30,12 +28,12 @@ export default class ChooseEnergy extends React.Component {
   }
 
   render() {
-    const { energy } = this.state;
+    const { length } = this.state;
     const createSliderWithTooltip = Slider.createSliderWithTooltip;
     // eslint-disable-next-line no-unused-vars
     const Range = createSliderWithTooltip(Slider.Range);
     const Handle = Slider.Handle;
-    const positionmarks = { 0: "OLD LADY", 1: "ALIENS" };
+    const positionmarks = { 10: "A FEW MOMENTS", 95: "ETERNAL STRUGGLE" };
     const wrapperStyle = { width: 400, margin: 30 };
     const handle = (props) => {
       const { value, dragging, index, ...restProps } = props;
@@ -54,40 +52,54 @@ export default class ChooseEnergy extends React.Component {
 
     return (
       <div className="outsideDiv">
-        <ProgressBar step={"3"} />
-        <p className="vjueHeader"> CHOOSE PLAYLIST ENERGY</p>
-        <p className="copy">What kind of energy level is needed for the mission that {this.props.model.getHeroName()} is set out on today?</p>
-        <p className="copy">Is it more of
-        a chill help an old lady carry groceries kind of vibe, or more like battling an army of aliens?</p>
-        <HeroDisplay hero={this.props.model.hero}/>
+        <ProgressBar step={"4"} />
+        <p className="viewHeader"> HOW LONG IS YOUR MISSION</p>
+        <p className="copy">
+          {" "}
+          Okey, so we're almost there. Just hold your horses,{" "}
+          {this.props.model.getHeroName()}, you'll get to stop a train crash in
+          just a minute, we just need to know how long you'll be gone.
+        </p>
+        <p className="copy">
+          Are we talking a mission that's done within a few moments, or some
+          kind of eternal struggle?
+        </p>
+        <div className="Herocard">
+          <div className="divider"></div>
+          <img
+            className="heroPic"
+            src={this.props.model.getHeroImage()}
+            alt="img"
+          ></img>
+          <div className="divider"></div>
+        </div>
         <div style={wrapperStyle}></div>
         <p className="slider">
-          ENERGY
+          LENGTH
           <Slider
-            id="energy"
-            min={0}
-            max={1}
+            id="length"
+            min={10}
+            max={95}
             onChange={this.handleChange}
-            defaultValue={energy}
+            defaultValue={length}
             marks={positionmarks}
-            step={0.01}
+            step={1}
             handle={handle}
           />
         </p>
         <div className="divider"></div>
         <div class="text-center">
-          <Link to="/chooseLength">
+          <Link to="/showPlaylist">
             <Button
               variant="btn btn-success btn-lg"
               onClick={() => {
-                this.props.model.setEnergy(energy);
+                this.props.model.setLength(length);
               }}
             >
               NEXT
             </Button>
           </Link>
         </div>
-        <div className="divider"></div>
         <div className="divider"></div>
       </div>
     );

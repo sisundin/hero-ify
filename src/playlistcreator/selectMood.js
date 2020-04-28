@@ -1,11 +1,12 @@
 import React from "react";
-import ProgressBar from "../HeaderAndFooter/header.js";
+import ProgressBar from "../components/HeaderAndFooter/header.js";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Tooltip from "rc-tooltip";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import "rc-tooltip/assets/bootstrap.css";
+import HeroDisplay from "../components/createHeroDisplay.js"
 
 export default class ChooseMood extends React.Component {
   constructor(props) {
@@ -54,18 +55,12 @@ export default class ChooseMood extends React.Component {
     return (
       <div className="outsideDiv">
         <ProgressBar step={"2"} />
-        <p className="vjueHeader"> CHOOSE PLAYLIST MOOD</p>
+        <p className="vieweHeader"> CHOOSE PLAYLIST MOOD</p>
         <p>{this.props.model.getHeroName()}, great choice!</p>
         <p className="copy">Choosing tunes with just the right mood is of essence when creating the perfect save-the-world-playlist.</p>
         <p className="copy">Is {this.props.model.getHeroName()} in the mood for something sad to get them thinking about all that's unfair in the world
         and all the people that need saving, or is something happy and uplifting more suitable?</p>
-        <div className="Herocard">
-          <div className="divider"></div>
-        <img
-          className="heroPic"
-          src={this.props.model.getHeroImage()}
-          alt="img"
-        ></img><div className="divider"></div></div>
+        <HeroDisplay hero={this.props.model.hero}/>
         <div style={wrapperStyle}></div>
         <p className="slider">
           MOOD
