@@ -185,6 +185,12 @@ class HeroIfyModel extends React.Component {
     
   }
 
+  getFullPlaylist() {
+    let playlist = this.playlist;
+    console.log(playlist);
+    return playlist
+  }
+
   getHeroPlaylist(genres, topTracks){
     let topTrackslist = []
     
@@ -238,7 +244,7 @@ class HeroIfyModel extends React.Component {
             console.log(addedtrack);
           })
           this.createdPlaylist = playlist;
-          console.log("cerated playlsit: ");
+          console.log("created playlist: ");
           console.log(playlist);
           return playlist
         })})

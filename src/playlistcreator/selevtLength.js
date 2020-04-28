@@ -72,8 +72,8 @@
         <p className="slider">
           LENGTH
           <Slider id = "length"
-            min={10} 
-            max={95} 
+            min={8} 
+            max={40} 
             onChange={this.handleChange}
             defaultValue={length} 
             marks= {positionmarks} 

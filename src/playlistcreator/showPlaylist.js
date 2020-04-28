@@ -38,23 +38,31 @@ export default class ShowPlaylist extends React.Component {
             <div className="divider"></div></div>
             <div style={wrapperStyle} className="divider"></div>
             <p className="copy"> 
-            Congratulations! This is {this.props.model.getHeroName()}'s perfect Spotify playlist. Listen to it and dream of saving the world!</p>
-            <p className="copy">Share it with your friends, or create a new one. A hero never runs out
-            of missions!
-            </p>
+            Congratulations! This is {this.props.model.getHeroName()}'s perfect Spotify playlist </p>
             <div className="divider"></div>
            
             
             <div class="text-center">
-            <Button onClick={this.togglePlaylists.bind(this)}>Show playlsits created with Hero-ify</Button>
+            <Button onClick={this.togglePlaylists.bind(this)}>Show other playlsits created with Hero-ify</Button>
             <div className="divider"></div>
             <Link to="/chooseHero"><Button variant="btn btn-success btn-lg" onClick={()=>{
-                }} > CREATE NEW PLAYLIST</Button></Link>
+            }} > CREATE NEW PLAYLIST</Button></Link>
             </div>
             <div className="divider"></div>
             <div className="divider"></div>
             
             </div>
         )
+    }
+
+    getYourPLaylist() {
+      return (
+        <div class="text-center">
+        <Button></Button>
+        <Link to={this.props.model.createHeroPlaylist().items.spotify}>
+        <Button variant="btn btn-success btn-lg">
+          CHECK OUT YOUR PLAYLIST </Button></Link>
+            </div>
+      )
     }
 }
