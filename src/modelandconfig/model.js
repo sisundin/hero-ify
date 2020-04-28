@@ -176,7 +176,16 @@ class HeroIfyModel extends React.Component {
   getHeroPlaylist(genres, topTracks) {
     let topTrackslist = [];
 
-    Object.entries(genres).forEach(([key, value]) => {
+  getFullPlaylist() {
+    let playlist = this.playlist;
+    console.log(playlist);
+    return playlist
+  }
+
+  getHeroPlaylist(genres, topTracks){
+    let topTrackslist = []
+
+      Object.entries(genres).forEach( ([key, value]) =>{
       this.getGenreShare(key, value, topTracks);
     });
 
@@ -231,7 +240,7 @@ class HeroIfyModel extends React.Component {
               console.log(addedtrack);
             });
           this.createdPlaylist = playlist;
-          console.log("cerated playlsit: ");
+          console.log("created playlist: ");
           console.log(playlist);
           return playlist;
         });
