@@ -1,17 +1,17 @@
 import React from 'react'
 import './App.css'
-import HeroIfyModel from './modelandconfig/model.js'
-import Footer from './HeaderAndFooter/footer.js'
-import SignInView from './signin/signInView.js'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import ChooseHero from './choosehero/chooseHero'
-import LatestPlaylist from './othersplaylists/allPlaylistsCreated.js'
+import HeroIfyModel from './modelandconfig/model.js';
+import Footer from './components/HeaderAndFooter/footer.js';
+import SignInView from './signin/signInView.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ChooseHero from './choosehero/chooseHero';
+
 //import PlaylistSettings from './playlistcreator/specYourPlaylist';
-import ChooseMood from './playlistcreator/selectMood.js'
-import ChooseEnergy from './playlistcreator/selectenergylevel.js'
-import ShowPlaylist from './playlistcreator/showPlaylist.js'
-import ChooseLength from './playlistcreator/selevtLength'
-import ProgressBar from './HeaderAndFooter/header.js';
+import ChooseMood from './playlistcreator/selectMood.js';
+import ChooseEnergy from './playlistcreator/selectenergylevel.js';
+import ShowPlaylist from './playlistcreator/showPlaylist.js';
+import ChooseLength from './playlistcreator/selevtLength';
+import ProgressBar from './components/HeaderAndFooter/header.js';
 import {Link} from 'react-router-dom';
 import {
   BrowserRouter as Router,

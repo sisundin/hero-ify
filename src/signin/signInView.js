@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Spotify from 'spotify-web-api-js'
 import { Button } from 'react-bootstrap'
-import ProgressBar from "../HeaderAndFooter/header.js";
+import ProgressBar from "../components/HeaderAndFooter/header.js";
 const spotifyApi = new Spotify()
 
 export default class SignInView extends Component {
