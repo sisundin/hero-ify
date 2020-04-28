@@ -25,7 +25,7 @@ class HeroIfyModel extends React.Component {
     firebase.initializeApp(firebaseConfig);
     this.db = firebase.database();
     this.createdplaylist = "";
-
+    this.toptrackID = [];
     if (params.access_token) {
       spotifyApi.setAccessToken(params.access_token);
     }
@@ -81,7 +81,7 @@ class HeroIfyModel extends React.Component {
   /// Sök bara på namn i en sträng
   searchHero(name) {
     let data = this.getHeroData("hero=" + name);
-    console.log(data);
+
     return data;
   }
   /// Sök bara på id i en sträng
@@ -93,6 +93,8 @@ class HeroIfyModel extends React.Component {
   setHero(hero) {
     this.hero = hero;
     this.refreshLocalStore();
+    this.toptrackID = this.getMyTopTracksURI(4);
+
   }
 
   setMood(mood) {
@@ -103,6 +105,7 @@ class HeroIfyModel extends React.Component {
   setLength(length) {
     this.playlistAttributes.length = length;
     this.refreshLocalStore();
+
   }
 
   setEnergy(energy) {
@@ -172,19 +175,20 @@ class HeroIfyModel extends React.Component {
     });
   }
 
-  generatePlaylist() {
-    //make own function
-    return;
-  }
 
-  getHeroPlaylist(genres) {
-    Object.entries(genres).forEach(([key, value]) => {
-      this.getGenreShare(key, value);
-    });
+  getHeroPlaylist(genres, topTracks){
+    let topTrackslist = []
+
+      Object.entries(genres).forEach( ([key, value]) =>{
+      this.getGenreShare(key, value, topTracks);
+    })
+
+    console.log("GetHeroPlaylist is done!");
   }
 
   createHeroPlaylist() {
-    //this.trackurilist = [];
+    this.trackurilist=[];
+    const topTracks = this.toptrackID;
     this.heroGenres(this.hero.powerstats); //make own function
     var genres = this.playlistAttributes.genres;
     //console.log("1");
@@ -193,50 +197,54 @@ class HeroIfyModel extends React.Component {
     //console.log(this.trackurilist);
 
     var heroPlaylist = [];
-    var playlistObj = "";
+    var playlist= "";
 
-    spotifyApi.getMe().then((response) => {
-      this.playlistAttributes.userID = response.id;
-      this.getHeroPlaylist(genres);
-      //sleep(6000);
-      //console.log("playlist user");
-      //console.log(response);
-      //console.log(this.playlistAttributes.userID);
-      spotifyApi
-        .createPlaylist(response.id, {
-          name: this.hero.name + " by Hero-ify",
-          public: true,
-        })
-        .then((playlistrespons) => {
-          playlistObj = playlistrespons;
-          //console.log("här är jag");
-          //console.log(playlistrespons.id);
-          //console.log(typeof playlistrespons.id);
-          this.trackurilist = shuffle(this.trackurilist);
-          //sleep(2000);
-          //console.log(this.trackurilist);
-          //console.log(typeof this.trackurilist);
-          spotifyApi
-            .addTracksToPlaylist(
-              this.playlistAttributes.userID,
-              playlistrespons.id,
-              this.trackurilist
-            )
-            .then((addedtrack) => {
-              console.log("tracks were added");
-              console.log(addedtrack);
-            });
-          this.createdPlaylist = playlistObj;
-        });
-    });
+    spotifyApi.getMe()
+      .then((response) => {
+        this.playlistAttributes.userID = response.id;
+        this.getHeroPlaylist(genres, topTracks);
+        sleep(10000);
+        console.log("playlist user");
+        console.log(response);
+        console.log(this.playlistAttributes.userID);
+        spotifyApi.createPlaylist(
+          response.id,
+          {name: this.hero.name + "´s Hero-ify Playlist",
+          public: true}
+        ).then((playlistrespons) => {
+          playlist = playlistrespons;
+          console.log("här är jag");
+          this.addYourplaylistToDatabase(this.hero.name,playlistrespons.external_urls.spotify, playlistrespons.owner.display_name);
+          let uniqtrackurilist = uniq(this.trackurilist);
+          //uniqtrackurilist = shuffle(uniqtrackurilist);
+          sleep(2000);
 
-    //console.log("5");
-    //console.log(heroPlaylist);
+          spotifyApi.addTracksToPlaylist(this.playlistAttributes.userID,
+            playlistrespons.id,
+            uniqtrackurilist
+            ).then((addedtrack) => {
+            console.log("tracks was added");
+            console.log(addedtrack);
+          })
+          this.createdPlaylist = playlist;
+          console.log("cerated playlsit: ");
+          console.log(playlist);
+          return playlist
+        })})
+
+
+
+
+
+  //
+
+  console.log("5");
+  console.log(heroPlaylist);
 
     return heroPlaylist;
   }
 
-  getGenreShare(genre, genre_ratio) {
+  getGenreShare(genre, genre_ratio, topTracks) {
     var mood = this.playlistAttributes.mood;
     var energy = this.playlistAttributes.energy;
     var length = this.playlistAttributes.length;
@@ -245,9 +253,19 @@ class HeroIfyModel extends React.Component {
       target_energy: energy,
       limit: (genre_ratio * length).toFixed(),
       seed_genres: [genre],
+      seed_tracks: topTracks,
     };
 
+    const hero = this.getHeroName();
+          spotifyApi.searchTracks(hero, {limit:1}).then((response) => {
+            console.log(response.tracks);
+            console.log(response.tracks.items[0].uri);
+            const toptrackuri = response.tracks.items[0].uri
+            this.trackurilist.push(toptrackuri)
+          });
+
     spotifyApi.getRecommendations(attributes).then((response) => {
+      console.log("recomendations: " + genre)
       console.log(response.tracks);
       response.tracks.forEach((track) => {
         this.trackurilist.push(track.uri);
@@ -268,13 +286,32 @@ class HeroIfyModel extends React.Component {
     return hashParams;
   }
 
-  getMyTopTracks() {
+  getMyTopTracksURI(limitoftracks = 5) {
     var alltrackstoptracks = [];
-    spotifyApi.getMyTopTracks({ limit: 100 }).then((response) => {
+    var topTrackslist = [];
+    spotifyApi.getMyTopTracks({ limit: limitoftracks }).then((response) => {
+      console.log(response);
+      for (var i = 0, l = response.items.length; i < l; i++) {
+        alltrackstoptracks.push(response.items[i]);
+      }
+    }).then(()=> {
+      alltrackstoptracks.forEach((track) => topTrackslist.push(track.id))
+
+    })
+    console.log("topTracksURI Done");
+
+    return topTrackslist;
+  }
+
+
+  getMyTopTracks(limitoftracks = 5) {
+    var alltrackstoptracks = [];
+    spotifyApi.getMyTopTracks({ limit: limitoftracks }).then((response) => {
       for (var i = 0, l = response.items.length; i < l; i++) {
         alltrackstoptracks.push(response.items[i]);
       }
     });
+    console.log("topTracksDone");
     return alltrackstoptracks;
   }
 }
@@ -319,4 +356,16 @@ function shuffle(a) {
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
+}
+
+function uniq(a) {
+    var prims = {"boolean":{}, "number":{}, "string":{}}, objs = [];
+
+    return a.filter(function(item) {
+        var type = typeof item;
+        if(type in prims)
+            return prims[type].hasOwnProperty(item) ? false : (prims[type][item] = true);
+        else
+            return objs.indexOf(item) >= 0 ? false : objs.push(item);
+    });
 }

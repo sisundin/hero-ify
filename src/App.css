@@ -31,7 +31,7 @@ th.footer {
 img.heroify-logo {
   width: 40%;
   max-width: 500px;
-  min-width: 200px;
+  min-width: 100px;
 }
 
 .flexParent {
@@ -158,12 +158,34 @@ p.closeEx {
   text-align: center;
   margin: auto;
   background: #435ceb;
+  
+}
+.popup-container {
+  margin: 10px;
 }
 
 p.FAQbutton {
   position: absolute;
   top: 30px;
   right: 30px;
+  
+}
+p.backbutton{
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+
+.creatingPlaylist{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: #cf3f3f;
 }
 
 image {
@@ -271,7 +293,7 @@ p {
 
 .centered {
   position: fixed;
-  top: 50%;
+  top: 80%;
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
