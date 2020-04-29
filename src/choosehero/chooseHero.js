@@ -61,10 +61,10 @@ export default class ChooseHero extends React.Component{
       return <div><HeroDisplay hero={hero}/>
         <Form.Group className="searchbox" >
             <Form.Control id="searchInput" size="lg" type="text" placeholder="eg Batman" />
-            <Button id="seachbutton" variant="btn btn-success" onClick ={ () => this.update()}>Search!</Button>
+            <Button className="button" id="seachbutton" variant="btn btn-warning" onClick ={ () => this.update()}>Search!</Button>
         </Form.Group>
         <div className="divider"></div>
-        <Link to="/chooseMood"> <div class="text-center"><Button variant="btn btn-success btn-lg" onClick={() => {
+        <Link to="/chooseMood"> <div class="text-center"><Button className="button" variant="btn btn-warning btn-lg" onClick={() => {
             this.props.model.setHero(hero); 
           }}>Select {hero.name}</Button></div></Link>
           <div className="divider"></div>

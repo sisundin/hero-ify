@@ -99,7 +99,8 @@ export default class ChooseEnergy extends React.Component {
         <div class="text-center">
           <Link to="/chooseLength">
             <Button
-              variant="btn btn-success btn-lg"
+              className="button"
+              variant="btn btn-warning btn-lg"
               onClick={() => {
                 this.props.model.setEnergy(energy);
               }}

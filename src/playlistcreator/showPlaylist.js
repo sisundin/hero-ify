@@ -36,16 +36,13 @@ export default class ShowPlaylist extends React.Component {
             exicutor = {this.props.model.createHeroPlaylist()}
             renderData={({data})=> this.createdPlaylistcontainor(data)}
             />
-            <p className="vjueHeader"> YOUR PLAYLIST</p>
+            <p className="vjueHeader"> Your playlist</p>
             <HeroDisplay hero={this.props.model.hero}/>
-            <div style={wrapperStyle} className="divider"></div>
             <p className="copy"> 
             Congratulations! This is {this.props.model.getHeroName()}'s perfect Spotify playlist </p>
             <div className="divider"></div>
-           
-            
             <div class="text-center">
-            <Button onClick={this.togglePlaylists.bind(this)}>Show other playlsits created with Hero-ify</Button>
+            <Button className="button" variant="btn btn-warning btn-lg" onClick={this.togglePlaylists.bind(this)}>Show other playlists created with Hero-ify</Button>
             <div className="divider"></div>
             <Link to="/chooseHero"><Button variant="btn btn-success btn-lg" onClick={()=>{
             }} > CREATE NEW PLAYLIST</Button></Link>

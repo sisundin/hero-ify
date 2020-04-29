@@ -100,7 +100,7 @@ export default class ChooseMood extends React.Component {
           <Link to="/chooseEnergy">
             <Button
               className="button"
-              variant="btn btn-success btn-lg"
+              variant="btn btn-warning btn-lg"
               onClick={() => {
                 this.props.model.setMood(mood);
               }}
