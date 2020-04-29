@@ -212,9 +212,11 @@ image {
 
 .viewHeader {
   margin-left: 0px;
-  font-weight: bold;
   text-align: center;
   font-size: 30px;
+  font-family: proxima-nova, sans-serif;
+  font-style: normal;
+  font-weight: 100;
 }
 
 .divider {
@@ -226,7 +228,7 @@ image {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  height: 40px;
+  height: 20px;
 }
 
 #searchInput {
@@ -248,7 +250,7 @@ image {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   margin: auto;
-  max-width: 400px;
+  max-width: 250px;
   background-color: black;
   border-color: black;
   border-width: 5px;
@@ -277,8 +279,10 @@ img.heroPic {
 
 p {
   text-align: center;
-  font-weight: bold;
-  font-size: 25px;
+  font-weight: bolder;
+  font-size: 50px;
+  font-family: 'Avenir';
+  font-style: condensed;
 }
 
 .next {
@@ -289,6 +293,10 @@ p {
 
 .copy {
   font-size: 16px;
+  font-family: 'Avenir';
+  font-style: normal;
+  font-weight: 100;
+
 }
 
 .centered {
@@ -301,4 +309,10 @@ p {
 
 .white {
   color: #ffffff;
+}
+
+.button {
+  font-family: 'Avenir';
+  font-weight: bold;
+  font-size: 26;
 }

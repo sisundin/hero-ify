@@ -35,7 +35,20 @@ export default class ChooseMood extends React.Component {
     // eslint-disable-next-line no-unused-vars
     const Range = createSliderWithTooltip(Slider.Range);
     const Handle = Slider.Handle;
-    const positionmarks = { 0: "SAD", 1: "HAPPY" };
+    const positionmarks = { 
+      0: {
+        style: {
+          color: 'black',
+        },
+        label: "SAD"
+      },
+      1: {
+        style: {
+          color: 'black',
+        },
+        label: "HAPPY"
+      }
+      };
     const wrapperStyle = { width: 400, margin: 30 };
     const handle = (props) => {
       const { value, dragging, index, ...restProps } = props;
@@ -55,15 +68,14 @@ export default class ChooseMood extends React.Component {
     return (
       <div className="outsideDiv">
         <ProgressBar step={"2"} />
-        <p className="vieweHeader"> CHOOSE PLAYLIST MOOD</p>
-        <p>{this.props.model.getHeroName()}, great choice!</p>
-        <p className="copy">Choosing tunes with just the right mood is of essence when creating the perfect save-the-world-playlist.</p>
-        <p className="copy">Is {this.props.model.getHeroName()} in the mood for something sad to get them thinking about all that's unfair in the world
-        and all the people that need saving, or is something happy and uplifting more suitable?</p>
+        <p className="vieweHeader"> Choose mood</p>
+        <p className="copy"> {this.props.model.getHeroName()}, great choice!
+        <br/> Choosing tunes with just the right mood is of essence when creating the perfect save-the-world-playlist.
+        <br/>Is {this.props.model.getHeroName()} in the mood for something sad to get them thinking about all that's unfair in the world
+        <br/>and all the people that need saving, or is something happy and uplifting more suitable?</p>
         <HeroDisplay hero={this.props.model.hero}/>
         <div style={wrapperStyle}></div>
         <p className="slider">
-          MOOD
           <Slider
             id="mood"
             min={0}
@@ -73,18 +85,27 @@ export default class ChooseMood extends React.Component {
             marks={positionmarks}
             step={0.01}
             handle={handle}
+            trackStyle={{ backgroundColor: 'black', height: 5 }}
+            railStyle={{ backgroundColor: 'white', height: 5 }}
+            handleStyle={{
+              borderColor: 'blue',
+              height: 25,
+              width: 25,
+              marginTop: -10,
+              backgroundColor: 'black',
+            }}
           />
         </p>
-        <div className="divider"></div>
         <div class="text-center">
           <Link to="/chooseEnergy">
             <Button
+              className="button"
               variant="btn btn-success btn-lg"
               onClick={() => {
                 this.props.model.setMood(mood);
               }}
             >
-              NEXT
+              Next
             </Button>
           </Link>
         </div>

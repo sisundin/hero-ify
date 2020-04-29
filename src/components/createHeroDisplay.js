@@ -13,7 +13,6 @@ export default class HeroDisplay extends React.Component {
       <div className="divider"></div>
       </div>   
       <div className="divider"></div>
-      <div className="divider"></div>
       </div>
       )
     };
