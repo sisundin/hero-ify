@@ -71,7 +71,7 @@ export default class ChooseLength extends React.Component {
           LENGTH
           <Slider id = "length"
             min={8}
-            max={40}
+            max={95}
             onChange={this.handleChange}
             defaultValue={length}
             marks={positionmarks}
