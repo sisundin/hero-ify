@@ -283,8 +283,7 @@ p {
   text-align: center;
   font-weight: bolder;
   font-size: 50px;
-  font-family: 'Avenir';
-  font-style: condensed;
+  font-family: 'Proxima Nova';
   color: black;
 }
 
@@ -293,12 +292,12 @@ p {
   float: left;
   font-weight: bold;
   background: black;
-  font-family: 'Avenir'
+  font-family: 'Proxima Nova'
 }
 
 .copy {
-  font-size: 16px;
-  font-family: 'Avenir';
+  font-size: 18px;
+  font-family: 'Proxima Nova';
   font-style: normal;
   font-weight: 100;
   color: black;
@@ -318,7 +317,7 @@ p {
 }
 
 .button {
-  font-family: "Avenir";
+  font-family: 'Proxima Nova';
   text-decoration: none;
   text-align: center;
   background-color: #efd82d;

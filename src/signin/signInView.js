@@ -76,19 +76,19 @@ componentWillUnmount() {
     return (
       <div className="outsideDiv">
         <ProgressBar step={"0"}/>
-        
-          <div className="Herocard">
           <div className="divider"></div>
-            <h1>Hero-ify</h1>
-            <p className="center">A hero needs a soundtrack when they are heading out on a mission to save the world.</p>
-            <p className="center">Find out what Spiderman, Wonderwoman or Harry Potter would have in their
-            headphones when rescuing humankind from a terrible fate. Enjoy the results in a customized Spotiy playlist!</p>
+            <p className="center">A hero needs a soundtrack when they are heading out on a
+            <br/>mission to save the world.</p>
+            <p className="center">Hero-ify let's you pick a hero, set the mood and find out what
+            <br/>Spiderman, Wonderwoman, Harry Potter or any other hero out there would
+            <br/>have in their headphones when rescuing humankind from a terrible fate. 
+            <br/>
+            <br/>Enjoy the results in a customized Spotify playlist!</p>
             <div className="divider"></div>
-            </div>
             <div className="divider"></div>
           <div class="text-center">
-            <Button variant="btn btn-success btn-lg" class="btn btn-success btn-lrg">
-              <a class = "white" href='http://localhost:8888/login'> LET'S SAVE THE PLANET </a>
+            <Button className="button" variant="btn btn-warning btn-lg" class="btn btn-warning btn-lrg">
+              <a class = "white" href='http://localhost:8888/login'>Start</a>
             </Button>
           </div>
           <div className="divider"></div>
