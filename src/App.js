@@ -10,7 +10,7 @@ import ChooseHero from './choosehero/chooseHero';
 import ChooseMood from './playlistcreator/selectMood.js';
 import ChooseEnergy from './playlistcreator/selectenergylevel.js';
 import ShowPlaylist from './playlistcreator/showPlaylist.js';
-import ChooseLength from './playlistcreator/selevtLength';
+import ChooseLength from './playlistcreator/selectLength.js';
 import ProgressBar from './components/HeaderAndFooter/header.js';
 import {Link} from 'react-router-dom';
 import {

@@ -35,7 +35,20 @@ export default class ChooseEnergy extends React.Component {
     // eslint-disable-next-line no-unused-vars
     const Range = createSliderWithTooltip(Slider.Range);
     const Handle = Slider.Handle;
-    const positionmarks = { 0: "OLD LADY", 1: "ALIENS" };
+    const positionmarks = { 
+      0: {
+        style: {
+          color: 'black',
+        },
+        label: "OLD LADY"
+      },
+      1: {
+        style: {
+          color: 'black',
+        },
+        label: "ALIENS"
+      }
+      };
     const wrapperStyle = { width: 400, margin: 30 };
     const handle = (props) => {
       const { value, dragging, index, ...restProps } = props;
@@ -55,14 +68,13 @@ export default class ChooseEnergy extends React.Component {
     return (
       <div className="outsideDiv">
         <ProgressBar step={"3"} />
-        <p className="vjueHeader"> CHOOSE PLAYLIST ENERGY</p>
-        <p className="copy">What kind of energy level is needed for the mission that {this.props.model.getHeroName()} is set out on today?</p>
-        <p className="copy">Is it more of
+        <p className="vjueHeader"> Choose energy</p>
+        <p className="copy">What kind of energy level is needed for the mission that {this.props.model.getHeroName()} is set out on today?
+        <br/>Is it more of
         a chill help an old lady carry groceries kind of vibe, or more like battling an army of aliens?</p>
         <HeroDisplay hero={this.props.model.hero}/>
         <div style={wrapperStyle}></div>
         <p className="slider">
-          ENERGY
           <Slider
             id="energy"
             min={0}
@@ -72,18 +84,28 @@ export default class ChooseEnergy extends React.Component {
             marks={positionmarks}
             step={0.01}
             handle={handle}
+            trackStyle={{ backgroundColor: 'black', height: 5 }}
+            railStyle={{ backgroundColor: 'white', height: 5 }}
+            handleStyle={{
+              borderColor: 'blue',
+              height: 25,
+              width: 25,
+              marginTop: -10,
+              backgroundColor: 'black',
+            }}
           />
         </p>
         <div className="divider"></div>
         <div class="text-center">
           <Link to="/chooseLength">
             <Button
-              variant="btn btn-success btn-lg"
+              className="button"
+              variant="btn btn-warning btn-lg"
               onClick={() => {
                 this.props.model.setEnergy(energy);
               }}
             >
-              NEXT
+              Next
             </Button>
           </Link>
         </div>

@@ -30,15 +30,14 @@ function sleeper(ms) {
   };
 }
 
-function nothingfoundmessage() {
-  return h(
-    "div",
-    { class: "Herocard" },
-    h("div", { class: "divider" }),
-    h("img", { src: nothingfound }, null),
-    h("div", { class: "divider" }),
-    h("p", { class: "copy" }, "Nothing found on this search but me...."),
-    h("p", { class: "copy" }, "TRY AGAIN!"),
-    h("div", { class: "divider" })
-  );
-}
+  function nothingfoundmessage(){
+      return h("div", {class:"divider"},
+    h("img", {src:nothingfound}, null),
+    h("div", {class:"divider"},),
+    h("p",{class:"copy"}, "Nothing found here but me...."),
+    h("p",{class:"copy"}, "Try something else!"),
+    h("div", {class:"divider"},),
+    <Link to="/chooseHero"><Button className="button" variant="btn btn-warning btn-lg" onClick={()=>{
+    }} >Back to search</Button></Link>
+    )
+  }

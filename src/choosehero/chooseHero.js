@@ -40,16 +40,11 @@ export default class ChooseHero extends React.Component{
         
         return <div className="outsideDiv">
         <ProgressBar step={"1"}/> 
-        <p className="vjueHeader">CHOOSE YOUR HERO</p>
-        <p class="copy">To begin with, choose a hero of your liking.</p>
-        <p class="copy">Who would you like be rescued from a burning building by today?</p> 
+        <p className="vjueHeader">Choose your hero</p>
+        <p class="copy">To begin with, choose a hero of your liking.
+        <br/>Who would you like be rescued from a burning building by today?
+        </p>
         <div>
-            <div className="divider"></div>
-            <Form.Group className="searchbox" >
-                <Form.Control id="searchInput" size="lg" type="text" placeholder="eg Batman" />
-                <Button id="seachbutton" variant="btn btn-success" onClick ={ () => this.update()}>Search!</Button>
-            </Form.Group>
-            <div className="divider"></div>
             <div id="searchresult" className="searchresult"> 
                 <span>
                 <SearchRenderPromise
@@ -64,9 +59,14 @@ export default class ChooseHero extends React.Component{
     
     createHeroDisplay(hero){
       return <div><HeroDisplay hero={hero}/>
-        <Link to="/chooseMood"> <Button variant="btn btn-success btn-lg" onClick={() => {
+        <Form.Group className="searchbox" >
+            <Form.Control id="searchInput" size="lg" type="text" placeholder="eg Batman" />
+            <Button className="button" id="seachbutton" variant="btn btn-warning" onClick ={ () => this.update()}>Search!</Button>
+        </Form.Group>
+        <div className="divider"></div>
+        <Link to="/chooseMood"> <div class="text-center"><Button className="button" variant="btn btn-warning btn-lg" onClick={() => {
             this.props.model.setHero(hero); 
-          }}>Select {hero.name}</Button></Link>
+          }}>Select {hero.name}</Button></div></Link>
           <div className="divider"></div>
           <div className="divider"></div>
           </div>
