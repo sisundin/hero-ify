@@ -16,7 +16,7 @@ export default class ChooseLength extends React.Component {
     super(props);
     this.props = props;
     this.state = {
-      length: 20,
+      length: 42,
     };
   }
 
@@ -34,20 +34,20 @@ export default class ChooseLength extends React.Component {
     // eslint-disable-next-line no-unused-vars
     const Range = createSliderWithTooltip(Slider.Range);
     const Handle = Slider.Handle;
-    const positionmarks = { 
+    const positionmarks = {
       10: {
         style: {
-          color: 'black',
+          color: "black",
         },
-        label: "A FEW MOMENTS"
+        label: "A FEW MOMENTS",
       },
       95: {
         style: {
-          color: 'black',
+          color: "black",
         },
-        label: "ETERNAL STRUGGLE"
-      }
-      };
+        label: "ETERNAL STRUGGLE",
+      },
+    };
     const wrapperStyle = { width: 400, margin: 30 };
     const handle = (props) => {
       const { value, dragging, index, ...restProps } = props;
@@ -70,17 +70,18 @@ export default class ChooseLength extends React.Component {
         <p className="vjueHeader">Choose length</p>
         <p className="copy">
           Okey, so we're almost there.
-          <br/> Just hold your horses,{" "}
-          {this.props.model.getHeroName()}, you'll get to stop a train crash in
-          just a minute, we just need to know how long you'll be gone.
-          <br/>
+          <br /> Just hold your horses, {this.props.model.getHeroName()}, you'll
+          get to stop a train crash in just a minute, we just need to know how
+          long you'll be gone.
+          <br />
           Are we talking a mission that's done within a few moments, or some
           kind of eternal struggle?
         </p>
         <HeroDisplay hero={this.props.model.hero} />
         <div style={wrapperStyle}></div>
         <p className="slider">
-          <Slider id = "length"
+          <Slider
+            id="length"
             min={8}
             max={95}
             onChange={this.handleChange}
@@ -88,14 +89,14 @@ export default class ChooseLength extends React.Component {
             marks={positionmarks}
             step={1}
             handle={handle}
-            trackStyle={{ backgroundColor: 'black', height: 5 }}
-            railStyle={{ backgroundColor: 'white', height: 5 }}
+            trackStyle={{ backgroundColor: "black", height: 5 }}
+            railStyle={{ backgroundColor: "white", height: 5 }}
             handleStyle={{
-              borderColor: 'blue',
+              borderColor: "blue",
               height: 25,
               width: 25,
               marginTop: -10,
-              backgroundColor: 'black',
+              backgroundColor: "black",
             }}
           />
         </p>

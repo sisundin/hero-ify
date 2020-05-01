@@ -1,6 +1,8 @@
 import React from "react";
 import nothingfound from "./nothingfound.gif";
 import spin from "./herospinner.gif";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const h = React.createElement;
 
@@ -30,14 +32,23 @@ function sleeper(ms) {
   };
 }
 
-  function nothingfoundmessage(){
-      return h("div", {class:"divider"},
-    h("img", {src:nothingfound}, null),
-    h("div", {class:"divider"},),
-    h("p",{class:"copy"}, "Nothing found here but me...."),
-    h("p",{class:"copy"}, "Try something else!"),
-    h("div", {class:"divider"},),
-    <Link to="/chooseHero"><Button className="button" variant="btn btn-warning btn-lg" onClick={()=>{
-    }} >Back to search</Button></Link>
-    )
-  }
+function nothingfoundmessage() {
+  return h(
+    "div",
+    { class: "divider" },
+    h("img", { src: nothingfound }, null),
+    h("div", { class: "divider" }),
+    h("p", { class: "copy" }, "Nothing found here but me...."),
+    h("p", { class: "copy" }, "Try something else!"),
+    h("div", { class: "divider" }),
+    <Link to="/chooseHero">
+      <Button
+        className="button"
+        variant="btn btn-warning btn-lg"
+        onClick={() => {}}
+      >
+        Back to search
+      </Button>
+    </Link>
+  );
+}

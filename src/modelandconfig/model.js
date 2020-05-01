@@ -174,29 +174,16 @@ class HeroIfyModel extends React.Component {
   }
 
   getHeroPlaylist(genres, topTracks) {
-    let topTrackslist = [];
-
-  }
-
-  getHeroPlaylist(genres, topTracks){
-    
-
-      Object.entries(genres).forEach( ([key, value]) =>{
+    Object.entries(genres).forEach(([key, value]) => {
       this.getGenreShare(key, value, topTracks);
     });
-
-    console.log("GetHeroPlaylist is done!");
   }
 
   createHeroPlaylist() {
     this.trackurilist = [];
     const topTracks = this.toptrackID;
-    this.heroGenres(this.hero.powerstats); //make own function
+    this.heroGenres(this.hero.powerstats);
     var genres = this.playlistAttributes.genres;
-    //console.log("1");
-    //console.log(genres);
-    //console.log("3");
-    //console.log(this.trackurilist);
 
     var heroPlaylist = [];
     var playlist = "";
@@ -205,13 +192,14 @@ class HeroIfyModel extends React.Component {
       this.playlistAttributes.userID = response.id;
       this.getHeroPlaylist(genres, topTracks);
       sleep(10000);
-      console.log("playlist user");
-      console.log(response);
-      console.log(this.playlistAttributes.userID);
+      //console.log("playlist user");
+      //console.log(response);
+      //console.log(this.playlistAttributes.userID);
       spotifyApi
         .createPlaylist(response.id, {
           name: this.hero.name + "´s Hero-ify Playlist",
           public: true,
+          images: [this.getHeroImage()],
         })
         .then((playlistrespons) => {
           playlist = playlistrespons;
@@ -241,11 +229,6 @@ class HeroIfyModel extends React.Component {
           return playlist;
         });
     });
-
-    //
-
-    console.log("5");
-    console.log(heroPlaylist);
 
     return heroPlaylist;
   }
