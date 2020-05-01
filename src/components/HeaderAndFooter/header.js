@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from "./Logo-hero-ify.png";
+import Logo from "./logo@300x.png";
 import Faq from "./FAQ.js";
 import Back from "./Back";
 
@@ -25,7 +25,7 @@ const h = React.createElement;
         render() {
           
           return h("div", {}, h("div",{className:"divider"},null ),
-          h("p", {className:"logo-top"}, h("img", {className:"heroify-logo", src:Logo, alt: "Hero-ify"} )),
+          h("p", {className:"logo-top"}, h("img", {className:"heroify-logo-small", src:Logo, alt: "Hero-ify"} )),
           <p className = "FAQbutton" onClick={this.toggleFAQ.bind(this)}>FAQ</p>,
           
           this.RenderBack(),

@@ -96,6 +96,7 @@ export default class ChooseMood extends React.Component {
             }}
           />
         </p>
+        <div className="divider"></div>
         <div class="text-center">
           <Link to="/chooseEnergy">
             <Button

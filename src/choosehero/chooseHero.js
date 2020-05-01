@@ -43,6 +43,7 @@ export default class ChooseHero extends React.Component{
         <p className="vjueHeader">Choose your hero</p>
         <p class="copy">To begin with, choose a hero of your liking.
         <br/>Who would you like be rescued from a burning building by today?
+        <br/>Superman, perhaps, or someone else? Go ahead and search!
         </p>
         <div>
             <div id="searchresult" className="searchresult"> 
@@ -60,9 +61,10 @@ export default class ChooseHero extends React.Component{
     createHeroDisplay(hero){
       return <div><HeroDisplay hero={hero}/>
         <Form.Group className="searchbox" >
-            <Form.Control id="searchInput" size="lg" type="text" placeholder="eg Batman" />
+            <Form.Control id="searchInput" size="lg" type="text" placeholder="Batman, Yoda, Harry Potter..." />
             <Button className="button" id="seachbutton" variant="btn btn-warning" onClick ={ () => this.update()}>Search!</Button>
         </Form.Group>
+        <div className="divider"></div>
         <div className="divider"></div>
         <Link to="/chooseMood"> <div class="text-center"><Button className="button" variant="btn btn-warning btn-lg" onClick={() => {
             this.props.model.setHero(hero); 

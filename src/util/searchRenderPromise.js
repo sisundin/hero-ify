@@ -1,6 +1,6 @@
 import React from 'react';
 import nothingfound from './nothingfound.gif'
-import spin from './spinner.gif'
+import spin from '../Assets/spinner_highres.gif'
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -14,7 +14,7 @@ export default function SearchRenderPromise({promise, renderData}){
                  .catch(err=>setData({error:err}));
     }, [promise]);  // TODO: return cancel promise on unmount
  
-    return  (data===null && h("img", {src:spin}))
+    return  (data===null && h("img", {className:"spinner-gif", src:spin}))
          || (data !==null && data!==undefined && !data.error && h(renderData, {data}))
          || (data !==null && data===undefined && nothingfoundmessage());
  };
@@ -32,7 +32,6 @@ export default function SearchRenderPromise({promise, renderData}){
     h("p",{class:"copy"}, "Nothing found here but me...."),
     h("p",{class:"copy"}, "Try something else!"),
     h("div", {class:"divider"},),
-    <Link to="/chooseHero"><Button className="button" variant="btn btn-warning btn-lg" onClick={()=>{
-    }} >Back to search</Button></Link>
+    <Link to="/chooseHero"><Button className="button" variant="btn btn-warning btn-lg">Back to search</Button></Link>
     )
   }

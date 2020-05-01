@@ -39,14 +39,15 @@ export default class ChooseEnergy extends React.Component {
       0: {
         style: {
           color: 'black',
+          
         },
-        label: "OLD LADY"
+        label: "OLD LADY",
       },
       1: {
         style: {
           color: 'black',
         },
-        label: "ALIENS"
+        label: "ALIENS",
       }
       };
     const wrapperStyle = { width: 400, margin: 30 };
