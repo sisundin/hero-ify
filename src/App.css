@@ -58,7 +58,7 @@ div.outsideDiv {
 }
 
 .background {
-  background-color: #cf3f3f;
+  background-color: #c62e2e;
   position: fixed;
   height: 100%;
   width: 100%;
@@ -158,7 +158,6 @@ p.closeEx {
   text-align: center;
   margin: auto;
   background: #435ceb;
-  
 }
 .popup-container {
   margin: 10px;
@@ -168,15 +167,14 @@ p.FAQbutton {
   position: absolute;
   top: 30px;
   right: 30px;
-  
 }
-p.backbutton{
+p.backbutton {
   position: absolute;
   top: 30px;
   left: 30px;
 }
 
-.creatingPlaylist{
+.creatingPlaylist {
   position: fixed;
   width: 100%;
   height: 100%;
