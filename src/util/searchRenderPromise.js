@@ -6,7 +6,15 @@ import { Link } from "react-router-dom";
 
 const h = React.createElement;
 
-export default function SearchRenderPromise({promise, renderData}){
+export default function SearchRenderPromise({ promise, renderData }) {
+  const [data, setData] = React.useState(null);
+  React.useEffect(() => {
+    setData(null);
+    promise
+      .then(sleeper(2000))
+      .then((x) => setData(x))
+      .catch((err) => setData({ error: err }));
+  }, [promise]); // TODO: return cancel promise on unmount
 
     const [data, setData]=React.useState(null);
     React.useEffect(()=>{setData(null);
@@ -19,11 +27,11 @@ export default function SearchRenderPromise({promise, renderData}){
          || (data !==null && data===undefined && nothingfoundmessage());
  };
 
- function sleeper(ms) {
-    return function(x) {
-      return new Promise(resolve => setTimeout(() => resolve(x), ms));
-    };
-  }
+function sleeper(ms) {
+  return function (x) {
+    return new Promise((resolve) => setTimeout(() => resolve(x), ms));
+  };
+}
 
   function nothingfoundmessage(){
       return h("div", {class:"divider"}, 
