@@ -78,7 +78,7 @@ componentWillUnmount() {
       <div className="outsideDiv">
         <ProgressBar step={"0"}/>
           <div className="divider"></div>
-          <img className="heroify-logo-large" src={logo}></img>
+          <div className="center"><img className="heroify-logo-large" src={logo}></img></div>
             <p className="center">A hero needs a soundtrack when they are heading out on a
             <br/>mission to save the world.</p>
             <p className="center">Hero-ify let's you pick a hero, set the mood and find out what
@@ -86,7 +86,6 @@ componentWillUnmount() {
             <br/>have in their headphones when rescuing humankind from a terrible fate. 
             <br/>
             <br/>Enjoy the results in a customized Spotify playlist!</p>
-            <div className="divider"></div>
             <div className="divider"></div>
           <div class="text-center">
             <Button className="button" variant="btn btn-warning btn-lg" class="btn btn-warning btn-lrg">

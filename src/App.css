@@ -118,6 +118,7 @@ td.notcurrentstep {
 h1 {
   text-align: center;
   font-size: 30px;
+  font-weight: bold;
 }
 
 .wellcomecenter {
@@ -134,8 +135,10 @@ p.center {
 
 p.closeEx {
   position: absolute;
-  top: 10px;
-  right: 30px;
+  top: -5px;
+  right: 15px;
+  font-family: "Avenir";
+  font-size: 30px;
 }
 
 .popup {
@@ -157,7 +160,10 @@ p.closeEx {
   bottom: 25%;
   text-align: center;
   margin: auto;
-  background: #435ceb;
+  background: #efd82d; 
+  font-family: "Avenir";
+  font-weight: bold;
+  color:black;
 }
 .popup-container {
   margin: 10px;
@@ -215,7 +221,7 @@ image {
   margin-left: 0px;
   text-align: center;
   font-size: 30px;
-  font-family: proxima-nova, sans-serif;
+  font-family: "Avenir";
   font-style: normal;
   font-weight: 100;
 }
@@ -237,7 +243,7 @@ image {
   height: 40px;
   float: left;
   font-size: 14px;
-  font-family: 'Proxima Nova'
+  font-family: 'Avenir'
 }
 
 #searchbutton {
@@ -284,7 +290,7 @@ p {
   text-align: center;
   font-weight: bolder;
   font-size: 50px;
-  font-family: 'Proxima Nova';
+  font-family: 'Avenir';
   color: black;
 }
 
@@ -293,12 +299,12 @@ p {
   float: left;
   font-weight: bold;
   background: black;
-  font-family: 'Proxima Nova'
+  font-family: 'Avenir'
 }
 
 .copy {
   font-size: 18px;
-  font-family: 'Proxima Nova';
+  font-family: 'Avenir';
   font-style: normal;
   font-weight: bold;
   color: black;
@@ -318,7 +324,7 @@ p {
 }
 
 .button {
-  font-family: 'Proxima Nova';
+  font-family: 'Avenir';
   text-decoration: none;
   text-align: center;
   background-color: #efd82d;
@@ -329,16 +335,25 @@ p {
   height: auto;
   width: 100px;
   position: absolute;
-  top: 30px;
+  top: 40px;
   left: 30px;
 }
 
 .heroify-logo-large{
   height: auto;
-  width: 500px;
+  width: 400px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:-40px;
 }
 
 .spinner-gif{
   height: auto;
   width: 300px;
+}
+
+.playlistTable{
+  font-size: 12px;
+  color: black;
 }

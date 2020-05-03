@@ -1,6 +1,6 @@
 import React from "react";
 
-import spin from "./herospinner.gif";
+import spin from "./spinner_highres.gif";
 
 const h = React.createElement;
 
@@ -15,7 +15,7 @@ export default function RenderPromise({ promise, renderData }) {
   }, [promise]); // TODO: return cancel promise on unmount
 
   return (
-    (data === null && h("img", { src: spin })) ||
+    (data === null && h("img", { src: spin, className: "spinner-gif"})) ||
     (data !== null && !data.error && h(renderData, { data })) ||
     (data !== null && data.error && h("div", {}, data.error.toString()))
   );

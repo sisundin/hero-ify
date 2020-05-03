@@ -70,9 +70,9 @@ export default class ChooseMood extends React.Component {
         <ProgressBar step={"2"} />
         <p className="vieweHeader"> Choose mood</p>
         <p className="copy"> {this.props.model.getHeroName()}, great choice!
-        <br/> Choosing tunes with just the right mood is of essence when creating the perfect save-the-world-playlist.
-        <br/>Is {this.props.model.getHeroName()} in the mood for something sad to get them thinking about all that's unfair in the world
-        <br/>and all the people that need saving, or is something happy and uplifting more suitable?</p>
+        <br/>Is {this.props.model.getHeroName()} in the mood for something sad to get them 
+        <br/>thinking about all that's unfair in the world and all the people that 
+        <br/>need saving, or is something happy and uplifting more suitable?</p>
         <HeroDisplay hero={this.props.model.hero}/>
         <div style={wrapperStyle}></div>
         <p className="slider">

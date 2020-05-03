@@ -69,13 +69,11 @@ export default class ChooseLength extends React.Component {
         <ProgressBar step={"4"} />
         <p className="vjueHeader">Choose length</p>
         <p className="copy">
-          Okey, so we're almost there.
-          <br /> Just hold your horses, {this.props.model.getHeroName()}, you'll
-          get to stop a train crash in just a minute, we just need to know how
-          long you'll be gone.
-          <br />
-          Are we talking a mission that's done within a few moments, or some
-          kind of eternal struggle?
+          Just hold your horses, {this.props.model.getHeroName()},
+          <br />you'll get to stop a train crash in just a minute, 
+          <br />we just need to know how long you'll be gone.
+          <br />Are we talking a mission that's done within a few 
+          <br />moments, or some kind of eternal struggle?
         </p>
         <HeroDisplay hero={this.props.model.hero} />
         <div style={wrapperStyle}></div>

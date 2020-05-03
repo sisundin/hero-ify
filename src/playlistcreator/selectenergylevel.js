@@ -70,9 +70,10 @@ export default class ChooseEnergy extends React.Component {
       <div className="outsideDiv">
         <ProgressBar step={"3"} />
         <p className="vjueHeader"> Choose energy</p>
-        <p className="copy">What kind of energy level is needed for the mission that {this.props.model.getHeroName()} is set out on today?
-        <br/>Is it more of
-        a chill help an old lady carry groceries kind of vibe, or more like battling an army of aliens?</p>
+        <p className="copy">What kind of energy level is needed for the
+        <br/> mission that {this.props.model.getHeroName()} is set out on today? 
+        <br/> Is it more of a chill help an old lady carry groceries kind of 
+        <br/> vibe, or more like battling an army of aliens?</p>
         <HeroDisplay hero={this.props.model.hero}/>
         <div style={wrapperStyle}></div>
         <p className="slider">
