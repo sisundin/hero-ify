@@ -1,5 +1,4 @@
 import React from "react";
-
 import spin from "./spinner_highres.gif";
 
 const h = React.createElement;

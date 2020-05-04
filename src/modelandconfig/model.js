@@ -184,11 +184,9 @@ class HeroIfyModel extends React.Component {
     const topTracks = this.toptrackID;
     this.heroGenres(this.hero.powerstats);
     var genres = this.playlistAttributes.genres;
-
-    var heroPlaylist = [];
     var playlist = "";
-
-    spotifyApi.getMe().then((response) => {
+    try{
+    return spotifyApi.getMe().then((response) => {
       this.playlistAttributes.userID = response.id;
       this.getHeroPlaylist(genres, topTracks);
       sleep(10000);
@@ -225,11 +223,15 @@ class HeroIfyModel extends React.Component {
           this.createdPlaylist = playlist;
           console.log("created playlist: ");
           console.log(playlist);
-          return playlist;
+          
         });
-    });
+    }).then(()=>{return playlist});
+  }
+  catch(err){
+    return err
+  }
 
-    return heroPlaylist;
+
   }
 
   getGenreShare(genre, genre_ratio, topTracks) {

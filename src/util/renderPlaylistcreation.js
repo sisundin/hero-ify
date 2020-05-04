@@ -1,56 +1,45 @@
 import React from "react";
-import nothingfound from "./nothingfound.gif";
-import spin from "./thinkingbatman.gif";
+import spin from "./spinner_highres.gif";
 
 const h = React.createElement;
 
-export default function RenderPlaylistCreation({ exicutor, renderData }) {
+export default function RenderPromise({ functionToRender, renderData }) {
+  
+  const promise = new Promise(function(resolve, reject) {
+    if(functionToRender!== "error"){
+      resolve(functionToRender);
+    }
+    else{
+      
+    reject();
+    }
+  });
+  
   const [data, setData] = React.useState(null);
   React.useEffect(() => {
     setData(null);
-
-    new Promise((resolve, reject) => {
-      resolve(exicutor);
-      reject("something went wrong");
-    })
-      .then((x) => setData(x))
+    promise
+      .then((x) => {console.log(x); setData(x)})
       .catch((err) => setData({ error: err }));
-  }, [exicutor]); // TODO: return cancel promise on unmount
+  }, [promise]); // TODO: return cancel promise on unmount
 
-  return (
-    (data === null && Whilerendering) ||
-    (data !== null &&
-      data !== undefined &&
-      !data.error &&
-      h(renderData, { data })) ||
-    (data !== null && data === undefined && nothingfoundmessage())
-  );
+  return (data === null && WhileRendering()) 
+    || (data !== null && !data.error && h(renderData, { data })) 
+    || (data !== null && data.error && NothingFoundMessage())
+  
 }
 
-function sleeper(ms) {
-  return function (x) {
-    return new Promise((resolve) => setTimeout(() => resolve(x), ms));
-  };
-}
-
-function nothingfoundmessage() {
-  return h(
-    "div",
-    { class: "Herocard" },
-    h("div", { class: "divider" }),
-    h("img", { src: nothingfound }, null),
-    h("div", { class: "divider" }),
-    h("p", { class: "copy" }, "Something must have gone terrably wrong...."),
-    h("p", { class: "copy" }, "TRY AGAIN!"),
+function NothingFoundMessage() {
+  return h("div",{ className: "creatingPlaylist" },
+    h("h1", { class: "copy" }, "Something must have gone terrably wrong...."),
+    h("h1", { class: "copy" }, "TRY AGAIN!"),
     h("div", { class: "divider" })
   );
 }
 
-function Whilerendering() {
-  h(
-    "div",
-    { className: "creatingPlaylist" },
-    h("img", { src: spin }),
+function WhileRendering() {
+  return h("div",{ className: "creatingPlaylist" },
+    h("img", { className: "spinner-gif", src: spin }),
     h("h1", {}, "This is not as easy as you think...")
   );
 }

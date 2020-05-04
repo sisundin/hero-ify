@@ -12,7 +12,8 @@ export default class ShowPlaylist extends React.Component {
   constructor(props) {
     super(props);
     this.props = props;
-    this.state = { showPlaylists: false };
+    this.state = { showPlaylists: false,
+    };
   }
 
   togglePlaylists() {
@@ -22,8 +23,7 @@ export default class ShowPlaylist extends React.Component {
   }
 
   render() {
-    const wrapperStyle = { width: 400, margin: 50 };
-
+    const wrapperStyle = { width: 400, margin: 50 };    
     return (
       <div className="outsideDiv">
         <ProgressBar step={"5"} />
@@ -31,20 +31,15 @@ export default class ShowPlaylist extends React.Component {
           {this.state.showPlaylists ? (
             <LatestPlaylist
               closePlaylists={this.togglePlaylists.bind(this)}
-              model={this.props.model}
-            />
+              model={this.props.model}/>
           ) : null}
         </div>
-        <RenderPlaylistCreation
-          exicutor={this.props.model.createHeroPlaylist()}
-          renderData={({ data }) => this.createdPlaylistcontainor(data)}
-        />
         <p className="vjueHeader"> Your playlist</p>
         <HeroDisplay hero={this.props.model.hero} />
-        <p className="copy">
-          Congratulations! This is {this.props.model.getHeroName()}'s perfect
-          Spotify playlist{" "}
-        </p>
+        <RenderPlaylistCreation
+          functionToRender= {this.props.model.createHeroPlaylist()}
+          renderData={({ data }) => {this.createdPlaylistcontainor(data)}}
+          />
         <div className="divider"></div>
         <div className="text-center">
           <Button
@@ -68,21 +63,13 @@ export default class ShowPlaylist extends React.Component {
     );
   }
 
-  getYourPLaylist() {
-    return (
-      <div className="text-center">
-        <Button></Button>
-        <Link to={this.props.model.createHeroPlaylist().items.spotify}>
-          <Button variant="btn btn-success btn-lg">
-            CHECK OUT YOUR PLAYLIST{" "}
-          </Button>
-        </Link>
-      </div>
-    );
-  }
-  createdPlaylistcontainor(playlist) {
-    return (
-      <Button href={playlist.href}>Click here to get to your playlist</Button>
-    );
+  createdPlaylistcontainor(data){
+    return (<div><p className="copy">
+    Congratulations! This is {this.props.model.getHeroName()}'s perfect
+    Spotify playlist{data.name}
+    </p>
+    <div className="divider"></div>
+    <Button variant="btn btn-success btn-lg" href={data.href} >Click here to get to your playlist</Button>
+    </div>)
   }
 }
