@@ -80,7 +80,7 @@ export default class ChooseLength extends React.Component {
         <p className="slider">
           <Slider
             id="length"
-            min={8}
+            min={10}
             max={95}
             onChange={this.handleChange}
             defaultValue={length}
