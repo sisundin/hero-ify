@@ -10,7 +10,7 @@ const h = React.createElement;
         }
         render() {
           return h("table", {className:"footer"},
-          h("tr", {}, h("th", {className:"footer"}, "LEGAL"), h("th", {className:"footer"}, "PRIVACY"),  h("th", {className:"footer"}, "COOKIES"), h("th", {className:"footer"}, "© 2020 Hero-Ify AB"), h("th", {className:"footer"}, "SWEDEN")),
+          h("tbody", {}, h("tr", {}, h("th", {className:"footer"}, "LEGAL"), h("th", {className:"footer"}, "PRIVACY"),  h("th", {className:"footer"}, "COOKIES"), h("th", {className:"footer"}, "© 2020 Hero-Ify AB"), h("th", {className:"footer"}, "SWEDEN"))),
           );
         }
     }

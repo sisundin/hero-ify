@@ -65,12 +65,14 @@ const h = React.createElement;
             }
             else{
             this.steps.forEach(val => {
-                if (val <= this.step){progress.push(<td className="currentstep"></td>)}
-                else {progress.push(<td className="notcurrentstep"></td>)}
+                if (val <= this.step){progress.push(<td key={val} className="currentstep"></td>)}
+                else {progress.push(<td key={val} className="notcurrentstep"></td>)}
             })
           return (
             <table className= "ProgressBar">
+              <tbody>
               <tr>{progress}</tr>
+              </tbody>
             </table>
 
 

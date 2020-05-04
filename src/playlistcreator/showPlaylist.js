@@ -41,7 +41,7 @@ export default class ShowPlaylist extends React.Component {
             <p className="copy"> 
             Congratulations! This is {this.props.model.getHeroName()}'s perfect Spotify playlist </p>
             <div className="divider"></div>
-            <div class="text-center">
+            <div className="text-center">
             <Button className="button" variant="btn btn-warning btn-lg" onClick={this.togglePlaylists.bind(this)}>Show other playlists created with Hero-ify</Button>
             <div className="divider"></div>
             <Link to="/chooseHero"><Button variant="btn btn-success btn-lg" onClick={()=>{

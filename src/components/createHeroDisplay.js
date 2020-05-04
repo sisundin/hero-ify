@@ -7,7 +7,7 @@ export default class HeroDisplay extends React.Component {
         this.hero = props.hero;
     }
     render() {
-      return (<div><div id={this.props.hero.id} class="Herocard ">
+      return (<div><div id={this.props.hero.id} className="Herocard">
       <div className="divider"></div>
     <Image className = "heroPic" src={this.props.hero.images.lg} alt="image not found" ></Image>
       <div className="divider"></div>
