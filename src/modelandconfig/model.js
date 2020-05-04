@@ -198,8 +198,7 @@ class HeroIfyModel extends React.Component {
       spotifyApi
         .createPlaylist(response.id, {
           name: this.hero.name + "´s Hero-ify Playlist",
-          public: true,
-          images: [this.getHeroImage()],
+          public: true
         })
         .then((playlistrespons) => {
           playlist = playlistrespons;
