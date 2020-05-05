@@ -1,8 +1,6 @@
 import React from 'react';
 import nothingfound from './nothingfound.gif'
 import spin from '../Assets/spinner_highres.gif'
-import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import Back from "../components/HeaderAndFooter/Back.js"
 
 const h = React.createElement;

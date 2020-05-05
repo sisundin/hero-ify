@@ -3,13 +3,13 @@ import Spotify from 'spotify-web-api-js'
 import { Button } from 'react-bootstrap'
 import ProgressBar from "../components/HeaderAndFooter/header.js";
 import logo from "../Assets/logo@300x.png"
-const spotifyApi = new Spotify()
+//const spotifyApi = new Spotify()
 
 export default class SignInView extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      topTracks: this.props.model.getMyTopTracks()
+      //topTracks: this.props.model.getMyTopTracks()
     }
 
     this.update = this.update.bind(this);
@@ -43,7 +43,7 @@ componentWillUnmount() {
   }
 
 
-  getNowPlaying () {
+  /*getNowPlaying () {
     spotifyApi.getMyCurrentPlaybackState().then((response) => {
       this.setState({
         nowPlaying: {
@@ -64,7 +64,7 @@ componentWillUnmount() {
         topTracks: alltrackstoptracks
       })
     })
-  }
+  }*/
 
   hideAllResponses () {
     if (this.state.loggedIn === true) {
@@ -79,17 +79,17 @@ componentWillUnmount() {
         <ProgressBar step={"0"}/>
           <div className="divider"></div>
           <div className="center"><img className="heroify-logo-large" src={logo}></img></div>
-            <p className="center">A hero needs a soundtrack when they are heading out on a
+            <p className="center copy">A hero needs a soundtrack when they are heading out on a
             <br/>mission to save the world.</p>
-            <p className="center">Hero-ify let's you pick a hero, set the mood and find out what
+            <p className="center copy">Hero-ify let's you pick a hero, set the mood and find out what
             <br/>Spiderman, Wonderwoman, Harry Potter or any other hero out there would
             <br/>have in their headphones when rescuing humankind from a terrible fate. 
             <br/>
             <br/>Enjoy the results in a customized Spotify playlist!</p>
             <div className="divider"></div>
-          <div class="text-center">
-            <Button className="button" variant="btn btn-warning btn-lg" class="btn btn-warning btn-lrg">
-              <a class = "white" href='https://hero-auth.herokuapp.com/login'>Start</a>
+          <div className="text-center">
+            <Button className="button" variant="btn btn-warning btn-lg">
+              <a className= "white" href='https://hero-auth.herokuapp.com/login'>Start</a>
             </Button>
           </div>
           <div className="divider"></div>

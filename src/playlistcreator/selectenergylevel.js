@@ -76,7 +76,7 @@ export default class ChooseEnergy extends React.Component {
         <br/> vibe, or more like battling an army of aliens?</p>
         <HeroDisplay hero={this.props.model.hero}/>
         <div style={wrapperStyle}></div>
-        <p className="slider">
+        <div className="slider">
           <Slider
             id="energy"
             min={0}
@@ -96,9 +96,9 @@ export default class ChooseEnergy extends React.Component {
               backgroundColor: 'black',
             }}
           />
-        </p>
+        </div>
         <div className="divider"></div>
-        <div class="text-center">
+        <div className="text-center">
           <Link to="/chooseLength">
             <Button
               className="button"

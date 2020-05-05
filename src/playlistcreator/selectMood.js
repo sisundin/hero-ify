@@ -75,7 +75,7 @@ export default class ChooseMood extends React.Component {
         <br/>need saving, or is something happy and uplifting more suitable?</p>
         <HeroDisplay hero={this.props.model.hero}/>
         <div style={wrapperStyle}></div>
-        <p className="slider">
+        <div className="slider">
           <Slider
             id="mood"
             min={0}
@@ -95,9 +95,9 @@ export default class ChooseMood extends React.Component {
               backgroundColor: 'black',
             }}
           />
-        </p>
+        </div>
         <div className="divider"></div>
-        <div class="text-center">
+        <div className="text-center">
           <Link to="/chooseEnergy">
             <Button
               className="button"

@@ -77,7 +77,7 @@ export default class ChooseLength extends React.Component {
         </p>
         <HeroDisplay hero={this.props.model.hero} />
         <div style={wrapperStyle}></div>
-        <p className="slider">
+        <div className="slider">
           <Slider
             id="length"
             min={10}
@@ -97,9 +97,9 @@ export default class ChooseLength extends React.Component {
               backgroundColor: "black",
             }}
           />
-        </p>
+        </div>
         <div className="divider"></div>
-        <div class="text-center">
+        <div className="text-center">
           <Link to="/showPlaylist">
             <Button
               className="button"
