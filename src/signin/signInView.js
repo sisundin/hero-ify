@@ -79,9 +79,9 @@ componentWillUnmount() {
         <ProgressBar step={"0"}/>
           <div className="divider"></div>
           <div className="center"><img className="heroify-logo-large" src={logo}></img></div>
-            <p className="center">A hero needs a soundtrack when they are heading out on a
+            <p className="center copy">A hero needs a soundtrack when they are heading out on a
             <br/>mission to save the world.</p>
-            <p className="center">Hero-ify let's you pick a hero, set the mood and find out what
+            <p className="center copy">Hero-ify let's you pick a hero, set the mood and find out what
             <br/>Spiderman, Wonderwoman, Harry Potter or any other hero out there would
             <br/>have in their headphones when rescuing humankind from a terrible fate. 
             <br/>
