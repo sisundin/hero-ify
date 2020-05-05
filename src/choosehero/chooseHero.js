@@ -38,9 +38,9 @@ export default class ChooseHero extends React.Component{
         return <div className="outsideDiv">
         <ProgressBar step={"1"}/> 
         <p className="vjueHeader">Choose your hero</p>
-        <p className="copy">To begin with, choose a hero of your liking.
-        <br/>Who would you like be rescued from a burning building by today?
-        <br/>Superman, perhaps, or someone else? Go ahead and search!
+        <p className="copy">Choose a hero of your liking. What would Spiderman, Master Chief, 
+        <br/>Harry Potter or any other hero out there would have in their headphones? 
+        <br/>Or perhaps Darth Vader if you woke up on the dark side.
         </p>
         <div>
             <div id="searchresult" className="searchresult"> 
@@ -58,7 +58,7 @@ export default class ChooseHero extends React.Component{
     createHeroDisplay(hero){
       return <div><HeroDisplay hero={hero}/>
         <Form.Group className="searchbox" >
-            <Form.Control id="searchInput" size="lg" type="text" placeholder="Batman, Yoda, Harry Potter..." />
+            <Form.Control id="searchInput" size="lg" type="text" placeholder="Batman, Yoda, James Bond..." />
             <Button className="button" id="seachbutton" variant="btn btn-warning" onClick ={ () => this.update()}>Search!</Button>
         </Form.Group>
         <div className="divider"></div>
