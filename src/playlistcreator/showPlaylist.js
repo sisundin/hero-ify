@@ -37,7 +37,7 @@ export default class ShowPlaylist extends React.Component {
         <p className="vjueHeader"> Your playlist</p>
         <HeroDisplay hero={this.props.model.hero} />
         <RenderPlaylistCreation
-          functionToRender= {this.props.model.createHeroPlaylist()}
+          promise= {this.props.model.createHeroPlaylist()}
           renderData={({ data }) => {this.createdPlaylistcontainor(data)}}
           />
         <div className="divider"></div>
@@ -66,7 +66,7 @@ export default class ShowPlaylist extends React.Component {
   createdPlaylistcontainor(data){
     return (<div><p className="copy">
     Congratulations! This is {this.props.model.getHeroName()}'s perfect
-    Spotify playlist{data.name}
+    Spotify playlist {data.name}
     </p>
     <div className="divider"></div>
     <Button variant="btn btn-success btn-lg" href={data.href} >Click here to get to your playlist</Button>
