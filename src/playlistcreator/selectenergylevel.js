@@ -41,13 +41,13 @@ export default class ChooseEnergy extends React.Component {
           color: 'black',
           
         },
-        label: "OLD LADY",
+        label: "JUST CHILLING",
       },
       1: {
         style: {
           color: 'black',
         },
-        label: "ALIENS",
+        label: "EXTREME BATTLE",
       }
       };
     const wrapperStyle = { width: 400, margin: 30 };
@@ -69,11 +69,9 @@ export default class ChooseEnergy extends React.Component {
     return (
       <div className="outsideDiv">
         <ProgressBar step={"3"} />
-        <p className="vjueHeader"> Choose energy</p>
-        <p className="copy">What kind of energy level is needed for the
-        <br/> mission that {this.props.model.getHeroName()} is set out on today? 
-        <br/> Is it more of a chill help an old lady carry groceries kind of 
-        <br/> vibe, or more like battling an army of aliens?</p>
+        <p className="vjueHeader"> Need some intensity?</p>
+        <p className="copy">What energy level the mission?
+        <br/>that {this.props.model.getHeroName()} is set out on today?  </p>
         <HeroDisplay hero={this.props.model.hero}/>
         <div style={wrapperStyle}></div>
         <div className="slider">

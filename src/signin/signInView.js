@@ -79,17 +79,17 @@ componentWillUnmount() {
         <ProgressBar step={"0"}/>
           <div className="divider"></div>
           <div className="center"><img className="heroify-logo-large" src={logo}></img></div>
-            <p className="center copy">A hero needs a soundtrack when they are heading out on a
-            <br/>mission to save the world.</p>
-            <p className="center copy">Hero-ify let's you pick a hero, set the mood and find out what
-            <br/>Spiderman, Wonderwoman, Harry Potter or any other hero out there would
-            <br/>have in their headphones when rescuing humankind from a terrible fate. 
-            <br/>
-            <br/>Enjoy the results in a customized Spotify playlist!</p>
+            <p className="center copy3">Get a customized Spotify playlist based on the hero <br/>
+            you want to be and music you love</p>
+            <p className="center copy2">
+            What would Spiderman, Wonderwoman, Harry Potter or any 
+            <br/>other hero out there would have in their headphones? 
+            <br/>Or why not check out Darth Vader if you woke up on the dark side?
+            </p>
             <div className="divider"></div>
-          <div className="text-center">
-            <Button className="button" variant="btn btn-warning btn-lg">
-              <a className= "white" href='https://hero-auth.herokuapp.com/login'>Start</a>
+          <div class="text-center">
+            <Button className="button" variant="btn btn-warning btn-lg" class="btn btn-warning btn-lrg">
+              <a class = "white copy" href='https://hero-auth.herokuapp.com/login'>Let's go!</a>
             </Button>
           </div>
           <div className="divider"></div>
