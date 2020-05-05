@@ -38,7 +38,7 @@ export default class ShowPlaylist extends React.Component {
         <HeroDisplay hero={this.props.model.hero} />
         <RenderPlaylistCreation
           promise= {this.props.model.createHeroPlaylist()}
-          renderData={({ data }) => {this.createdPlaylistcontainor(data)}}
+          renderData={( data ) => {console.log("inside the funktion");console.log(data); this.createdPlaylistcontainor(data);}}
           />
         <div className="divider"></div>
         <div className="text-center">

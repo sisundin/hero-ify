@@ -11,15 +11,14 @@ export default function RenderPromise({ promise, renderData }) {
   React.useEffect(() => {
     setData(null);
     console.log(promise);
-    promise
-      .then((x) => { 
+    promise.then((x) => { 
       console.log("renderplaylist output:");
       console.log(x); 
       setData(x); })
       .catch((err) => setData({ error: err }));
   }, [promise]); // TODO: return cancel promise on unmount
 
-  return (data === null && WhileRendering()) || (data !== null && !data.error && h(renderData, { data })) || (data !== null && data.error && NothingFoundMessage())
+  return (data === null && WhileRendering()) || (data !== null && !data.error && <renderData data = {data}/> ) || (data !== null && data.error && NothingFoundMessage())
   
 }
 

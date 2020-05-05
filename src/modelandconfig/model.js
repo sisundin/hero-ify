@@ -185,7 +185,7 @@ class HeroIfyModel extends React.Component {
     this.heroGenres(this.hero.powerstats);
     var genres = this.playlistAttributes.genres;
     
-    return spotifyApi.getMe().then((response) => {
+    return (spotifyApi.getMe().then((response) => {
       this.playlistAttributes.userID = response.id;
       this.getHeroPlaylist(genres, topTracks);
       sleep(4000);
@@ -214,9 +214,9 @@ class HeroIfyModel extends React.Component {
           
           
         
-          return playlistrespons;
+          return (playlistrespons);
         });
-    }).then((response)=> { console.log("this is the response "); console.log(response); return response});
+    }).then((response)=> { console.log("this is the response "); console.log(response); return response}));
 
   }
 
