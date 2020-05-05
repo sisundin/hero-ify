@@ -10,19 +10,19 @@ export default function RenderPromise({ promise, renderData }) {
   const [data, setData] = React.useState(null);
   React.useEffect(() => {
     setData(null);
-    console.log(promise);
-    promise.then((x) => { 
-      console.log("renderplaylist output:");
-      console.log(x); 
-      setData(x); })
+    promise
+      .then(sleeper(2000))
+      .then((x) => setData(x))
       .catch((err) => setData({ error: err }));
   }, [promise]); // TODO: return cancel promise on unmount
 
-  return (data === null && WhileRendering()) || (data !== null && !data.error && <renderData data = {data}/> ) || (data !== null && data.error && NothingFoundMessage())
+  return (data === null && whileRendering()) 
+  || (data !==null && !data.error && h(renderData))
+  || (data !==null && data.error && nothingFoundMessage());
   
-}
+};
 
-function NothingFoundMessage() {
+function nothingFoundMessage() {
   return h("div",{ className: "creatingPlaylist" },
     h("h1", { class: "copy" }, "Something must have gone terrably wrong...."),
     <Link to="/">
@@ -30,7 +30,6 @@ function NothingFoundMessage() {
               className="button"
               variant="btn btn-warning btn-lg"
               onClick={() => {
-                
               }}
             >
               Try again!
@@ -40,9 +39,15 @@ function NothingFoundMessage() {
   );
 }
 
-function WhileRendering() {
+function whileRendering() {
   return h("div",{ className: "creatingPlaylist" },
     h("img", { className: "spinner-gif", src: spin }),
     h("h1", {}, "This is not as easy as you think...")
   );
+}
+
+function sleeper(ms) {
+  return function (x) {
+    return new Promise((resolve) => setTimeout(() => resolve(x), ms));
+  };
 }

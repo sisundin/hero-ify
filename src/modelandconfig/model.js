@@ -26,6 +26,7 @@ class HeroIfyModel extends React.Component {
     this.db = firebase.database();
     this.createdplaylist = "";
     this.toptrackID = [];
+    this.playlist = {};
     if (params.access_token) {
       spotifyApi.setAccessToken(params.access_token);
     }
@@ -88,6 +89,12 @@ class HeroIfyModel extends React.Component {
   getHeronID(id) {
     let data = this.getHeroData("id=" + id);
     return data;
+  }
+
+  getGeneratedPlaylist(){
+    console.log("getPlaylsit Generated:");
+    console.log(this.playlist);
+    return this.playlist;
   }
 
   setHero(hero) {
@@ -213,7 +220,10 @@ class HeroIfyModel extends React.Component {
             );
           
           
-        
+          this.playlist = playlistrespons;
+          console.log("THIS.Playlist:");
+          console.log(this.playlist);
+          sleep(500);
           return (playlistrespons);
         });
     }).then((response)=> { console.log("this is the response "); console.log(response); return response}));
