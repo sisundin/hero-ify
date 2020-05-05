@@ -9,8 +9,8 @@ import ChooseHero from './choosehero/chooseHero';
 //import PlaylistSettings from './playlistcreator/specYourPlaylist';
 import ChooseMood from './playlistcreator/selectMood.js';
 import ChooseEnergy from './playlistcreator/selectenergylevel.js';
-import ShowPlaylist from './playlistcreator/showPlaylist.js';
 import ChooseLength from './playlistcreator/selectLength.js';
+import ShowPlaylist from './playlistcreator/showPlaylist.js';
 import ProgressBar from './components/HeaderAndFooter/header.js';
 import {Link} from 'react-router-dom';
 import {
@@ -46,8 +46,9 @@ class App extends React.Component {
                 <Route path="/choosehero" component={() => <ChooseHero model={this.heromodel}/>}/>
                 <Route path="/chooseMood" component={() => <ChooseMood model={this.heromodel}/>}/>
                 <Route path="/chooseEnergy" component={() => <ChooseEnergy model={this.heromodel}/>}/>
-                <Route path="/showPlaylist" component={() => <ShowPlaylist model={this.heromodel}/>}/>
                 <Route path="/chooseLength" component={() => <ChooseLength model={this.heromodel}/>}/>
+                <Route path="/showPlaylist" component={() => <ShowPlaylist model={this.heromodel}/>}/>
+                
                 <Route component={NoMatch}/>
               <div className="divider"></div>
         </Switch>

@@ -3,13 +3,13 @@ import Spotify from 'spotify-web-api-js'
 import { Button } from 'react-bootstrap'
 import ProgressBar from "../components/HeaderAndFooter/header.js";
 import logo from "../Assets/logo@300x.png"
-const spotifyApi = new Spotify()
+//const spotifyApi = new Spotify()
 
 export default class SignInView extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      topTracks: this.props.model.getMyTopTracks()
+      //topTracks: this.props.model.getMyTopTracks()
     }
 
     this.update = this.update.bind(this);
@@ -43,7 +43,7 @@ componentWillUnmount() {
   }
 
 
-  getNowPlaying () {
+  /*getNowPlaying () {
     spotifyApi.getMyCurrentPlaybackState().then((response) => {
       this.setState({
         nowPlaying: {
@@ -64,7 +64,7 @@ componentWillUnmount() {
         topTracks: alltrackstoptracks
       })
     })
-  }
+  }*/
 
   hideAllResponses () {
     if (this.state.loggedIn === true) {

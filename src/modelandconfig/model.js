@@ -26,6 +26,7 @@ class HeroIfyModel extends React.Component {
     this.db = firebase.database();
     this.createdplaylist = "";
     this.toptrackID = [];
+    this.playlist = {};
     if (params.access_token) {
       spotifyApi.setAccessToken(params.access_token);
     }
@@ -88,6 +89,12 @@ class HeroIfyModel extends React.Component {
   getHeronID(id) {
     let data = this.getHeroData("id=" + id);
     return data;
+  }
+
+  getGeneratedPlaylist(){
+    console.log("getPlaylsit Generated:");
+    console.log(this.playlist);
+    return this.playlist;
   }
 
   setHero(hero) {
@@ -184,25 +191,18 @@ class HeroIfyModel extends React.Component {
     const topTracks = this.toptrackID;
     this.heroGenres(this.hero.powerstats);
     var genres = this.playlistAttributes.genres;
-
-    var heroPlaylist = [];
-    var playlist = "";
-
-    spotifyApi.getMe().then((response) => {
+    
+    return (spotifyApi.getMe().then((response) => {
       this.playlistAttributes.userID = response.id;
       this.getHeroPlaylist(genres, topTracks);
-      sleep(10000);
-      //console.log("playlist user");
-      //console.log(response);
-      //console.log(this.playlistAttributes.userID);
-      spotifyApi
+      sleep(4000);
+      return spotifyApi
         .createPlaylist(response.id, {
           name: this.hero.name + "´s Hero-ify Playlist",
           public: true
         })
         .then((playlistrespons) => {
-          playlist = playlistrespons;
-          console.log("här är jag");
+          
           this.addYourplaylistToDatabase(
             this.hero.name,
             playlistrespons.external_urls.spotify,
@@ -210,26 +210,24 @@ class HeroIfyModel extends React.Component {
           );
           let uniqtrackurilist = uniq(this.trackurilist);
           //uniqtrackurilist = shuffle(uniqtrackurilist);
-          sleep(2000);
+          sleep(900);
 
           spotifyApi
             .addTracksToPlaylist(
               this.playlistAttributes.userID,
               playlistrespons.id,
               uniqtrackurilist
-            )
-            .then((addedtrack) => {
-              console.log("tracks was added");
-              console.log(addedtrack);
-            });
-          this.createdPlaylist = playlist;
-          console.log("created playlist: ");
-          console.log(playlist);
-          return playlist;
+            );
+          
+          
+          this.playlist = playlistrespons;
+          console.log("THIS.Playlist:");
+          console.log(this.playlist);
+          sleep(500);
+          return (playlistrespons);
         });
-    });
+    }).then((response)=> { console.log("this is the response "); console.log(response); return response}));
 
-    return heroPlaylist;
   }
 
   getGenreShare(genre, genre_ratio, topTracks) {
@@ -246,15 +244,13 @@ class HeroIfyModel extends React.Component {
 
     const hero = this.getHeroName();
     spotifyApi.searchTracks(hero, { limit: 1 }).then((response) => {
-      console.log(response.tracks);
-      console.log(response.tracks.items[0].uri);
+      
       const toptrackuri = response.tracks.items[0].uri;
       this.trackurilist.push(toptrackuri);
     });
 
     spotifyApi.getRecommendations(attributes).then((response) => {
-      console.log("recomendations: " + genre);
-      console.log(response.tracks);
+      
       response.tracks.forEach((track) => {
         this.trackurilist.push(track.uri);
       });
@@ -280,7 +276,7 @@ class HeroIfyModel extends React.Component {
     spotifyApi
       .getMyTopTracks({ limit: limitoftracks })
       .then((response) => {
-        console.log(response);
+        
         for (var i = 0, l = response.items.length; i < l; i++) {
           alltrackstoptracks.push(response.items[i]);
         }
@@ -288,7 +284,7 @@ class HeroIfyModel extends React.Component {
       .then(() => {
         alltrackstoptracks.forEach((track) => topTrackslist.push(track.id));
       });
-    console.log("topTracksURI Done");
+    
 
     return topTrackslist;
   }
@@ -300,7 +296,7 @@ class HeroIfyModel extends React.Component {
         alltrackstoptracks.push(response.items[i]);
       }
     });
-    console.log("topTracksDone");
+    
     return alltrackstoptracks;
   }
 }

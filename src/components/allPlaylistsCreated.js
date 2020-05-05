@@ -1,5 +1,5 @@
 import React from 'react';
-import RenderPromise from '../util/renderPromise.js';
+import RenderPromise from '../util/renderPromise';
 import { Button, Table } from 'react-bootstrap'
 import { ActionUpdate } from 'material-ui/svg-icons';
 

@@ -1,29 +1,51 @@
 import React from "react";
-import nothingfound from "./nothingfound.gif";
-import spin from "./thinkingbatman.gif";
+import spin from "./spinner_highres.gif";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const h = React.createElement;
 
-export default function RenderPlaylistCreation({ exicutor, renderData }) {
+export default function RenderPromise({ promise, renderData }) {
+  
   const [data, setData] = React.useState(null);
   React.useEffect(() => {
     setData(null);
-
-    new Promise((resolve, reject) => {
-      resolve(exicutor);
-      reject("something went wrong");
-    })
+    promise
+      .then(sleeper(2000))
       .then((x) => setData(x))
       .catch((err) => setData({ error: err }));
-  }, [exicutor]); // TODO: return cancel promise on unmount
+  }, [promise]); // TODO: return cancel promise on unmount
 
-  return (
-    (data === null && Whilerendering) ||
-    (data !== null &&
-      data !== undefined &&
-      !data.error &&
-      h(renderData, { data })) ||
-    (data !== null && data === undefined && nothingfoundmessage())
+  return (data === null && whileRendering()) 
+  || (data !==null && !data.error && h(renderData))
+  || (data !==null && data.error && nothingFoundMessage());
+  
+};
+
+function nothingFoundMessage() {
+  return h("div",{ className: "creatingPlaylist" },
+  h("div", { className: "divider" }, null),
+    h("h1", { }, "Something must have gone terrably wrong...."),
+    h("div", { className: "divider" }, null),
+    <Link to="/">
+            <Button
+              className="button"
+              variant="btn btn-warning btn-lg"
+              onClick={() => {
+              }}
+            >
+              Try again!
+            </Button>
+          </Link>,
+    h("div", { class: "divider" })
+  );
+}
+
+function whileRendering() {
+  return h("div",{ className: "creatingPlaylist" },
+  h("div", { className: "divider" }, null),
+    h("img", { className: "spinner-gif", src: spin }),
+    h("h1", {}, "This is not as easy as you think...")
   );
 }
 
@@ -31,26 +53,4 @@ function sleeper(ms) {
   return function (x) {
     return new Promise((resolve) => setTimeout(() => resolve(x), ms));
   };
-}
-
-function nothingfoundmessage() {
-  return h(
-    "div",
-    { class: "Herocard" },
-    h("div", { class: "divider" }),
-    h("img", { src: nothingfound }, null),
-    h("div", { class: "divider" }),
-    h("p", { class: "copy" }, "Something must have gone terrably wrong...."),
-    h("p", { class: "copy" }, "TRY AGAIN!"),
-    h("div", { class: "divider" })
-  );
-}
-
-function Whilerendering() {
-  h(
-    "div",
-    { className: "creatingPlaylist" },
-    h("img", { src: spin }),
-    h("h1", {}, "This is not as easy as you think...")
-  );
 }
