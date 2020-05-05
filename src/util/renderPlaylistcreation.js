@@ -24,7 +24,9 @@ export default function RenderPromise({ promise, renderData }) {
 
 function nothingFoundMessage() {
   return h("div",{ className: "creatingPlaylist" },
-    h("h1", { class: "copy" }, "Something must have gone terrably wrong...."),
+  h("div", { className: "divider" }, null),
+    h("h1", { }, "Something must have gone terrably wrong...."),
+    h("div", { className: "divider" }, null),
     <Link to="/">
             <Button
               className="button"
@@ -41,6 +43,7 @@ function nothingFoundMessage() {
 
 function whileRendering() {
   return h("div",{ className: "creatingPlaylist" },
+  h("div", { className: "divider" }, null),
     h("img", { className: "spinner-gif", src: spin }),
     h("h1", {}, "This is not as easy as you think...")
   );
