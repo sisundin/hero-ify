@@ -1,5 +1,4 @@
 import React from "react";
-import Logo from "./logo@300x.png";
 import Faq from "./FAQ.js";
 import Back from "./Back";
 import SmallLogo from "./logo_small.js";

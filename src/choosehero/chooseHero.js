@@ -6,9 +6,6 @@ import SearchRenderPromise from '../util/searchRenderPromise.js'
 import ProgressBar from '../components/HeaderAndFooter/header.js';
 import HeroDisplay from '../components/createHeroDisplay.js';
 
-
-const h = React.createElement;
-
 export default class ChooseHero extends React.Component{
     constructor(props){
         super(props);
@@ -41,7 +38,7 @@ export default class ChooseHero extends React.Component{
         return <div className="outsideDiv">
         <ProgressBar step={"1"}/> 
         <p className="vjueHeader">Choose your hero</p>
-        <p class="copy">To begin with, choose a hero of your liking.
+        <p className="copy">To begin with, choose a hero of your liking.
         <br/>Who would you like be rescued from a burning building by today?
         <br/>Superman, perhaps, or someone else? Go ahead and search!
         </p>
@@ -66,7 +63,7 @@ export default class ChooseHero extends React.Component{
         </Form.Group>
         <div className="divider"></div>
         <div className="divider"></div>
-        <Link to="/chooseMood"> <div class="text-center"><Button className="button" variant="btn btn-warning btn-lg" onClick={() => {
+        <Link to="/chooseMood"> <div className="text-center"><Button className="button" variant="btn btn-warning btn-lg" onClick={() => {
             this.props.model.setHero(hero); 
           }}>Select {hero.name}</Button></div></Link>
           <div className="divider"></div>
