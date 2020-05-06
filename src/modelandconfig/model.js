@@ -214,6 +214,7 @@ class HeroIfyModel extends React.Component {
             //uniqtrackurilist = shuffle(uniqtrackurilist);
             sleep(900);
             spotifyApi.uploadCustomPlaylistCoverImage(
+              this.playlistAttributes.userID,
               playlistrespons.id,
               playlistCover
             );
@@ -222,7 +223,6 @@ class HeroIfyModel extends React.Component {
               playlistrespons.id,
               uniqtrackurilist
             );
-
             this.playlist = playlistrespons;
             console.log("THIS.Playlist:");
             console.log(this.playlist);
