@@ -84,7 +84,7 @@ componentWillUnmount() {
             <div className="divider"></div>
           <div class="text-center">
             <Button className="button" variant="btn btn-warning btn-lg" class="btn btn-warning btn-lrg">
-              <a class = "white copy" href='https://localhost:8888/login'>Let's go!</a>
+              <a class = "white copy" href='https://hero-auth.herokuapp.com/login'>Let's go!</a>
             </Button>
           </div>
           <div className="divider"></div>
