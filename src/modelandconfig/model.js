@@ -214,16 +214,19 @@ class HeroIfyModel extends React.Component {
             let uniqtrackurilist = uniq(this.trackurilist);
             //uniqtrackurilist = shuffle(uniqtrackurilist);
             sleep(900);
+            console.log("I got to playlistcover");
             spotifyApi.uploadCustomPlaylistCoverImage(
-              this.playlistAttributes.userID,
               playlistrespons.id,
-              base64Img.base64(playlistCover)
+              btoa(playlistCover)
             );
-            spotifyApi.addTracksToPlaylist(
-              this.playlistAttributes.userID,
-              playlistrespons.id,
-              uniqtrackurilist
-            );
+            console.log("I got beyond playlistcover");
+            spotifyApi
+              .addTracksToPlaylist(
+                this.playlistAttributes.userID,
+                playlistrespons.id,
+                uniqtrackurilist
+              )
+              .then((response) => console.log(response));
             this.playlist = playlistrespons;
             console.log("THIS.Playlist:");
             console.log(this.playlist);
