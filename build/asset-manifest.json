@@ -1,30 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.18c78096.chunk.css",
-    "main.js": "/static/js/main.fc1bb127.chunk.js",
-    "main.js.map": "/static/js/main.fc1bb127.chunk.js.map",
+    "main.css": "/static/css/main.d848077e.chunk.css",
+    "main.js": "/static/js/main.a96ecf3d.chunk.js",
+    "main.js.map": "/static/js/main.a96ecf3d.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.5e682c5b.js",
     "runtime-main.js.map": "/static/js/runtime-main.5e682c5b.js.map",
     "static/css/2.106cde16.chunk.css": "/static/css/2.106cde16.chunk.css",
-    "static/js/2.1bed1955.chunk.js": "/static/js/2.1bed1955.chunk.js",
-    "static/js/2.1bed1955.chunk.js.map": "/static/js/2.1bed1955.chunk.js.map",
+    "static/js/2.cb3bf5e9.chunk.js": "/static/js/2.cb3bf5e9.chunk.js",
+    "static/js/2.cb3bf5e9.chunk.js.map": "/static/js/2.cb3bf5e9.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.3663d5ae5b598703263152429764ab8c.js": "/precache-manifest.3663d5ae5b598703263152429764ab8c.js",
+    "precache-manifest.40a4d5fc323f7452590e458c3cd593eb.js": "/precache-manifest.40a4d5fc323f7452590e458c3cd593eb.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.106cde16.chunk.css.map": "/static/css/2.106cde16.chunk.css.map",
-    "static/css/main.18c78096.chunk.css.map": "/static/css/main.18c78096.chunk.css.map",
-    "static/js/2.1bed1955.chunk.js.LICENSE.txt": "/static/js/2.1bed1955.chunk.js.LICENSE.txt",
-    "static/media/logo@300x.png": "/static/media/logo@300x.022c6fa1.png",
-    "static/media/nothingfound.gif": "/static/media/nothingfound.c69658c9.gif",
-    "static/media/playlistcover.jpg": "/static/media/playlistcover.f175563e.jpg",
-    "static/media/spinner_highres.gif": "/static/media/spinner_highres.70044c30.gif",
-    "static/media/App.css": "/static/media/wave.73589550.svg"
+    "static/css/main.d848077e.chunk.css.map": "/static/css/main.d848077e.chunk.css.map",
+    "static/js/2.cb3bf5e9.chunk.js.LICENSE.txt": "/static/js/2.cb3bf5e9.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/wave.26bc35b5.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.5e682c5b.js",
     "static/css/2.106cde16.chunk.css",
-    "static/js/2.1bed1955.chunk.js",
-    "static/css/main.18c78096.chunk.css",
-    "static/js/main.fc1bb127.chunk.js"
+    "static/js/2.cb3bf5e9.chunk.js",
+    "static/css/main.d848077e.chunk.css",
+    "static/js/main.a96ecf3d.chunk.js"
   ]
 }
