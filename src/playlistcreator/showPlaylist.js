@@ -6,7 +6,7 @@ import HeroDisplay from "../components/createHeroDisplay.js";
 import RenderPromise from "../util/renderPlaylistcreation.js";
 import RenderOtherPlaylistsbutton from "../components/showOtherPlaylists";
 
-const h = React.createElement;
+
 
 export default class ShowPlaylist extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export default class ShowPlaylist extends React.Component {
 
 
   render() {
-    const wrapperStyle = { width: 400, margin: 50 };    
+     
     return (
       <div className="outsideDiv">
         <ProgressBar step={"5"} />

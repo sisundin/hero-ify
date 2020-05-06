@@ -1,7 +1,7 @@
 import React from 'react';
 import RenderPromise from '../util/renderPromise';
-import { Button, Table } from 'react-bootstrap'
-import { ActionUpdate } from 'material-ui/svg-icons';
+import {  Table } from 'react-bootstrap'
+
 
 const h = React.createElement;
 
@@ -16,7 +16,7 @@ export default function LatestPlaylist(props){
       
         return <div className='popup' >
             
-        <div className='popup_inner'>
+        <div className='popup_inner_others_playlists'>
         <div className='popup-container'>
         <h1>Playlists created by others</h1>
         <RenderPromise
@@ -31,7 +31,7 @@ export default function LatestPlaylist(props){
     }
     
     function rendertable(data){
-        return <Table class="table table-borderless" className="playlistTable">
+        return <Table class="table table-borderless playlists" className="playlistTable">
             <thead><tr><th>User</th><th>Hero</th><th>Link</th></tr></thead>
             {data.map(playlistobject => 
         h("tr", {} , h("td", {}, playlistobject.User), h("td", {}, playlistobject.Hero), h("td", {}, <a href={playlistobject.PlaylistLink} target="_blank"> {playlistobject.PlaylistLink}</a>)))

@@ -76,7 +76,7 @@ export default class SignInView extends Component {
         <ProgressBar step={"0"} />
         <div className="divider"></div>
         <div className="center">
-          <img className="heroify-logo-large" src={logo}></img>
+          <img className="heroify-logo-large" src={logo} alt="refresh site fore missing..."></img>
         </div>
         <p className="center copy3">
           Get a customized Spotify playlist based on the hero <br />
