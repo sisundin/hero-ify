@@ -1,47 +1,44 @@
-import React, { Component } from 'react'
-import Spotify from 'spotify-web-api-js'
-import { Button } from 'react-bootstrap'
+import React, { Component } from "react";
+import Spotify from "spotify-web-api-js";
+import { Button } from "react-bootstrap";
 import ProgressBar from "../components/HeaderAndFooter/header.js";
-import logo from "../Assets/logo@300x.png"
+import logo from "../Assets/logo@300x.png";
 //const spotifyApi = new Spotify()
 
 export default class SignInView extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
       //topTracks: this.props.model.getMyTopTracks()
-    }
+    };
 
     this.update = this.update.bind(this);
   }
 
-  getHashParams () {
-    var hashParams = {}
-    var e, r = /([^&;=]+)=?([^&;]*)/g,
-    q = window.location.hash.substring(1)
-    e = r.exec(q)
+  getHashParams() {
+    var hashParams = {};
+    var e,
+      r = /([^&;=]+)=?([^&;]*)/g,
+      q = window.location.hash.substring(1);
+    e = r.exec(q);
     while (e) {
-      hashParams[e[1]] = decodeURIComponent(e[2])
-      e = r.exec(q)
+      hashParams[e[1]] = decodeURIComponent(e[2]);
+      e = r.exec(q);
     }
-    return hashParams
+    return hashParams;
   }
 
   update() {
-    this.setState({
-    })
-}
+    this.setState({});
+  }
 
-
-componentDidMount() {
+  componentDidMount() {
     this.props.model.addObserver(() => this.update());
-    
-  }
- 
-componentWillUnmount() {
-    this.props.model.removeObserver(this)
   }
 
+  componentWillUnmount() {
+    this.props.model.removeObserver(this);
+  }
 
   /*getNowPlaying () {
     spotifyApi.getMyCurrentPlaybackState().then((response) => {
@@ -66,14 +63,14 @@ componentWillUnmount() {
     })
   }*/
 
-  hideAllResponses () {
+  hideAllResponses() {
     if (this.state.loggedIn === true) {
-      document.getElementById("loggedout").classList.add('hide')
-      document.getElementById("loggedin").classList.remove('hide')
+      document.getElementById("loggedout").classList.add("hide");
+      document.getElementById("loggedin").classList.remove("hide");
     }
   }
 
-  render () {
+  render() {
     return (
       <div className="outsideDiv">
         <ProgressBar step={"0"}/>
@@ -90,6 +87,6 @@ componentWillUnmount() {
           <div className="divider"></div>
           <div className="divider"></div>
       </div>
-      )
+    );
   }
 }
