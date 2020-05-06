@@ -34,7 +34,7 @@ export default class ShowPlaylist extends React.Component {
           <RenderOtherPlaylistsbutton model = {this.props.model}/>
           <div className="divider"></div>
           <Link to="/chooseHero">
-            <Button variant="btn btn-warning btn-lg" onClick={() => {}}>
+            <Button variant="btn btn-success btn-lg" onClick={() => {}}>
               {" "}
               CREATE NEW PLAYLIST
             </Button>
@@ -56,7 +56,7 @@ export default class ShowPlaylist extends React.Component {
     Spotify playlist {data.name}
     </p>
     <div className="divider"></div>
-    <Button variant="btn btn-warning btn-lg" href={data.external_urls.spotify} target="_blank" >CHECK OUT YOUR PLAYLIST</Button>
+    <Button variant="btn btn-success btn-lg" href={data.external_urls.spotify} target="_blank" >CHECK OUT YOUR PLAYLIST</Button>
     <div className="divider"></div>
     </div>
   }
