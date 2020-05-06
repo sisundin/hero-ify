@@ -2,7 +2,7 @@ import React from "react";
 import { heroApihost, HeroApiAccessKey, firebaseConfig } from "./apiConfig";
 import firebase from "firebase";
 import Spotify from "spotify-web-api-js";
-import playlistCover from "../Assets/playlistcover.jpg";
+//import playlistCover from "../Assets/playlistcover.jpg";
 const spotifyApi = new Spotify();
 
 class HeroIfyModel extends React.Component {
@@ -213,11 +213,7 @@ class HeroIfyModel extends React.Component {
             let uniqtrackurilist = uniq(this.trackurilist);
             //uniqtrackurilist = shuffle(uniqtrackurilist);
             sleep(900);
-            spotifyApi.uploadCustomPlaylistCoverImage(
-              this.playlistAttributes.userID,
-              playlistrespons.id,
-              playlistCover
-            );
+            
             spotifyApi.addTracksToPlaylist(
               this.playlistAttributes.userID,
               playlistrespons.id,
@@ -339,13 +335,7 @@ function sleep(milliseconds) {
 }
 
 //A funktion for shuffleing an array (NOT USED)
-function shuffle(a) {
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
+
 
 function uniq(a) {
   var prims = { boolean: {}, number: {}, string: {} },

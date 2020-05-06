@@ -165,6 +165,24 @@ p.closeEx {
   font-weight: bold;
   color:black;
 }
+.playlists{
+  width: auto;
+}
+
+.popup_inner_others_playlists{
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 10%;
+  bottom: 10%;
+  text-align: center;
+  margin: auto;
+  background: #efd82d; 
+  font-family: "Avenir";
+  font-weight: bold;
+  color:black;
+
+}
 .popup-container {
   margin: 10px;
 }
