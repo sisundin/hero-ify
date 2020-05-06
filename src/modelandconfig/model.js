@@ -3,7 +3,6 @@ import { heroApihost, HeroApiAccessKey, firebaseConfig } from "./apiConfig";
 import firebase from "firebase";
 import Spotify from "spotify-web-api-js";
 import playlistCover from "../Assets/playlistcover.jpg";
-import base64Img from "base64-img";
 const spotifyApi = new Spotify();
 
 class HeroIfyModel extends React.Component {
@@ -217,7 +216,7 @@ class HeroIfyModel extends React.Component {
             spotifyApi.uploadCustomPlaylistCoverImage(
               this.playlistAttributes.userID,
               playlistrespons.id,
-              base64Img.base64(playlistCover)
+              playlistCover
             );
             spotifyApi.addTracksToPlaylist(
               this.playlistAttributes.userID,
