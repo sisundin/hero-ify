@@ -81,11 +81,6 @@ componentWillUnmount() {
           <div className="center"><img className="heroify-logo-large" src={logo}></img></div>
             <p className="center copy3">Get a customized Spotify playlist based on the hero <br/>
             you want to be and music you love</p>
-            <p className="center copy2">
-            What would Spiderman, Wonderwoman, Harry Potter or any 
-            <br/>other hero out there would have in their headphones? 
-            <br/>Or why not check out Darth Vader if you woke up on the dark side?
-            </p>
             <div className="divider"></div>
           <div class="text-center">
             <Button className="button" variant="btn btn-warning btn-lg" class="btn btn-warning btn-lrg">

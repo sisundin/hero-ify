@@ -1,3 +1,4 @@
+  
 import React from "react";
 import ProgressBar from "../components/HeaderAndFooter/header.js";
 import { Button } from "react-bootstrap";
@@ -67,11 +68,14 @@ export default class ChooseLength extends React.Component {
     return (
       <div className="outsideDiv">
         <ProgressBar step={"4"} />
-        <p className="vjueHeader">Just one more thing</p>
+        <p className="vjueHeader">Choose Length</p>
         <p className="copy">
-          {this.props.model.getHeroName()} like to know ,
-          <br />How long is your mission?
-        </p>
+        Just hold your horses, {this.props.model.getHeroName()},
+        <br />you'll get to stop a train crash in just a minute, 
+        <br />we just need to know how long you'll be gone.
+        <br />Are we talking a mission that's done within a few 
+        <br />moments, or some kind of eternal struggle?
+      </p>
         <HeroDisplay hero={this.props.model.hero} />
         <div style={wrapperStyle}></div>
         <div className="slider">
