@@ -49,10 +49,6 @@ export default class ChooseHero extends React.Component{
                  promise =  {this.props.model.searchHero(this.state.freetext)}
                  renderData = { ({data}) => this.createHeroDisplay(data)}
                 />
-                <Form.Group className="searchbox" >
-                    <Form.Control id="searchInput" size="lg" type="text" placeholder="Batman, Yoda, James Bond..." />
-                    <Button className="button" id="seachbutton" variant="btn btn-warning" onClick ={ () => this.update()}>Search!</Button>
-                </Form.Group>
                 </span>
             </div>
         </div>
@@ -61,7 +57,10 @@ export default class ChooseHero extends React.Component{
     
     createHeroDisplay(hero){
       return <div><HeroDisplay hero={hero}/>
-        
+        <Form.Group className="searchbox" >
+            <Form.Control id="searchInput" size="lg" type="text" placeholder="Batman, Yoda, James Bond..." />
+            <Button className="button" id="seachbutton" variant="btn btn-warning" onClick ={ () => this.update()}>Search!</Button>
+        </Form.Group>
         <div className="divider"></div>
         <div className="divider"></div>
         <Link to="/chooseMood"> <div className="text-center"><Button className="button" variant="btn btn-warning btn-lg" onClick={() => {
