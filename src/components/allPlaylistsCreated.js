@@ -31,10 +31,8 @@ export default function LatestPlaylist(props){
     }
     
     function rendertable(data){
-        return <Table class="table table-borderless playlists" className="playlistTable">
-            <thead><tr><th>User</th><th>Hero</th><th>Link</th></tr></thead>
-            {data.map(playlistobject => 
-        h("tr", {} , h("td", {}, playlistobject.User), h("td", {}, playlistobject.Hero), h("td", {}, <a href={playlistobject.PlaylistLink} target="_blank"> {playlistobject.PlaylistLink}</a>)))
+        // eslint-disable-next-line 
+        return <Table class="table table-borderless playlists" className="playlistTable"><thead><tr><th>User</th><th>Hero</th><th>Link</th></tr></thead>{data.map(playlistobject => h("tr", {} , h("td", {}, playlistobject.User), h("td", {}, playlistobject.Hero), h("td", {}, <a href={playlistobject.PlaylistLink} target="_blank"> {playlistobject.PlaylistLink}</a>)))
         }
         </Table>
     }
