@@ -14,7 +14,11 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
+<<<<<<< HEAD
   "/precache-manifest.40a4d5fc323f7452590e458c3cd593eb.js"
+=======
+  "/precache-manifest.70655f42a959b0718ce371961b16ab3d.js"
+>>>>>>> parent of d41cdb56... firebase-grjer
 );
 
 self.addEventListener('message', (event) => {
