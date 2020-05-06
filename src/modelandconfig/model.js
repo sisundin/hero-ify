@@ -3,7 +3,7 @@ import { heroApihost, HeroApiAccessKey, firebaseConfig } from "./apiConfig";
 import firebase from "firebase";
 import Spotify from "spotify-web-api-js";
 import playlistCover from "../Assets/playlistcover.jpg";
-import { base64Img } from "base64-img";
+import { base64Img } from "./node_modules/base64-img/base64-img";
 const spotifyApi = new Spotify();
 
 class HeroIfyModel extends React.Component {
