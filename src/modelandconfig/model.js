@@ -3,7 +3,6 @@ import { heroApihost, HeroApiAccessKey, firebaseConfig } from "./apiConfig";
 import firebase from "firebase";
 import Spotify from "spotify-web-api-js";
 import playlistCover from "../Assets/playlistcover.jpg";
-import { base64Img } from "base64-img";
 const spotifyApi = new Spotify();
 
 class HeroIfyModel extends React.Component {
@@ -214,19 +213,16 @@ class HeroIfyModel extends React.Component {
             let uniqtrackurilist = uniq(this.trackurilist);
             //uniqtrackurilist = shuffle(uniqtrackurilist);
             sleep(900);
-            console.log("I got to playlistcover");
             spotifyApi.uploadCustomPlaylistCoverImage(
+              this.playlistAttributes.userID,
               playlistrespons.id,
-              btoa(playlistCover)
+              playlistCover
             );
-            console.log("I got beyond playlistcover");
-            spotifyApi
-              .addTracksToPlaylist(
-                this.playlistAttributes.userID,
-                playlistrespons.id,
-                uniqtrackurilist
-              )
-              .then((response) => console.log(response));
+            spotifyApi.addTracksToPlaylist(
+              this.playlistAttributes.userID,
+              playlistrespons.id,
+              uniqtrackurilist
+            );
             this.playlist = playlistrespons;
             console.log("THIS.Playlist:");
             console.log(this.playlist);
