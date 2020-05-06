@@ -83,13 +83,12 @@ export default class SignInView extends Component {
           you want to be and the music you love
         </p>
         <div className="divider"></div>
-        <div class="text-center">
+        <div className="text-center">
           <Button
             className="button"
             variant="btn btn-warning btn-lg"
-            class="btn btn-warning btn-lrg"
           >
-            <a class="white copy" href="http://hero-auth.herokuapp.com/login">
+            <a className="white copy" href="http://hero-auth.herokuapp.com/login">
               Let's go!
             </a>
           </Button>
