@@ -26,17 +26,8 @@ class App extends React.Component {
   //HeroIfyModel.getOthersPlaylistsfromdatabase(7);
 
   render() {
-    return (
-      <div className="body">
-        <div className="background"></div>
-        <Router>
-          <React.Fragment>
-            <Switch>
-              <Route
-                exact
-                path="/"
-                exact
-                component={() => <SignInView model={this.heromodel} />}
+    // eslint-disable-next-line 
+    return (<div className="body"><div className="background"></div><Router><React.Fragment><Switch><Route exact path="/" exact component={() => <SignInView model={this.heromodel} />}
               />
               <Route
                 path="/choosehero"

@@ -24,8 +24,9 @@ export default function RenderPromise({ promise, renderData }) {
 
 function nothingFoundMessage() {
   return h("div",{ className: "creatingPlaylist" },
+  h("div", { className: "errorMessage" },
   h("div", { className: "divider" }, null),
-    h("h1", { }, "Something must have gone terrably wrong...."),
+    h("h1", { }, "Something must have gone terribly wrong..."),
     h("div", { className: "divider" }, null),
     <Link to="/">
             <Button
@@ -37,7 +38,7 @@ function nothingFoundMessage() {
               Try again!
             </Button>
           </Link>,
-    h("div", { class: "divider" })
+  h("div", { className: "divider" }))
   );
 }
 
@@ -45,7 +46,7 @@ function whileRendering() {
   return h("div",{ className: "creatingPlaylist" },
   h("div", { className: "divider" }, null),
     h("img", { className: "spinner-gif", src: spin }),
-    h("h1", {}, "This is not as easy as you think...")
+    h("h1", {}, "Creating playlist... it's not as easy as you think!")
   );
 }
 
