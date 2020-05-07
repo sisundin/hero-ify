@@ -76,19 +76,20 @@ export default class SignInView extends Component {
         <ProgressBar step={"0"} />
         <div className="divider"></div>
         <div className="center">
-          <img className="heroify-logo-large" src={logo} alt="refresh site fore missing..."></img>
+          <img className="heroify-logo-large" src={logo}></img>
         </div>
         <p className="center copy3">
           Get a customized Spotify playlist based on the hero <br />
           you want to be and the music you love
         </p>
         <div className="divider"></div>
-        <div className="text-center">
+        <div class="text-center">
           <Button
             className="button"
             variant="btn btn-warning btn-lg"
+            class="btn btn-warning btn-lrg"
           >
-            <a className="white copy" href="http://localhost:8888/login">
+            <a class="white copy" href="http://hero-auth.herokuapp.com/login">
               Let's go!
             </a>
           </Button>
