@@ -213,7 +213,6 @@ class HeroIfyModel extends React.Component {
             let uniqtrackurilist = uniq(this.trackurilist);
             //uniqtrackurilist = shuffle(uniqtrackurilist);
             sleep(900);
-            
             spotifyApi.addTracksToPlaylist(
               this.playlistAttributes.userID,
               playlistrespons.id,
