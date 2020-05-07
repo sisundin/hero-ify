@@ -39,7 +39,7 @@ export default class ChooseHero extends React.Component{
         <ProgressBar step={"1"}/> 
         <p className="vjueHeader">Choose your hero</p>
         <p className="copy">Choose a hero of your liking. What would Spiderman, Master Chief, 
-        <br/>Harry Potter or any other hero out there have in their headphones? 
+        <br/>Harry Potter or any other hero out there would have in their headphones? 
         <br/>Or perhaps Darth Vader if you woke up on the dark side.
         </p>
         <div>

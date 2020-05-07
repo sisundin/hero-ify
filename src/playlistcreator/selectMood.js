@@ -68,7 +68,7 @@ export default class ChooseMood extends React.Component {
     return (
       <div className="outsideDiv">
         <ProgressBar step={"2"} />
-        <p className="vieweHeader"> Choose mood</p>
+        <p className="vieweHeader"> Choose Mood</p>
         <p className="copy"> {this.props.model.getHeroName()}, great choice!
         <br/>Is {this.props.model.getHeroName()} in the mood for something sad to get them 
         <br/>thinking about all that's unfair in the world and all the people that 
