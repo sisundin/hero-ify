@@ -2,7 +2,7 @@ import React from "react";
 import { heroApihost, HeroApiAccessKey, firebaseConfig } from "./apiConfig";
 import firebase from "firebase";
 import Spotify from "spotify-web-api-js";
-//import playlistCover from "../Assets/playlistcover.jpg";
+import playlistCover from "../Assets/playlistcover.jpg";
 const spotifyApi = new Spotify();
 
 class HeroIfyModel extends React.Component {
