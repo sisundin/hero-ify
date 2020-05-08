@@ -6,7 +6,7 @@ import Tooltip from "rc-tooltip";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import "rc-tooltip/assets/bootstrap.css";
-import HeroDisplay from "../components/createHeroDisplay.js"
+import HeroDisplay from "../components/createHeroDisplay.js";
 
 export default class ChooseMood extends React.Component {
   constructor(props) {
@@ -35,20 +35,20 @@ export default class ChooseMood extends React.Component {
     // eslint-disable-next-line no-unused-vars
     const Range = createSliderWithTooltip(Slider.Range);
     const Handle = Slider.Handle;
-    const positionmarks = { 
+    const positionmarks = {
       0: {
         style: {
-          color: 'black',
+          color: "black",
         },
-        label: "SAD"
+        label: "SAD",
       },
       1: {
         style: {
-          color: 'black',
+          color: "black",
         },
-        label: "HAPPY"
-      }
-      };
+        label: "HAPPY",
+      },
+    };
     const wrapperStyle = { width: 400, margin: 30 };
     const handle = (props) => {
       const { value, dragging, index, ...restProps } = props;
@@ -69,11 +69,18 @@ export default class ChooseMood extends React.Component {
       <div className="outsideDiv">
         <ProgressBar step={"2"} />
         <p className="vieweHeader"> Choose Mood</p>
-        <p className="copy"> {this.props.model.getHeroName()}, great choice!
-        <br/>Is {this.props.model.getHeroName()} in the mood for something sad to get them 
-        <br/>thinking about all that's unfair in the world and all the people that 
-        <br/>need saving, or is something happy and uplifting more suitable?</p>
-        <HeroDisplay hero={this.props.model.hero}/>
+        <p className="copy">
+          {" "}
+          {this.props.model.getHeroName()}, great choice!
+          <br />
+          Is {this.props.model.getHeroName()} in the mood for something sad to
+          get them
+          <br />
+          thinking about all that's unfair in the world and all the people that
+          <br />
+          need saving, or is something happy and uplifting more suitable?
+        </p>
+        <HeroDisplay hero={this.props.model.hero} />
         <div style={wrapperStyle}></div>
         <div className="slider">
           <Slider
@@ -85,14 +92,14 @@ export default class ChooseMood extends React.Component {
             marks={positionmarks}
             step={0.01}
             handle={handle}
-            trackStyle={{ backgroundColor: 'black', height: 5 }}
-            railStyle={{ backgroundColor: 'white', height: 5 }}
+            trackStyle={{ backgroundColor: "black", height: 5 }}
+            railStyle={{ backgroundColor: "white", height: 5 }}
             handleStyle={{
-              borderColor: 'blue',
+              borderColor: "blue",
               height: 25,
               width: 25,
               marginTop: -10,
-              backgroundColor: 'black',
+              backgroundColor: "black",
             }}
           />
         </div>

@@ -4,13 +4,10 @@ import { Button } from "react-bootstrap";
 import ProgressBar from "../components/HeaderAndFooter/header.js";
 import logo from "../Assets/logo@300x.png";
 
-
 export default class SignInView extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      //topTracks: this.props.model.getMyTopTracks()
-    };
+    this.state = {};
 
     this.update = this.update.bind(this);
   }
@@ -40,29 +37,6 @@ export default class SignInView extends Component {
     this.props.model.removeObserver(this);
   }
 
-  /*getNowPlaying () {
-    spotifyApi.getMyCurrentPlaybackState().then((response) => {
-      this.setState({
-        nowPlaying: {
-          name: response.item.name,
-          albumArt: response.item.album.images[0].url
-        }
-      })
-    })
-  }
-
-  getMyTopTracks () {
-    var alltrackstoptracks = []
-    spotifyApi.getMyTopTracks({ limit: 100 }).then(response => {
-      for (var i = 0, l = response.items.length; i < l; i++) {
-        alltrackstoptracks.push(response.items[i])
-      }
-      this.setState({
-        topTracks: alltrackstoptracks
-      })
-    })
-  }*/
-
   hideAllResponses() {
     if (this.state.loggedIn === true) {
       document.getElementById("loggedout").classList.add("hide");
@@ -87,9 +61,12 @@ export default class SignInView extends Component {
           <Button
             className="button"
             variant="btn btn-warning btn-lg"
-            class="btn btn-warning btn-lrg"
+            className="btn btn-warning btn-lrg"
           >
-            <a class="white copy" href="http://hero-auth.herokuapp.com/login">
+            <a
+              className="white copy"
+              href="http://hero-auth.herokuapp.com/login"
+            >
               Let's go!
             </a>
           </Button>
