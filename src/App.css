@@ -224,11 +224,7 @@ image {
   text-align: center;
 }
 
-@media (max-width: 400px) {
-  .flexParent {
-    flex-direction: column;
-  }
-}
+
 
 .list {
   width: 25px;
@@ -325,6 +321,8 @@ p {
   font-style: normal;
   font-weight: bold;
   color: black;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .copy2 {
@@ -395,4 +393,35 @@ p {
   right: 25%;
   font-family:"Avenir";
   color: black;
+}
+
+@media (max-width: 700px) {
+  p.FAQbutton {
+    position: absolute;
+    top: 34px;
+    right: 10px;
+    font-size: 15px;
+  
+  }
+  p.backbutton {
+    position: absolute;
+    top: 34px;
+    left: 10px;
+    font-size: 15px;
+  }
+
+  .heroify-logo-small{
+    display: none;
+  }
+
+  .copy {
+    font-size: 12px;
+    font-family: 'Avenir','Nunito Sans', 'Lato';
+    font-style: normal;
+    font-weight: bold;
+    color: black;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
 }
