@@ -15,7 +15,7 @@ export default function LatestPlaylist(props){
       
         return <div className='popup' >
             
-        <div className='popup_inner'>
+        <div className='popup_inner_playlists'>
         <div className='popup-container'>
         <h1>Playlists created by others</h1>
         <RenderPromise
