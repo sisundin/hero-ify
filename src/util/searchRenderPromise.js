@@ -27,12 +27,12 @@ function sleeper(ms) {
 }
 
   function nothingfoundmessage(){
-      return h("div", {class:"divider"}, 
+      return h("div", {className:"divider"}, 
     h("img", {src:nothingfound}, null),
-    h("div", {class:"divider"},),
-    h("p",{class:"copy"}, "Nothing found here but me...."),
-    h("p",{class:"copy"}, "Try something else!"),
-    h("div", {class:"divider"},),
+    h("div", {className:"divider"},),
+    h("p",{className:"copy"}, "Nothing found here but me...."),
+    h("p",{className:"copy"}, "Try something else!"),
+    h("div", {className:"divider"},),
     <Back></Back>
     
     )

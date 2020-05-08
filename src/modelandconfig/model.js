@@ -91,8 +91,6 @@ class HeroIfyModel extends React.Component {
   }
 
   getGeneratedPlaylist() {
-    console.log("getPlaylsit Generated:");
-    console.log(this.playlist);
     return this.playlist;
   }
 
@@ -216,15 +214,11 @@ class HeroIfyModel extends React.Component {
               uniqtrackurilist
             );
             this.playlist = playlistresponse;
-            console.log("THIS.Playlist:");
-            console.log(this.playlist);
             this.sleep(500);
             return playlistresponse;
           });
       })
       .then((response) => {
-        console.log("this is the response ");
-        console.log(response);
         return response;
       });
   }

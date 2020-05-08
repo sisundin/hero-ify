@@ -16,7 +16,7 @@ export default class ChooseLength extends React.Component {
     super(props);
     this.props = props;
     this.state = {
-      length: 42,
+      length: 53,
     };
   }
 
@@ -67,7 +67,7 @@ export default class ChooseLength extends React.Component {
     return (
       <div className="outsideDiv">
         <ProgressBar step={"4"} />
-        <p className="vjueHeader">Choose Length</p>
+        <p className="vjueHeader">Choose length</p>
         <p className="copy">
           Just hold your horses, {this.props.model.getHeroName()},
           <br />
