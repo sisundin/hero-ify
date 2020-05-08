@@ -39,7 +39,7 @@ class App extends React.Component {
                 path="/choosehero"
                 component={() => <ChooseHero model={this.heromodel} />}
               />
-              <Route§
+              <Route
                 path="/chooseMood"
                 component={() => <ChooseMood model={this.heromodel} />}
               />
