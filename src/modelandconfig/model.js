@@ -136,8 +136,8 @@ class HeroIfyModel extends React.Component {
       powerstats.power +
       powerstats.combat;
     var genres = {
-      jazz: (powerstats.intelligence / allstats).toFixed(2),
-      grunge: (powerstats.strength / allstats).toFixed(2),
+      "jazz": (powerstats.intelligence / allstats).toFixed(2),
+      "grunge": (powerstats.strength / allstats).toFixed(2),
       "minimal-techno": (powerstats.speed / allstats).toFixed(2),
       "r-n-b": (powerstats.durability / allstats).toFixed(2),
       "deep-house": (powerstats.power / allstats).toFixed(2),
