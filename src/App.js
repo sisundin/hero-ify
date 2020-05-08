@@ -6,7 +6,7 @@ import SignInView from "./signin/signInView.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ChooseHero from "./choosehero/chooseHero";
 import ChooseMood from "./playlistcreator/selectMood.js";
-import ChooseEnergy from "./playlistcreator/selectEnergy";
+import ChooseEnergy from "./playlistcreator/selectEnergy.js";
 import ChooseLength from "./playlistcreator/selectLength.js";
 import ShowPlaylist from "./playlistcreator/showPlaylist.js";
 import ProgressBar from "./components/HeaderAndFooter/header.js";

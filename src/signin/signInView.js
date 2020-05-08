@@ -23,7 +23,7 @@ export default class SignInView extends Component {
             className="button"
             variant="btn btn-warning btn-lg"
           >
-            <a className="button" href="http://localhost:8888/login">
+            <a className="button" href="http://hero-auth.herokuapp.com/login">
               Let's go!
             </a>
           </Button>
