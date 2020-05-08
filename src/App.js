@@ -6,7 +6,7 @@ import SignInView from "./signin/signInView.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ChooseHero from "./choosehero/chooseHero";
 import ChooseMood from "./playlistcreator/selectMood.js";
-import ChooseEnergy from "./playlistcreator/selectenergylevel.js";
+import ChooseEnergy from "./playlistcreator/selectEnergy";
 import ChooseLength from "./playlistcreator/selectLength.js";
 import ShowPlaylist from "./playlistcreator/showPlaylist.js";
 import ProgressBar from "./components/HeaderAndFooter/header.js";
@@ -39,7 +39,7 @@ class App extends React.Component {
                 path="/choosehero"
                 component={() => <ChooseHero model={this.heromodel} />}
               />
-              <Route§
+              <Route
                 path="/chooseMood"
                 component={() => <ChooseMood model={this.heromodel} />}
               />
