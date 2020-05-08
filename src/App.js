@@ -6,7 +6,7 @@ import SignInView from "./signin/signInView.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ChooseHero from "./choosehero/chooseHero";
 import ChooseMood from "./playlistcreator/selectMood.js";
-import ChooseEnergy from "./playlistcreator/selectEnergy.js";
+import ChooseEnergy from "./playlistcreator/selectenergylevel.js";
 import ChooseLength from "./playlistcreator/selectLength.js";
 import ShowPlaylist from "./playlistcreator/showPlaylist.js";
 import ProgressBar from "./components/HeaderAndFooter/header.js";
@@ -17,27 +17,21 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.heromodel = HeroIfyModel;
+    //HeroIfyModel.searchHero("ironman");
     this.state = {};
   }
+  //HeroIfyModel.addYourplaylistToDatabase("test10", "tes10","test10")
+  //HeroIfyModel.getOthersPlaylistsfromdatabase(7);
 
   render() {
-    return (
-      <div className="body">
-        <div className="background"></div>
-        <Router>
-          <React.Fragment>
-            <Switch>
-              <Route
-                exact
-                path="/"
-                exact
-                component={() => <SignInView model={this.heromodel} />}
+    // eslint-disable-next-line 
+    return (<div className="body"><div className="background"></div><Router><React.Fragment><Switch><Route exact path="/" exact component={() => <SignInView model={this.heromodel} />}
               />
               <Route
                 path="/choosehero"
                 component={() => <ChooseHero model={this.heromodel} />}
               />
-              <Route
+              <Route§
                 path="/chooseMood"
                 component={() => <ChooseMood model={this.heromodel} />}
               />
@@ -65,12 +59,13 @@ class App extends React.Component {
       </div>
     );
   }
+  //<Route path="/specPlaylist" render={() => <playlistSettings model={heroifyModel}/>}/>
 }
 
 const NoMatch = () => (
   <div className="outsideDiv">
     <ProgressBar step={"0"} />
-    <div className="errorMessage">
+    <div className="centered">
       <h1>404 No match</h1>
       <Link to="/">
         <h1>Click here to go to homepage</h1>
