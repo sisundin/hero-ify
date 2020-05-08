@@ -28,7 +28,7 @@ export default function LatestPlaylist(props) {
 
 function rendertable(data) {
   return (
-    <Table class="table table-borderless" className="playlistTable">
+    <Table className="table table-borderless" className="playlistTable">
       <thead>
         <tr>
           <th>User</th>
