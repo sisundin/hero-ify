@@ -32,6 +32,7 @@ export default class ChooseMood extends React.Component {
   render() {
     const { mood } = this.state;
     const createSliderWithTooltip = Slider.createSliderWithTooltip;
+    // eslint-disable-next-line no-unused-vars
     const Range = createSliderWithTooltip(Slider.Range);
     const Handle = Slider.Handle;
     const positionmarks = {
