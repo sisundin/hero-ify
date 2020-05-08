@@ -26,7 +26,6 @@ export default class ShowPlaylist extends React.Component {
             renderData={() => this.createdPlaylistcontainor()}
           />
           <div className="divider"></div>
-          <div className="divider"></div>
           <RenderOtherPlaylistsbutton model = {this.props.model}/>
           <div className="divider"></div>
           <Link to="/chooseHero">
@@ -44,8 +43,6 @@ export default class ShowPlaylist extends React.Component {
 
   createdPlaylistcontainor() {
     let data = this.props.model.getGeneratedPlaylist();
-    console.log("inside createdPlaylistcontainor");
-    console.log(data);
     return <div>
     <p className="copy">
     Congratulations! This is {data.name}. Check it out through the link below!
