@@ -51,7 +51,6 @@ export default class ShowPlaylist extends React.Component {
     Congratulations! This is {data.name}. Check it out through the link below!
     </p>
     <Button className="button" variant="btn btn-warning btn-lg" href={data.external_urls.spotify} target="_blank" >Link to your playlist</Button>
-    <div className="divider"></div>
     </div>
   }
 }
