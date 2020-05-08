@@ -119,6 +119,8 @@ h1 {
   text-align: center;
   font-size: 30px;
   font-weight: bold;
+  font-family: "Avenir";
+  color: black;
 }
 
 .wellcomecenter {
@@ -339,8 +341,7 @@ p {
   font-family: 'Avenir';
   text-decoration: none;
   text-align: center;
-  background-color: #efd82d;
-  color: #331E38;
+  color: black;
 }
 
 .heroify-logo-small{
@@ -376,4 +377,5 @@ p {
   left: 25%;
   right: 25%;
   font-family:"Avenir";
+  color: black;
 }

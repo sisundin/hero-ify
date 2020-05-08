@@ -24,19 +24,20 @@ export default class ShowPlaylist extends React.Component {
         <ProgressBar step={"5"} />
         <p className="vjueHeader"> Your playlist</p>
         <HeroDisplay hero={this.props.model.hero} />
-        
         <div className="divider"></div>
         <div className="text-center">
         <RenderPromise
           promise= {this.props.model.createHeroPlaylist()}
           renderData={() => this.createdPlaylistcontainor()}
           />
+          <div className="divider"></div>
+          <div className="divider"></div>
           <RenderOtherPlaylistsbutton model = {this.props.model}/>
           <div className="divider"></div>
           <Link to="/chooseHero">
-            <Button variant="btn btn-success btn-lg" onClick={() => {}}>
+            <Button className="button" variant="btn btn-warning btn-lg" onClick={() => {}}>
               {" "}
-              CREATE NEW PLAYLIST
+              Create new playlist
             </Button>
           </Link>
         </div>
@@ -52,11 +53,9 @@ export default class ShowPlaylist extends React.Component {
     console.log(data);
     return <div>
     <p className="copy">
-    Congratulations! This is {this.props.model.getHeroName()}'s perfect
-    Spotify playlist {data.name}
+    Congratulations! This is {data.name}. Check it out through the link below!
     </p>
-    <div className="divider"></div>
-    <Button variant="btn btn-success btn-lg" href={data.external_urls.spotify} target="_blank" >CHECK OUT YOUR PLAYLIST</Button>
+    <Button className="button" variant="btn btn-warning btn-lg" href={data.external_urls.spotify} target="_blank" >Link to your playlist</Button>
     <div className="divider"></div>
     </div>
   }

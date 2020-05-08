@@ -1,7 +1,6 @@
 import React from 'react';
 import RenderPromise from '../util/renderPromise';
-import { Button, Table } from 'react-bootstrap'
-import { ActionUpdate } from 'material-ui/svg-icons';
+import {Table} from 'react-bootstrap'
 
 const h = React.createElement;
 
@@ -31,10 +30,10 @@ export default function LatestPlaylist(props){
     }
     
     function rendertable(data){
-        return <Table class="table table-borderless" className="playlistTable">
+        return <Table variant="table table-borderless" className="playlistTable">
             <thead><tr><th>User</th><th>Hero</th><th>Link</th></tr></thead>
             {data.map(playlistobject => 
-        h("tr", {} , h("td", {}, playlistobject.User), h("td", {}, playlistobject.Hero), h("td", {}, <a href={playlistobject.PlaylistLink} target="_blank"> {playlistobject.PlaylistLink}</a>)))
+        h("tbody",{key:playlistobject.User}, h("tr", {} , h("td", {}, playlistobject.User), h("td", {}, playlistobject.Hero), h("td", {}, <a href={playlistobject.PlaylistLink} target="_blank"> {playlistobject.PlaylistLink}</a>))))
         }
         </Table>
     }
