@@ -79,13 +79,12 @@ class HeroIfyModel extends React.Component {
     );
   }
 
-  /// Sök bara på namn i en sträng
   searchHero(name) {
     let data = this.getHeroData("hero=" + name);
 
     return data;
   }
-  /// Sök bara på id i en sträng
+
   getHeronID(id) {
     let data = this.getHeroData("id=" + id);
     return data;
@@ -180,7 +179,7 @@ class HeroIfyModel extends React.Component {
     });
   }
 
-  getHeroPlaylist(genres, topTracks) {
+  getPlaylistTracks(genres, topTracks) {
     Object.entries(genres).forEach(([key, value]) => {
       this.getGenreShare(key, value, topTracks);
     });
@@ -196,32 +195,31 @@ class HeroIfyModel extends React.Component {
       .getMe()
       .then((response) => {
         this.playlistAttributes.userID = response.id;
-        this.getHeroPlaylist(genres, topTracks);
-        sleep(4000);
+        this.getPlaylistTracks(genres, topTracks);
+        this.sleep(4000);
         return spotifyApi
           .createPlaylist(response.id, {
             name: this.hero.name + "´s Hero-ify Playlist",
             public: true,
           })
-          .then((playlistrespons) => {
+          .then((playlistresponse) => {
             this.addYourplaylistToDatabase(
               this.hero.name,
-              playlistrespons.external_urls.spotify,
-              playlistrespons.owner.display_name
+              playlistresponse.external_urls.spotify,
+              playlistresponse.owner.display_name
             );
-            let uniqtrackurilist = uniq(this.trackurilist);
-            //uniqtrackurilist = shuffle(uniqtrackurilist);
-            sleep(900);
+            let uniqtrackurilist = this.uniq(this.trackurilist);
+            this.sleep(900);
             spotifyApi.addTracksToPlaylist(
               this.playlistAttributes.userID,
-              playlistrespons.id,
+              playlistresponse.id,
               uniqtrackurilist
             );
-            this.playlist = playlistrespons;
+            this.playlist = playlistresponse;
             console.log("THIS.Playlist:");
             console.log(this.playlist);
-            sleep(500);
-            return playlistrespons;
+            this.sleep(500);
+            return playlistresponse;
           });
       })
       .then((response) => {
@@ -267,6 +265,28 @@ class HeroIfyModel extends React.Component {
       e = r.exec(q);
     }
     return hashParams;
+  }
+
+  uniq(a) {
+    var prims = { boolean: {}, number: {}, string: {} },
+      objs = [];
+
+    return a.filter(function (item) {
+      var type = typeof item;
+      if (type in prims)
+        return prims[type].hasOwnProperty(item)
+          ? false
+          : (prims[type][item] = true);
+      else return objs.indexOf(item) >= 0 ? false : objs.push(item);
+    });
+  }
+
+  sleep(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
   }
 
   getMyTopTracksURI(limitoftracks = 5) {
@@ -323,25 +343,3 @@ const heroifyModel = new HeroIfyModel(
   modelObject.playlistAttributes
 );
 export default heroifyModel;
-
-function sleep(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
-}
-
-function uniq(a) {
-  var prims = { boolean: {}, number: {}, string: {} },
-    objs = [];
-
-  return a.filter(function (item) {
-    var type = typeof item;
-    if (type in prims)
-      return prims[type].hasOwnProperty(item)
-        ? false
-        : (prims[type][item] = true);
-    else return objs.indexOf(item) >= 0 ? false : objs.push(item);
-  });
-}

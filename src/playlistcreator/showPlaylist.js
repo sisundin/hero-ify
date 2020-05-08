@@ -6,19 +6,15 @@ import HeroDisplay from "../components/createHeroDisplay.js";
 import RenderPromise from "../util/renderPlaylistcreation.js";
 import RenderOtherPlaylistsbutton from "../components/showOtherPlaylists";
 
-const h = React.createElement;
-
 export default class ShowPlaylist extends React.Component {
   constructor(props) {
     super(props);
     this.props = props;
-    this.state = { 
-    };
+    this.state = {};
   }
 
-
   render() {
-    const wrapperStyle = { width: 400, margin: 50 };    
+    const wrapperStyle = { width: 400, margin: 50 };
     return (
       <div className="outsideDiv">
         <ProgressBar step={"5"} />
@@ -26,9 +22,9 @@ export default class ShowPlaylist extends React.Component {
         <HeroDisplay hero={this.props.model.hero} />
         <div className="divider"></div>
         <div className="text-center">
-        <RenderPromise
-          promise= {this.props.model.createHeroPlaylist()}
-          renderData={() => this.createdPlaylistcontainor()}
+          <RenderPromise
+            promise={this.props.model.createHeroPlaylist()}
+            renderData={() => this.createdPlaylistcontainor()}
           />
           <div className="divider"></div>
           <div className="divider"></div>
@@ -47,7 +43,7 @@ export default class ShowPlaylist extends React.Component {
     );
   }
 
-  createdPlaylistcontainor(){
+  createdPlaylistcontainor() {
     let data = this.props.model.getGeneratedPlaylist();
     console.log("inside createdPlaylistcontainor");
     console.log(data);
