@@ -28,7 +28,6 @@ class App extends React.Component {
           <React.Fragment>
             <Switch>
               <Route
-                exact
                 path="/"
                 exact
                 component={() => <SignInView model={this.heromodel} />}

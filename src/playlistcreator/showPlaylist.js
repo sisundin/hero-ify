@@ -14,7 +14,6 @@ export default class ShowPlaylist extends React.Component {
   }
 
   render() {
-    const wrapperStyle = { width: 400, margin: 50 };
     return (
       <div className="outsideDiv">
         <ProgressBar step={"5"} />
