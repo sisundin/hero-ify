@@ -24,9 +24,9 @@ export default function RenderPromise({ promise, renderData }) {
 
 function nothingFoundMessage() {
   return h("div",{ className: "creatingPlaylist" },
-  h("div", { className: "errorMessage" },
+  h("div", {className: "errorMessage"},
   h("div", { className: "divider" }, null),
-    h("h1", { }, "Something must have gone terribly wrong..."),
+    h("h1", { }, "Something must have gone terribly wrong...."),
     h("div", { className: "divider" }, null),
     <Link to="/">
             <Button
@@ -38,7 +38,7 @@ function nothingFoundMessage() {
               Try again!
             </Button>
           </Link>,
-  h("div", { className: "divider" }))
+    h("div", { class: "divider" }))
   );
 }
 

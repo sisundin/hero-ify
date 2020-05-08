@@ -6,7 +6,7 @@ import Tooltip from "rc-tooltip";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import "rc-tooltip/assets/bootstrap.css";
-import HeroDisplay from "../components/createHeroDisplay.js"
+import HeroDisplay from "../components/createHeroDisplay.js";
 
 export default class ChooseEnergy extends React.Component {
   handleChange = (energy) => {
@@ -35,21 +35,20 @@ export default class ChooseEnergy extends React.Component {
     // eslint-disable-next-line no-unused-vars
     const Range = createSliderWithTooltip(Slider.Range);
     const Handle = Slider.Handle;
-    const positionmarks = { 
+    const positionmarks = {
       0: {
         style: {
-          color: 'black',
-          
+          color: "black",
         },
         label: "OLD LADY",
       },
       1: {
         style: {
-          color: 'black',
+          color: "black",
         },
         label: "ALIENS",
-      }
-      };
+      },
+    };
     const wrapperStyle = { width: 400, margin: 30 };
     const handle = (props) => {
       const { value, dragging, index, ...restProps } = props;
@@ -70,11 +69,14 @@ export default class ChooseEnergy extends React.Component {
       <div className="outsideDiv">
         <ProgressBar step={"3"} />
         <p className="vjueHeader"> Choose energy</p>
-        <p className="copy">What kind of energy level is needed for the
-        <br/> mission that {this.props.model.getHeroName()} is set out on today? 
-        <br/> Is it more of a chill help an old lady carry groceries kind of 
-        <br/> vibe, or more like battling an army of aliens?</p>
-        <HeroDisplay hero={this.props.model.hero}/>
+        <p className="copy">
+          What kind of energy level is needed for the
+          <br /> mission that {this.props.model.getHeroName()} is set out on
+          today?
+          <br /> Is it more of a chill help an old lady carry groceries kind of
+          <br /> vibe, or more like battling an army of aliens?
+        </p>
+        <HeroDisplay hero={this.props.model.hero} />
         <div style={wrapperStyle}></div>
         <div className="slider">
           <Slider
@@ -86,14 +88,14 @@ export default class ChooseEnergy extends React.Component {
             marks={positionmarks}
             step={0.01}
             handle={handle}
-            trackStyle={{ backgroundColor: 'black', height: 5 }}
-            railStyle={{ backgroundColor: 'white', height: 5 }}
+            trackStyle={{ backgroundColor: "black", height: 5 }}
+            railStyle={{ backgroundColor: "white", height: 5 }}
             handleStyle={{
-              borderColor: 'blue',
+              borderColor: "blue",
               height: 25,
               width: 25,
               marginTop: -10,
-              backgroundColor: 'black',
+              backgroundColor: "black",
             }}
           />
         </div>

@@ -119,7 +119,7 @@ h1 {
   text-align: center;
   font-size: 30px;
   font-weight: bold;
-  font-family: 'Avenir';
+  font-family: "Avenir";
   color: black;
 }
 
@@ -152,6 +152,7 @@ p.closeEx {
   margin: auto;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
 .popup_inner {
   position: absolute;
   left: 25%;
@@ -165,23 +166,21 @@ p.closeEx {
   font-weight: bold;
   color:black;
 }
-.playlists{
-  width: auto;
-}
 
-.popup_inner_others_playlists{
+.popup_inner_playlists {
+  height: 500px;
+  width: 750px;
   position: absolute;
-  left: 10%;
-  right: 10%;
-  top: 10%;
-  bottom: 10%;
+  left: 20%;
+  right: 25%;
+  top: 25%;
+  bottom: 25%;
   text-align: center;
   margin: auto;
   background: #efd82d; 
   font-family: "Avenir";
   font-weight: bold;
   color:black;
-
 }
 .popup-container {
   margin: 10px;
@@ -359,8 +358,7 @@ p {
   font-family: 'Avenir';
   text-decoration: none;
   text-align: center;
-  background-color: #efd82d;
-  color: #331E38;
+  color: black;
 }
 
 .heroify-logo-small{
@@ -395,5 +393,6 @@ p {
   top: 25%;
   left: 25%;
   right: 25%;
-
+  font-family:"Avenir";
+  color: black;
 }

@@ -5,8 +5,6 @@ import Footer from "./components/HeaderAndFooter/footer.js";
 import SignInView from "./signin/signInView.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ChooseHero from "./choosehero/chooseHero";
-
-//import PlaylistSettings from './playlistcreator/specYourPlaylist';
 import ChooseMood from "./playlistcreator/selectMood.js";
 import ChooseEnergy from "./playlistcreator/selectenergylevel.js";
 import ChooseLength from "./playlistcreator/selectLength.js";
@@ -26,14 +24,22 @@ class App extends React.Component {
   //HeroIfyModel.getOthersPlaylistsfromdatabase(7);
 
   render() {
-    // eslint-disable-next-line 
-    return (<div className="body"><div className="background"></div><Router><React.Fragment><Switch><Route exact path="/" exact component={() => <SignInView model={this.heromodel} />}
+    return (
+      <div className="body">
+        <div className="background"></div>
+        <Router>
+          <React.Fragment>
+            <Switch>
+              <Route
+                path="/"
+                exact
+                component={() => <SignInView model={this.heromodel} />}
               />
               <Route
                 path="/choosehero"
                 component={() => <ChooseHero model={this.heromodel} />}
               />
-              <Route
+              <Route§
                 path="/chooseMood"
                 component={() => <ChooseMood model={this.heromodel} />}
               />
