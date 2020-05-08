@@ -46,7 +46,7 @@ function whileRendering() {
   return h("div",{ className: "creatingPlaylist" },
   h("div", { className: "divider" }, null),
     h("img", { className: "spinner-gif", src: spin }),
-    h("h1", {}, "Creating playlist... it's not as easy as you think...")
+    h("h1", {}, "Creating playlist... it's not as easy as you think!")
   );
 }
 

@@ -152,9 +152,26 @@ p.closeEx {
   margin: auto;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
 .popup_inner {
   position: absolute;
   left: 25%;
+  right: 25%;
+  top: 25%;
+  bottom: 25%;
+  text-align: center;
+  margin: auto;
+  background: #efd82d; 
+  font-family: "Avenir";
+  font-weight: bold;
+  color:black;
+}
+
+.popup_inner_playlists {
+  height: 500px;
+  width: 750px;
+  position: absolute;
+  left: 20%;
   right: 25%;
   top: 25%;
   bottom: 25%;
