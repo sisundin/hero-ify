@@ -59,7 +59,6 @@ export default class ChooseHero extends React.Component {
                 </Button>
               </Form.Group>
               <div className="divider"></div>
-            
               <SearchRenderPromise
                 promise={this.props.model.searchHero(this.state.freetext)}
                 renderData={({ data }) => this.createHeroDisplay(data)}
