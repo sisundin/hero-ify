@@ -463,4 +463,15 @@ p {
   .vjueHeader{
     font-size: 38px;
   }
+
+  .heroify-logo-large{
+    height: auto;
+    width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:-40px;
+  }
+
+
 }
