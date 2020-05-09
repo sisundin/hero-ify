@@ -76,8 +76,6 @@ export default class ChooseHero extends React.Component {
     return (
       <div>
         <HeroDisplay hero={hero} />
-
-        <div className="divider"></div>
         <div className="divider"></div>
         <Link to="/chooseMood">
           {" "}
