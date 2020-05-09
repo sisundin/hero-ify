@@ -429,5 +429,19 @@ p {
     padding-left: 20px;
     padding-right: 20px;
   }
+
+  .popup_inner {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 25%;
+    
+    text-align: center;
+    margin: auto;
+    background: #efd82d; 
+    font-family: "Avenir";
+    font-weight: bold;
+    color:black;
+  }
   
 }
