@@ -189,7 +189,7 @@ class HeroIfyModel extends React.Component {
     this.heroGenres(this.hero.powerstats);
     var genres = this.playlistAttributes.genres;
 
-    return spotifyApi
+    return (spotifyApi
       .getMe()
       .then((response) => {
         this.playlistAttributes.userID = response.id;
@@ -220,7 +220,7 @@ class HeroIfyModel extends React.Component {
       })
       .then((response) => {
         return response;
-      });
+      }));
   }
 
   getGenreShare(genre, genre_ratio, topTracks) {

@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import HeroDisplay from "../components/createHeroDisplay.js";
 import RenderPromise from "../util/renderPlaylistcreation.js";
-import RenderOtherPlaylistsbutton from "../components/showOtherPlaylists";
+import RenderOtherPlaylistsbutton from "../components/othersplaylists/showOtherPlaylists";
 
 export default class ShowPlaylist extends React.Component {
   constructor(props) {

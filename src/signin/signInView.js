@@ -13,6 +13,7 @@ export default class SignInView extends Component {
         <div className="center">
           <img className="heroify-logo-large" src={logo} alt=""></img>
         </div>
+        <div className="divider"></div>
         <p className="center copy3">
           Get a customized Spotify playlist based on the hero <br />
           you want to be and the music you love
