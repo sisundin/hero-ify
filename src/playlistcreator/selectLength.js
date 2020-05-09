@@ -75,7 +75,7 @@ export default class ChooseLength extends React.Component {
           <br />
           we just need to know how long you'll be gone.
           <br />
-          Are we talking a mission that's done within a few
+          Are we talking about a mission that's done within a few
           <br />
           moments, or some kind of eternal struggle?
         </p>

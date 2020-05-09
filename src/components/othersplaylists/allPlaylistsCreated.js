@@ -1,5 +1,5 @@
 import React from 'react';
-import RenderPromise from '../util/renderPromise';
+import RenderPromise from '../../util/renderPromise';
 import {Table} from 'react-bootstrap'
 
 const h = React.createElement;
