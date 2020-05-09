@@ -64,8 +64,6 @@ export default class ChooseHero extends React.Component {
                 promise={this.props.model.searchHero(this.state.freetext)}
                 renderData={({ data }) => this.createHeroDisplay(data)}
               />
-              
-            
           </div>
         </div>
       </div>
