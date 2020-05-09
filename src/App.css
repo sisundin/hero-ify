@@ -434,8 +434,25 @@ p {
     position: absolute;
     left: 8%;
     right: 8%;
-    top: 25%;
-    
+    top: 5%;
+    overflow: auto;
+    text-align: center;
+    margin: auto;
+    background: #efd82d; 
+    font-family: "Avenir";
+    font-weight: bold;
+    color:black;
+  }
+  .popup_inner_playlists {
+  
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 5%;
+    overflow: scroll;
+    float: bottom;
+    margin-bottom: 5px;
+
     text-align: center;
     margin: auto;
     background: #efd82d; 

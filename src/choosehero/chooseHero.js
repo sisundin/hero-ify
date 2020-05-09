@@ -42,12 +42,7 @@ export default class ChooseHero extends React.Component {
         </p>
         <div>
           <div id="searchresult" className="searchresult">
-            <span>
-              <SearchRenderPromise
-                promise={this.props.model.searchHero(this.state.freetext)}
-                renderData={({ data }) => this.createHeroDisplay(data)}
-              />
-              <Form.Group className="searchbox">
+          <Form.Group className="searchbox">
                 <Form.Control
                   id="searchInput"
                   size="lg"
@@ -63,6 +58,13 @@ export default class ChooseHero extends React.Component {
                   Search!
                 </Button>
               </Form.Group>
+              <div className="divider"></div>
+            <span>
+              <SearchRenderPromise
+                promise={this.props.model.searchHero(this.state.freetext)}
+                renderData={({ data }) => this.createHeroDisplay(data)}
+              />
+              
             </span>
           </div>
         </div>
