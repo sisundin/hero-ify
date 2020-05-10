@@ -17,11 +17,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.heromodel = HeroIfyModel;
-    //HeroIfyModel.searchHero("ironman");
     this.state = {};
   }
-  //HeroIfyModel.addYourplaylistToDatabase("test10", "tes10","test10")
-  //HeroIfyModel.getOthersPlaylistsfromdatabase(7);
 
   render() {
     return (
@@ -55,9 +52,8 @@ class App extends React.Component {
                 path="/showPlaylist"
                 component={() => <ShowPlaylist model={this.heromodel} />}
               />
-
               <Route component={NoMatch} />
-              <div className="divider"></div>
+              
             </Switch>
             <div id="wavecontainor">
               <Footer />
