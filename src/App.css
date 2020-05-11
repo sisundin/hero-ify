@@ -225,8 +225,6 @@ image {
   text-align: center;
 }
 
-
-
 .list {
   width: 25px;
 }
@@ -283,10 +281,8 @@ image {
 
 /* On mouse-over, add a deeper shadow */
 .Herocard:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 25px 0 rgba(0, 0, 0, 0.2);
 }
-
-
 
 img.heroPic {
   display: block;
@@ -484,6 +480,14 @@ p {
     margin-right: auto;
     margin-top:-40px;
   }
+  #searchInput{
+    width: 200px;
+    height: 37px;
+    float: left;
+    
+    margin-left: 25px;
+    font-size: 14px;
+    font-family: "Avenir";}
 
 
 }

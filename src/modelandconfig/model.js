@@ -25,7 +25,7 @@ class HeroIfyModel extends React.Component {
     firebase.initializeApp(firebaseConfig);
     this.db = firebase.database();
     this.createdplaylist = "";
-    this.toptrackID = [];
+    this.toptrackUID = [];
     this.playlist = {};
     if (params.access_token) {
       spotifyApi.setAccessToken(params.access_token);
@@ -97,7 +97,7 @@ class HeroIfyModel extends React.Component {
   setHero(hero) {
     this.hero = hero;
     this.refreshLocalStore();
-    this.toptrackID = this.getMyTopTracksURI(4);
+    this.toptrackUID = this.getMyTopTracksURI(4);
   }
 
   setMood(mood) {
@@ -184,8 +184,11 @@ class HeroIfyModel extends React.Component {
   }
 
   createHeroPlaylist() {
+    //A list were we put the uri of the songs that go in to the playlist
     this.trackurilist = [];
-    const topTracks = this.toptrackID;
+    //The users top tracks we use to get recommendations
+    const topTracks = this.toptrackUID;
+    //The functions that gets the share genreas according to the hero you have chosens powerstats
     this.heroGenres(this.hero.powerstats);
     var genres = this.playlistAttributes.genres;
 
@@ -193,14 +196,18 @@ class HeroIfyModel extends React.Component {
       .getMe()
       .then((response) => {
         this.playlistAttributes.userID = response.id;
+        //First we get the tracks for your playlist
         this.getPlaylistTracks(genres, topTracks);
+        //We created a pause function to catch up to the functions a little bit. 
         this.sleep(4000);
+        //Then we create the playlist
         return spotifyApi
           .createPlaylist(response.id, {
             name: this.hero.name + "´s Hero-ify Playlist",
             public: true,
           })
           .then((playlistresponse) => {
+            //We add the playlist to our database
             this.addYourplaylistToDatabase(
               this.hero.name,
               playlistresponse.external_urls.spotify,
@@ -208,6 +215,7 @@ class HeroIfyModel extends React.Component {
             );
             let uniqtrackurilist = this.uniq(this.trackurilist);
             this.sleep(900);
+            //lastly we put all the tracks into the playlist
             spotifyApi.addTracksToPlaylist(
               this.playlistAttributes.userID,
               playlistresponse.id,

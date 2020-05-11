@@ -70,6 +70,7 @@ export default class ChooseHero extends React.Component {
   }
 
   createHeroDisplay(hero) {
+    console.log(hero);
     return (
       <div>
         <HeroDisplay hero={hero} />
