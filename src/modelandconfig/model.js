@@ -14,7 +14,8 @@ class HeroIfyModel extends React.Component {
       mood: "",
       energy: "",
       length: "",
-    }
+    }, 
+    heroplaylistiscreated = { hero : "not" , stats: "not", data:"not"}
   ) {
     super();
     const params = this.getHashParams();
@@ -22,6 +23,7 @@ class HeroIfyModel extends React.Component {
     this.trackurilist = [];
     this.hero = hero;
     this.playlistAttributes = playlistAttributes;
+    this.heroplaylistiscreated = heroplaylistiscreated;
     firebase.initializeApp(firebaseConfig);
     this.db = firebase.database();
     this.createdplaylist = "";
@@ -75,6 +77,7 @@ class HeroIfyModel extends React.Component {
       JSON.stringify({
         hero: this.hero,
         playlistAttributes: this.playlistAttributes,
+        heroplaylistiscreated:this.heroplaylistiscreated,
       })
     );
   }
@@ -88,6 +91,10 @@ class HeroIfyModel extends React.Component {
   getHeronID(id) {
     let data = this.getHeroData("id=" + id);
     return data;
+  }
+
+  getHero(){
+    return this.hero;
   }
 
   getGeneratedPlaylist() {
@@ -126,7 +133,22 @@ class HeroIfyModel extends React.Component {
   getHeroImage() {
     return this.hero.images.lg;
   }
+  getPlaylistAttributes(){
+    return this.playlistAttributes;
+  }
 
+  //{ hero : "not" , stats: "not", data:"not"}
+  getoldplaylistdata(){
+    return this.heroplaylistiscreated.data;
+  }
+
+  getOldPlaylistName(){
+    return this.heroplaylistiscreated.hero; 
+  }
+
+  getOldPlaylistAttributes(){
+    return this.heroplaylistiscreated.stats;
+  }
   heroGenres(powerstats) {
     var allstats =
       powerstats.intelligence +
@@ -227,6 +249,8 @@ class HeroIfyModel extends React.Component {
           });
       })
       .then((response) => {
+        this.heroplaylistiscreated = { hero : this.hero.name , stats: this.playlistAttributes, data:this.getGeneratedPlaylist()}
+        this.refreshLocalStore();
         return response;
       }));
   }
@@ -329,6 +353,11 @@ const standardsetting = {
     energy: "",
     length: "",
   },
+  heroplaylistiscreated: { 
+    hero : "not",
+    stats: "not", 
+    data:{name:"blaj" , external_urls:{spotify:"http//www.blaj.com"}},
+  }
 };
 
 const modelString = localStorage.getItem("playlistModel");
@@ -338,10 +367,12 @@ modelObject
   : (modelObject = {
       hero: standardsetting.name,
       playlistAttributes: standardsetting.playlistAttributes,
+      heroplaylistiscreated: standardsetting.heroplaylistiscreated,
     });
 
 const heroifyModel = new HeroIfyModel(
   modelObject.hero,
-  modelObject.playlistAttributes
+  modelObject.playlistAttributes,
+  modelObject.heroplaylistiscreated,
 );
 export default heroifyModel;
