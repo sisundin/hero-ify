@@ -17,6 +17,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.heromodel = HeroIfyModel;
+    this.heromodel.addObserver("");
     this.state = {};
   }
 
